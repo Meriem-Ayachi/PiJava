@@ -17,7 +17,7 @@ public class UserService implements IService <User> {
     }
 
     @Override
-    public void delete(User o) {
+    public void delete(int id) {
 
     }
 

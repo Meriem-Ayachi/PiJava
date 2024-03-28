@@ -27,6 +27,11 @@ public class MaConnexion {
         }
     }
 
+    public Connection getCnx()
+    {
+        return cnx;
+    }
+
     public static MaConnexion getInstance() {
         if(instance == null )
             instance = new MaConnexion();

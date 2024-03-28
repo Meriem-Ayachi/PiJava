@@ -17,19 +17,21 @@ public class Reclamation_Commentaire {
 
     }
 
-    public Reclamation_Commentaire(int id, int reclamation_id, int user_id, String contenu, Timestamp date_creation) {
+    public Reclamation_Commentaire(int id, String contenu, Timestamp date_creation, int reclamation_id, int user_id) {
         this.id = id;
-        this.reclamation_id = reclamation_id;
-        this.user_id = user_id;
         this.contenu = contenu;
         this.date_creation = date_creation;
+        this.reclamation_id = reclamation_id;
+        this.user_id = user_id;
+
     }
 
-    public Reclamation_Commentaire(int reclamation_id, int user_id, String contenu, Timestamp date_creation) {
-        this.reclamation_id = reclamation_id;
-        this.user_id = user_id;
+    public Reclamation_Commentaire(String contenu, Timestamp date_creation,int reclamation_id, int user_id) {
         this.contenu = contenu;
         this.date_creation = date_creation;
+        this.reclamation_id = reclamation_id;
+        this.user_id = user_id;
+
     }
 
     //getters and setters

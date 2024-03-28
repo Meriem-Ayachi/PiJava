@@ -3,6 +3,7 @@ package tn.esprit.models;
 import java.sql.Date;
 import java.sql.Timestamp;
 
+
 public class Reclamation {
 
     //attr
@@ -19,21 +20,22 @@ public class Reclamation {
     {
 
     }
-    public Reclamation(int id, Byte est_traite, int user_id, String sujet, String description, Timestamp datesoummission) {
+    public Reclamation(int id, String sujet,String description, Timestamp datesoummission,Byte est_traite, int user_id) {
         this.id = id;
-        this.est_traite = est_traite;
-        this.user_id = user_id;
         this.sujet = sujet;
         this.description = description;
         this.datesoummission = datesoummission;
+        this.est_traite = est_traite;
+        this.user_id = user_id;
+
     }
 
-    public Reclamation(Byte est_traite, int user_id, String sujet, String description, Timestamp datesoummission) {
-        this.est_traite = est_traite;
-        this.user_id = user_id;
+    public Reclamation( String sujet, String description, Timestamp datesoummission,Byte est_traite, int user_id) {
         this.sujet = sujet;
         this.description = description;
         this.datesoummission = datesoummission;
+        this.est_traite = est_traite;
+        this.user_id = user_id;
     }
 
     //getters and setters

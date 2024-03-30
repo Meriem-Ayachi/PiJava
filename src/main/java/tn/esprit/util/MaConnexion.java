@@ -8,9 +8,9 @@ public class MaConnexion {
 
     //DB
 
-    final String URL = "jdbc:mysql://localhost:3306/pi";
+    final String URL = "jdbc:mysql://localhost:3306/piIntegration";
     final String USR = "root";
-    final String PWD = "";
+    final String PWD = "123456789";
 
     //att
     private Connection cnx;
@@ -32,5 +32,10 @@ public class MaConnexion {
             instance = new MaConnexion();
 
         return instance;
+    }
+    
+    public Connection getCnx()
+    {
+        return cnx;
     }
 }

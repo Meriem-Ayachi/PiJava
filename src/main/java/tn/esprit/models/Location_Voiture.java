@@ -1,12 +1,12 @@
 package tn.esprit.models;
 
-import java.sql.Date;
 import java.sql.Timestamp;
 
 public class Location_Voiture {
 
     //attr
-    private int id;
+    private int id,voiture_id,user_id;
+
     private double prix;
 
     private Timestamp date_debut,datefin;
@@ -18,21 +18,23 @@ public class Location_Voiture {
     public Location_Voiture() {
     }
 
-    public Location_Voiture(int id, double prix, Timestamp date_debut, Timestamp datefin, String type, String status) {
+    public Location_Voiture(int id, double prix, Timestamp date_debut, Timestamp datefin, String type, String status, int voiture_id) {
         this.id = id;
         this.prix = prix;
         this.date_debut = date_debut;
         this.datefin = datefin;
         this.type = type;
         this.status = status;
+        this.voiture_id = voiture_id;
     }
 
-    public Location_Voiture(double prix, Timestamp date_debut, Timestamp datefin, String type, String status) {
+    public Location_Voiture(double prix, Timestamp date_debut, Timestamp datefin, String type, String status, int voiture_id) {
         this.prix = prix;
         this.date_debut = date_debut;
         this.datefin = datefin;
         this.type = type;
         this.status = status;
+        this.voiture_id = voiture_id;
     }
 
     //getters and setters
@@ -83,6 +85,21 @@ public class Location_Voiture {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+    public int getUser_id() {
+        return user_id;
+    }
+
+    public void setUser_id(int user_id) {
+        this.user_id = user_id;
+    }
+
+    public int getVoiture_id() {
+        return voiture_id;
+    }
+
+    public void setVoiture_id(int voiture_id) {
+        this.voiture_id = voiture_id;
     }
 
     //display

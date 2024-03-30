@@ -97,7 +97,7 @@ public class AjouterReclamation {
         {
             reclamationService.add(reclamation);
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-            alert.setTitle("Success");
+            alert.setTitle("Succès");
             alert.setContentText("Réclamation ajoutée");
             alert.showAndWait();
         }
@@ -110,11 +110,11 @@ public class AjouterReclamation {
         alert.showAndWait();
     }
 
-    private void afficherMessage(String message) {
+    /*private void afficherMessage(String message) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Succès");
         alert.setContentText(message);
         alert.showAndWait();
-    }
+    }*/
 
 }

@@ -121,7 +121,7 @@ public class ReclamationService  implements IService<Reclamation> {
                 reclamation.setUser_id(rs.getInt(6));
                 return reclamation;
             } else {
-                // Gérer le cas où la réclamation n'est pas trouvée
+                System.out.println("Réclamation non trouvée");
                 return null;
             }
         } catch (SQLException e) {

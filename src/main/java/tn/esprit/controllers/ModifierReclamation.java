@@ -101,12 +101,12 @@ public class ModifierReclamation {
         alert.showAndWait();
     }
 
-    private void afficherMessage(String message) {
+    /* private void afficherMessage(String message) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Succès");
         alert.setContentText(message);
         alert.showAndWait();
-    }
+    }*/
 
 
 }

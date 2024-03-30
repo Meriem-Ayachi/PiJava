@@ -76,7 +76,6 @@ public class ReclamationService  implements IService<Reclamation> {
     }
 
 
-
     @Override
     public List<Reclamation> getAll() {
         List<Reclamation> reclamations = new ArrayList<>();
@@ -107,7 +106,27 @@ public class ReclamationService  implements IService<Reclamation> {
 
     @Override
     public Reclamation getOne(int id) {
-        return null;
+        String req = "SELECT * FROM reclamation WHERE id = ?";
+        try {
+            PreparedStatement ps = cnx.prepareStatement(req);
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                Reclamation reclamation = new Reclamation();
+                reclamation.setId(rs.getInt(1));
+                reclamation.setSujet(rs.getString(2));
+                reclamation.setDescription(rs.getString(3));
+                reclamation.setDatesoummission(rs.getTimestamp(4));
+                reclamation.setEst_traite(rs.getByte(5));
+                reclamation.setUser_id(rs.getInt(6));
+                return reclamation;
+            } else {
+                // Gérer le cas où la réclamation n'est pas trouvée
+                return null;
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
 

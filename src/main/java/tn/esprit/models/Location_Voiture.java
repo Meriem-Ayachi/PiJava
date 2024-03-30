@@ -1,6 +1,6 @@
 package tn.esprit.models;
 
-import java.sql.Timestamp;
+import java.sql.Date;
 
 public class Location_Voiture {
 
@@ -9,7 +9,7 @@ public class Location_Voiture {
 
     private double prix;
 
-    private Timestamp date_debut,datefin;
+    private Date date_debut,datefin;
     private String type,status;
 
 
@@ -18,7 +18,7 @@ public class Location_Voiture {
     public Location_Voiture() {
     }
 
-    public Location_Voiture(int id, double prix, Timestamp date_debut, Timestamp datefin, String type, String status, int voiture_id) {
+    public Location_Voiture(int id, double prix, Date date_debut, Date datefin, String type, String status, int voiture_id) {
         this.id = id;
         this.prix = prix;
         this.date_debut = date_debut;
@@ -28,7 +28,7 @@ public class Location_Voiture {
         this.voiture_id = voiture_id;
     }
 
-    public Location_Voiture(double prix, Timestamp date_debut, Timestamp datefin, String type, String status, int voiture_id) {
+    public Location_Voiture(double prix, Date date_debut, Date datefin, String type, String status, int voiture_id) {
         this.prix = prix;
         this.date_debut = date_debut;
         this.datefin = datefin;
@@ -55,19 +55,19 @@ public class Location_Voiture {
         this.prix = prix;
     }
 
-    public Timestamp getDate_debut() {
+    public Date getDate_debut() {
         return date_debut;
     }
 
-    public void setDate_debut(Timestamp date_debut) {
+    public void setDate_debut(Date date_debut) {
         this.date_debut = date_debut;
     }
 
-    public Timestamp getDatefin() {
+    public Date getDatefin() {
         return datefin;
     }
 
-    public void setDatefin(Timestamp datefin) {
+    public void setDatefin(Date datefin) {
         this.datefin = datefin;
     }
 
@@ -114,6 +114,8 @@ public class Location_Voiture {
                 ", datefin=" + datefin +
                 ", type='" + type + '\'' +
                 ", status='" + status + '\'' +
+                ", voiture_id='" + voiture_id + '\'' +
+                ", user_id='" + user_id + '\'' +
                 '}';
     }
 }

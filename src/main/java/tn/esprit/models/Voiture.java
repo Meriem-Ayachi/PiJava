@@ -98,6 +98,7 @@ public class Voiture {
                 ", marque='" + marque + '\'' +
                 ", model='" + model + '\'' +
                 ", energy='" + energy + '\'' +
+                ", image_file_name='" + image_file_name + '\'' +
                 '}';
     }
 

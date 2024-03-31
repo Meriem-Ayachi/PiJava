@@ -99,6 +99,26 @@ public class Reclamation_CommentaireService implements IService<Reclamation_Comm
 
     @Override
     public Reclamation_Commentaire getOne(int id) {
-        return null;
+        String req = "SELECT * FROM reclamation_commentaire WHERE id = ?";
+        try {
+            PreparedStatement ps = cnx.prepareStatement(req);
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                Reclamation_Commentaire commentaire = new Reclamation_Commentaire();
+                commentaire.setId(rs.getInt(1));
+                commentaire.setContenu(rs.getString(2));
+                commentaire.setDate_creation(rs.getTimestamp(3));
+                commentaire.setReclamation_id(rs.getInt(4));
+                commentaire.setUser_id(rs.getInt(5));
+                return commentaire;
+            } else {
+                System.out.println("Commentaire non trouvé");
+                return null;
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
+
 }

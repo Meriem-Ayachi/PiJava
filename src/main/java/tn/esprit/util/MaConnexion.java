@@ -33,4 +33,9 @@ public class MaConnexion {
 
         return instance;
     }
+
+    public Connection getCnx()
+    {
+        return cnx;
+    }
 }

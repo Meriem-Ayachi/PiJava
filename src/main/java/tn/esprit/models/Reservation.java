@@ -95,4 +95,7 @@ public class Reservation {
     public String getidres() {
         return null;
     }
+
+    public void add(Reservation reservation) {
+    }
 }

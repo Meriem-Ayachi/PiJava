@@ -22,6 +22,11 @@ public class UserService implements IService <User> {
     }
 
     @Override
+    public void delete(int id) {
+
+    }
+
+    @Override
     public List getAll() {
         return null;
     }

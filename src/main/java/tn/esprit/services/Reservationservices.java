@@ -2,7 +2,7 @@ package tn.esprit.services;
 
 import tn.esprit.interfaces.IService;
 import tn.esprit.models.Reservation;
-import tn.esprit.models.Hotel;
+import tn.esprit.models.hotel;
 import tn.esprit.util.MaConnexion;
 
 import java.sql.*;
@@ -32,6 +32,8 @@ public abstract class Reservationservices implements IService<Reservation> {
         }
     }
 
+
+
     @Override
     public void update (Reservation reservation )
     {
@@ -54,7 +56,7 @@ public abstract class Reservationservices implements IService<Reservation> {
     }
     @Override
     public void delete(Reservation reservation) {
-        String query = "DELETE FROM reservation WHERE idres = ?";
+        String query = "DELETE FROM reservation WHERE idres = ";
         try (PreparedStatement statement = cnx.prepareStatement(query)) {
             statement.setInt(1,reservation.getIdres());
             int rowsDeleted = statement.executeUpdate();
@@ -113,6 +115,8 @@ public abstract class Reservationservices implements IService<Reservation> {
         }
         return reservation;
     }
+
+    public abstract void delete(int id);
 }
 
 

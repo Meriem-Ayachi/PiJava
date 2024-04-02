@@ -44,7 +44,7 @@ public abstract class Reservationservices implements IService<Reservation> {
                 "destinationdepart = '" + reservation.getDestinationdepart() + "', " +
                 "destinationretour = '" + reservation.getDestinationretour() + "', " +
                 "nbrdepersonne = " + reservation.getNbrdepersonne() + " " +
-                "WHERE idres = " + reservation.getIdres();
+                "WHERE id = " + reservation.getId();
         try {
             Statement st = cnx.createStatement();
             st.executeUpdate(req);
@@ -56,9 +56,9 @@ public abstract class Reservationservices implements IService<Reservation> {
     }
     @Override
     public void delete(Reservation reservation) {
-        String query = "DELETE FROM reservation WHERE idres = ";
+        String query = "DELETE FROM reservation WHERE id = ";
         try (PreparedStatement statement = cnx.prepareStatement(query)) {
-            statement.setInt(1,reservation.getIdres());
+            statement.setInt(1,reservation.getId());
             int rowsDeleted = statement.executeUpdate();
             if (rowsDeleted > 0) {
                 System.out.println("Réservation supprimée avec succès");
@@ -85,7 +85,7 @@ public abstract class Reservationservices implements IService<Reservation> {
                 Reservation p = new Reservation();
                 p.setDatedepart(rs.getString("datedepart"));
                 p.setDateretour(rs.getString("Dateretour"));
-                p.setClasse(rs.getString("classe"));
+                p.setClasse(rs.getString("clase"));
                 p.setDestinationdepart(rs.getString("destinationdepart"));
                 p.setDestinationretour(rs.getString("destinationretour"));
                 reservations.add(p);
@@ -98,20 +98,19 @@ public abstract class Reservationservices implements IService<Reservation> {
 
     @Override
 
-    public Reservation getOne(int idres) {
+    public Reservation getOne(int id) {
         Reservation reservation = null;
-        String query = "SELECT * FROM reservation WHERE idres = ?";
+        String query = "SELECT * FROM reservation WHERE id = ?";
         try (PreparedStatement statement = cnx.prepareStatement(query)) {
-            statement.setInt(1, idres);
+            statement.setInt(1, id);
             try (ResultSet resultSet = statement.executeQuery()) {
                 if (resultSet.next()) {
                     reservation = new Reservation();
-                    reservation.setIdres(resultSet.getInt("idres"));
-                    // Assurez-vous de récupérer les autres propriétés de la réservation à partir du résultat de la requête
+                    reservation.setId(resultSet.getInt("id"));
                 }
             }
         } catch (SQLException e) {
-            throw new RuntimeException("Error retrieving reservation with ID " + idres, e);
+            throw new RuntimeException("Error retrieving reservation with ID " + id, e);
         }
         return reservation;
     }

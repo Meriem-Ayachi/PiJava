@@ -3,7 +3,7 @@ package tn.esprit.models;
 import java.util.Date;
 
 public class Reservation {
-    private int idres ;
+    private int id ;
     private String datedepart;
     private String dateretour;
     private String classe;
@@ -11,8 +11,8 @@ public class Reservation {
     private String destinationretour;
     private int nbrdepersonne;
 
-    public Reservation(int idres,String datedepart, String dateretour, String classe, String destinationdepart, String destinationretour, int nbrdepersonne) {
-        this.idres= idres;
+    public Reservation(int id,String datedepart, String dateretour, String classe, String destinationdepart, String destinationretour, int nbrdepersonne) {
+        this.id= id;
         this.datedepart = datedepart;
         this.dateretour = dateretour;
         this.classe = classe;
@@ -21,12 +21,12 @@ public class Reservation {
         this.nbrdepersonne = nbrdepersonne;
     }
 
-    public int getIdres() {
-        return idres;
+    public int getId() {
+        return id;
     }
 
-    public void setIdres(int idres) {
-        this.idres = idres;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getDatedepart() {

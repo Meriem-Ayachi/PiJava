@@ -49,14 +49,16 @@ public class Main {
 
             reserve.add(res);
         }
+        int id=1;
         reserve.add(reservation);
         System.out.println(reservation);
         reservation.setDestinationretour("allemagne ");
         reserve.update(reservation);
          reserve.delete(reservation);
+         reserve.getOne(id);
 
-        int idres=15;
-        reserve.delete(idres);
+
+        reserve.delete(id);
         List<Reservation> reserveAll = reserve.getAll();
 
 

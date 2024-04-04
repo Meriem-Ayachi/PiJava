@@ -1,6 +1,7 @@
 package tn.esprit.models;
 
 import java.util.Date;
+import java.util.List;
 
 public class Reservation {
     private int id ;
@@ -97,5 +98,9 @@ public class Reservation {
     }
 
     public void add(Reservation reservation) {
+    }
+
+    public List<Reservation> getAll() {
+        return null;
     }
 }

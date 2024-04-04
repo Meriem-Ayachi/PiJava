@@ -84,17 +84,20 @@ public abstract class Reservationservices implements IService<Reservation> {
             while (rs.next()) {
                 Reservation p = new Reservation();
                 p.setDatedepart(rs.getString("datedepart"));
-                p.setDateretour(rs.getString("Dateretour"));
-                p.setClasse(rs.getString("clase"));
+                p.setDateretour(rs.getString("dateretour")); // Correction du nom de la colonne
+                p.setClasse(rs.getString("classe")); // Correction du nom de la colonne
                 p.setDestinationdepart(rs.getString("destinationdepart"));
                 p.setDestinationretour(rs.getString("destinationretour"));
                 reservations.add(p);
             }
         } catch (SQLException ex) {
-
+            ex.printStackTrace(); // Affiche l'erreur
+            // Retourne une liste vide en cas d'erreur
+            return reservations;
         }
         return reservations;
     }
+
 
     @Override
 

@@ -14,28 +14,32 @@ public class User {
     {
 
     }
-    public User(int id, Byte is_verified,int num_tel ,String email, String roles, String password, String nom, String prenom)
+    public User(String email, String roles, String password, Byte is_verified, String nom, String prenom,int num_tel)
     {
-        this.id = id;
-        this.is_verified = is_verified;
-        this.num_tel = num_tel;
+
         this.email = email;
         this.roles = roles;
         this.password = password;
+        this.is_verified = is_verified;
         this.nom = nom;
         this.prenom = prenom;
+        this.num_tel = num_tel;
     }
 
-    public User(Byte is_verified,int num_tel ,String email, String roles, String password, String nom, String prenom)
+    public User(int id, String email, String roles, String password, Byte is_verified, String nom, String prenom,int num_tel)
     {
-
-        this.is_verified = is_verified;
-        this.num_tel = num_tel;
+        this.id = id;
         this.email = email;
         this.roles = roles;
         this.password = password;
+        this.is_verified = is_verified;
         this.nom = nom;
         this.prenom = prenom;
+        this.num_tel = num_tel;
+
+
+
+
     }
 
     //Getter and setters

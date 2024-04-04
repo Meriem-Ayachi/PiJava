@@ -10,7 +10,10 @@ public interface IService <T>{
     //2
     void update(T t);
     //3
-    void delete(T t);
+
+
+    void delete(int id);
+
     //4 : All
     List<T> getAll();
 

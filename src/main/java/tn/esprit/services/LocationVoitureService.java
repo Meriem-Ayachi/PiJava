@@ -10,7 +10,6 @@ import java.util.List;
 
 import tn.esprit.interfaces.IService;
 import tn.esprit.models.Location_Voiture;
-import tn.esprit.models.Voiture;
 import tn.esprit.util.MaConnexion;
 
 public class LocationVoitureService implements IService <Location_Voiture> {

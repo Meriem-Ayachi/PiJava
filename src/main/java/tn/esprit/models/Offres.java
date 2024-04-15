@@ -1,5 +1,7 @@
 package tn.esprit.models;
 
+import java.sql.Date;
+
 public class Offres {
 
     //attr
@@ -8,7 +10,8 @@ public class Offres {
     private double prix;
     private String title,description,lieu,image;
 
-    private Byte published;
+    private boolean published;
+    private Date created_at;
 
     //constructor
 
@@ -16,23 +19,25 @@ public class Offres {
     public Offres() {
     }
 
-    public Offres(int id, Byte published, double prix, String title, String description, String lieu, String image) {
+    public Offres(int id, String title, String description,boolean published, double prix, String lieu, String image,  Date created_at) {
         this.id = id;
-        this.published = published;
-        this.prix = prix;
         this.title = title;
         this.description = description;
+        this.published = published;
+        this.prix = prix;
         this.lieu = lieu;
         this.image = image;
+        this.created_at = created_at;
     }
 
-    public Offres(Byte published, double prix, String title, String description, String lieu, String image) {
-        this.published = published;
-        this.prix = prix;
+    public Offres(String title, String description,boolean published, double prix, String lieu, String image,  Date created_at) {
         this.title = title;
         this.description = description;
+        this.published = published;
+        this.prix = prix;
         this.lieu = lieu;
         this.image = image;
+        this.created_at = created_at;
     }
 
     //getters and setters
@@ -44,14 +49,6 @@ public class Offres {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public Byte getPublished() {
-        return published;
-    }
-
-    public void setPublished(Byte published) {
-        this.published = published;
     }
 
     public double getPrix() {
@@ -94,8 +91,21 @@ public class Offres {
         this.image = image;
     }
 
-    //display
+    public boolean isPublished() {
+        return published;
+    }
 
+    public void setPublished(boolean published) {
+        this.published = published;
+    }
+
+    public Date getCreated_at() {
+        return created_at;
+    }
+
+    public void setCreated_at(Date created_at) {
+        this.created_at = created_at;
+    }
 
     @Override
     public String toString() {
@@ -107,6 +117,7 @@ public class Offres {
                 ", description='" + description + '\'' +
                 ", lieu='" + lieu + '\'' +
                 ", image='" + image + '\'' +
+                ", created_at='" + created_at + '\'' +
                 '}';
     }
 }

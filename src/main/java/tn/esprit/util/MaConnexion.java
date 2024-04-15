@@ -1,8 +1,6 @@
 package tn.esprit.util;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
+import java.sql.*;
 
 public class MaConnexion {
 
@@ -13,7 +11,8 @@ public class MaConnexion {
     final String PWD = "";
 
     //att
-    private Connection cnx;
+    private static Connection cnx;
+    private static Statement ste;
     private static MaConnexion instance;
 
     //constructor
@@ -25,6 +24,7 @@ public class MaConnexion {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+
     }
 
     public static MaConnexion getInstance() {
@@ -33,4 +33,10 @@ public class MaConnexion {
 
         return instance;
     }
+
+
+    public Connection getCnx() {
+        return cnx;
+    }
+
 }

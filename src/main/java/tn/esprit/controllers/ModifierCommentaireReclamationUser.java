@@ -5,16 +5,14 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
-import tn.esprit.models.Reclamation;
 import tn.esprit.models.Reclamation_Commentaire;
-import tn.esprit.services.ReclamationService;
 import tn.esprit.services.Reclamation_CommentaireService;
 
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-public class ModifierCommentaireReclamation {
+public class ModifierCommentaireReclamationUser {
 
     @FXML
     private TextField contenuTF;

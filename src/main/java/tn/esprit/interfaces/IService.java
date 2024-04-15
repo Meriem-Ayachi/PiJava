@@ -12,6 +12,8 @@ public interface IService <T>{
     //3
     void delete(int id);
     //4 : All
+
+
     List<T> getAll();
 
     //5 : One

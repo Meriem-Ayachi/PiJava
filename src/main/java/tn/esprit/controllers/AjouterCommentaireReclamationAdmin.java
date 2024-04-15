@@ -2,7 +2,6 @@ package tn.esprit.controllers;
 
 import javafx.event.ActionEvent;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
@@ -17,7 +16,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 
-public class AjouterCommentaireReclamation {
+public class AjouterCommentaireReclamationAdmin {
 
     @FXML
     private TextField DateCreaTF;

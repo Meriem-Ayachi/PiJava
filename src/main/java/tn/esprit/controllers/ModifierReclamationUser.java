@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 
-public class ModifierReclamation {
+public class ModifierReclamationUser {
 
     @FXML
     private TextField dateSouTF;

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AfficherOffre">
+   <children>
+      <TableView layoutX="20.0" layoutY="20.0" prefHeight="180.0" prefWidth="526.0">
+        <columns>
+          <TableColumn fx:id="titlecolO" prefWidth="75.0" text="title" />
+          <TableColumn fx:id="descriptioncolO" prefWidth="75.0" text="description" />
+            <TableColumn fx:id="publishedcolO" prefWidth="75.0" text="published" />
+            <TableColumn fx:id="prixcolO" prefWidth="75.0" text="prix" />
+            <TableColumn fx:id="lieucolO" prefWidth="75.0" text="lieu" />
+            <TableColumn fx:id="imagecolO" prefWidth="75.0" text="image" />
+            <TableColumn fx:id="datecolO" prefWidth="75.0" text="date" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>

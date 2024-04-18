@@ -2,7 +2,10 @@ package controllers;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -57,7 +60,53 @@ public class AfficherOffre {
             dateColO.setCellValueFactory(new PropertyValueFactory<>("date"));
 
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("error");
+            alert.setContentText(e.getMessage());
+            alert.showAndWait();
+        }
+
+
+    }
+
+    @FXML
+    void ModifierO() {
+
+    }
+    @FXML
+    void SupprimerO(ActionEvent event) {
+        Offres offres = tableview.getSelectionModel().getSelectedItem();
+
+        if (offres != null) {
+            Alert confirmationDialog = new Alert(Alert.AlertType.CONFIRMATION);
+            confirmationDialog.setTitle("Confirmation de suppression");
+            confirmationDialog.setHeaderText(null);
+            confirmationDialog.setContentText("Êtes-vous sûr de vouloir supprimer ce module ?");
+            confirmationDialog.showAndWait().ifPresent(response -> {
+                if (response == ButtonType.OK) {
+                    try {
+                        os.delete(offres.getId());
+                        tableview.getItems().remove(offres);
+                        Alert confirmation = new Alert(Alert.AlertType.INFORMATION);
+                        confirmation.setTitle("Suppression réussie");
+                        confirmation.setHeaderText(null);
+                        confirmation.setContentText("L'offre a été supprimé avec succès.");
+                        confirmation.showAndWait();
+                    } catch (SQLException e) {
+                        Alert error = new Alert(Alert.AlertType.ERROR);
+                        error.setTitle("Erreur lors de la suppression");
+                        error.setHeaderText(null);
+                        error.setContentText("Une erreur s'est produite lors de la suppression du offre : " + e.getMessage());
+                        error.showAndWait();
+                    }
+                }
+            });
+        } else {
+            Alert noSelectionAlert = new Alert(Alert.AlertType.WARNING);
+            noSelectionAlert.setTitle("Aucune sélection");
+            noSelectionAlert.setHeaderText(null);
+            noSelectionAlert.setContentText("Veuillez sélectionner un offre à supprimer.");
+            noSelectionAlert.showAndWait();
         }
 
 

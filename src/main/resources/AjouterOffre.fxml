@@ -14,6 +14,6 @@
       <TextField fx:id="dateTFO" layoutX="89.0" layoutY="284.0" promptText="date" />
       <Button layoutX="122.0" layoutY="331.0" mnemonicParsing="false" onAction="#AjouterO" prefHeight="25.0" prefWidth="67.0" text="Ajouter" />
       <TextField fx:id="publishedTFO" layoutX="89.0" layoutY="122.0" promptText="published" />
-      <Button layoutX="417.0" layoutY="103.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="143.0" text="liste des offres" />
+      <Button layoutX="417.0" layoutY="103.0" mnemonicParsing="false" onAction="#naviguer" prefHeight="25.0" prefWidth="143.0" text="liste des offres" />
    </children>
 </AnchorPane>

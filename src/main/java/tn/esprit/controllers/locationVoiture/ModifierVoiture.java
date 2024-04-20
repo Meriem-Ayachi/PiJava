@@ -1,9 +1,12 @@
-package tn.esprit.controllers;
+package tn.esprit.controllers.locationVoiture;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import tn.esprit.MainFX;
@@ -23,7 +26,7 @@ public class ModifierVoiture {
     private TextField couleurTF;
 
     @FXML
-    private TextField energyTF;
+    private ComboBox<String> energyTF;
 
     @FXML
     private TextField capaciteTF;
@@ -37,8 +40,16 @@ public class ModifierVoiture {
         marqueTF.setText(voiture.getMarque());
         modelTF.setText(voiture.getModel());
         couleurTF.setText(voiture.getCouleur());
-        energyTF.setText(voiture.getEnergy());
+        energyTF.setValue(voiture.getEnergy());
         capaciteTF.setText(String.valueOf(voiture.getCapacite()));
+
+        
+        ObservableList<String> energyType = FXCollections.observableArrayList(
+            "Gasoline"
+            , "Diesel"
+            , "Electricity"
+        );
+        energyTF.setItems(energyType);
     }
 
     @FXML
@@ -82,12 +93,8 @@ public class ModifierVoiture {
         }
 
         // energy control sasie
-        if (energyTF.getText().isEmpty()) {
+        if (energyTF.getValue() == null) {
             afficherErreur("Veuillez saisir une energy.");
-            return;
-        }
-        if (energyTF.getText().length() < 3) {
-            afficherErreur("La energy doit comporter au moins 3 caractères.");
             return;
         }
 
@@ -113,7 +120,7 @@ public class ModifierVoiture {
         voiture.setMarque(marqueTF.getText());
         voiture.setModel(modelTF.getText());
         voiture.setCouleur(couleurTF.getText());
-        voiture.setEnergy(energyTF.getText());
+        voiture.setEnergy(energyTF.getValue());
         voiture.setCapacite(Integer.parseInt(capaciteTF.getText()));
         {
             // confirmation dialog

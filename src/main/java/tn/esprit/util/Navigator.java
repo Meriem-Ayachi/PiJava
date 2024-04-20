@@ -4,7 +4,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import tn.esprit.controllers.ModifierVoiture;
+import tn.esprit.controllers.locationVoiture.ModifierVoiture;
 import tn.esprit.models.Voiture;
 
 import java.io.IOException;

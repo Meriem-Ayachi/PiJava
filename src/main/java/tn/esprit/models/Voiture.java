@@ -91,15 +91,7 @@ public class Voiture {
 
     @Override
     public String toString() {
-        return "Voiture{" +
-                "id=" + id +
-                ", capacite=" + capacite +
-                ", couleur='" + couleur + '\'' +
-                ", marque='" + marque + '\'' +
-                ", model='" + model + '\'' +
-                ", energy='" + energy + '\'' +
-                ", image_file_name='" + image_file_name + '\'' +
-                '}';
+        return  model + "(" + marque + ")"; 
     }
 
 }

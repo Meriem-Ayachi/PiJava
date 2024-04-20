@@ -99,6 +99,33 @@ public class VoitureService implements IService <Voiture> {
         return voitures;
     }
 
+    public List<Voiture> getAvailable() {
+        List<Voiture> voitures = new ArrayList<>();
+
+        String req = "SELECT v.* FROM piIntegration.voiture v " + 
+        "LEFT JOIN piIntegration.location_voiture l ON v.id = l.voiture_id " +
+        "WHERE l.voiture_id IS NULL;";
+        try {
+            Statement st = cnx.createStatement();
+            ResultSet res = st.executeQuery(req);
+            while (res.next()) {
+                Voiture voiture = new Voiture();
+                voiture.setId(res.getInt(1));
+                voiture.setCouleur(res.getString(2));
+                voiture.setMarque(res.getString(3));
+                voiture.setModel(res.getString(4));
+                voiture.setEnergy(res.getString(5));
+                voiture.setCapacite(res.getInt(6));
+                voiture.setImage_file_name(res.getString(7));
+
+                voitures.add(voiture);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return voitures;
+    }
+
     @Override
     public Voiture getOne(int id) {
 

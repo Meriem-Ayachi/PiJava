@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/scene/layout" xmlns:fx="http://javafx.com/fxml" fx:controller="tn.esprit.controllers.AjouterVoiture">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/scene/layout" xmlns:fx="http://javafx.com/fxml" fx:controller="tn.esprit.controllers.locationVoiture.AjouterVoiture">
    <children>
       <Label layoutX="185.0" layoutY="28.0" text="Ajouter Voiture">
          <font>
@@ -19,7 +19,7 @@
       <TextField fx:id="marqueTF" layoutX="66.0" layoutY="130.0" promptText="Marque" />
       <TextField fx:id="modelTF" layoutX="66.0" layoutY="170.0" promptText="Model" />
       <TextField fx:id="couleurTF" layoutX="66.0" layoutY="210.0" promptText="Couleur" />
-      <TextField fx:id="energyTF" layoutX="66.0" layoutY="250.0" promptText="Energy" />
+      <ComboBox fx:id="energyTF" layoutX="66.0" layoutY="250.0" promptText="Energy" />
       <TextField fx:id="capaciteTF" layoutX="66.0" layoutY="290.0" promptText="Capacite" />
       <Button layoutX="381.0" layoutY="334.0" mnemonicParsing="false" onAction="#ajouterVoiture" text="Ajouter" />
       <Button layoutX="476.0" layoutY="334.0" mnemonicParsing="false" onAction="#AfficherVoitures" text="Afficher" />

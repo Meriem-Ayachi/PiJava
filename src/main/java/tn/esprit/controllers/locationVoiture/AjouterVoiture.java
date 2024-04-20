@@ -1,6 +1,8 @@
-package tn.esprit.controllers;
+package tn.esprit.controllers.locationVoiture;
 
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -21,7 +23,7 @@ public class AjouterVoiture {
     private TextField couleurTF;
 
     @FXML
-    private TextField energyTF;
+    private ComboBox<String> energyTF;
 
     @FXML
     private TextField capaciteTF;
@@ -34,11 +36,16 @@ public class AjouterVoiture {
         nav.goToPage("/ListVoitures.fxml");
     }
 
-
     @FXML
     void initialize() {
-        
+        ObservableList<String> energyType = FXCollections.observableArrayList(
+            "Gasoline"
+            , "Diesel"
+            , "Electricity"
+        );
+        energyTF.setItems(energyType);
     }
+
     @FXML
     void ajouterVoiture(ActionEvent event) {
             
@@ -73,12 +80,8 @@ public class AjouterVoiture {
         }
 
         // energy control sasie
-        if (energyTF.getText().isEmpty()) {
+        if (energyTF.getValue() == null) {
             afficherErreur("Veuillez saisir une energy.");
-            return;
-        }
-        if (energyTF.getText().length() < 3) {
-            afficherErreur("La energy doit comporter au moins 3 caractères.");
             return;
         }
 
@@ -100,7 +103,7 @@ public class AjouterVoiture {
         voiture.setMarque(marqueTF.getText());
         voiture.setModel(modelTF.getText());
         voiture.setCouleur(couleurTF.getText());
-        voiture.setEnergy(energyTF.getText());
+        voiture.setEnergy(energyTF.getValue());
         voiture.setCapacite(Integer.parseInt(capaciteTF.getText()));
         {
             // confirmation dialog

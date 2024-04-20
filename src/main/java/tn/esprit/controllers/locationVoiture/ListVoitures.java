@@ -1,4 +1,4 @@
-package tn.esprit.controllers;
+package tn.esprit.controllers.locationVoiture;
 
 import java.util.Arrays;
 import java.util.List;

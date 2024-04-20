@@ -74,21 +74,21 @@ public class ListLocation {
             refreshTable();
             selectedLocation = null;
         }else{
-            showError("Vous devez sélectionner une voiture");
+            showError("Vous devez sélectionner une location");
         }
     }
 
     @FXML
     void goToModifier(ActionEvent event) {
-        // if (selectedLocation != null) {
-        //     Voiture voiture = voitureService.getOne(selectedLocation.getId());
+        if (selectedLocation != null) {
+            Location_Voiture locationVoiture = LocationService.getOne(selectedLocation.getId());
             
-        //     Stage stage = MainFX.getPrimaryStage();
-        //     Navigator nav = new Navigator(stage);
-        //     nav.goTo_ModifierVoiture("/ModifierVoiture.fxml", voiture);
-        // }else{
-        //     showError("Vous devez sélectionner une voiture");
-        // }
+            Stage stage = MainFX.getPrimaryStage();
+            Navigator nav = new Navigator(stage);
+            nav.goTo_ModifierLocation("/ModifierLocation.fxml", locationVoiture);
+        }else{
+            showError("Vous devez sélectionner une location");
+        }
     }
 
     @FXML

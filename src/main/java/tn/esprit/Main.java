@@ -10,12 +10,20 @@ import tn.esprit.models.hotel;
 import tn.esprit.services.Hotelservices;
 
 public class Main {
+    private static List<Reservation> reservations;
+
     public static void main(String[] args) {
         LocalDate currentDate = LocalDate.now();
 
         Reservation res = new Reservation();
 
         Hotelservices ho = new Hotelservices() {
+            @Override
+            public void generatePDF(List<Reservation> reservations, String filePath) {
+
+            }
+
+
             @Override
             public void delete(hotel hotel) {
 
@@ -33,16 +41,14 @@ public class Main {
             }
         };
 
-        hotel hotel = new hotel("bayrem", 10, "Tunis", "mauvaise");
-        ho.add(hotel);
-        int hotelIdToDelete = 10;
-        ho.delete(hotelIdToDelete);
+
+
         System.out.println(ho.getAll());
-        Reservation reservation = new Reservation(17, "2023/04/01", "2024/04/10", "Classe BB", "New York", "Paris", 2);
+
+        Reservation reservation = new Reservation(17, "2023/04/01", "2024/04/10", "Classe 4444", "New York", "Paris", 2);
         if (validerDate("01/04/2022", currentDate)) { // Valider la date
 
             res.setDatedepart("01/04/2021");
-
 
             reserve.add(res);
         }
@@ -50,7 +56,8 @@ public class Main {
         reserve.add(reservation);
         System.out.println(reservation);
         System.out.println(reserve.getAll());
-        reservation.setDestinationretour("allemagne ");
+
+
         reserve.update(res);
 
         reserve.delete(id);

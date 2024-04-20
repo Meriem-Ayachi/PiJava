@@ -1,6 +1,7 @@
 package tn.esprit.services;
 
 import tn.esprit.interfaces.IService;
+import tn.esprit.models.Reservation;
 import tn.esprit.models.hotel;
 import tn.esprit.util.MaConnexion;
 
@@ -10,14 +11,21 @@ import java.util.List;
 
 public abstract class Hotelservices implements IService<hotel> {
     Connection cnx =MaConnexion.getInstance().getCnx();
+
+    public static List<hotel> getAllHotels() {
+        return null;
+    }
+
+
+
     @Override
-    public void add (hotel hotel )
+    public void add(hotel hotel)
     {
         String req = "INSERT INTO `hotel`(`nom`, `nbretoile`, `emplacement`, `avis`) VALUES ('"+hotel.getNom()+"',"+hotel.getNbretoile()+",'"+hotel.getEmplacement()+"','"+hotel.getAvis()+"')";
         try {
             Statement st =cnx.createStatement();
             st.executeUpdate(req);
-            System.out.println("user ajouter");
+            System.out.println("user");
         } catch (SQLException e) {
 
             throw new RuntimeException(e);
@@ -73,4 +81,5 @@ public abstract class Hotelservices implements IService<hotel> {
         return null;
     }
 
+    public abstract void generatePDF(List<Reservation> reservations, String filePath);
 }

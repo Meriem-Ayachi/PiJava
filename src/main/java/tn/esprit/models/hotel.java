@@ -3,13 +3,13 @@ package tn.esprit.models;
 public class hotel {
 
     private String nom;
-    private Integer nbretoile;
+    private String nbretoile;
     private Integer id;
     private String Emplacement;
 
     private String avis;
 
-    public hotel(String nom, Integer nbretoile,String emplacement,String avis) {
+    public hotel(String nom, String nbretoile, String emplacement, String avis) {
         this.nom = nom;
         this.id= id;
         this.nbretoile = nbretoile;
@@ -28,11 +28,11 @@ public class hotel {
         this.nom = nom;
     }
 
-    public Integer getNbretoile() {
+    public String getNbretoile() {
         return nbretoile;
     }
 
-    public void setNbretoile(Integer nbretoile) {
+    public void setNbretoile(String nbretoile) {
         this.nbretoile = nbretoile;
     }
 

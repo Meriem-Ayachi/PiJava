@@ -2,7 +2,6 @@ package tn.esprit.services;
 
 import tn.esprit.interfaces.IService;
 import tn.esprit.models.Reservation;
-import tn.esprit.models.hotel;
 import tn.esprit.util.MaConnexion;
 
 import java.sql.*;
@@ -10,7 +9,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 
+
+import org.apache.pdfbox.pdmodel.PDDocument;
+import org.apache.pdfbox.pdmodel.PDPage;
+import org.apache.pdfbox.pdmodel.PDPageContentStream;
+import org.apache.pdfbox.pdmodel.font.PDType1Font;
+
+import java.io.IOException;
+
+
 public abstract class Reservationservices implements IService<Reservation> {
+    public IService<Reservation> reserve;
     Connection cnx = MaConnexion.getInstance().getCnx();
     @Override
     public void add (Reservation reservation )
@@ -54,6 +63,48 @@ public abstract class Reservationservices implements IService<Reservation> {
         }
 
     }
+
+    public void generatePDF(List<Reservation> reservations, String filePath) {
+        try (PDDocument document = new PDDocument()) {
+            PDPage page = new PDPage();
+            document.addPage(page);
+
+            try (PDPageContentStream contentStream = new PDPageContentStream(document, page)) {
+                contentStream.setFont(PDType1Font.HELVETICA_BOLD, 12);
+                contentStream.beginText();
+                contentStream.newLineAtOffset(50, 750);
+                contentStream.showText("Liste des réservations");
+                contentStream.endText();
+
+                contentStream.setFont(PDType1Font.HELVETICA, 10);
+                int y = 700;
+                for (Reservation reservation : reservations) {
+                    contentStream.beginText();
+                    contentStream.newLineAtOffset(50, y);
+                    contentStream.showText("ID: " + reservation.getId());
+                    contentStream.newLineAtOffset(0, -15);
+                    contentStream.showText("Date de départ: " + reservation.getDatedepart());
+                    contentStream.newLineAtOffset(0, -15);
+                    contentStream.showText("Date de retour: " + reservation.getDateretour());
+                    contentStream.newLineAtOffset(0, -15);
+                    contentStream.showText("Classe: " + reservation.getClasse());
+                    contentStream.newLineAtOffset(0, -15);
+                    contentStream.showText("Destination de départ: " + reservation.getDestinationdepart());
+                    contentStream.newLineAtOffset(0, -15);
+                    contentStream.showText("Destination de retour: " + reservation.getDestinationretour());
+                    contentStream.newLineAtOffset(0, -15);
+                    contentStream.showText("Nombre de personnes: " + reservation.getNbrdepersonne());
+                    contentStream.endText();
+                    y -= 100;
+                }
+            }
+
+            document.save(filePath);
+            System.out.println("Document PDF généré avec succès à l'emplacement : " + filePath);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
     @Override
     public void delete(Reservation reservation) {
         String query = "DELETE FROM reservation WHERE id = ";
@@ -69,6 +120,9 @@ public abstract class Reservationservices implements IService<Reservation> {
             throw new RuntimeException("Erreur lors de la suppression de la réservation", e);
         }
     }
+
+
+
 
 
 

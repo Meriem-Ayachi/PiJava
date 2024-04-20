@@ -1,5 +1,7 @@
 package tn.esprit.interfaces;
 
+import tn.esprit.models.Reservation;
+
 import java.util.List;
 
 public interface IService <T>{
@@ -10,6 +12,9 @@ public interface IService <T>{
     //2
     void update(T t);
     //3
+
+
+    void generatePDF(List<Reservation> reservations, String filePath);
 
 
     void delete(T t);

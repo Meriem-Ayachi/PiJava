@@ -1,0 +1,43 @@
+.root {
+    -fx-background-color: #f0f0f0; /* Couleur de fond */
+    -fx-padding: 20px; /* Marge intérieure */
+    -fx-border-color: #cccccc; /* Couleur de la bordure */
+    -fx-border-width: 1px; /* Largeur de la bordure */
+    -fx-border-radius: 5px; /* Rayon de la bordure */
+    -fx-font-family: Arial, sans-serif; /* Police de caractère */
+    -fx-font-size: 14px; /* Taille de la police */
+}
+
+/* Style pour les labels */
+.label {
+    -fx-font-weight: bold; /* Texte en gras */
+    -fx-text-fill: #333333; /* Couleur du texte */
+}
+
+/* Style pour les boutons */
+#ajouterBTN,#listeBTN {
+    -fx-background-color: #007bff; /* Couleur de fond */
+    -fx-text-fill: white; /* Couleur du texte */
+    -fx-font-weight: bold; /* Texte en gras */
+    -fx-padding: 8px 16px; /* Marge intérieure */
+    -fx-border-radius: 3px; /* Rayon de la bordure */
+}
+
+/* Style pour les boutons survolés */
+.button:hover {
+    -fx-background-color: #0056b3; /* Couleur de fond */
+}
+
+/* Style pour les boutons cliqués */
+.button:pressed {
+    -fx-background-color: #003366; /* Couleur de fond */
+}
+/* Style pour le titre */
+/* Style pour le titre */
+.title {
+    -fx-font-size: 24px; /* Taille de la police */
+    -fx-font-weight: bold; /* Texte en gras */
+    -fx-text-fill: #333333; /* Couleur du texte */
+    -fx-padding: 10px 0; /* Marge intérieure */
+}
+

@@ -1,9 +1,6 @@
 package tn.esprit;
 
-import com.google.gson.Gson;
-import tn.esprit.models.User;
 import tn.esprit.services.UserService;
-import tn.esprit.util.MaConnexion;
 
 public class Main {
     public static void main(String[] args)

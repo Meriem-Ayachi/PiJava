@@ -1,11 +1,13 @@
 package tn.esprit.services;
 
 import com.google.gson.Gson;
+
 import org.mindrot.jbcrypt.BCrypt;
 import tn.esprit.interfaces.IService;
 import tn.esprit.models.User;
+import tn.esprit.models.Voiture;
 import tn.esprit.util.MaConnexion;
-
+import org.json.*;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -30,7 +32,7 @@ public class UserService implements IService <User> {
             String rolesJson = new Gson().toJson(o.getRoles());
             ps.setString(2, rolesJson);
             ps.setString(3, encryptedPassword);
-            ps.setByte(4, o.getIs_verified());
+            ps.setInt(4, o.getIs_verified());
             ps.setString(5, o.getNom());
             ps.setString(6, o.getPrenom());
             ps.setInt(7, o.getNum_tel());
@@ -53,7 +55,7 @@ public class UserService implements IService <User> {
             ps.setString(1, o.getEmail());
             ps.setString(2, rolesJson);
             ps.setString(3, o.getPassword());
-            ps.setByte(4, o.getIs_verified());
+            ps.setInt(4, o.getIs_verified());
             ps.setString(5, o.getNom());
             ps.setString(6, o.getPrenom());
             ps.setInt(7, o.getNum_tel());
@@ -95,11 +97,11 @@ public class UserService implements IService <User> {
             Statement st = cnx.createStatement();
             ResultSet rs = st.executeQuery(req);
             while (rs.next()) {
-
                 User user = new User();
                 user.setId(rs.getInt(1));
                 user.setEmail(rs.getString(2));
-                user.setRoles(rs.getString(3));
+                String[] role = {rs.getString(3)};
+                user.setRoles(role);
                 user.setPassword(rs.getString(4));
                 user.setIs_verified(rs.getByte(5));
                 user.setNom(rs.getString(6));
@@ -119,6 +121,111 @@ public class UserService implements IService <User> {
 
     @Override
     public User getOne(int id) {
+
+        String req = "select * from user where id=?";
+        try {
+            PreparedStatement ps = cnx.prepareStatement(req);
+            ps.setInt(1,id);
+            
+            ResultSet res = ps.executeQuery();
+            if (res.next()){
+                User user = new User();
+                user.setId(res.getInt(1));
+                user.setEmail(res.getString(2));
+                user.setPassword(res.getString(3));
+                user.setIs_verified(res.getInt(4));
+                user.setNom(res.getString(5));
+                user.setPrenom(res.getString(6));
+                user.setNum_tel(res.getInt(7));
+                return user;
+            }else{
+                return null;
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    
+    public boolean emailExists(String email) { 
+        String req = "SELECT * FROM user WHERE email=?";
+        try (PreparedStatement preparedStatement = cnx.prepareStatement(req)) {
+            preparedStatement.setString(1, email);
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                return resultSet.next(); // true if email exists, false otherwise
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    public boolean isBlocked(int userId){
+        return false;
+    }
+
+    public boolean verifierUtilisateur(String email, String password){
+        String req = "SELECT * FROM user WHERE email=?";
+
+        try (PreparedStatement preparedStatement = cnx.prepareStatement(req)) {
+            preparedStatement.setString(1, email);
+
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                if (resultSet.next()) {
+                    // Récupérer le mot de passe haché de la base de données
+                    String hashedPasswordFromDB = resultSet.getString("password");
+
+                    // Vérifier si le mot de passe fourni correspond au mot de passe haché
+                    return BCrypt.checkpw(password, hashedPasswordFromDB);
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    public int getUtilisateurid(String email){
+        String req = "SELECT id FROM user WHERE email=?";
+
+        try (PreparedStatement preparedStatement = cnx.prepareStatement(req)) {
+            preparedStatement.setString(1, email);
+
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                if (resultSet.next()) {
+                    return resultSet.getInt("id");
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return -1;
+    }
+
+    public String getUtilisateurRole(String email){
+        String req = "SELECT roles FROM user WHERE email=?";
+
+        try (PreparedStatement preparedStatement = cnx.prepareStatement(req)) {
+            preparedStatement.setString(1, email);
+
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                if (resultSet.next()) {
+                    String rolesObj = resultSet.getString("roles");
+                    
+                    try {
+                        JSONArray roleArray = new JSONArray(rolesObj);
+                        String role = roleArray.get(0).toString();
+                        return role;
+                    } catch (Exception e) {
+                        System.err.println("Couldnt convert String to JSONArray");
+                        return null;
+                    }
+
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         return null;
     }
 }

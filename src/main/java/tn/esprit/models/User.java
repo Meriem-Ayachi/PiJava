@@ -4,9 +4,10 @@ public class User {
 
     //attribute
     private int id,num_tel;
-    private String email,roles,password,nom,prenom;
+    private String[] roles;
+    private String email,password,nom,prenom;
 
-    private Byte is_verified;
+    private int is_verified;
 
     //constructor
 
@@ -14,7 +15,7 @@ public class User {
     {
 
     }
-    public User(String email, String roles, String password, Byte is_verified, String nom, String prenom,int num_tel)
+    public User(String email, String[] roles, String password, int is_verified, String nom, String prenom,int num_tel)
     {
 
         this.email = email;
@@ -26,7 +27,7 @@ public class User {
         this.num_tel = num_tel;
     }
 
-    public User(int id, String email, String roles, String password, Byte is_verified, String nom, String prenom,int num_tel)
+    public User(int id, String email, String[] roles, String password, int is_verified, String nom, String prenom,int num_tel)
     {
         this.id = id;
         this.email = email;
@@ -53,11 +54,11 @@ public class User {
         this.id = id;
     }
 
-    public Byte getIs_verified() {
+    public int getIs_verified() {
         return is_verified;
     }
 
-    public void setIs_verified(Byte is_verified) {
+    public void setIs_verified(int is_verified) {
         this.is_verified = is_verified;
     }
 
@@ -77,11 +78,11 @@ public class User {
         this.email = email;
     }
 
-    public String getRoles() {
+    public String[] getRoles() {
         return roles;
     }
 
-    public void setRoles(String roles) {
+    public void setRoles(String[] roles) {
         this.roles = roles;
     }
 

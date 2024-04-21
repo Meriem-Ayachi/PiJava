@@ -27,15 +27,15 @@ public class MaConnexion {
         }
     }
 
+    public Connection getCnx()
+    {
+        return cnx;
+    }
+
     public static MaConnexion getInstance() {
         if(instance == null )
             instance = new MaConnexion();
 
         return instance;
-    }
-    
-    public Connection getCnx()
-    {
-        return cnx;
     }
 }

@@ -9,24 +9,27 @@
 <?import javafx.scene.control.ScrollPane?>
 
 <AnchorPane prefHeight="400.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/scene/layout" xmlns:fx="http://javafx.com/fxml" fx:controller="tn.esprit.controllers.locationVoiture.ListLocation">
+    <fx:include source="sidebarAdmin.fxml" />
+    <AnchorPane layoutX="211.0" layoutY="38.0" prefHeight="402.0" prefWidth="458.0" style="-fx-background-color: #ececec;">
+        <children>
+            <Label layoutX="185.0" layoutY="28.0" text="List Location">
+                <font>
+                    <Font size="30.0" />
+                </font>
+            </Label>
 
-    <Label layoutX="185.0" layoutY="28.0" text="List Location">
-        <font>
-            <Font size="30.0" />
-        </font>
-    </Label>
+            <ScrollPane layoutX="50.0" layoutY="80.0" prefHeight="300.0" prefWidth="600.0">
+                <content>
+                    <TableView fx:id="locationTableView" layoutX="50.0" layoutY="80.0" prefHeight="300.0" prefWidth="600.0" onMouseClicked="#onTableRowClicked">
+                    </TableView>
+                </content>
+            </ScrollPane>
 
-    <ScrollPane layoutX="50.0" layoutY="80.0" prefHeight="300.0" prefWidth="600.0">
-        <content>
-            <TableView fx:id="locationTableView" layoutX="50.0" layoutY="80.0" prefHeight="300.0" prefWidth="600.0" onMouseClicked="#onTableRowClicked">
-            </TableView>
-        </content>
-    </ScrollPane>
+            <Button text="Ajouter" layoutX="50.0" layoutY="390.0" onAction="#goToAjouter" />
 
-    <Button text="Ajouter" layoutX="50.0" layoutY="390.0" onAction="#goToAjouter" />
+            <Button text="Modifier" layoutX="150.0" layoutY="390.0" onAction="#goToModifier" />
 
-    <Button text="Modifier" layoutX="150.0" layoutY="390.0" onAction="#goToModifier" />
-
-    <Button text="Supprimer" layoutX="250.0" layoutY="390.0" onAction="#supprimerSelectedLocation" />
-    
+            <Button text="Supprimer" layoutX="250.0" layoutY="390.0" onAction="#supprimerSelectedLocation" />
+        </children>
+    </AnchorPane>
 </AnchorPane>

@@ -11,20 +11,23 @@
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/scene/layout" xmlns:fx="http://javafx.com/fxml" fx:controller="tn.esprit.controllers.locationVoiture.AjouterLocation">
-   <children>
-      <Label layoutX="185.0" layoutY="28.0" text="Ajouter Location Voiture">
-         <font>
-            <Font size="30.0" />
-         </font>
-      </Label>
-      <TextField fx:id="prixTF" layoutX="66.0" layoutY="130.0" promptText="Prix" />
-      <DatePicker fx:id="dateDebutTF" layoutX="66.0" layoutY="170.0" promptText="Date Debut" />
-      <DatePicker fx:id="dateFinTF" layoutX="66.0" layoutY="210.0" promptText="Date Fin" />
-      <ComboBox fx:id="typeTF" layoutX="66.0" layoutY="250.0" promptText="Type" />
-      <ComboBox fx:id="statusTF" layoutX="66.0" layoutY="290.0" promptText="Status" />
-      <ComboBox fx:id="voitureTF" layoutX="66.0" layoutY="330.0" promptText="Voiture" />
+   <fx:include source="sidebarAdmin.fxml" />
+   <AnchorPane layoutX="211.0" layoutY="38.0" prefHeight="402.0" prefWidth="458.0" style="-fx-background-color: #ececec;">
+      <children>
+         <Label layoutX="185.0" layoutY="28.0" text="Ajouter Location Voiture">
+            <font>
+               <Font size="30.0" />
+            </font>
+         </Label>
+         <TextField fx:id="prixTF" layoutX="66.0" layoutY="130.0" promptText="Prix" />
+         <DatePicker fx:id="dateDebutTF" layoutX="66.0" layoutY="170.0" promptText="Date Debut" />
+         <DatePicker fx:id="dateFinTF" layoutX="66.0" layoutY="210.0" promptText="Date Fin" />
+         <ComboBox fx:id="typeTF" layoutX="66.0" layoutY="250.0" promptText="Type" />
+         <ComboBox fx:id="statusTF" layoutX="66.0" layoutY="290.0" promptText="Status" />
+         <ComboBox fx:id="voitureTF" layoutX="66.0" layoutY="330.0" promptText="Voiture" />
 
-      <Button layoutX="381.0" layoutY="360.0" mnemonicParsing="false" onAction="#ajouterLocation" text="Ajouter" />
-      <Button layoutX="476.0" layoutY="360.0" mnemonicParsing="false" onAction="#AfficherLocations" text="Afficher" />
-   </children>
+         <Button layoutX="381.0" layoutY="360.0" mnemonicParsing="false" onAction="#ajouterLocation" text="Ajouter" />
+         <Button layoutX="476.0" layoutY="360.0" mnemonicParsing="false" onAction="#AfficherLocations" text="Afficher" />
+      </children>
+   </AnchorPane>
 </AnchorPane>

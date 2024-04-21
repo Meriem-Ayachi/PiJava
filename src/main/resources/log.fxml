@@ -13,9 +13,9 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="492.0" prefWidth="817.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.LoginController">
+<AnchorPane prefHeight="492.0" prefWidth="817.0" xmlns="http://javafx.com/javafx/scene/layout" xmlns:fx="http://javafx.com/fxml" fx:controller="tn.esprit.controllers.LoginController">
     <children>
-      <VBox layoutX="-1.0" prefHeight="518.0" prefWidth="402.0" style="-fx-background-color: #679AF2;" />
+        <VBox layoutX="-1.0" prefHeight="518.0" prefWidth="402.0" style="-fx-background-color: #679AF2;" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="525.0" layoutX="398.0" layoutY="-7.0" stroke="WHITE" strokeType="INSIDE" width="425.0" />
       <Button fx:id="button" ellipsisString="" layoutX="527.0" layoutY="340.0" lineSpacing="12.0" mnemonicParsing="false" onAction="#submit" prefHeight="46.0" prefWidth="171.0" style="-fx-background-color: #75A8DF;" text="connecter" textFill="#030303e8" textOverrun="LEADING_WORD_ELLIPSIS">
          <font>
@@ -57,7 +57,7 @@
             <Image url="@images/logotech.png" />
          </image>
       </ImageView>
-      <Label layoutX="50.0" layoutY="182.0" prefHeight="26.0" prefWidth="277.0" text="Bienvenue pour vous " textFill="#f8f8f8">
+<Label layoutX="50.0" layoutY="182.0" prefHeight="26.0" prefWidth="277.0" text="Bienvenue pour vous " textFill="#f8f8f8">
          <font>
             <Font name="System Bold" size="27.0" />
          </font>

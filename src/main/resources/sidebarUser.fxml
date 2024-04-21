@@ -37,17 +37,28 @@
                                             </font>
                                         </Label>
                                         <Line endX="104.99998474121094" endY="-7.62939453125E-6" layoutX="95.0" layoutY="115.0" startX="-100.0" />
-                                        <Button layoutX="11.0" layoutY="134.0" mnemonicParsing="false" onAction="#directToProjet" prefHeight="30.0" prefWidth="180.0" text="User" />
-                                        <Button layoutX="6.0" layoutY="386.0" mnemonicParsing="false">
+                                        
+                                        <Button layoutX="11.0" layoutY="134.0" mnemonicParsing="false" onAction="#directToHomepage" prefHeight="30.0" prefWidth="180.0" text="Homepage">
                                             <graphic>
                                                 <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
                                                     <image>
-                                                        <Image url="@images/LogOutIcon.png" />
+                                                        <Image url="@images/ProjetsIcon.png" />
                                                     </image>
                                                 </ImageView>
                                             </graphic>
                                         </Button>
-                              <Hyperlink fx:id="out" layoutX="49.0" layoutY="386.0" onAction="#redirecttoLogin" prefHeight="24.0" prefWidth="103.0" text="se déconnecter" />
+                                        
+                                        
+                                        <Button layoutX="8.0" layoutY="305.0" mnemonicParsing="false" onAction="#directToProfile" prefHeight="30.0" prefWidth="180.0" text="profile">
+                                            <graphic>
+                                                <ImageView fitHeight="20.0" fitWidth="19.0" pickOnBounds="true" preserveRatio="true">
+                                                <image>
+                                                    <Image url="@images/AdminIcon.png" />
+                                                </image>
+                                                </ImageView>
+                                            </graphic>
+                                        </Button>
+                                        <Hyperlink  layoutX="49.0" layoutY="386.0" onAction="#disconnect" prefHeight="24.0" prefWidth="103.0" text="se déconnecter" />
                                     </children>
                                 </AnchorPane>
                             </children>

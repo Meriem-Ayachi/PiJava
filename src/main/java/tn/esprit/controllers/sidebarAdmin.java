@@ -1,19 +1,14 @@
 package tn.esprit.controllers;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Label;
-import javafx.scene.input.MouseEvent;
-import javafx.stage.Stage;
 import tn.esprit.models.User;
 import tn.esprit.models.session;
 import tn.esprit.services.UserService;
+import tn.esprit.util.Navigator;
 
 public class sidebarAdmin {
     @FXML
@@ -25,47 +20,29 @@ public class sidebarAdmin {
     private URL location;
     @FXML
     private Label labelFX;
+
+
     UserService userService=new UserService();
-    @FXML
-    void redirectVersAfficherCategories(ActionEvent event) {
-        
-    }
-
-    @FXML
-    void redirectVersAfficherProjets(ActionEvent event) {
-        
-    }
-
+    Navigator nav = new Navigator();
+    
 
     @FXML
     void initialize() {
         updateLabels();
     }
 
-    public void redirectVersAcceuil(ActionEvent event) {
-        
-    }
-
-    @FXML
-    public void diectutuilisateur(ActionEvent event) {
-        
-    }
-
-    public void ProfileClient(MouseEvent mouseEvent) {
-        
-
-    }
     private void updateLabels() {
-        
-
+        User utilisateur = userService.getOne(session.id_utilisateur);
+        name.setText(utilisateur.getPrenom() + " " + utilisateur.getNom());
     }
 
-    public void directTocommande(ActionEvent event) {
-        
+    public void disconnect(ActionEvent event) {
+        session.id_utilisateur = 0;
+        nav.goToPage_WithEvent("/log.fxml", event);
     }
 
-    public void directToLogin(ActionEvent event) {
-        
+    public void directToHomepage_back(ActionEvent event) {
+        System.out.println("Homepage admin");
     }
 
 

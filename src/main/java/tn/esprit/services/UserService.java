@@ -5,7 +5,6 @@ import com.google.gson.Gson;
 import org.mindrot.jbcrypt.BCrypt;
 import tn.esprit.interfaces.IService;
 import tn.esprit.models.User;
-import tn.esprit.models.Voiture;
 import tn.esprit.util.MaConnexion;
 import org.json.*;
 
@@ -122,7 +121,7 @@ public class UserService implements IService <User> {
     @Override
     public User getOne(int id) {
 
-        String req = "select * from user where id=?";
+        String req = "select id, email, roles, is_verified, prenom, nom, num_tel from user where id=?";
         try {
             PreparedStatement ps = cnx.prepareStatement(req);
             ps.setInt(1,id);
@@ -130,13 +129,18 @@ public class UserService implements IService <User> {
             ResultSet res = ps.executeQuery();
             if (res.next()){
                 User user = new User();
-                user.setId(res.getInt(1));
-                user.setEmail(res.getString(2));
-                user.setPassword(res.getString(3));
-                user.setIs_verified(res.getInt(4));
-                user.setNom(res.getString(5));
-                user.setPrenom(res.getString(6));
-                user.setNum_tel(res.getInt(7));
+                user.setId(res.getInt("id"));
+                user.setEmail(res.getString("email"));
+
+                String rolesObj = res.getString("roles");
+                String role = extractUserRole(rolesObj);
+                String[] roles = {role};
+                user.setRoles(roles);
+
+                user.setIs_verified(res.getInt("is_verified"));
+                user.setPrenom(res.getString("prenom"));
+                user.setNom(res.getString("nom"));
+                user.setNum_tel(res.getInt("num_tel"));
                 return user;
             }else{
                 return null;
@@ -157,10 +161,6 @@ public class UserService implements IService <User> {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return false;
-    }
-
-    public boolean isBlocked(int userId){
         return false;
     }
 
@@ -211,21 +211,24 @@ public class UserService implements IService <User> {
             try (ResultSet resultSet = preparedStatement.executeQuery()) {
                 if (resultSet.next()) {
                     String rolesObj = resultSet.getString("roles");
-                    
-                    try {
-                        JSONArray roleArray = new JSONArray(rolesObj);
-                        String role = roleArray.get(0).toString();
-                        return role;
-                    } catch (Exception e) {
-                        System.err.println("Couldnt convert String to JSONArray");
-                        return null;
-                    }
-
+                    return extractUserRole(rolesObj);
                 }
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
         return null;
+    }
+
+
+    private String extractUserRole(String rolesJson){
+        try {
+            JSONArray roleArray = new JSONArray(rolesJson);
+            String role = roleArray.get(0).toString();
+            return role;
+        } catch (Exception e) {
+            System.err.println("Couldnt convert String to JSONArray");
+            return null;
+        }
     }
 }

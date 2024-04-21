@@ -58,6 +58,7 @@ public class inscription {
             phoneTF.getText().isEmpty()
             ) {
             showAlert(Alert.AlertType.ERROR, "Erreur de saisie", "Remplissez tous les champs.");
+            return;
         }
         if (passwordTF.getText().length() < 8) {
             showAlert(Alert.AlertType.ERROR, "Erreur de saisie", "Le mot de passe doit contenir au moins 8 caractères.");
@@ -75,6 +76,7 @@ public class inscription {
             return;
         }
 
+        // Vérification si le username existe déjà dans la base de données
         if (!passwordTF.getText().equals(confirmPasswordTF.getText())) {
             showAlert(Alert.AlertType.ERROR, "Erreur de saisie", "Les mots de passe ne correspondent pas.");
             return;
@@ -100,7 +102,15 @@ public class inscription {
                 if (openVerificationWindow(emailTF.getText(),x) ){
                     // Verification window opened successfully
                     String[] role = {"ROLE_USER"};
-                    User user = new User(emailTF.getText(), role, passwordTF.getText(), 1, nomTF.getText(), emailTF.getText(), Integer.parseInt(phoneTF.getText()));
+                    User user = new User();
+                    user.setEmail(emailTF.getText());
+                    user.setRoles(role);
+                    user.setPassword(passwordTF.getText());
+                    user.setIs_verified(1);
+                    user.setNom(nomTF.getText());      
+                    user.setPrenom(prenomTF.getText());            
+                    user.setNum_tel(Integer.parseInt(phoneTF.getText()));
+                    
                     userService.add(user);
 
                     // Afficher une confirmation

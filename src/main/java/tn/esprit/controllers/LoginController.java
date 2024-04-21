@@ -44,31 +44,25 @@ public class  LoginController {
 
         // Appeler la fonction de vérification dans AuthentificationManager
         boolean authentifie = userService.verifierUtilisateur(emailTF.getText(), passwordTF.getText());
-        System.out.println(" connectéé"+authentifie);
         // Ajouter le reste de la logique selon le résultat de l'authentification
         if (authentifie) {
             // Authentification réussie, vérifier si l'utilisateur est bloqué
             int userId = userService.getUtilisateurid(emailTF.getText());
-            if (userService.isBlocked(userId)) {
-                // Si l'utilisateur est bloqué, afficher une alerte
-                afficherAlerteErreur("account blocked", "BLOCKED");
-            } else {
-                // Si l'utilisateur n'est pas bloqué, continuer avec le reste de la logique
-                int p = userId;
-                session.id_utilisateur = p;
-                String userRole = userService.getUtilisateurRole(emailTF.getText());
+            // Si l'utilisateur n'est pas bloqué, continuer avec le reste de la logique
+            int p = userId;
+            session.id_utilisateur = p;
+            String userRole = userService.getUtilisateurRole(emailTF.getText());
 
-                switch (userRole) {
-                    case "ROLE_ADMIN":
-                        redirectToAdminPage(event);
-                        break;
-                    case "ROLE_USER":
-                        redirectToUserPage(event);
-                        break;
-                }
-
-                System.out.println("User connectéé" + p);
+            switch (userRole) {
+                case "ROLE_ADMIN":
+                    redirectToAdminPage(event);
+                    break;
+                case "ROLE_USER":
+                    redirectToUserPage(event);
+                    break;
             }
+
+            System.out.println("User connecté " + p);
         } else {
             // L'authentification a échoué, afficher une alerte d'erreur
             afficherAlerteErreur("Authentification échouée", "Veuillez vérifier vos identifiants.");

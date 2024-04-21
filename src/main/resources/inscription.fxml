@@ -6,14 +6,18 @@
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.ProgressBar?>
 <?import javafx.scene.control.ProgressIndicator?>
+<?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.inscription">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/scene/layout" xmlns:fx="http://javafx.com/fxml" fx:controller="tn.esprit.controllers.inscription">
         <children>
+          
 
             <!-- Zone du formulaire -->
             <Rectangle arcHeight="10.0" arcWidth="10.0" fill="WHITE" height="552.0" layoutX="390.0" layoutY="-3.0" stroke="WHITE" strokeType="INSIDE" width="506.0" />
@@ -81,6 +85,8 @@
                </font>
             </Button>
 
+           
+
             <ProgressIndicator fx:id="progressIndicator" layoutX="411.0" layoutY="204.0" prefHeight="169.0" prefWidth="180.0" progress="0.0" visible="false" />
             <ProgressBar fx:id="progressBar" layoutX="349.0" layoutY="236.0" prefHeight="27.0" prefWidth="200.0" progress="0.0" visible="false" />
             <Button layoutX="665.0" layoutY="455.0" mnemonicParsing="false" prefHeight="4.0" prefWidth="0.0" />
@@ -92,7 +98,7 @@
             </Button>
 
             <ProgressBar fx:id="loadingIndicator" layoutX="307.0" layoutY="202.0" prefHeight="78.0" prefWidth="158.0" style="-fx-background-color: #C8AD7F;" visible="false" />
-      <VBox layoutX="-3.0" layoutY="-1.0" prefHeight="552.0" prefWidth="370.0" />
+<VBox layoutX="-3.0" layoutY="-1.0" prefHeight="552.0" prefWidth="370.0" />
 
         </children>
     </AnchorPane>

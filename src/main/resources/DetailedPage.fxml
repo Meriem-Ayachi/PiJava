@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="Controllers.DetailedPageController"
+      prefWidth="400" prefHeight="300"
+      alignment="CENTER">
+
+    <Label text="Flight Details" style="-fx-font-size: 20px; -fx-font-weight: bold;"/>
+
+    <Label fx:id="destinationLabel" text="Destination:"/>
+    <Label fx:id="priceLabel" text="Price:"/>
+    <Label fx:id="departureLabel" text="Departure Date:"/>
+    <Label fx:id="arrivalLabel" text="Arrival Date:"/>
+    <Label fx:id="durationLabel" text="Duration:"/>
+    <Label fx:id="classLabel" text="Class:"/>
+    <Label fx:id="pointDepartLabel" text="Departure Point:"/>
+    <Label fx:id="nbRescaleLabel" text="Number of Rescales:"/>
+    <Label fx:id="nbPlaceLabel" text="Number of Places:"/>
+
+</VBox>

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="540" prefWidth="960" style="-fx-background-image: url('file:/C:/Users/melek/Desktop/plane.jpg'); -fx-background-color: rgba(0, 0, 0, 0.5);" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.Addvol">    <children>
+        <Label layoutX="306.0" layoutY="82.0" text="Destination">
+            <font>
+                <Font name="System Bold Italic" size="13.0" />
+            </font></Label>
+        <Label layoutX="304.0" layoutY="121.0" text="Date Depart">
+            <font>
+                <Font name="System Bold Italic" size="13.0" />
+            </font></Label>
+        <Label layoutX="304.0" layoutY="163.0" text="Date arrivee">
+            <font>
+                <Font name="System Bold Italic" size="13.0" />
+            </font></Label>
+        <Label layoutX="304.0" layoutY="205.0" text="Point depart">
+            <font>
+                <Font name="System Bold Italic" size="13.0" />
+            </font></Label>
+        <Label layoutX="288.0" layoutY="247.0" text="Nombre de places">
+            <font>
+                <Font name="System Bold Italic" size="13.0" />
+            </font></Label>
+        <Label layoutX="289.0" layoutY="288.0" text="Nombre d'escales">
+            <font>
+                <Font name="System Bold Italic" size="13.0" />
+            </font></Label>
+        <Label layoutX="322.0" layoutY="326.0" text="Classe">
+            <font>
+                <Font name="System Bold Italic" size="13.0" />
+            </font></Label>
+        <Label layoutX="327.0" layoutY="368.0" text="Prix">
+            <font>
+                <Font name="System Bold Italic" size="13.0" />
+            </font></Label>
+        <Label layoutX="321.0" layoutY="410.0" text="Duree">
+            <font>
+                <Font name="System Bold Italic" size="13.0" />
+            </font></Label>
+        <Label layoutX="402.0" layoutY="14.0" text="Ajouter un vol" textFill="#326f40">
+            <font>
+                <Font name="Sitka Text Italic" size="24.0" />
+            </font>
+        </Label>
+        <DatePicker fx:id="datedepartTF" layoutX="403.0" layoutY="118.0" />
+        <DatePicker fx:id="datearriveeTF" layoutX="403.0" layoutY="160.0" />
+        <TextField fx:id="destinationTF" layoutX="403.0" layoutY="77.0" />
+        <TextField fx:id="pointdepartTF" layoutX="403.0" layoutY="202.0" />
+        <TextField fx:id="nbrplaceTF" layoutX="403.0" layoutY="244.0" />
+        <TextField fx:id="nbrescaleTF" layoutX="403.0" layoutY="285.0" />
+        <TextField fx:id="classeTF" layoutX="403.0" layoutY="323.0" />
+        <TextField fx:id="prixTF" layoutX="403.0" layoutY="365.0" />
+        <TextField fx:id="dureeTF" layoutX="403.0" layoutY="407.0" />
+        <Button layoutX="435.0" layoutY="478.0" mnemonicParsing="false" onAction="#ajoutervol" style="-fx-background-color: #326f40; -fx-text-fill: #ffffff; -fx-font-size: 14px; -fx-font-family: 'Arial'; -fx-padding: 10px 20px;" text="Ajouter" />
+        <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="14.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../../../../../../Desktop/techvoyage.png" />
+            </image>
+        </ImageView>
+      <Button layoutX="14.0" layoutY="64.0" mnemonicParsing="false" onAction="#navigate" style="-fx-background-color: #326f40; -fx-text-fill: #ffffff; -fx-font-size: 14px; -fx-font-family: 'Arial'; -fx-padding: 10px 20px;" text="Liste des Vols" />
+    </children>
+
+</AnchorPane>

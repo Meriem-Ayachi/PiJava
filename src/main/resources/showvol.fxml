@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="540" prefWidth="960" style="-fx-background-image: url('file:/C:/Users/melek/Desktop/plane.jpg'); -fx-background-color: rgba(0, 0, 0, 0.5);" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.Showvol">
+    <!-- Your content goes here -->
+
+    <children>
+        <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../../../../../../Desktop/techvoyage.png" />
+            </image>
+        </ImageView>
+        <ListView fx:id="listview" layoutX="27.0" layoutY="72.0" prefHeight="410.0" prefWidth="892.0" style="-fx-background-image: url('file:/C:/Users/melek/Desktop/plane.jpg');" />
+        <Label layoutX="412.0" layoutY="15.0" text="Liste des vols" textFill="#518c65">
+            <font>
+                <Font name="System Bold Italic" size="22.0" />
+            </font>
+        </Label>
+    </children>
+
+</AnchorPane>

@@ -9,52 +9,67 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class Hotelservices implements IService<hotel> {
-    Connection cnx =MaConnexion.getInstance().getCnx();
+public  class Hotelservices implements IService<hotel> {
+    Connection cnx = MaConnexion.getInstance().getCnx();
 
     public static List<hotel> getAllHotels() {
         return null;
     }
 
-
-
     @Override
-    public void add(hotel hotel)
-    {
-        String req = "INSERT INTO `hotel`(`nom`, `nbretoile`, `emplacement`, `avis`) VALUES ('"+hotel.getNom()+"',"+hotel.getNbretoile()+",'"+hotel.getEmplacement()+"','"+hotel.getAvis()+"')";
-        try {
-            Statement st =cnx.createStatement();
-            st.executeUpdate(req);
-            System.out.println("user");
+    public void add(hotel hotel) {
+        String req = "INSERT INTO `hotel`(`nom`, `nbretoile`, `emplacement`, `avis`) VALUES (?,?,?,?)";
+        try (PreparedStatement preparedStatement = cnx.prepareStatement(req)) {
+            preparedStatement.setString(1, hotel.getNom());
+            preparedStatement.setString(2, hotel.getNbretoile());
+            preparedStatement.setString(3, hotel.getEmplacement());
+            preparedStatement.setString(4, hotel.getAvis());
+
+            preparedStatement.executeUpdate();
         } catch (SQLException e) {
-
-            throw new RuntimeException(e);
-
+            throw new RuntimeException("Erreur lors de l'ajout de l'hôtel", e);
         }
-
     }
 
     @Override
-    public void update (hotel hotel )
-    {
+    public void update(hotel hotel) {
+        String req = "UPDATE hotel SET nom=?, nbretoile=?, emplacement=?, avis=? WHERE id=?";
+        try (PreparedStatement preparedStatement = cnx.prepareStatement(req)) {
+            preparedStatement.setString(1, hotel.getNom());
+            preparedStatement.setString(2, hotel.getNbretoile());
+            preparedStatement.setString(3, hotel.getEmplacement());
+            preparedStatement.setString(4, hotel.getAvis());
+            preparedStatement.setInt(5, hotel.getId());
 
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException("Erreur lors de la mise à jour de l'hôtel", e);
+        }
     }
-    @Override
 
-    public void delete(int id) {
-        String query = "DELETE FROM hotel WHERE id = ?";
-        try (PreparedStatement statement = cnx.prepareStatement(query)) {
-            statement.setInt(1, id);
-            int rowsDeleted = statement.executeUpdate();
-            if (rowsDeleted > 0) {
-                System.out.println("Hôtel supprimé avec succès");
-            } else {
-                System.out.println("Aucun hôtel n'a été supprimé");
-            }
+
+    @Override
+    public void delete(hotel hotel) {
+        String req = "DELETE FROM hotel WHERE id=?";
+        try (PreparedStatement preparedStatement = cnx.prepareStatement(req)) {
+            preparedStatement.setInt(1, hotel.getId());
+            preparedStatement.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException("Erreur lors de la suppression de l'hôtel", e);
         }
     }
+
+
+    @Override
+    public void delete(int id) {
+        // Implémenter la suppression de l'hôtel par ID
+    }
+
+    @Override
+    public void generatePDF(List<Reservation> reservations, String filePath) {
+        // Implémenter la génération du PDF
+    }
+
     @Override
     public List<hotel> getAll() {
         List<hotel> hotels = new ArrayList<>();
@@ -66,20 +81,20 @@ public abstract class Hotelservices implements IService<hotel> {
                 hotel p = new hotel();
                 p.setId(rs.getInt("id"));
                 p.setNom(rs.getString("nom"));
+                p.setNbretoile(rs.getString("nbretoile"));
                 p.setEmplacement(rs.getString("emplacement"));
                 p.setAvis(rs.getString("avis"));
                 hotels.add(p);
             }
         } catch (SQLException ex) {
-
+            throw new RuntimeException("Erreur lors de la récupération des hôtels", ex);
         }
         return hotels;
     }
 
     @Override
-    public hotel getOne(int id){
+    public hotel getOne(int id) {
+        // Implémenter la récupération d'un hôtel par son ID
         return null;
     }
-
-    public abstract void generatePDF(List<Reservation> reservations, String filePath);
 }

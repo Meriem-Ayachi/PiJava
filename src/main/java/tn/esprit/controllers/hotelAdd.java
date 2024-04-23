@@ -9,26 +9,22 @@ import javafx.scene.control.TextField;
 import tn.esprit.models.Reservation;
 import tn.esprit.models.hotel;
 import tn.esprit.services.Hotelservices;
-import javafx.event.ActionEvent;
 
+import javafx.event.ActionEvent;
 import java.io.IOException;
 import java.util.List;
 
 public class hotelAdd {
     @FXML
-    private TextField Nomf ;
+    private TextField Nomf;
     @FXML
     private ListView<hotel> listView;
-
-
     @FXML
     private TextField nbetoilesf;
     @FXML
     private TextField emplacementf;
     @FXML
-    private TextField avisf ;
-
-
+    private TextField avisf;
 
     private final Hotelservices hotelservice = new Hotelservices() {
         @Override
@@ -41,6 +37,7 @@ public class hotelAdd {
 
         }
     };
+
     @FXML
     public void add(ActionEvent actionEvent) {
         hotel hotel1 = new hotel();
@@ -51,18 +48,18 @@ public class hotelAdd {
 
         try {
             int nbetoiles = Integer.parseInt(nbetoilesf.getText());
-            // Si la conversion réussit, vous pouvez définir le nombre d'étoiles
-            hotel1.setNbretoile(String.valueOf(nbetoiles));
+            if (nbetoiles >= 1 && nbetoiles <= 5) { // Vérifie si le nombre d'étoiles est entre 1 et 5
+                hotel1.setNbretoile(String.valueOf(nbetoiles));
+            } else {
+                throw new NumberFormatException(); // Lance une exception si le nombre d'étoiles est en dehors de la plage valide
+            }
         } catch (NumberFormatException e) {
-            System.out.println("La valeur du champ nbetoilesf n'est pas un nombre valide.");
-            // Vous pouvez afficher un message d'erreur à l'utilisateur ou prendre une autre action appropriée
-            // Par exemple, afficher une boîte de dialogue d'erreur
+            System.out.println("La valeur du champ nbetoilesf n'est pas un nombre valide ou n'est pas entre 1 et 5.");
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Erreur");
             alert.setHeaderText("Erreur de saisie");
-            alert.setContentText("Veuillez entrer un nombre valide pour le nombre d'étoiles.");
+            alert.setContentText("Veuillez entrer un nombre valide entre 1 et 5 pour le nombre d'étoiles.");
             alert.showAndWait();
-            // Sortir de la méthode pour éviter d'ajouter l'hôtel avec une valeur invalide pour le nombre d'étoiles
             return;
         }
 
@@ -70,49 +67,36 @@ public class hotelAdd {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Succès");
         alert.setHeaderText(null);
-        alert.setContentText("Hotel ajouté avec succès!");
+        alert.setContentText("Hôtel ajouté avec succès!");
         alert.showAndWait();
 
-        // Effacer les champs après l'ajout
+        // Nettoyer les champs après l'ajout
         Nomf.clear();
         emplacementf.clear();
         nbetoilesf.clear();
         avisf.clear();
     }
+
+
     @FXML
     public void goToHotelList(ActionEvent event) {
-        Parent root =null;
         try {
-            root = FXMLLoader.load(getClass().getResource("/hotelList.fxml"));
-          //  FXMLLoader loader = new FXMLLoader(getClass().getResource("/Fxml/hotelList.fxml"));
-           // Parent root = loader.load();
-
-            //Scene scene = new Scene(root);
-
-            // Récupérer la scène actuelle
-           // Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
-
-            // Afficher la nouvelle scène
-            //stage.setScene(scene);
-           // stage.show();
+            // Charger le fichier FXML de la liste des hôtels
+            Parent root = FXMLLoader.load(getClass().getResource("/Fxml/hotelList.fxml"));
+            // Modifier la racine de la scène actuelle pour afficher la liste des hôtels
+            Nomf.getScene().setRoot(root);
         } catch (IOException e) {
-            //e.printStackTrace();
             throw new RuntimeException(e);
-}
-Nomf.getScene().setRoot(root);
-}
+        }
+    }
 
     @FXML
     public void deleteHotel(ActionEvent actionEvent) {
         hotel selectedHotel = listView.getSelectionModel().getSelectedItem();
         if (selectedHotel != null) {
-            // Call the delete method of your Hotelservices class to delete the selected hotel
             hotelservice.delete(selectedHotel);
-
-            // Remove the deleted hotel from the list view
             listView.getItems().remove(selectedHotel);
         } else {
-            // If no hotel is selected, display an error message or take appropriate action
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Aucun hotel selectionne");
             alert.setHeaderText(null);
@@ -120,5 +104,4 @@ Nomf.getScene().setRoot(root);
             alert.showAndWait();
         }
     }
-
 }

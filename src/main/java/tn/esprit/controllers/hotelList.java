@@ -1,20 +1,24 @@
 package tn.esprit.controllers;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
-import tn.esprit.models.Reservation;
+import javafx.stage.Stage;
 import tn.esprit.models.hotel;
 import tn.esprit.services.Hotelservices;
 
+import java.io.IOException;
 import java.util.List;
 
 public class hotelList {
+
     @FXML
-    private ListView<hotel> listView;
+    private ListView<hotel> hotelListView;
 
     @FXML
     private Label nomid;
@@ -28,44 +32,69 @@ public class hotelList {
     @FXML
     private Label avisid;
 
-    private final Hotelservices hotelservice = new Hotelservices() {
-        @Override
-        public void generatePDF(List<Reservation> reservations, String filePath) {
+    private Hotelservices hotelService;
 
-        }
+    private hotel selectedHotel;
 
-        @Override
-        public void delete(hotel hotel) {
-
-        }
-    };
+    public hotelList() {
+        hotelService = new Hotelservices();
+    }
 
     @FXML
     public void initialize() {
-        List<hotel> hotels = Hotelservices.getAllHotels();
-        assert hotels != null;
-        ObservableList<hotel> hotelObservableList = FXCollections.observableList(hotels); // This line is causing the NullPointerException
+        // Charger les hôtels depuis le service
+        List<hotel> hotels = hotelService.getAll();
 
+        // Ajouter les hôtels à la liste de vue
+        hotelListView.getItems().addAll(hotels);
 
-        // Afficher les hôtels dans la ListView
-        listView.setItems(hotelObservableList);
+        // Ajouter un bouton "Afficher" devant chaque rendez-vous
+        hotelListView.setCellFactory(param -> new ListCell<hotel>() {
+            private final Button afficherButton = new Button("Afficher");
 
-        // Définir un écouteur de changement de sélection pour afficher les détails de l'hôtel sélectionné
-        listView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            @Override
+            protected void updateItem(hotel item, boolean empty) {
+                super.updateItem(item, empty);
+
+                if (empty || item == null) {
+                    setGraphic(null);
+                    setText(null);
+                } else {
+                    setGraphic(afficherButton);
+                    setText(item.getNom()); // Modifier avec le texte approprié
+                    afficherButton.setOnAction(event -> afficherDetailsHotel(item));
+                }
+            }
+        });
+
+        // Définir le comportement lorsque la sélection de la liste change
+        hotelListView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue != null) {
-                displayHotelDetails(newValue);
+                // Mettre à jour les étiquettes avec les détails de l'hôtel sélectionné
+                nomid.setText(newValue.getNom());
+                nbretoilesid.setText(newValue.getNbretoile());
+                emplacementid.setText(newValue.getEmplacement());
+                avisid.setText(newValue.getAvis());
+                selectedHotel = newValue;
             }
         });
     }
 
     // Méthode pour afficher les détails de l'hôtel sélectionné
-    private void displayHotelDetails(hotel hotel) {
-        nomid.setText(hotel.getNom());
-        nbretoilesid.setText(hotel.getNbretoile());
-        emplacementid.setText(hotel.getEmplacement());
-        avisid.setText(hotel.getAvis());
-    }
+    private void afficherDetailsHotel(hotel hotel) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Fxml/hotelAfficher.fxml"));
+            Parent root = loader.load();
 
-    public void add(ActionEvent actionEvent) {
+            // Passer l'hotel sélectionné au contrôleur de la vue hotelAfficher.fxml
+            hotelAfficher controller = loader.getController();
+            controller.setSelectedHotel(hotel);
+
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

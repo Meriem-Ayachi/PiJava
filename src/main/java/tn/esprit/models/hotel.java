@@ -5,15 +5,13 @@ public class hotel {
     private String nom;
     private String nbretoile;
     private Integer id;
-    private String Emplacement;
-
+    private String emplacement; // Modifié en minuscule pour correspondre à la variable dans votre FXML
     private String avis;
 
     public hotel(String nom, String nbretoile, String emplacement, String avis) {
         this.nom = nom;
-        this.id= id;
         this.nbretoile = nbretoile;
-        Emplacement = emplacement;
+        this.emplacement = emplacement; // Correction du nom de variable
         this.avis = avis;
     }
 
@@ -45,11 +43,11 @@ public class hotel {
     }
 
     public String getEmplacement() {
-        return Emplacement;
+        return emplacement;
     }
 
     public void setEmplacement(String emplacement) {
-        Emplacement = emplacement;
+        this.emplacement = emplacement;
     }
 
     public String getAvis() {
@@ -60,19 +58,15 @@ public class hotel {
         this.avis = avis;
     }
 
-    public void add(hotel hotel) {
-    }
-    public void afficher(hotel hotel){
+    // Les méthodes add et afficher ne sont pas utilisées dans cette classe, vous pouvez les supprimer
 
-    }
     @Override
     public String toString() {
-
-        return "Hotel{" +
+        return "hotel{" +
                 "nom='" + nom + '\'' +
-                ", nbretoile=" + nbretoile +
+                ", nbretoile='" + nbretoile + '\'' +
                 ", id=" + id +
-                ", emplacement='" + Emplacement + '\'' +
+                ", emplacement='" + emplacement + '\'' +
                 ", avis='" + avis + '\'' +
                 '}';
     }

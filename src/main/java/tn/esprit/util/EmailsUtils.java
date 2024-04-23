@@ -14,10 +14,10 @@ import tn.esprit.models.User;
 
 public class EmailsUtils {
 
-    private static final String SMTP_HOST = "smtp.mailersend.net";
-    private static final String SMTP_PORT = "587";
-    private static final String USERNAME = "MS_5vexaq@trial-pq3enl6y9zrg2vwr.mlsender.net";
-    private static final String PASSWORD = "8aWMrlGQgwUCGbRl";
+    private static final String SMTP_HOST = "sandbox.smtp.mailtrap.io";
+    private static final String SMTP_PORT = "2525";
+    private static final String USERNAME = "db54164829303d";
+    private static final String PASSWORD = "987f7fb01ffe1d";
 
     private static final String EMAIL_REGEX =
             "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";

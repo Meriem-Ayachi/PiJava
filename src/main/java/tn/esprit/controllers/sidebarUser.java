@@ -41,7 +41,8 @@ public class sidebarUser {
     }
 
     public void directToProfile(ActionEvent event) {
-        System.out.println("Profile user");
+        Navigator nav = new Navigator();
+        nav.goToPage_WithEvent("/ProfileUser.fxml",event);
     }
 
 }

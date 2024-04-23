@@ -49,7 +49,7 @@
                                         </Button>
                                         
                                         
-                                        <Button layoutX="8.0" layoutY="305.0" mnemonicParsing="false" onAction="#directToProfile" prefHeight="30.0" prefWidth="180.0" text="profile">
+                                        <Button layoutX="11.0" layoutY="177.0" mnemonicParsing="false" onAction="#directToProfile" prefHeight="30.0" prefWidth="180.0" text="profile">
                                             <graphic>
                                                 <ImageView fitHeight="20.0" fitWidth="19.0" pickOnBounds="true" preserveRatio="true">
                                                 <image>
@@ -58,7 +58,7 @@
                                                 </ImageView>
                                             </graphic>
                                         </Button>
-                                        <Hyperlink  layoutX="49.0" layoutY="386.0" onAction="#disconnect" prefHeight="24.0" prefWidth="103.0" text="se déconnecter" />
+                                        <Hyperlink layoutX="49.0" layoutY="386.0" onAction="#disconnect" prefHeight="24.0" prefWidth="103.0" text="se déconnecter" textFill="#1b1a1a" />
                                     </children>
                                 </AnchorPane>
                             </children>

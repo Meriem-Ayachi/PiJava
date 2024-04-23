@@ -8,21 +8,20 @@ import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 import tn.esprit.MainFX;
 import tn.esprit.models.Location_Voiture;
-import tn.esprit.models.User;
 import tn.esprit.models.Voiture;
+import tn.esprit.models.session;
 import tn.esprit.services.LocationVoitureService;
-import tn.esprit.services.UserService;
 import tn.esprit.services.VoitureService;
 import tn.esprit.util.Navigator;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TableColumn;
-import javafx.stage.Stage;
 
-
-public class ListLocation {
+public class userLocationList_reserver {
+    
     @FXML
     private TableView<Location_Voiture> locationTableView;
 
@@ -30,7 +29,6 @@ public class ListLocation {
     
     private final LocationVoitureService LocationService = new LocationVoitureService();
     private final VoitureService voitureService = new VoitureService();
-    private final UserService userService = new UserService();
 
     @FXML
     void initialize() {
@@ -40,7 +38,6 @@ public class ListLocation {
         TableColumn<Location_Voiture, String> typeColumn = new TableColumn<>("type");
         TableColumn<Location_Voiture, String> statusColumn = new TableColumn<>("status");
         TableColumn<Location_Voiture, String> voitureColumn = new TableColumn<>("voiture");
-        TableColumn<Location_Voiture, String> userColumn = new TableColumn<>("user");
 
         prixColumn.setCellValueFactory(new PropertyValueFactory<>("Prix"));
         data_debutColumn.setCellValueFactory(new PropertyValueFactory<>("date_debut"));
@@ -54,14 +51,7 @@ public class ListLocation {
             String modele = voiture.getModel();
             return new SimpleStringProperty(marque + "(" + modele + ")");
         });
-        userColumn.setCellValueFactory(cellData -> {
-            int userid = cellData.getValue().getUser_id();
-            if (userid != 0){
-                User user = userService.getOne(userid);
-                return new SimpleStringProperty(user.getPrenom() + " " + user.getNom());
-            }
-            return new SimpleStringProperty("");
-        });
+
         
         // add columns
         List<TableColumn<Location_Voiture, ?>> columns = Arrays.asList(
@@ -70,8 +60,7 @@ public class ListLocation {
             date_finColumn,
             typeColumn,
             statusColumn,
-            voitureColumn,
-            userColumn
+            voitureColumn
         );
         locationTableView.getColumns().addAll(columns);
 
@@ -81,34 +70,28 @@ public class ListLocation {
 
 
     @FXML
-    void goToAjouter(ActionEvent event){
+    void DownloadPdf(ActionEvent event) {
+        if (selectedLocation != null) {
+
+        }else{
+            showError("Vous devez sélectionner une location");
+        }
+    }
+
+    @FXML
+    void EmailPdf(ActionEvent event) {
+        if (selectedLocation != null) {
+
+        }else{
+            showError("Vous devez sélectionner une location");
+        }
+    }
+
+    @FXML
+    void GoToLocationList(ActionEvent event) {
         Stage stage = MainFX.getPrimaryStage();
         Navigator nav = new Navigator(stage);
-        nav.goToPage("/AjouterLocation.fxml");
-    }
-
-    @FXML
-    void supprimerSelectedLocation() {
-        if (selectedLocation != null) {
-            LocationService.delete(selectedLocation.getId());
-            refreshTable();
-            selectedLocation = null;
-        }else{
-            showError("Vous devez sélectionner une location");
-        }
-    }
-
-    @FXML
-    void goToModifier(ActionEvent event) {
-        if (selectedLocation != null) {
-            Location_Voiture locationVoiture = LocationService.getOne(selectedLocation.getId());
-            
-            Stage stage = MainFX.getPrimaryStage();
-            Navigator nav = new Navigator(stage);
-            nav.goTo_ModifierLocation("/ModifierLocation.fxml", locationVoiture);
-        }else{
-            showError("Vous devez sélectionner une location");
-        }
+        nav.goToPage("/userLocationList.fxml");
     }
 
     @FXML
@@ -117,7 +100,9 @@ public class ListLocation {
     }
 
     private void refreshTable() {
-        locationTableView.setItems(FXCollections.observableArrayList(LocationService.getAll()));
+        int userid = session.id_utilisateur;
+        List<Location_Voiture> location_Voiture_List = LocationService.getAll_UserId(userid);
+        locationTableView.setItems(FXCollections.observableArrayList(location_Voiture_List));
     }
 
     private void showError(String message) {
@@ -126,5 +111,5 @@ public class ListLocation {
         alert.setContentText(message);
         alert.showAndWait();
     }
-
+    
 }

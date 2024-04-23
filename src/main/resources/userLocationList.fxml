@@ -8,11 +8,11 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.control.ScrollPane?>
 
-<AnchorPane prefHeight="400.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/scene/layout" xmlns:fx="http://javafx.com/fxml" fx:controller="tn.esprit.controllers.locationVoiture.ListLocation">
-    <fx:include source="sidebarAdmin.fxml" />
-    <AnchorPane layoutX="211.0" layoutY="38.0" prefHeight="402.0" prefWidth="500.0" style="-fx-background-color: #ececec;">
+<AnchorPane prefHeight="400.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/scene/layout" xmlns:fx="http://javafx.com/fxml" fx:controller="tn.esprit.controllers.locationVoiture.userLocationList">
+    <fx:include source="sidebarUser.fxml" />
+    <AnchorPane layoutX="211.0" layoutY="38.0" prefHeight="402.0" prefWidth="458.0" style="-fx-background-color: #ececec;">
         <children>
-            <Label layoutX="185.0" layoutY="28.0" text="List Location">
+            <Label layoutX="185.0" layoutY="28.0" text="Mes voitures réservées">
                 <font>
                     <Font size="30.0" />
                 </font>
@@ -25,11 +25,10 @@
                 </content>
             </ScrollPane>
 
-            <Button text="Ajouter" layoutX="50.0" layoutY="390.0" onAction="#goToAjouter" />
+            <Button text="Mes Locations" layoutX="50.0" layoutY="390.0" onAction="#goToLocationReserver" />
 
-            <Button text="Modifier" layoutX="150.0" layoutY="390.0" onAction="#goToModifier" />
+            <Button text="Voiture Details" layoutX="180.0" layoutY="390.0" onAction="#goToVoitureDetails" />
 
-            <Button text="Supprimer" layoutX="250.0" layoutY="390.0" onAction="#supprimerSelectedLocation" />
         </children>
     </AnchorPane>
 </AnchorPane>

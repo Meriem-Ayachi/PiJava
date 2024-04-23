@@ -3,6 +3,7 @@ package tn.esprit.controllers;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import tn.esprit.controllers.locationVoiture.userLocationList;
 import tn.esprit.models.User;
 import tn.esprit.models.session;
 import tn.esprit.services.UserService;
@@ -36,8 +37,8 @@ public class sidebarUser {
         nav.goToPage_WithEvent("/log.fxml", event);
     }
 
-    public void directToHomepage(ActionEvent event) {
-        System.out.println("Homepage user");
+    public void directToLocationVoiture(ActionEvent event) {
+        nav.goToPage_WithEvent("/userLocationList.fxml", event);
     }
 
     public void directToProfile(ActionEvent event) {

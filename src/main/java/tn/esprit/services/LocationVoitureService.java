@@ -129,4 +129,61 @@ public class LocationVoitureService implements IService <Location_Voiture> {
         }
     }
     
+    public List<Location_Voiture> getAll_UserId(int userId) {
+        List<Location_Voiture> location_Voitures = new ArrayList<>();
+
+        String req = "select * from location_voiture where user_id=?";
+        try {
+            PreparedStatement ps = cnx.prepareStatement(req);
+            ps.setInt(1,userId);
+            ResultSet res = ps.executeQuery();
+
+
+            while (res.next()) {
+                Location_Voiture location_Voiture = new Location_Voiture();
+                location_Voiture.setId(res.getInt(1));
+                location_Voiture.setPrix(res.getInt(2));
+                location_Voiture.setDate_debut(res.getDate(3));
+                location_Voiture.setDatefin(res.getDate(4));
+                location_Voiture.setType(res.getString(5));
+                location_Voiture.setStatus(res.getString(6));
+                location_Voiture.setVoiture_id(res.getInt(7));
+                location_Voiture.setUser_id(res.getInt(8));
+
+                location_Voitures.add(location_Voiture);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return location_Voitures;
+    }
+
+    public List<Location_Voiture> getAll_unreserved(){
+        List<Location_Voiture> location_Voitures = new ArrayList<>();
+
+        String req = "select * from location_voiture where user_id IS NULL";
+        try {
+            PreparedStatement ps = cnx.prepareStatement(req);
+            ResultSet res = ps.executeQuery();
+
+
+            while (res.next()) {
+                Location_Voiture location_Voiture = new Location_Voiture();
+                location_Voiture.setId(res.getInt(1));
+                location_Voiture.setPrix(res.getInt(2));
+                location_Voiture.setDate_debut(res.getDate(3));
+                location_Voiture.setDatefin(res.getDate(4));
+                location_Voiture.setType(res.getString(5));
+                location_Voiture.setStatus(res.getString(6));
+                location_Voiture.setVoiture_id(res.getInt(7));
+                location_Voiture.setUser_id(res.getInt(8));
+
+                location_Voitures.add(location_Voiture);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return location_Voitures;
+
+    }
 }

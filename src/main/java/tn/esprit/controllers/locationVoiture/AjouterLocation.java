@@ -32,9 +32,6 @@ public class AjouterLocation {
     private ComboBox<String> typeTF;
 
     @FXML
-    private ComboBox<String> statusTF;
-
-    @FXML
     private ComboBox<Voiture>  voitureTF;
 
     VoitureService voitureService = new VoitureService();
@@ -60,12 +57,6 @@ public class AjouterLocation {
             , "Luxe"
         );
         typeTF.setItems(typeList);
-
-        ObservableList<String> statusList = FXCollections.observableArrayList(
-            "disponible"
-            , "réservé"
-        );
-        statusTF.setItems(statusList);
     }
     @FXML
     void ajouterLocation(ActionEvent event) {
@@ -112,12 +103,6 @@ public class AjouterLocation {
             afficherErreur("Veuillez saisir un type.");
             return;
         }
-        
-        // status control sasie
-        if (statusTF.getValue() == null) {
-            afficherErreur("Veuillez saisir un status.");
-            return;
-        }
 
         // voiture control sasie
         if (voitureTF.getValue() == null) {
@@ -133,7 +118,7 @@ public class AjouterLocation {
         locationVoiture.setDate_debut(Date.valueOf(dateDebutTF.getValue()));
         locationVoiture.setDatefin(Date.valueOf(dateFinTF.getValue()));
         locationVoiture.setType(typeTF.getValue());
-        locationVoiture.setStatus(statusTF.getValue());
+        locationVoiture.setStatus("disponible");
         locationVoiture.setVoiture_id(voitureTF.getValue().getId());
         {
             // confirmation dialog

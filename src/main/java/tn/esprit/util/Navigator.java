@@ -7,6 +7,8 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import tn.esprit.controllers.locationVoiture.ModifierLocation;
 import tn.esprit.controllers.locationVoiture.ModifierVoiture;
+import tn.esprit.controllers.locationVoiture.userLocationList_reserver;
+import tn.esprit.controllers.locationVoiture.userLocation_ShowVoiture;
 import tn.esprit.models.Location_Voiture;
 import tn.esprit.models.Voiture;
 
@@ -60,6 +62,23 @@ public class Navigator {
 
             // pass param
             ModifierLocation controller = loader.getController();
+            controller.initialize(l);
+
+            Scene scene = new Scene(root);
+            primaryStage.setScene(scene);
+            primaryStage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void goTo_LocationVoitureDetails(String fxmlPath, Location_Voiture l) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlPath));
+            Parent root = loader.load();
+
+            // pass param
+            userLocation_ShowVoiture controller = loader.getController();
             controller.initialize(l);
 
             Scene scene = new Scene(root);

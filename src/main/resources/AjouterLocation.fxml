@@ -23,11 +23,10 @@
          <DatePicker fx:id="dateDebutTF" layoutX="66.0" layoutY="170.0" promptText="Date Debut" />
          <DatePicker fx:id="dateFinTF" layoutX="66.0" layoutY="210.0" promptText="Date Fin" />
          <ComboBox fx:id="typeTF" layoutX="66.0" layoutY="250.0" promptText="Type" />
-         <ComboBox fx:id="statusTF" layoutX="66.0" layoutY="290.0" promptText="Status" />
-         <ComboBox fx:id="voitureTF" layoutX="66.0" layoutY="330.0" promptText="Voiture" />
+         <ComboBox fx:id="voitureTF" layoutX="66.0" layoutY="290.0" promptText="Voiture" />
 
          <Button layoutX="381.0" layoutY="360.0" mnemonicParsing="false" onAction="#ajouterLocation" text="Ajouter" />
-         <Button layoutX="476.0" layoutY="360.0" mnemonicParsing="false" onAction="#AfficherLocations" text="Afficher" />
+         <Button layoutX="476.0" layoutY="360.0" mnemonicParsing="false" onAction="#AfficherLocations" text="Cancel" />
       </children>
    </AnchorPane>
 </AnchorPane>

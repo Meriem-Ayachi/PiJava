@@ -27,9 +27,7 @@
 
             <Button text="Download PDF" layoutX="50.0" layoutY="390.0" onAction="#DownloadPdf" />
 
-            <Button text="Email PDF" layoutX="200.0" layoutY="390.0" onAction="#EmailPdf" />
-
-            <Button text="Go Back" layoutX="300.0" layoutY="390.0" onAction="#GoToLocationList" />
+            <Button text="Go Back" layoutX="200.0" layoutY="390.0" onAction="#GoToLocationList" />
 
         </children>
     </AnchorPane>

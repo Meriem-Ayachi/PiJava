@@ -2,21 +2,16 @@ package tn.esprit.controllers.locationVoiture;
 
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
-import java.util.Arrays;
-import java.util.List;
-
-import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import tn.esprit.MainFX;
 import tn.esprit.models.Location_Voiture;
 import tn.esprit.models.Voiture;
+import tn.esprit.models.session;
 import tn.esprit.services.LocationVoitureService;
 import tn.esprit.services.VoitureService;
 import tn.esprit.util.Navigator;
@@ -78,12 +73,28 @@ public class userLocation_ShowVoiture {
 
     @FXML
     void reserver(ActionEvent event) {
-        //confirmation message
-
-        //reserve it
-        
-        //change to my reservation page
-        
+        try {
+            //confirmation message
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Are you sure ?");
+            ButtonType result = alert.showAndWait().orElse(ButtonType.CANCEL);
+            if (result != ButtonType.OK) {
+                return;
+            }
+    
+            //reserve it
+            Location_Voiture location_Voiture = LocationService.getOne(locationVoitureId);
+            location_Voiture.setUser_id(session.id_utilisateur);
+            location_Voiture.setStatus("réservé");
+            LocationService.update(location_Voiture);
+            
+            //change to my reservation page
+            Stage stage = MainFX.getPrimaryStage();
+            Navigator nav = new Navigator(stage);
+            nav.goToPage("/userLocationList_reserver.fxml");
+        } catch (Exception e) {
+            showError("Unexpected error");
+        }
     }
 
     private void showError(String message) {

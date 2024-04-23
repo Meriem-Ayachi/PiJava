@@ -12,7 +12,7 @@
     <fx:include source="sidebarUser.fxml" />
     <AnchorPane layoutX="211.0" layoutY="38.0" prefHeight="402.0" prefWidth="458.0" style="-fx-background-color: #ececec;">
         <children>
-            <Label layoutX="185.0" layoutY="28.0" text="Mes voitures réservées">
+            <Label layoutX="185.0" layoutY="28.0" text="liste des voitures de location">
                 <font>
                     <Font size="30.0" />
                 </font>
@@ -27,7 +27,9 @@
 
             <Button text="Mes Locations" layoutX="50.0" layoutY="390.0" onAction="#goToLocationReserver" />
 
-            <Button text="Voiture Details" layoutX="180.0" layoutY="390.0" onAction="#goToVoitureDetails" />
+            <Button text="Réserver" layoutX="180.0" layoutY="390.0" onAction="#reserver" />
+            
+            <Button text="Voiture Details" layoutX="280.0" layoutY="390.0" onAction="#goToVoitureDetails" />
 
         </children>
     </AnchorPane>

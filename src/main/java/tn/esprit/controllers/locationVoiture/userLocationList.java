@@ -8,6 +8,7 @@ import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -15,6 +16,7 @@ import javafx.stage.Stage;
 import tn.esprit.MainFX;
 import tn.esprit.models.Location_Voiture;
 import tn.esprit.models.Voiture;
+import tn.esprit.models.session;
 import tn.esprit.services.LocationVoitureService;
 import tn.esprit.services.VoitureService;
 import tn.esprit.util.Navigator;
@@ -85,6 +87,35 @@ public class userLocationList {
         Stage stage = MainFX.getPrimaryStage();
         Navigator nav = new Navigator(stage);
         nav.goToPage("/userLocationList_reserver.fxml");
+    }
+    
+    @FXML
+    void reserver(ActionEvent event) {
+        try {
+            if (selectedLocation == null) {
+                showError("Vous devez sélectionner une location");
+                return;
+            }
+            //confirmation message
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Are you sure ?");
+            ButtonType result = alert.showAndWait().orElse(ButtonType.CANCEL);
+            if (result != ButtonType.OK) {
+                return;
+            }
+    
+            //reserve it
+            selectedLocation.setUser_id(session.id_utilisateur);
+            selectedLocation.setStatus("réservé");
+            LocationService.update(selectedLocation);
+            
+            //change to my reservation page
+            Stage stage = MainFX.getPrimaryStage();
+            Navigator nav = new Navigator(stage);
+            nav.goToPage("/userLocationList_reserver.fxml");
+        } catch (Exception e) {
+            showError("Unexpected error");
+        }
     }
 
     @FXML

@@ -39,7 +39,7 @@ public class LocationVoitureService implements IService <Location_Voiture> {
 
     @Override
     public void update(Location_Voiture lv) {
-        String req = "UPDATE `location_voiture` SET `prix`=?, `date_debut`=?, `datefin`=?, `type`=?, `status`=?, `voiture_id`=? WHERE `id`=?;";
+        String req = "UPDATE `location_voiture` SET `prix`=?, `date_debut`=?, `datefin`=?, `type`=?, `status`=?, `voiture_id`=?, `user_id`=? WHERE `id`=?;";
         try {
             PreparedStatement ps = cnx.prepareStatement(req);
             ps.setDouble(1, lv.getPrix());
@@ -48,7 +48,8 @@ public class LocationVoitureService implements IService <Location_Voiture> {
             ps.setString(4, lv.getType());
             ps.setString(5, lv.getStatus());
             ps.setInt(6, lv.getVoiture_id());
-            ps.setInt(7, lv.getId());
+            ps.setInt(7, lv.getUser_id());
+            ps.setInt(8, lv.getId());
 
             ps.executeUpdate();
 
@@ -129,10 +130,10 @@ public class LocationVoitureService implements IService <Location_Voiture> {
         }
     }
     
-    public List<Location_Voiture> getAll_UserId(int userId) {
+    public List<Location_Voiture> getAll_UserIdReserved(int userId) {
         List<Location_Voiture> location_Voitures = new ArrayList<>();
 
-        String req = "select * from location_voiture where user_id=?";
+        String req = "select * from location_voiture where user_id=? AND status='réservé'";
         try {
             PreparedStatement ps = cnx.prepareStatement(req);
             ps.setInt(1,userId);
@@ -161,7 +162,7 @@ public class LocationVoitureService implements IService <Location_Voiture> {
     public List<Location_Voiture> getAll_unreserved(){
         List<Location_Voiture> location_Voitures = new ArrayList<>();
 
-        String req = "select * from location_voiture where user_id IS NULL";
+        String req = "select * from location_voiture where status='disponible'";
         try {
             PreparedStatement ps = cnx.prepareStatement(req);
             ResultSet res = ps.executeQuery();

@@ -33,6 +33,7 @@ public class ModifierLocation {
 
     private int location_id;
     private int voiture_id;
+    private int user_id;
 
     public void initialize(Location_Voiture locationVoiture) {
         // initialize comboBox
@@ -53,6 +54,7 @@ public class ModifierLocation {
         // get static values
         location_id = locationVoiture.getId();
         voiture_id = locationVoiture.getVoiture_id();
+        user_id = locationVoiture.getUser_id();
         // fill the UI with the voiture values
         prixTF.setText(String.valueOf(locationVoiture.getPrix()));
         dateDebutTF.setValue(locationVoiture.getDate_debut().toLocalDate());
@@ -126,6 +128,7 @@ public class ModifierLocation {
         //set id
         locationVoiture.setId(location_id);
         locationVoiture.setVoiture_id(voiture_id);
+        locationVoiture.setUser_id(user_id);
 
         locationVoiture.setPrix(Double.parseDouble(prixTF.getText()));
         locationVoiture.setDate_debut(Date.valueOf(dateDebutTF.getValue()));

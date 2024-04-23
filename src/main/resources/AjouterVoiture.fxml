@@ -23,8 +23,8 @@
          <TextField fx:id="couleurTF" layoutX="66.0" layoutY="210.0" promptText="Couleur" />
          <ComboBox fx:id="energyTF" layoutX="66.0" layoutY="250.0" promptText="Energy" />
          <TextField fx:id="capaciteTF" layoutX="66.0" layoutY="290.0" promptText="Capacite" />
-         <Button layoutX="381.0" layoutY="334.0" mnemonicParsing="false" onAction="#ajouterVoiture" text="Ajouter" />
-         <Button layoutX="476.0" layoutY="334.0" mnemonicParsing="false" onAction="#AfficherVoitures" text="Afficher" />
+         <Button layoutX="381.0" layoutY="334.0" mnemonicParsing="false" onAction="#AfficherVoitures" text="Cancel" />
+         <Button layoutX="476.0" layoutY="334.0" mnemonicParsing="false" onAction="#ajouterVoiture" text="Ajouter" />
       </children>
    </AnchorPane>
 </AnchorPane>

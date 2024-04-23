@@ -101,7 +101,7 @@ public class userLocationList_reserver {
 
     private void refreshTable() {
         int userid = session.id_utilisateur;
-        List<Location_Voiture> location_Voiture_List = LocationService.getAll_UserId(userid);
+        List<Location_Voiture> location_Voiture_List = LocationService.getAll_UserIdReserved(userid);
         locationTableView.setItems(FXCollections.observableArrayList(location_Voiture_List));
     }
 

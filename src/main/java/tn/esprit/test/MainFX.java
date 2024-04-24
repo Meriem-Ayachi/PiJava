@@ -13,9 +13,14 @@ public class MainFX extends Application {
     @Override
     public void start(Stage primaryStage) {
         try {
-            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/Fxml/hotelAdd.fxml")));
+            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/Fxml/reservationAdd.fxml")));
             Scene scene = new Scene(root);
-            primaryStage.setTitle("Votre titre");
+
+            // Ajuster la taille de la scène
+            primaryStage.setWidth(800); // Définir la largeur souhaitée
+            primaryStage.setHeight(600); // Définir la hauteur souhaitée
+
+            primaryStage.setTitle("Tech-Voyage");
             primaryStage.setScene(scene);
             primaryStage.show();
         } catch (IOException e) {
@@ -25,7 +30,5 @@ public class MainFX extends Application {
 
     public static void main(String[] args) {
         launch(args);
-
-
-}
+    }
 }

@@ -51,9 +51,21 @@ public class hotelModifier {
         String nouvelEmplacement = emplacementTextField.getText();
         String nouvelAvis = avisTextField.getText();
 
-        // Vérifier la validité des données (par exemple, si les champs sont vides)
+        // Vérifier la validité des données
         if (!isValidData(nouveauNom, nouvelleNbreEtoile, nouvelEmplacement, nouvelAvis)) {
-            showAlert("Veuillez remplir tous les champs !");
+            showAlert("Veuillez remplir tous les champs et saisir un nombre valide pour le nombre d'étoiles !");
+            return;
+        }
+
+        // Vérifier si le nombre d'étoiles est valide
+        if (!isValidNumberOfStars(nouvelleNbreEtoile)) {
+            showAlert("Veuillez saisir un nombre valide entre 1 et 5 pour le nombre d'étoiles !");
+            return;
+        }
+
+        // Vérifier si le champ d'avis contient des gros mots
+        if (containsForbiddenWords(nouvelAvis)) {
+            showAlert("Le champ d'avis contient des mots interdits !");
             return;
         }
 
@@ -70,8 +82,31 @@ public class hotelModifier {
         afficherMessageSucces();
     }
 
+    // Méthode pour vérifier si le champ d'avis contient des mots interdits
+    private boolean containsForbiddenWords(String avis) {
+        // Liste de mots interdits (vous pouvez ajouter vos propres mots ici)
+        String[] forbiddenWords = {"gros", "gros mot 2", "gros mot 3"};
+
+        for (String word : forbiddenWords) {
+            if (avis.toLowerCase().contains(word.toLowerCase())) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private boolean isValidNumberOfStars(String nbreEtoile) {
+        // Vérifier si le nombre d'étoiles est entre 1 et 5
+        try {
+            int nbEtoiles = Integer.parseInt(nbreEtoile);
+            return nbEtoiles >= 1 && nbEtoiles <= 5;
+        } catch (NumberFormatException e) {
+            return false; // Si la conversion en nombre échoue
+        }
+    }
+
     private boolean isValidData(String nom, String nbreEtoile, String emplacement, String avis) {
-        // Ajoutez ici vos conditions de validation, par exemple vérifier si les champs ne sont pas vides
+        // Vérifier si les champs ne sont pas vides
         return !nom.isEmpty() && !nbreEtoile.isEmpty() && !emplacement.isEmpty() && !avis.isEmpty();
     }
 

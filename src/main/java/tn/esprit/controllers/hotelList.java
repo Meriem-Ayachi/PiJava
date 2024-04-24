@@ -1,19 +1,16 @@
 package tn.esprit.controllers;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListCell;
-import javafx.scene.control.ListView;
-import javafx.stage.Stage;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.TextFieldListCell;
+import javafx.util.StringConverter;
 import tn.esprit.models.hotel;
 import tn.esprit.services.Hotelservices;
 
-import java.io.IOException;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class hotelList {
 
@@ -21,20 +18,9 @@ public class hotelList {
     private ListView<hotel> hotelListView;
 
     @FXML
-    private Label nomid;
-
-    @FXML
-    private Label nbretoilesid;
-
-    @FXML
-    private Label emplacementid;
-
-    @FXML
-    private Label avisid;
+    private TextField rechercheTextField;
 
     private Hotelservices hotelService;
-
-    private hotel selectedHotel;
 
     public hotelList() {
         hotelService = new Hotelservices();
@@ -46,9 +32,10 @@ public class hotelList {
         List<hotel> hotels = hotelService.getAll();
 
         // Ajouter les hôtels à la liste de vue
-        hotelListView.getItems().addAll(hotels);
+        ObservableList<hotel> observableHotels = FXCollections.observableArrayList(hotels);
+        hotelListView.setItems(observableHotels);
 
-        // Ajouter un bouton "Afficher" devant chaque rendez-vous
+        // Ajouter un bouton "Afficher" devant chaque hôtel
         hotelListView.setCellFactory(param -> new ListCell<hotel>() {
             private final Button afficherButton = new Button("Afficher");
 
@@ -71,30 +58,30 @@ public class hotelList {
         hotelListView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue != null) {
                 // Mettre à jour les étiquettes avec les détails de l'hôtel sélectionné
-                nomid.setText(newValue.getNom());
-                nbretoilesid.setText(newValue.getNbretoile());
-                emplacementid.setText(newValue.getEmplacement());
-                avisid.setText(newValue.getAvis());
-                selectedHotel = newValue;
+                // Vous pouvez ajouter votre code ici si nécessaire
             }
         });
+
+        // Mettre en place la fonctionnalité de recherche
+        setupRecherche();
     }
 
-    // Méthode pour afficher les détails de l'hôtel sélectionné
     private void afficherDetailsHotel(hotel hotel) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Fxml/hotelAfficher.fxml"));
-            Parent root = loader.load();
+        // Ajouter votre logique d'affichage des détails de l'hôtel ici
+    }
 
-            // Passer l'hotel sélectionné au contrôleur de la vue hotelAfficher.fxml
-            hotelAfficher controller = loader.getController();
-            controller.setSelectedHotel(hotel);
-
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root));
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    private void setupRecherche() {
+        rechercheTextField.textProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue == null || newValue.isEmpty()) {
+                // Si le champ de recherche est vide, afficher tous les hôtels
+                hotelListView.getItems().setAll(hotelService.getAll());
+            } else {
+                // Filtrer les hôtels selon le texte de recherche
+                List<hotel> filteredHotels = hotelService.getAll().stream()
+                        .filter(h -> h.getNom().toLowerCase().contains(newValue.toLowerCase()))
+                        .collect(Collectors.toList());
+                hotelListView.getItems().setAll(filteredHotels);
+            }
+        });
     }
 }

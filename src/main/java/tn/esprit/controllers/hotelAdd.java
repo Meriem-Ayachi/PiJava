@@ -44,14 +44,25 @@ public class hotelAdd {
 
         hotel1.setNom(Nomf.getText());
         hotel1.setEmplacement(emplacementf.getText());
-        hotel1.setAvis(avisf.getText());
+
+        // Vérification du champ d'avis
+        String avis = avisf.getText();
+        if (containsForbiddenWords(avis)) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Erreur");
+            alert.setHeaderText("Erreur de saisie");
+            alert.setContentText("Le champ d'avis contient des mots interdits.");
+            alert.showAndWait();
+            return;
+        }
+        hotel1.setAvis(avis);
 
         try {
             int nbetoiles = Integer.parseInt(nbetoilesf.getText());
-            if (nbetoiles >= 1 && nbetoiles <= 5) { // Vérifie si le nombre d'étoiles est entre 1 et 5
+            if (nbetoiles >= 1 && nbetoiles <= 5) {
                 hotel1.setNbretoile(String.valueOf(nbetoiles));
             } else {
-                throw new NumberFormatException(); // Lance une exception si le nombre d'étoiles est en dehors de la plage valide
+                throw new NumberFormatException();
             }
         } catch (NumberFormatException e) {
             System.out.println("La valeur du champ nbetoilesf n'est pas un nombre valide ou n'est pas entre 1 et 5.");
@@ -70,13 +81,24 @@ public class hotelAdd {
         alert.setContentText("Hôtel ajouté avec succès!");
         alert.showAndWait();
 
-        // Nettoyer les champs après l'ajout
         Nomf.clear();
         emplacementf.clear();
         nbetoilesf.clear();
         avisf.clear();
     }
 
+    // Méthode pour vérifier si le champ d'avis contient des mots interdits
+    private boolean containsForbiddenWords(String avis) {
+        // Liste de mots interdits (vous pouvez ajouter vos propres mots ici)
+        String[] forbiddenWords = {"gros", "gros mot 2", "gros mot 3"};
+
+        for (String word : forbiddenWords) {
+            if (avis.toLowerCase().contains(word.toLowerCase())) {
+                return true;
+            }
+        }
+        return false;
+    }
 
     @FXML
     public void goToHotelList(ActionEvent event) {

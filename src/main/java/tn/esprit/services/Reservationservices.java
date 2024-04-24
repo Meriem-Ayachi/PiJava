@@ -22,24 +22,27 @@ public abstract class Reservationservices implements IService<Reservation> {
     public IService<Reservation> reserve;
     Connection cnx = MaConnexion.getInstance().getCnx();
     @Override
-    public void add (Reservation reservation )
-    {
+    public void add(Reservation reservation) {
+        String req = "INSERT INTO reservation(datedepart, dateretour, classe, destinationdepart, destinationretour, nbrdepersonne) VALUES (?, ?, ?, ?, ?, ?)";
+        try (PreparedStatement st = cnx.prepareStatement(req)) {
+            st.setString(1, reservation.getDatedepart());
+            st.setString(2, reservation.getDateretour());
+            st.setString(3, reservation.getClasse());
+            st.setString(4, reservation.getDestinationdepart());
+            st.setString(5, reservation.getDestinationretour());
+            st.setInt(6, reservation.getNbrdepersonne());
 
-        String req = "INSERT INTO reservation(datedepart, dateretour, classe, destinationdepart, destinationretour, nbrdepersonne) VALUES ('" +
-                reservation.getDatedepart() + "','" +
-                reservation.getDateretour() + "','" +
-                reservation.getClasse() + "','" +
-                reservation.getDestinationdepart() + "','" +
-                reservation.getDestinationretour() + "'," +
-                reservation.getNbrdepersonne() + ")";
-        try {
-            Statement st = cnx.createStatement();
-            st.executeUpdate(req);
-            System.out.println("Réservation ajoutée avec succès");
+            int rowsInserted = st.executeUpdate();
+            if (rowsInserted > 0) {
+                System.out.println("Réservation ajoutée avec succès");
+            } else {
+                System.out.println("Échec de l'ajout de la réservation");
+            }
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            throw new RuntimeException("Erreur lors de l'ajout de la réservation", e);
         }
     }
+
 
 
 
@@ -105,11 +108,14 @@ public abstract class Reservationservices implements IService<Reservation> {
             e.printStackTrace();
         }
     }
+
+
+
     @Override
-    public void delete(Reservation reservation) {
-        String query = "DELETE FROM reservation WHERE id = ";
+    public void delete(int id) {
+        String query = "DELETE FROM reservation WHERE id = ?";
         try (PreparedStatement statement = cnx.prepareStatement(query)) {
-            statement.setInt(1,reservation.getId());
+            statement.setInt(1, id);
             int rowsDeleted = statement.executeUpdate();
             if (rowsDeleted > 0) {
                 System.out.println("Réservation supprimée avec succès");
@@ -120,6 +126,11 @@ public abstract class Reservationservices implements IService<Reservation> {
             throw new RuntimeException("Erreur lors de la suppression de la réservation", e);
         }
     }
+
+
+
+
+
 
 
 
@@ -172,7 +183,7 @@ public abstract class Reservationservices implements IService<Reservation> {
         return reservation;
     }
 
-    public abstract void delete(int id);
+
 }
 
 

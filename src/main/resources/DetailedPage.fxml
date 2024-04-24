@@ -14,6 +14,8 @@
     <Label text="Flight Details" style="-fx-font-size: 30px; -fx-font-weight: bold; -fx-text-fill: #0000FF;"/>
 
     <!-- Labels for flight information -->
+    <Label fx:id="IdLabel" text="Destination:" style="-fx-font-weight: bold;"/>
+
     <Label fx:id="destinationLabel" text="Destination:" style="-fx-font-weight: bold;"/>
     <Label fx:id="priceLabel" text="Price:" style="-fx-font-weight: bold;"/>
     <Label fx:id="departureLabel" text="Departure Date:" style="-fx-font-weight: bold;"/>
@@ -24,6 +26,8 @@
     <Label fx:id="nbRescaleLabel" text="Number of Rescales:" style="-fx-font-weight: bold;"/>
     <Label fx:id="nbPlaceLabel" text="Number of Places:" style="-fx-font-weight: bold;"/>
     <Button text="Delete" onAction="#deleteFlight"/>
+    <Button text="Edit" onAction="#editFlight"/>
+
 
 
 

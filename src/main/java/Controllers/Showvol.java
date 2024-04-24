@@ -188,4 +188,28 @@ public class Showvol implements Initializable {
         }
     }
 
+
+    @FXML
+    private void mettreenpromo(ActionEvent event) {
+        try {
+            // Load the AddPromo.fxml file
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/AddPromo.fxml"));
+            Parent root = loader.load();
+
+            // Create a new stage
+            Stage promoStage = new Stage();
+
+            // Set the scene with the content from AddPromo.fxml
+            Scene scene = new Scene(root);
+            promoStage.setScene(scene);
+
+            // Show the new stage
+            promoStage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+
 }

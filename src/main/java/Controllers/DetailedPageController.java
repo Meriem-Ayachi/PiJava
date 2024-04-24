@@ -2,12 +2,20 @@ package Controllers;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import tn.esprit.models.Vols;
 import tn.esprit.services.VolService;
 import javafx.stage.Stage;
 
+import java.io.IOException;
+
 public class DetailedPageController {
+
+    @FXML
+    private Label IdLabel;
 
     @FXML
     private Label destinationLabel;
@@ -51,6 +59,8 @@ public class DetailedPageController {
         // Ensure that the ID is set properly
         System.out.println("Flight ID: " + vol.getId()); // Debugging statement
 
+
+        IdLabel.setText("Id: " + vol.getId());
         destinationLabel.setText("Destination: " + vol.getDestination());
         priceLabel.setText("Price: $" + vol.getPrix());
         departureLabel.setText("Departure Date: " + vol.getDatedepart());
@@ -77,6 +87,7 @@ public class DetailedPageController {
             System.out.println("Deleting flight with ID: " + currentFlight.getId()); // Debugging statement
 
             volService.delete(currentFlight);
+
             closeDetailedPage();
         }
     }
@@ -87,5 +98,30 @@ public class DetailedPageController {
         Stage stage = (Stage) destinationLabel.getScene().getWindow();
         stage.close();
     }
+
+
+    @FXML
+    private void editFlight(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/EditFlight.fxml"));
+            Parent root = loader.load();
+
+            // Pass the current flight to the edit controller
+            EditFlightController editController = loader.getController();
+            editController.initData(currentFlight);
+
+            // Display the edit window
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.showAndWait();
+
+            // Update displayed information after editing
+            initData(currentFlight);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
 
 }

@@ -38,27 +38,24 @@ public abstract class VolService implements IService<Vols> {
 
 
     @Override
-    public void update (Vols vols )
-    {
-        String req = "UPDATE vols SET " +
-                "nbrescale = '" + vols.getNbrescale() + "', " +
-                "nbrplace = '" + vols.getNbrplace() + "', " +
-                "duree = '" + vols.getDuree() + "', " +
-                "datedepart = '" + vols.getDatedepart() + "', " +
-                "datearrive = '" + vols.getDatearrive() + "', " +
-                "classe = " + vols.getClasse() + " " +
-                "destination = " + vols.getDestination() + " " +
-                "pointdepart = " + vols.getPointdepart() + " " +
-                "prix = " + vols.getPrix() + " " +
-                "WHERE id = " + vols.getId();
-        try {
-            Statement st = cnx.createStatement();
-            st.executeUpdate(req);
+    public void update(Vols vols) {
+        String req = "UPDATE vols SET nbrescale = ?, nbrplace = ?, duree = ?, datedepart = ?, datearrive = ?, classe = ?, destination = ?, pointdepart = ?, prix = ? WHERE id = ?";
+        try (PreparedStatement st = cnx.prepareStatement(req)) {
+            st.setInt(1, vols.getNbrescale());
+            st.setInt(2, vols.getNbrplace());
+            st.setString(3, vols.getDuree());
+            st.setString(4, vols.getDatedepart());
+            st.setString(5, vols.getDatearrive());
+            st.setString(6, vols.getClasse());
+            st.setString(7, vols.getDestination());
+            st.setString(8, vols.getPointdepart());
+            st.setDouble(9, vols.getPrix());
+            st.setInt(10, vols.getId());
+            st.executeUpdate();
             System.out.println("vol mis à jour avec succès");
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-
     }
     @Override
     public void delete(Vols vols) {
@@ -89,6 +86,7 @@ public abstract class VolService implements IService<Vols> {
             ResultSet rs = st.executeQuery(req);
             while (rs.next()) {
                 Vols v = new Vols();
+                v.setId(rs.getInt("id"));
                 v.setNbrescale(rs.getInt("nbrescale"));
                 v.setNbrplace(rs.getInt("nbrplace")); // Correction du nom de la colonne
                 v.setDuree(rs.getString("duree")); // Correction du nom de la colonne
@@ -128,6 +126,19 @@ public abstract class VolService implements IService<Vols> {
         }
         return vols;
 
+    }
+
+    public List<Integer> getAllFlightIds() throws SQLException {
+        List<Integer> flightIds = new ArrayList<>();
+        String query = "SELECT id FROM vols";
+        try (Statement statement = cnx.createStatement();
+             ResultSet resultSet = statement.executeQuery(query)) {
+            while (resultSet.next()) {
+                int id = resultSet.getInt("id");
+                flightIds.add(id);
+            }
+        }
+        return flightIds;
     }
 
 

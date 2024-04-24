@@ -42,8 +42,18 @@ public class sidebarAdmin {
     }
 
     public void directToHomepage_back(ActionEvent event) {
-        System.out.println("Homepage admin");
+
+        Navigator nav = new Navigator();
+        nav.goToPage_WithEvent("/ProfileAdmin.fxml",event);
     }
+
+    public void directToUserm_back(ActionEvent event) {
+
+        Navigator nav = new Navigator();
+        nav.goToPage_WithEvent("/GestionUtilisateurs.fxml",event);
+    }
+
+
 
 
 }

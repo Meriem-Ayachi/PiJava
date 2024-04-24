@@ -1,5 +1,6 @@
 package tn.esprit.controllers;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -17,6 +18,7 @@ import tn.esprit.models.hotel;
 import tn.esprit.services.Hotelservices;
 
 import java.io.IOException;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -43,6 +45,8 @@ public class hotelList {
     private Hotelservices hotelService;
 
     private hotel selectedHotel;
+
+    private boolean triAscendant = true; // Flag pour le sens du tri
 
     public hotelList() {
         hotelService = new Hotelservices();
@@ -88,7 +92,7 @@ public class hotelList {
                     afficherButton.setOnAction(event -> afficherDetailsHotel(item));
 
                     // Ajouter la VBox et le bouton "Afficher" à la HBox
-                   container.getChildren().addAll(infoContainer, afficherButton);
+                    container.getChildren().addAll(infoContainer, afficherButton);
 
                     setGraphic(container);
                 }
@@ -139,5 +143,23 @@ public class hotelList {
                 .collect(Collectors.toList());
         hotelListView.getItems().clear();
         hotelListView.getItems().addAll(filteredHotels);
+    }
+
+    // Méthode pour trier les hôtels par nombre d'étoiles
+    @FXML
+    private void trierParEtoiles(ActionEvent actionEvent) {
+        triAscendant = !triAscendant;
+        trierParNombreEtoiles(triAscendant);
+    }
+
+    private void trierParNombreEtoiles(boolean ascendant) {
+        List<hotel> hotels = hotelService.getAll();
+        if (ascendant) {
+            hotels.sort(Comparator.comparingInt(h -> Integer.parseInt(h.getNbretoile())));
+        } else {
+            hotels.sort((h1, h2) -> Integer.parseInt(h2.getNbretoile()) - Integer.parseInt(h1.getNbretoile()));
+        }
+        hotelListView.getItems().clear();
+        hotelListView.getItems().addAll(hotels);
     }
 }

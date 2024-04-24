@@ -18,14 +18,14 @@ public class ReclamationService  implements IService<Reclamation> {
 
     @Override
     public void add(Reclamation reclamation) {
-        String req = "INSERT INTO `reclamation`(`sujet`, `description`, `datesoumission`, `est_traite`) VALUES (?,?,?,?)";
+        String req = "INSERT INTO `reclamation`(`sujet`, `description`, `datesoumission`, `est_traite` , `user_id`) VALUES (?,?,?,?,?)";
         try {
             PreparedStatement ps = cnx.prepareStatement(req);
             ps.setString(1, reclamation.getSujet());
             ps.setString(2, reclamation.getDescription());
             ps.setTimestamp(3, reclamation.getDatesoummission());
             ps.setByte(4, reclamation.getEst_traite());
-            //ps.setInt(5, reclamation.getUser_id());
+            ps.setInt(5, reclamation.getUser_id());
 
             ps.executeUpdate();
 

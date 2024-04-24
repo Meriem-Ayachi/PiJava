@@ -29,7 +29,7 @@ public class DetailsReclamation {
     @FXML
     private TextField sujetTextField;
     private Reclamation reclamation;
-    private ReclamationService reclamationService;
+    private ReclamationService reclamationService = new ReclamationService();
 
     @FXML
     private Button enregistrerButton;
@@ -108,6 +108,8 @@ public class DetailsReclamation {
             alert.setHeaderText(null);
             alert.setContentText("La réclamation a été mise à jour avec succès.");
             alert.showAndWait();
+            ((Stage) sujetLabel.getScene().getWindow()).close();
+
         }
     }
 
@@ -127,6 +129,15 @@ public class DetailsReclamation {
             // Fermer l'interface "DetailsReclamation"
             ((Stage) sujetLabel.getScene().getWindow()).close();
         }
+        else {
+            // Afficher un message d'erreur si la réclamation est nulle
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Erreur");
+            alert.setHeaderText(null);
+            alert.setContentText("Aucune réclamation sélectionnée.");
+            alert.showAndWait();
+    }
+
     }
 
     @FXML

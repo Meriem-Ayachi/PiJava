@@ -10,19 +10,21 @@
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="Styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.AjouterReclamationUser">
+   <fx:include source="sidebarUser.fxml" />
+   <AnchorPane layoutX="211.0" layoutY="38.0" prefHeight="402.0" prefWidth="500.0" style="-fx-background-color: #ececec;">
+      <children>
+         <Label layoutX="185.0" layoutY="28.0" styleClass="title" stylesheets="@Styles.css" text="Ajouter réclamation">
+            <font>
+               <Font size="30.0" />
+            </font>
+         </Label>
+         <TextField fx:id="sujetTF" layoutX="140.0" layoutY="130.0" promptText="Sujet" />
+         <TextArea fx:id="descriptionTF" layoutX="140.0" layoutY="181.0" prefHeight="100.0" prefWidth="200.0" promptText="Description" />
+         <Button fx:id="ajouterBTN" layoutX="381.0" layoutY="334.0" mnemonicParsing="false" onAction="#ajouterReclamation" stylesheets="@Styles.css" text="Ajouter" />
+         <CheckBox fx:id="estTraiteCB" layoutX="381.0" layoutY="222.0" mnemonicParsing="false" text="estTraite" visible="false" />
+         <ComboBox fx:id="userIDCB" layoutX="340.0" layoutY="255.0" prefWidth="150.0" promptText="UserIdD" visible="false" />
+         <TextField fx:id="dateSouTF" layoutX="341.0" layoutY="130.0" visible="false" />
+      </children>
+   </AnchorPane>
 
-   <children>
-      <Label layoutX="185.0" layoutY="28.0" styleClass="title" stylesheets="@Styles.css" text="Ajouter réclamation">
-         <font>
-            <Font size="30.0" />
-         </font>
-      </Label>
-      <TextField fx:id="sujetTF" layoutX="140.0" layoutY="130.0" promptText="Sujet" />
-      <TextArea fx:id="descriptionTF" layoutX="140.0" layoutY="181.0" prefHeight="100.0" prefWidth="200.0" promptText="Description" />
-      <Button fx:id="ajouterBTN" layoutX="381.0" layoutY="334.0" mnemonicParsing="false" onAction="#ajouterReclamation" stylesheets="@Styles.css" text="Ajouter" />
-      <Button fx:id="listeBTN" layoutX="476.0" layoutY="334.0" mnemonicParsing="false" onAction="#AfficherReclamations" stylesheets="@Styles.css" text="Liste" />
-      <CheckBox fx:id="estTraiteCB" layoutX="381.0" layoutY="222.0" mnemonicParsing="false" text="estTraite" visible="false" />
-      <ComboBox fx:id="userIDCB" layoutX="340.0" layoutY="255.0" prefWidth="150.0" promptText="UserIdD" visible="false" />
-      <TextField fx:id="dateSouTF" layoutX="341.0" layoutY="130.0" visible="false" />
-   </children>
 </AnchorPane>

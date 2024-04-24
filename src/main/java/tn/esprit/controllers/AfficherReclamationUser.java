@@ -18,6 +18,7 @@ import tn.esprit.models.User;
 import tn.esprit.models.session;
 import tn.esprit.services.ReclamationService;
 import tn.esprit.services.UserService;
+import tn.esprit.util.Navigator;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -55,7 +56,7 @@ public class AfficherReclamationUser {
             NomPrenomCol.setCellValueFactory(cellData -> {
                 UserService us = new UserService();
                 Reclamation reclamation = cellData.getValue();
-                User user = us.getOne(reclamation.getUser_id()); // Supposons que la méthode getUserId() récupère l'ID de l'utilisateur
+                User user = us.getOne(reclamation.getUser_id()); // puisque la méthode getUserId() récupère l'ID de l'utilisateur
                 String nom = user.getNom();
                 String prenom = user.getPrenom();
                 return new SimpleStringProperty(nom + " " + prenom);
@@ -94,6 +95,13 @@ public class AfficherReclamationUser {
     @FXML
     void Refresh(ActionEvent event) {
         tableview.setItems(FXCollections.observableArrayList(rs.getAllByUserId(session.id_utilisateur)));
+    }
+
+    @FXML
+    void GoToAjouter(ActionEvent event) {
+        Navigator nav = new Navigator();
+        nav.goToPage_WithEvent("/AjouterReclamationUser.fxml",event);
+
     }
 
 }

@@ -114,7 +114,7 @@ public class AfficherReclamationAdmin {
             }
 
         }else{
-            showError("Vous devez sélectionner une Réclamation");
+            showError("Vous devez sélectionner une réclamation");
         }
 
     }
@@ -134,16 +134,13 @@ public class AfficherReclamationAdmin {
             Refresh();
             selectedReclamation = null;
         }else{
-            showError("Vous devez sélectionner une location");
+            showError("Vous devez sélectionner une réclamation");
         }
-
     }
-
     @FXML
     void onTableRowClicked() {
         selectedReclamation = tableview.getSelectionModel().getSelectedItem();
     }
-
 }
 
 

@@ -7,7 +7,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.*;
 import tn.esprit.models.Reclamation;
+import tn.esprit.models.session;
 import tn.esprit.services.ReclamationService;
+import tn.esprit.util.Navigator;
 
 import java.io.IOException;
 import java.sql.Timestamp;
@@ -30,17 +32,6 @@ public class AjouterReclamationUser {
     @FXML
     private ComboBox<?> userIDCB;
 
-
-    @FXML
-    void AfficherReclamations(ActionEvent event) {
-        try {
-            Parent root = FXMLLoader.load(getClass().getResource("/AfficherReclamationAdmin.fxml"));
-            descriptionTF.getScene().setRoot(root);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-
-    }
 
 
     @FXML
@@ -90,13 +81,9 @@ public class AjouterReclamationUser {
         // Définir le texte du libellé pour afficher la date et l'heure actuelles
         dateSouTF.setText(formattedDateTime);
 
-        // Rendre le libellé en lecture seule
-        // Note: Vous ne pouvez pas rendre un Label en lecture seule, mais vous pouvez le rendre non-éditable
-        // Et il est préférable de ne pas modifier l'interface utilisateur après l'initialisation dans cette méthode
-
-
         ReclamationService reclamationService = new ReclamationService();
         Reclamation reclamation = new Reclamation();
+        reclamation.setUser_id(session.id_utilisateur);
         reclamation.setSujet(sujetTF.getText());
         reclamation.setDescription(descriptionTF.getText());
         reclamation.setDatesoummission(Timestamp.valueOf(currentDateTime)); // Utilisez directement currentDateTime
@@ -108,6 +95,8 @@ public class AjouterReclamationUser {
             alert.setContentText("Réclamation ajoutée");
             alert.showAndWait();
         }
+        Navigator nav = new Navigator();
+        nav.goToPage_WithEvent("/AfficherReclamationUser.fxml" , event);
     }
 
     private void afficherErreur(String message) {

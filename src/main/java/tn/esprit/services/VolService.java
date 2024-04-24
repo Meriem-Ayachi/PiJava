@@ -62,9 +62,9 @@ public abstract class VolService implements IService<Vols> {
     }
     @Override
     public void delete(Vols vols) {
-        String query = "DELETE FROM vols WHERE id = ";
+        String query = "DELETE FROM vols WHERE id = ?";
         try (PreparedStatement statement = cnx.prepareStatement(query)) {
-            statement.setInt(1,vols.getId());
+            statement.setInt(1, vols.getId());
             int rowsDeleted = statement.executeUpdate();
             if (rowsDeleted > 0) {
                 System.out.println("vol supprimé avec succès");
@@ -130,10 +130,5 @@ public abstract class VolService implements IService<Vols> {
 
     }
 
-    public abstract void delete(int id);
+
 }
-
-
-
-
-

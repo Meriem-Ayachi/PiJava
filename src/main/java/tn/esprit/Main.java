@@ -18,11 +18,7 @@ public class Main {
         MaConnexion mac1 = MaConnexion.getInstance();
 
         VolService vol = new VolService() {
-            @Override
-            public void delete(int id) {
 
-
-            }
 
         };
 

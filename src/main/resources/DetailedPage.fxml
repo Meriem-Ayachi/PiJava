@@ -3,22 +3,28 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.VBox?>
 
+<?import javafx.scene.control.Button?>
 <VBox xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml"
       fx:controller="Controllers.DetailedPageController"
       prefWidth="400" prefHeight="300"
       alignment="CENTER">
 
-    <Label text="Flight Details" style="-fx-font-size: 20px; -fx-font-weight: bold;"/>
+    <!-- Big title in blue color -->
+    <Label text="Flight Details" style="-fx-font-size: 30px; -fx-font-weight: bold; -fx-text-fill: #0000FF;"/>
 
-    <Label fx:id="destinationLabel" text="Destination:"/>
-    <Label fx:id="priceLabel" text="Price:"/>
-    <Label fx:id="departureLabel" text="Departure Date:"/>
-    <Label fx:id="arrivalLabel" text="Arrival Date:"/>
-    <Label fx:id="durationLabel" text="Duration:"/>
-    <Label fx:id="classLabel" text="Class:"/>
-    <Label fx:id="pointDepartLabel" text="Departure Point:"/>
-    <Label fx:id="nbRescaleLabel" text="Number of Rescales:"/>
-    <Label fx:id="nbPlaceLabel" text="Number of Places:"/>
+    <!-- Labels for flight information -->
+    <Label fx:id="destinationLabel" text="Destination:" style="-fx-font-weight: bold;"/>
+    <Label fx:id="priceLabel" text="Price:" style="-fx-font-weight: bold;"/>
+    <Label fx:id="departureLabel" text="Departure Date:" style="-fx-font-weight: bold;"/>
+    <Label fx:id="arrivalLabel" text="Arrival Date:" style="-fx-font-weight: bold;"/>
+    <Label fx:id="durationLabel" text="Duration:" style="-fx-font-weight: bold;"/>
+    <Label fx:id="classLabel" text="Class:" style="-fx-font-weight: bold;"/>
+    <Label fx:id="pointDepartLabel" text="Departure Point:" style="-fx-font-weight: bold;"/>
+    <Label fx:id="nbRescaleLabel" text="Number of Rescales:" style="-fx-font-weight: bold;"/>
+    <Label fx:id="nbPlaceLabel" text="Number of Places:" style="-fx-font-weight: bold;"/>
+    <Button text="Delete" onAction="#deleteFlight"/>
+
+
 
 </VBox>

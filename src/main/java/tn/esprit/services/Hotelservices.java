@@ -46,6 +46,28 @@ public  class Hotelservices implements IService<hotel> {
             throw new RuntimeException("Erreur lors de la mise à jour de l'hôtel", e);
         }
     }
+    @Override
+    public List<hotel> rechercherParNom(String nom) {
+        List<hotel> hotels = new ArrayList<>();
+        try {
+            String req = "SELECT * FROM hotel WHERE nom LIKE ?";
+            PreparedStatement preparedStatement = cnx.prepareStatement(req);
+            preparedStatement.setString(1, "%" + nom + "%");
+            ResultSet rs = preparedStatement.executeQuery();
+            while (rs.next()) {
+                hotel p = new hotel();
+                p.setId(rs.getInt("id"));
+                p.setNom(rs.getString("nom"));
+                p.setNbretoile(rs.getString("nbretoile"));
+                p.setEmplacement(rs.getString("emplacement"));
+                p.setAvis(rs.getString("avis"));
+                hotels.add(p);
+            }
+        } catch (SQLException ex) {
+            throw new RuntimeException("Erreur lors de la recherche des hôtels par nom", ex);
+        }
+        return hotels;
+    }
 
 
     @Override

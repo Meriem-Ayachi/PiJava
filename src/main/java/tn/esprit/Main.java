@@ -31,6 +31,11 @@ public class Main {
         };
         Reservationservices reserve = new Reservationservices() {
             @Override
+            public List<hotel> rechercherParNom(String nom) {
+                return null;
+            }
+
+            @Override
             public void delete(Reservation reservation) {
 
             }

@@ -6,15 +6,11 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.image.Image?>
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.hotelAdd">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-image: url('Fxml/background.jpg'); -fx-background-size: cover;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.hotelAdd">
     <children>
-        <ImageView>
-            <Image url="resources/Fxml\background.jpg" />
-        </ImageView>
+
         <!-- Cadre bleu avec opacité faible -->
-        <AnchorPane layoutX="14.0" layoutY="39.0" prefHeight="357.0" prefWidth="570.0" style="-fx-background-color: rgba(0, 0, 255, 0.3);">
+        <AnchorPane layoutX="14.0" layoutY="39.0" prefHeight="357.0" prefWidth="570.0">
             <!-- Labels et champs du formulaire -->
             <Label fx:id="nomid" layoutX="19.0" layoutY="7.0" text="Nom" />
             <Label fx:id="nbretoilesid" layoutX="19.0" layoutY="41.0" text="Nombre etoiles" />

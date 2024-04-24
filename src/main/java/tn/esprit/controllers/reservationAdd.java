@@ -11,6 +11,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import tn.esprit.models.Reservation;
+import tn.esprit.models.hotel;
 import tn.esprit.services.Reservationservices;
 
 import java.io.IOException;
@@ -36,6 +37,11 @@ public class reservationAdd implements Initializable {
     private TextField nbrPersonnesTextField;
 
     private final Reservationservices reservationService = new Reservationservices() {
+        @Override
+        public List<hotel> rechercherParNom(String nom) {
+            return null;
+        }
+
         @Override
         public void delete(Reservation reservation) {
 

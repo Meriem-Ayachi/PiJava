@@ -6,18 +6,16 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.hotelList">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.reservationList">
     <children>
-        <Label fx:id="nomid" layoutX="19.0" layoutY="57.0" />
-        <Label fx:id="nbretoilesid" layoutX="19.0" layoutY="91.0" />
-        <Label fx:id="emplacementid" layoutX="19.0" layoutY="130.0" />
-        <Label fx:id="avisid" layoutX="14.0" layoutY="218.0" prefHeight="18.0" prefWidth="78.0" />
-        <Label layoutX="241.0" layoutY="3.0" text="list hôtel" textFill="#326f40">
+        <Label layoutX="241.0" layoutY="3.0" text="Liste des réservations" textFill="#326f40">
             <font>
                 <Font name="Sitka Text Italic" size="18.0" />
             </font>
         </Label>
-        <ListView fx:id="hotelListView" prefHeight="350.0" prefWidth="600.0" layoutY="42.0" />
-        <TextField fx:id="rechercheTextField" layoutX="39.0" layoutY="400.0" promptText="Rechercher par nom d'hôtel" />
+        <ListView fx:id="reservationListView" layoutX="39.0" layoutY="42.0" prefHeight="350.0" prefWidth="522.0" />
+
+        <!-- Champ de recherche par destination d'aller -->
+        <TextField fx:id="rechercheDestinationTextField" layoutX="39.0" layoutY="10.0" prefWidth="150.0" promptText="Recherche par destination d'aller" />
     </children>
 </AnchorPane>

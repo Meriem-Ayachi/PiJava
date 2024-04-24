@@ -1,14 +1,22 @@
 package tn.esprit.controllers;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.*;
-import javafx.scene.control.cell.TextFieldListCell;
-import javafx.util.StringConverter;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.ListCell;
+import javafx.scene.control.ListView;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 import tn.esprit.models.hotel;
 import tn.esprit.services.Hotelservices;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -18,9 +26,23 @@ public class hotelList {
     private ListView<hotel> hotelListView;
 
     @FXML
-    private TextField rechercheTextField;
+    private Label nomid;
+
+    @FXML
+    private Label nbretoilesid;
+
+    @FXML
+    private Label emplacementid;
+
+    @FXML
+    private Label avisid;
+
+    @FXML
+    private TextField rechercheTextField; // Champ de recherche
 
     private Hotelservices hotelService;
+
+    private hotel selectedHotel;
 
     public hotelList() {
         hotelService = new Hotelservices();
@@ -32,24 +54,43 @@ public class hotelList {
         List<hotel> hotels = hotelService.getAll();
 
         // Ajouter les hôtels à la liste de vue
-        ObservableList<hotel> observableHotels = FXCollections.observableArrayList(hotels);
-        hotelListView.setItems(observableHotels);
+        hotelListView.getItems().addAll(hotels);
 
-        // Ajouter un bouton "Afficher" devant chaque hôtel
+        // Personnaliser l'affichage des cellules de la liste
         hotelListView.setCellFactory(param -> new ListCell<hotel>() {
-            private final Button afficherButton = new Button("Afficher");
-
             @Override
             protected void updateItem(hotel item, boolean empty) {
                 super.updateItem(item, empty);
 
                 if (empty || item == null) {
-                    setGraphic(null);
                     setText(null);
+                    setGraphic(null);
                 } else {
-                    setGraphic(afficherButton);
-                    setText(item.getNom()); // Modifier avec le texte approprié
+                    setText(null);
+
+                    // Créer une HBox pour organiser les éléments horizontalement avec de l'espace entre eux
+                    HBox container = new HBox();
+                    container.setSpacing(300); // Ajouter de l'espace horizontal entre les éléments
+
+                    // Créer une VBox pour organiser les éléments verticalement avec de l'espace entre eux
+                    VBox infoContainer = new VBox();
+                    infoContainer.setSpacing(5); // Ajouter de l'espace vertical entre les éléments
+
+                    Label nomLabel = new Label("Nom: " + item.getNom());
+                    Label nbreEtoilesLabel = new Label("Nombre d'étoiles: " + item.getNbretoile());
+                    Label emplacementLabel = new Label("Emplacement: " + item.getEmplacement());
+                    Label avisLabel = new Label("Avis: " + item.getAvis());
+
+                    infoContainer.getChildren().addAll(nomLabel, nbreEtoilesLabel, emplacementLabel, avisLabel);
+
+                    // Créer le bouton "Afficher" pour chaque hôtel
+                    Button afficherButton = new Button("Afficher");
                     afficherButton.setOnAction(event -> afficherDetailsHotel(item));
+
+                    // Ajouter la VBox et le bouton "Afficher" à la HBox
+                   container.getChildren().addAll(infoContainer, afficherButton);
+
+                    setGraphic(container);
                 }
             }
         });
@@ -58,30 +99,45 @@ public class hotelList {
         hotelListView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue != null) {
                 // Mettre à jour les étiquettes avec les détails de l'hôtel sélectionné
-                // Vous pouvez ajouter votre code ici si nécessaire
+                nomid.setText(newValue.getNom());
+                nbretoilesid.setText(newValue.getNbretoile());
+                emplacementid.setText(newValue.getEmplacement());
+                avisid.setText(newValue.getAvis());
+                selectedHotel = newValue;
             }
         });
 
-        // Mettre en place la fonctionnalité de recherche
-        setupRecherche();
-    }
-
-    private void afficherDetailsHotel(hotel hotel) {
-        // Ajouter votre logique d'affichage des détails de l'hôtel ici
-    }
-
-    private void setupRecherche() {
+        // Ajouter un écouteur sur le champ de recherche
         rechercheTextField.textProperty().addListener((observable, oldValue, newValue) -> {
-            if (newValue == null || newValue.isEmpty()) {
-                // Si le champ de recherche est vide, afficher tous les hôtels
-                hotelListView.getItems().setAll(hotelService.getAll());
-            } else {
-                // Filtrer les hôtels selon le texte de recherche
-                List<hotel> filteredHotels = hotelService.getAll().stream()
-                        .filter(h -> h.getNom().toLowerCase().contains(newValue.toLowerCase()))
-                        .collect(Collectors.toList());
-                hotelListView.getItems().setAll(filteredHotels);
-            }
+            rechercherParNom(newValue);
         });
+    }
+
+    // Méthode pour afficher les détails de l'hôtel sélectionné
+    private void afficherDetailsHotel(hotel hotel) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Fxml/hotelAfficher.fxml"));
+            Parent root = loader.load();
+
+            // Passer l'hotel sélectionné au contrôleur de la vue hotelAfficher.fxml
+            hotelAfficher controller = loader.getController();
+            controller.setSelectedHotel(hotel);
+
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    // Méthode pour rechercher un hôtel par nom
+    private void rechercherParNom(String nom) {
+        List<hotel> hotels = hotelService.getAll();
+        List<hotel> filteredHotels = hotels.stream()
+                .filter(h -> h.getNom().toLowerCase().contains(nom.toLowerCase()))
+                .collect(Collectors.toList());
+        hotelListView.getItems().clear();
+        hotelListView.getItems().addAll(filteredHotels);
     }
 }

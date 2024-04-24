@@ -6,7 +6,10 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import tn.esprit.models.Reservation;
+import tn.esprit.models.hotel;
 import tn.esprit.services.Reservationservices;
+
+import java.util.List;
 
 public class reservationModifier {
 
@@ -31,6 +34,11 @@ public class reservationModifier {
 
     private Reservation reservationToModify;
     private Reservationservices reservationService = new Reservationservices() {
+        @Override
+        public List<hotel> rechercherParNom(String nom) {
+            return null;
+        }
+
         @Override
         public void delete(Reservation reservation) {
 

@@ -8,12 +8,15 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import tn.esprit.models.Reservation;
+import tn.esprit.models.hotel;
 import tn.esprit.services.Reservationservices;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class reservationList {
 
@@ -38,12 +41,20 @@ public class reservationList {
     @FXML
     private Label nbrPersonnesLabel;
 
+    @FXML
+    private TextField rechercheDestinationTextField; // Champ de recherche par destination d'aller
+
     private Reservationservices reservationService;
 
     private Reservation selectedReservation;
 
     public reservationList() {
         reservationService = new Reservationservices() {
+            @Override
+            public List<hotel> rechercherParNom(String nom) {
+                return null;
+            }
+
             @Override
             public void delete(Reservation reservation) {
 
@@ -91,6 +102,11 @@ public class reservationList {
                 selectedReservation = newValue;
             }
         });
+
+        // Ajouter un écouteur sur le champ de recherche de destination d'aller
+        rechercheDestinationTextField.textProperty().addListener((observable, oldValue, newValue) -> {
+            rechercherParDestination(newValue);
+        });
     }
 
     // Méthode pour afficher les détails de la réservation sélectionnée
@@ -109,5 +125,15 @@ public class reservationList {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    // Méthode pour rechercher les réservations par destination d'aller
+    private void rechercherParDestination(String destination) {
+        List<Reservation> reservations = reservationService.getAll();
+        List<Reservation> filteredReservations = reservations.stream()
+                .filter(r -> r.getDestinationdepart().toLowerCase().contains(destination.toLowerCase()))
+                .collect(Collectors.toList());
+        reservationListView.getItems().clear();
+        reservationListView.getItems().addAll(filteredReservations);
     }
 }

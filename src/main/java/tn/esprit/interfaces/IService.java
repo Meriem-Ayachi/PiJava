@@ -1,6 +1,7 @@
 package tn.esprit.interfaces;
 
 import tn.esprit.models.Reservation;
+import tn.esprit.models.hotel;
 
 import java.util.List;
 
@@ -16,6 +17,8 @@ public interface IService <T>{
 
     void generatePDF(List<Reservation> reservations, String filePath);
 
+
+    List<hotel> rechercherParNom(String nom);
 
     void delete(T t);
 

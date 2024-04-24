@@ -3,6 +3,7 @@ package tn.esprit.services;
 import tn.esprit.interfaces.IService;
 import tn.esprit.models.Reservation;
 import tn.esprit.models.User;
+import tn.esprit.models.hotel;
 
 import java.util.List;
 
@@ -20,6 +21,11 @@ public class UserService implements IService <User> {
     @Override
     public void generatePDF(List<Reservation> reservations, String filePath) {
 
+    }
+
+    @Override
+    public List<hotel> rechercherParNom(String nom) {
+        return null;
     }
 
     @Override

@@ -9,9 +9,11 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
 import tn.esprit.models.Reservation;
+import tn.esprit.models.hotel;
 import tn.esprit.services.Reservationservices;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Optional;
 
 public class reservationAfficher {
@@ -36,6 +38,11 @@ public class reservationAfficher {
 
     private Reservation selectedReservation;
     private Reservationservices reservationService = new Reservationservices() {
+        @Override
+        public List<hotel> rechercherParNom(String nom) {
+            return null;
+        }
+
         @Override
         public void delete(Reservation reservation) {
 

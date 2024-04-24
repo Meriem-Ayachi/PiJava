@@ -75,7 +75,6 @@ public class ModifierReclamationAdmin {
         }
         Navigator nav =new Navigator();
         nav.goToPage_WithEvent("/AfficherReclamationAdmin.fxml" , event);
-
     }
 
     private void afficherErreur(String message) {

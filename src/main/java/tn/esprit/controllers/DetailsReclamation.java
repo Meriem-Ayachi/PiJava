@@ -2,13 +2,17 @@ package tn.esprit.controllers;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.layout.AnchorPane;
 import tn.esprit.models.Reclamation;
 import tn.esprit.services.ReclamationService;
 import javafx.stage.Stage;
 import javafx.scene.control.Button;
 
-
+import java.io.IOException;
 
 
 public class DetailsReclamation {
@@ -124,9 +128,22 @@ public class DetailsReclamation {
             ((Stage) sujetLabel.getScene().getWindow()).close();
         }
     }
+
     @FXML
-    public void initialize() {
-        // Initialiser le service de réclamation
-        reclamationService = new ReclamationService();
+    void Comments(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherCommentaireReclamationUser.fxml"));
+        AnchorPane detailsReclamationPane = loader.load();
+
+        // Obtenir le contrôleur associé à l'interface
+        AfficherCommentaireReclamationUser controller = loader.getController();
+
+        // Appeler la méthode pour initialiser les détails de la réclamation
+        controller.initialize(reclamation);
+
+        // Afficher l'interface dans une nouvelle fenêtre
+        Stage stage = new Stage();
+        stage.setScene(new Scene(detailsReclamationPane));
+        stage.show();
+
     }
 }

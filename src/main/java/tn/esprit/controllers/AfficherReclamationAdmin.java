@@ -114,7 +114,7 @@ public class AfficherReclamationAdmin {
             }
 
         }else{
-            showError("Vous devez sélectionner une location");
+            showError("Vous devez sélectionner une Réclamation");
         }
 
     }

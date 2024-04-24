@@ -46,6 +46,10 @@ public class sidebarAdmin {
     }
 
 
+    public void directToListeReclamation(ActionEvent actionEvent) {
+        Navigator nav = new Navigator();
+        nav.goToPage_WithEvent("/AfficherReclamationAdmin.fxml", actionEvent);
+    }
 }
 
 

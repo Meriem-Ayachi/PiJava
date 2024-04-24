@@ -1,89 +1,53 @@
 package tn.esprit.controllers;
+import io.github.cdimascio.dotenv.Dotenv;
+import io.github.cdimascio.dotenv.DotenvEntriesFilter;
+import io.github.cdimascio.dotenv.DotenvEntry;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import tn.esprit.models.Reclamation;
+import tn.esprit.models.User;
+import tn.esprit.models.session;
 import tn.esprit.services.ReclamationService;
+import com.twilio.Twilio;
+import com.twilio.rest.api.v2010.account.Message;
+import com.twilio.type.PhoneNumber;
+import tn.esprit.services.UserService;
+import tn.esprit.util.Navigator;
 
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Set;
 
 
 public class ModifierReclamationAdmin {
 
-    @FXML
-    private TextField dateSouTF;
+    private static final Dotenv dotenv = Dotenv.load();
+    private static final String ACCOUNT_SID = dotenv.get("ACCOUNT_SID");
+    private static final String AUTH_TOKEN = dotenv.get("AUTH_TOKEN");
 
-    @FXML
-    private TextArea descriptionTF;
+    static {
+        Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
+    }
 
     @FXML
     private CheckBox estTraiteCB;
 
-    @FXML
-    private TextField sujetTF;
-
-    @FXML
-    private ComboBox<?> userIDCB;
-
-    @FXML
-    private TextField idTF;
-
-
-    @FXML
-    void AfficherReclamations(ActionEvent event) {
-
-    }
-
-    @FXML
-    void recupB(ActionEvent event) {
-        ReclamationService rs=new ReclamationService();
-        int id= Integer.parseInt(idTF.getText());
-        Reclamation r=rs.getOne(id);
-        sujetTF.setText(r.getSujet());
-        descriptionTF.setText(r.getDescription());
+    private Reclamation currentRec ;
+    public void initialize(Reclamation reclamation) {
+        currentRec = reclamation;
+        estTraiteCB.setSelected(reclamation.getEst_traite() == 1 ? true : false);
     }
 
     @FXML
     void modifierReclamation(ActionEvent event) {
-        // Vérifier si le champ sujet est vide
-        if (sujetTF.getText().isEmpty()) {
-            afficherErreur("Veuillez saisir un sujet.");
-            return;
-        }
-        if (sujetTF.getText().length() < 3) {
-            afficherErreur("Le sujet doit comporter au moins 3 caractères.");
-            return;
-        }
-
-        // Vérifier si le champ description est vide
-        if (descriptionTF.getText().isEmpty()) {
-            afficherErreur("Veuillez saisir une description.");
-            return;
-        }
-        if (descriptionTF.getText().length() < 3) {
-            afficherErreur("La description doit comporter au moins 3 caractères.");
-            return;
-        }
-        // Récupérer la date et l'heure actuelles
-        LocalDateTime currentDateTime = LocalDateTime.now();
-
-        // Formater la date et l'heure actuelles
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-        String formattedDateTime = currentDateTime.format(formatter);
-
-        // Définir le texte du libellé pour afficher la date et l'heure actuelles
-        dateSouTF.setText(formattedDateTime);
 
         ReclamationService reclamationService = new ReclamationService();
-        Reclamation reclamation = new Reclamation();
-        reclamation.setId(Integer.parseInt(idTF.getText()));
-        reclamation.setSujet(sujetTF.getText());
-        reclamation.setDescription(descriptionTF.getText());
-        reclamation.setDatesoummission(Timestamp.valueOf(currentDateTime)); // Utilisez directement currentDateTime
+        Reclamation reclamation = currentRec;
         reclamation.setEst_traite(estTraiteCB.isSelected()? (byte) 1 : (byte) 0);
-        reclamation.setUser_id(1);
         System.out.println(reclamation);
         {
             reclamationService.update(reclamation);
@@ -92,6 +56,26 @@ public class ModifierReclamationAdmin {
             alert.setContentText("Réclamation modifiée avec succés");
             alert.showAndWait();
         }
+        if (estTraiteCB.isSelected() == true ) {
+
+            UserService us = new UserService();
+            User user = us.getOne(reclamation.getUser_id());
+
+            // Supposons que vous ayez un objet Utilisateur représentant l'utilisateur connecté
+            String numeroTelephone = "+216" + user.getNum_tel();
+
+            // Envoyez un SMS à l'utilisateur
+            Message message = Message.creator(
+                    new PhoneNumber(numeroTelephone),
+                    new PhoneNumber("+14013714143"),
+                    "Votre réclamation a été modifiée avec succès."
+            ).create();
+            // Affichez un message de confirmation
+            System.out.println("Message SID: " + message.getSid());
+        }
+        Navigator nav =new Navigator();
+        nav.goToPage_WithEvent("/AfficherReclamationAdmin.fxml" , event);
+
     }
 
     private void afficherErreur(String message) {
@@ -108,6 +92,11 @@ public class ModifierReclamationAdmin {
         alert.showAndWait();
     }*/
 
+    @FXML
+    void back(ActionEvent event) {
+        Navigator nav =new Navigator();
+        nav.goToPage_WithEvent("/AfficherReclamationAdmin.fxml" , event);
+    }
 
 }
 

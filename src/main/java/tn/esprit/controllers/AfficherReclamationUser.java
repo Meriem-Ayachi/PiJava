@@ -1,5 +1,6 @@
 package tn.esprit.controllers;
 
+import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -13,7 +14,10 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import tn.esprit.models.Reclamation;
+import tn.esprit.models.User;
+import tn.esprit.models.session;
 import tn.esprit.services.ReclamationService;
+import tn.esprit.services.UserService;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -42,20 +46,26 @@ public class AfficherReclamationUser {
     void initialize(){
 
         try{
-            List<Reclamation> reclamations = rs.getAll();
+            int userId = session.id_utilisateur;
+            List<Reclamation> reclamations = rs.getAllByUserId(userId);
             ObservableList<Reclamation> observableList = FXCollections.observableList(reclamations);
             tableview.setItems(observableList);
             DateSoumissionCol.setCellValueFactory(new PropertyValueFactory<>("datesoummission"));
             DescriptionCol.setCellValueFactory(new PropertyValueFactory<>("description"));
-            NomPrenomCol.setCellValueFactory(new PropertyValueFactory<>("Nom et Prenom"));
-            SujetCol.setCellValueFactory(new PropertyValueFactory<>("sujet"));
+            NomPrenomCol.setCellValueFactory(cellData -> {
+                UserService us = new UserService();
+                Reclamation reclamation = cellData.getValue();
+                User user = us.getOne(reclamation.getUser_id()); // Supposons que la méthode getUserId() récupère l'ID de l'utilisateur
+                String nom = user.getNom();
+                String prenom = user.getPrenom();
+                return new SimpleStringProperty(nom + " " + prenom);
+            });            SujetCol.setCellValueFactory(new PropertyValueFactory<>("sujet"));
 
         } catch (Exception e) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
             alert.setContentText(e.getMessage());
             alert.showAndWait();
-
         }
 
     }
@@ -80,6 +90,10 @@ public class AfficherReclamationUser {
             stage.setScene(new Scene(detailsReclamationPane));
             stage.show();
         }
+    }
+    @FXML
+    void Refresh(ActionEvent event) {
+        tableview.setItems(FXCollections.observableArrayList(rs.getAllByUserId(session.id_utilisateur)));
     }
 
 }

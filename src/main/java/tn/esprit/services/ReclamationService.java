@@ -128,6 +128,33 @@ public class ReclamationService  implements IService<Reclamation> {
             throw new RuntimeException(e);
         }
     }
+
+    public List<Reclamation> getAllByUserId(int userId) {
+        List<Reclamation> reclamations = new ArrayList<>();
+
+        String req = "SELECT * FROM reclamation WHERE user_id = ?";
+        try {
+            PreparedStatement ps = cnx.prepareStatement(req);
+            ps.setInt(1, userId);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Reclamation reclamation = new Reclamation();
+                reclamation.setId(rs.getInt("id"));
+                reclamation.setSujet(rs.getString("sujet"));
+                reclamation.setDescription(rs.getString("description"));
+                reclamation.setDatesoummission(rs.getTimestamp("datesoumission"));
+                reclamation.setEst_traite(rs.getByte("est_traite"));
+                reclamation.setUser_id(rs.getInt("user_id"));
+
+                reclamations.add(reclamation);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return reclamations;
+    }
+
+
 }
 
 

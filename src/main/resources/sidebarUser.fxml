@@ -38,7 +38,7 @@
                                         </Label>
                                         <Line endX="104.99998474121094" endY="-7.62939453125E-6" layoutX="95.0" layoutY="115.0" startX="-100.0" />
                                         
-                                        <Button layoutX="11.0" layoutY="134.0" mnemonicParsing="false" onAction="#directToHomepage" prefHeight="30.0" prefWidth="180.0" text="Homepage">
+                                        <Button layoutX="11.0" layoutY="134.0" mnemonicParsing="false" onAction="#directToListeReclamationUser" prefHeight="30.0" prefWidth="180.0" text="Liste des réclamations">
                                             <graphic>
                                                 <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
                                                     <image>

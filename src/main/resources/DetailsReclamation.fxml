@@ -9,6 +9,8 @@
     <children>
         <Label fx:id="sujetLabel" layoutX="28.0" layoutY="28.0" text="Sujet :" />
         <Label fx:id="descriptionLabel" layoutX="28.0" layoutY="63.0" text="Description :" />
+        <Label fx:id="sujetLabel_modifier" layoutX="28.0" layoutY="28.0" text="Sujet :" visible="false"/>
+        <Label fx:id="descriptionLabel_modifier" layoutX="28.0" layoutY="63.0" text="Description :" visible="false"/>
         <TextField fx:id="sujetTextField" layoutX="100.0" layoutY="28.0" visible="false" />
         <TextField fx:id="descriptionTextField" layoutX="100.0" layoutY="63.0" visible="false" />
       <Button fx:id="modifierButton" layoutX="148.0" layoutY="113.0" mnemonicParsing="false" onAction="#modifierReclamationBTN" text="Modifier" />

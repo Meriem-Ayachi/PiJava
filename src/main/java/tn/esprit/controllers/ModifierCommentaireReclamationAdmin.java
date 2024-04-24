@@ -2,12 +2,20 @@ package tn.esprit.controllers;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
+import tn.esprit.models.Reclamation;
 import tn.esprit.models.Reclamation_Commentaire;
+import tn.esprit.services.ReclamationService;
 import tn.esprit.services.Reclamation_CommentaireService;
+import tn.esprit.util.Navigator;
 
+import java.io.IOException;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -17,33 +25,16 @@ public class ModifierCommentaireReclamationAdmin {
     @FXML
     private TextField contenuTF;
 
+    Reclamation_CommentaireService commentaireService = new Reclamation_CommentaireService();
+    ReclamationService rs = new ReclamationService();
+    Reclamation currentRec ;
+    Reclamation_Commentaire currentComm;
     @FXML
-    private TextField dateCreaTF;
+    void initialize(int commentaireID) {
+        currentComm = commentaireService.getOne(commentaireID);
+        contenuTF.setText(currentComm.getContenu());
 
-    @FXML
-    private TextField idTF;
-
-    @FXML
-    private ComboBox<Integer> reclamationIdCB;
-
-
-    @FXML
-    void recupB(ActionEvent event) {
-        Reclamation_CommentaireService commentaireService = new Reclamation_CommentaireService();
-        int id = Integer.parseInt(idTF.getText());
-        Reclamation_Commentaire commentaire = commentaireService.getOne(id);
-        if (commentaire != null) {
-            contenuTF.setText(commentaire.getContenu());
-            dateCreaTF.setText(commentaire.getDate_creation().toString()); // Assurez-vous que le format de date convient
-            reclamationIdCB.setValue(commentaire.getReclamation_id());
-
-        } else {
-            // Gérer le cas où le commentaire n'est pas trouvé
-            contenuTF.setText("");
-            dateCreaTF.setText("");
-            reclamationIdCB.setValue(null);
-            afficherErreur("Commentaire non trouvé");
-        }
+        currentRec = rs.getOne(currentComm.getReclamation_id());
     }
 
     @FXML
@@ -59,38 +50,44 @@ public class ModifierCommentaireReclamationAdmin {
             return;
         }
 
-        // Récupérer la date et l'heure actuelles
-        LocalDateTime currentDateTime = LocalDateTime.now();
-
-        // Formater la date et l'heure actuelles
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-        String formattedDateTime = currentDateTime.format(formatter);
-
-        // Définir le texte du libellé pour afficher la date et l'heure actuelles
-        dateCreaTF.setText(formattedDateTime);
-
-        Reclamation_CommentaireService commentaireService = new Reclamation_CommentaireService();
-        Reclamation_Commentaire commentaire = new Reclamation_Commentaire();
-        commentaire.setId(Integer.parseInt(idTF.getText()));
-        commentaire.setContenu(contenuTF.getText());
-        commentaire.setDate_creation(Timestamp.valueOf(currentDateTime)); // Utilisez directement currentDateTime
-        commentaire.setUser_id(1);
-        commentaire.setReclamation_id(reclamationIdCB.getValue());
-
-
+        currentComm.setContenu(contenuTF.getText());
 
         {
-            commentaireService.update(commentaire);
+            commentaireService.update(currentComm);
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setTitle("Success");
             alert.setContentText("Commentaire modifié avec succés");
             alert.showAndWait();
         }
+        try{
+            GoToCommentaires(event);
+        } catch (Exception e)
+        {
+            e.getMessage();
+        }
+
+
     }
     private void afficherErreur(String message) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle("Erreur");
         alert.setContentText(message);
         alert.showAndWait();
+    }
+
+    private void GoToCommentaires(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherCommentaireReclamationAdmin.fxml"));
+        Parent root = loader.load();
+
+        // Obtenir le contrôleur associé à l'interface
+        AfficherCommentaireReclamationAdmin controller = loader.getController();
+
+        // Appeler la méthode pour initialiser les détails de la réclamation
+        controller.initialize(currentRec);
+
+        Scene scene = new Scene(root);
+        Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
     }
 }

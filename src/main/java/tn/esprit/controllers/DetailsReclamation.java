@@ -27,6 +27,12 @@ public class DetailsReclamation {
     private Label sujetLabel;
 
     @FXML
+    private Label sujetLabel_modifier;
+
+    @FXML
+    private Label descriptionLabel_modifier;
+
+    @FXML
     private TextField sujetTextField;
     private Reclamation reclamation;
     private ReclamationService reclamationService = new ReclamationService();
@@ -39,9 +45,6 @@ public class DetailsReclamation {
     private Button supprimerButton;
     @FXML
     private Button commentaireButton;
-
-
-
 
 
     // Méthode pour initialiser les détails de la réclamation dans l'interface
@@ -67,6 +70,8 @@ public class DetailsReclamation {
             descriptionTextField.setVisible(true);
             sujetTextField.setEditable(true);
             descriptionTextField.setEditable(true);
+            sujetLabel_modifier.setVisible(true);
+            descriptionLabel_modifier.setVisible(true);
 
             // Masquer les labels et autres boutons
             sujetLabel.setVisible(false);

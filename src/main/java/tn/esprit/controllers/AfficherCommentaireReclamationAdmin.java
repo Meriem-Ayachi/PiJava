@@ -24,7 +24,7 @@ import tn.esprit.util.Navigator;
 import java.io.IOException;
 import java.util.List;
 
-public class AfficherCommentaireReclamationUser {
+public class AfficherCommentaireReclamationAdmin {
 
     @FXML
     private TextFlow commentsTextFlow;
@@ -42,8 +42,7 @@ public class AfficherCommentaireReclamationUser {
         refresh();
     }
 
-    @FXML
-    private void addComment(String username, String comment) {
+    private void addComment_withDelete(String username, String comment, int commentId) {
         Text usernameText = new Text(username + ": ");
         usernameText.setStyle("-fx-font-weight: bold; -fx-fill: blue;");
 
@@ -52,13 +51,19 @@ public class AfficherCommentaireReclamationUser {
         commentContent.setFont(Font.font("Arial", Font.getDefault().getSize()));
         commentContent.setWrappingWidth(MAX_TEXT_WIDTH);
 
-        TextFlow commentFlow = new TextFlow(usernameText, new Text("\n"), commentContent);
+        Button deleteButton = new Button("Delete");
+        deleteButton.setOnAction(event -> {
+            rcs.delete(commentId);
+            refresh();
+        });
+
+        TextFlow commentFlow = new TextFlow(usernameText, new Text("\n"), commentContent, new Text("\n"), deleteButton );
         commentFlow.setMaxWidth(MAX_TEXT_WIDTH);
 
         commentsTextFlow.getChildren().addAll(commentFlow, new Text("\n\n"));
     }
 
-    private void addComment_withDelete(String username, String comment, int commentId) {
+    private void addComment_withDeleteAndUpdate(String username, String comment, int commentId) {
         Text usernameText = new Text(username + ": ");
         usernameText.setStyle("-fx-font-weight: bold; -fx-fill: blue;");
 
@@ -91,19 +96,19 @@ public class AfficherCommentaireReclamationUser {
     @FXML
     void AddCommBTN(ActionEvent event) throws IOException {
 
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/AjouterCommentaireReclamationUser.fxml"));
-            Parent root = loader.load();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/AjouterCommentaireReclamationAdmin.fxml"));
+        Parent root = loader.load();
 
-            // Obtenir le contrôleur associé à l'interface
-            AjouterCommentaireReclamationUser controller = loader.getController();
+        // Obtenir le contrôleur associé à l'interface
+        AjouterCommentaireReclamationAdmin controller = loader.getController();
 
-            // Appeler la méthode pour initialiser les détails de la réclamation
-            controller.initialize(currentRec);
+        // Appeler la méthode pour initialiser les détails de la réclamation
+        controller.initialize(currentRec);
 
-            Scene scene = new Scene(root);
-            Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
-            stage.setScene(scene);
-            stage.show();
+        Scene scene = new Scene(root);
+        Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
 
     }
 
@@ -115,9 +120,9 @@ public class AfficherCommentaireReclamationUser {
             User user = us.getOne(commentaire.getUser_id());
             String username = user.getNom() + " " + user.getPrenom();
             if (session.id_utilisateur == user.getId()) {
-                addComment_withDelete(username, commentaire.getContenu(), commentaire.getId());
+                addComment_withDeleteAndUpdate(username, commentaire.getContenu(), commentaire.getId());
             } else {
-                addComment(username, commentaire.getContenu());
+                addComment_withDelete(username, commentaire.getContenu(), commentaire.getId());
             }
         }
     }
@@ -130,11 +135,11 @@ public class AfficherCommentaireReclamationUser {
     }
 
     private void GoToUpdate (ActionEvent event ,int commentID) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/ModifierCommentaireReclamationUser.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/ModifierCommentaireReclamationAdmin.fxml"));
         Parent root = loader.load();
 
         // Obtenir le contrôleur associé à l'interface
-        ModifierCommentaireReclamationUser controller = loader.getController();
+        ModifierCommentaireReclamationAdmin controller = loader.getController();
 
         // Appeler la méthode pour initialiser les détails de la réclamation
         controller.initialize(commentID);
@@ -145,3 +150,5 @@ public class AfficherCommentaireReclamationUser {
         stage.show();
     }
 }
+
+

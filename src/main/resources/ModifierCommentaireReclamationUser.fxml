@@ -14,11 +14,8 @@
             <Font size="30.0" />
          </font>
       </Label>
-      <TextField fx:id="idTF" layoutX="50.0" layoutY="103.0" promptText="id" />
       <TextField fx:id="contenuTF" layoutX="51.0" layoutY="155.0" promptText="Contenu" />
-      <TextField fx:id="dateCreaTF" layoutX="328.0" layoutY="103.0" />
-      <ComboBox fx:id="reclamationIdCB" layoutX="50.0" layoutY="215.0" prefWidth="150.0" promptText="ReclamationID" />
+
       <Button layoutX="377.0" layoutY="295.0" mnemonicParsing="false" onAction="#modifierCommentaire" text="Modifier" />
-      <Button layoutX="92.0" layoutY="295.0" mnemonicParsing="false" onAction="#recupB" text="Récupérer" />
    </children>
 </AnchorPane>

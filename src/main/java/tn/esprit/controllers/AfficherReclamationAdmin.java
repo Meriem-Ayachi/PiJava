@@ -141,6 +141,35 @@ public class AfficherReclamationAdmin {
     void onTableRowClicked() {
         selectedReclamation = tableview.getSelectionModel().getSelectedItem();
     }
+
+
+
+    @FXML
+    void GoToCommentaire(ActionEvent event) {
+        if (selectedReclamation != null) {
+            Reclamation reclamation = rs.getOne(selectedReclamation.getId());
+
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherCommentaireReclamationAdmin.fxml"));
+                Parent root = loader.load();
+
+                // pass param
+                AfficherCommentaireReclamationAdmin controller = loader.getController();
+                controller.initialize(reclamation);
+
+                Scene scene = new Scene(root);
+                Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+        }else{
+            showError("Vous devez sélectionner une réclamation");
+        }
+
+    }
 }
 
 

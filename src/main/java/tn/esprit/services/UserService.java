@@ -5,6 +5,7 @@ import tn.esprit.models.Reservation;
 import tn.esprit.models.User;
 import tn.esprit.models.hotel;
 
+import java.time.LocalDate;
 import java.util.List;
 
 public class UserService implements IService <User> {
@@ -45,6 +46,11 @@ public class UserService implements IService <User> {
 
     @Override
     public User getOne(int id) {
+        return null;
+    }
+
+    @Override
+    public List<Reservation> getReservationByDate(LocalDate dateSelectionnee) {
         return null;
     }
 }

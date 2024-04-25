@@ -6,6 +6,7 @@ import tn.esprit.models.hotel;
 import tn.esprit.util.MaConnexion;
 
 import java.sql.*;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -117,6 +118,11 @@ public  class Hotelservices implements IService<hotel> {
     @Override
     public hotel getOne(int id) {
         // Implémenter la récupération d'un hôtel par son ID
+        return null;
+    }
+
+    @Override
+    public List<Reservation> getReservationByDate(LocalDate dateSelectionnee) {
         return null;
     }
 }

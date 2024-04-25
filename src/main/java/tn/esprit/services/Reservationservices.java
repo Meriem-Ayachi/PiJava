@@ -5,7 +5,10 @@ import tn.esprit.models.Reservation;
 import tn.esprit.util.MaConnexion;
 
 import java.sql.*;
+import java.time.LocalDate;
+import java.time.YearMonth;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 
@@ -183,6 +186,57 @@ public abstract class Reservationservices implements IService<Reservation> {
         return reservation;
     }
 
+
+    @Override
+    public List<Reservation> getReservationByDate(LocalDate dateSelectionnee) {
+        List<Reservation> rdvs = new ArrayList<>();
+        String query = "SELECT * FROM reservation WHERE datedepart = ?";
+        try (PreparedStatement statement = cnx.prepareStatement(query)) {
+            statement.setString(1, dateSelectionnee.toString());
+            try (ResultSet resultSet = statement.executeQuery()) {
+                while (resultSet.next()) {
+                    Reservation rdv = new Reservation();
+                    rdv.setId(resultSet.getInt("id"));
+                    rdv.setDatedepart(resultSet.getString("datedepart"));
+                    rdv.setDateretour(resultSet.getString("dateretour"));
+                    rdv.setClasse(resultSet.getString("classe"));
+                    rdv.setDestinationdepart(resultSet.getString("destinationdepart"));
+                    rdv.setDestinationretour(resultSet.getString("destinationretour"));
+                    rdv.setNbrdepersonne(resultSet.getInt("nbrdepersonne"));
+                    rdvs.add(rdv);
+                }
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException("Error retrieving reservations for date " + dateSelectionnee, e);
+        }
+        return rdvs;
+    }
+
+
+    public List<Reservation> getReservationsForMonth(YearMonth currentYearMonth) {
+        List<Reservation> reservationsForMonth = new ArrayList<>();
+        String query = "SELECT * FROM reservation WHERE MONTH(datedepart) = ? AND YEAR(datedepart) = ?";
+        try (PreparedStatement statement = cnx.prepareStatement(query)) {
+            statement.setInt(1, currentYearMonth.getMonthValue());
+            statement.setInt(2, currentYearMonth.getYear());
+            try (ResultSet resultSet = statement.executeQuery()) {
+                while (resultSet.next()) {
+                    Reservation reservation = new Reservation();
+                    reservation.setId(resultSet.getInt("id"));
+                    reservation.setDatedepart(resultSet.getString("datedepart"));
+                    reservation.setDateretour(resultSet.getString("dateretour"));
+                    reservation.setClasse(resultSet.getString("classe"));
+                    reservation.setDestinationdepart(resultSet.getString("destinationdepart"));
+                    reservation.setDestinationretour(resultSet.getString("destinationretour"));
+                    reservation.setNbrdepersonne(resultSet.getInt("nbrdepersonne"));
+                    reservationsForMonth.add(reservation);
+                }
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException("Error retrieving reservations for month " + currentYearMonth, e);
+        }
+        return reservationsForMonth;
+    }
 
 }
 

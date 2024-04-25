@@ -3,6 +3,7 @@ package tn.esprit.interfaces;
 import tn.esprit.models.Reservation;
 import tn.esprit.models.hotel;
 
+import java.time.LocalDate;
 import java.util.List;
 
 public interface IService <T>{
@@ -29,6 +30,8 @@ public interface IService <T>{
 
     //5 : One
     T getOne(int id);
+
+    List<Reservation> getReservationByDate(LocalDate dateSelectionnee);
 
     //6 : by criteria
 

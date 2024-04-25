@@ -135,6 +135,18 @@ public class Addvol {
         destinationTF.getScene().setRoot(root);
     }
 
+    @FXML
+    void gotopromolist(ActionEvent event) {
+        Parent root = null;
+        try {
+            root = FXMLLoader.load(getClass().getResource("/PromoVolsList.fxml"));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        destinationTF.getScene().setRoot(root);
+    }
+
+
     private void afficherErreur(String message) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Erreur");

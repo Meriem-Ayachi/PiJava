@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
@@ -9,9 +12,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<?import javafx.scene.control.ComboBox?>
-<?import javafx.collections.FXCollections?>
-<?import java.lang.String?>
 <AnchorPane prefHeight="540" prefWidth="960" style="-fx-background-image: url('file:/C:/Users/melek/Desktop/plane.jpg'); -fx-background-color: rgba(0, 0, 0, 0.5);" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.Addvol">    <children>
         <Label layoutX="306.0" layoutY="82.0" text="Destination">
             <font>
@@ -63,9 +63,9 @@
     <ComboBox fx:id="classeComboBox" layoutX="403.0" layoutY="323.0" promptText="Select Class">
         <items>
             <FXCollections fx:factory="observableArrayList">
-                <String fx:value="Economy"/>
-                <String fx:value="Business"/>
-                <String fx:value="First"/>
+                <String fx:value="Economy" />
+                <String fx:value="Business" />
+                <String fx:value="First" />
             </FXCollections>
         </items>
     </ComboBox>
@@ -78,6 +78,7 @@
             </image>
         </ImageView>
       <Button layoutX="14.0" layoutY="64.0" mnemonicParsing="false" onAction="#navigate" style="-fx-background-color: #326f40; -fx-text-fill: #ffffff; -fx-font-size: 14px; -fx-font-family: 'Arial'; -fx-padding: 10px 20px;" text="Liste des Vols" />
+      <Button layoutX="14.0" layoutY="122.0" mnemonicParsing="false" onAction="#gotopromolist" style="-fx-background-color: #326f40; -fx-text-fill: #ffffff; -fx-font-size: 14px; -fx-font-family: 'Arial'; -fx-padding: 10px 20px;" text="Liste des Promos" />
     </children>
 
 </AnchorPane>

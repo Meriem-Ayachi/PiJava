@@ -117,16 +117,27 @@ public abstract class VolService implements IService<Vols> {
             statement.setInt(1, id);
             try (ResultSet resultSet = statement.executeQuery()) {
                 if (resultSet.next()) {
+                    // Create a new Vols object
                     vols = new Vols();
+                    // Set all relevant fields from the ResultSet
                     vols.setId(resultSet.getInt("id"));
+                    vols.setNbrescale(resultSet.getInt("nbrescale"));
+                    vols.setNbrplace(resultSet.getInt("nbrplace"));
+                    vols.setDuree(resultSet.getString("duree"));
+                    vols.setDatedepart(resultSet.getString("datedepart"));
+                    vols.setDatearrive(resultSet.getString("datearrive"));
+                    vols.setClasse(resultSet.getString("classe"));
+                    vols.setDestination(resultSet.getString("destination"));
+                    vols.setPointdepart(resultSet.getString("pointdepart"));
+                    vols.setPrix(resultSet.getDouble("prix"));
                 }
             }
         } catch (SQLException e) {
-            throw new RuntimeException("Error retrieving reservation with ID " + id, e);
+            throw new RuntimeException("Error retrieving flight with ID " + id, e);
         }
         return vols;
-
     }
+
 
     public List<Integer> getAllFlightIds() throws SQLException {
         List<Integer> flightIds = new ArrayList<>();

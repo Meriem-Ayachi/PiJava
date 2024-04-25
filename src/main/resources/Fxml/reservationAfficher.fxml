@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-image: url('Fxml/background.jpg'); -fx-background-size: cover;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.reservationAfficher">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-image: url('Fxml/background22.jpeg'); -fx-background-size: cover;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.reservationAfficher">
     <children>
         <Label fx:id="dateDepartLabel" layoutX="157.0" layoutY="68.0" />
         <Label fx:id="dateRetourLabel" layoutX="157.0" layoutY="107.0" />
@@ -14,5 +14,11 @@
         <Label fx:id="destinationRetourLabel" layoutX="157.0" layoutY="224.0" />
         <Label fx:id="nbrPersonnesLabel" layoutX="157.0" layoutY="264.0" />
         <Button fx:id="pdfButton" layoutX="460.0" layoutY="332.0" mnemonicParsing="false" onAction="#genererPDF" text="PDF" />
+
+        <!-- Bouton Modifier -->
+        <Button fx:id="modifierButton" layoutX="300.0" layoutY="332.0" mnemonicParsing="false" onAction="#updateReservation" text="Modifier" />
+
+        <!-- Bouton Supprimer -->
+        <Button fx:id="supprimerButton" layoutX="380.0" layoutY="332.0" mnemonicParsing="false" onAction="#supprimerReservation" text="Supprimer" />
     </children>
 </AnchorPane>

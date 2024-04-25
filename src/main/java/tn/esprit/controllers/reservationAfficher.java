@@ -1,5 +1,6 @@
 package tn.esprit.controllers;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -206,5 +207,8 @@ public class reservationAfficher {
     @FXML
     private void fermerFenetre() {
         dateDepartLabel.getScene().getWindow().hide();
+    }
+
+    public void sauvegarderModification(ActionEvent actionEvent) {
     }
 }

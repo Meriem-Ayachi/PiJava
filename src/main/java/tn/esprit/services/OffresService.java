@@ -1,4 +1,5 @@
 package tn.esprit.services;
+import javafx.scene.control.Alert;
 import tn.esprit.interfaces.IService;
 import tn.esprit.models.Offres;
 
@@ -29,25 +30,32 @@ public class OffresService implements IService <Offres>{
             pre.executeUpdate();
             System.out.println("ajout avec succes");
         }
+        catch (SQLException e) {
+            System.out.println("Erreur lors de la mise à jour : " + e.getMessage());
+            // Afficher un message d'erreur dans l'interface
+            Alert errorAlert = new Alert(Alert.AlertType.ERROR);
+            errorAlert.setTitle("Erreur");
+            errorAlert.setHeaderText(null);
+            errorAlert.setContentText("Une erreur est survenue lors de la mise à jour de l'offre.");
+            errorAlert.showAndWait();
+        }
     }
 
     @Override
     public void update(Offres offres) throws SQLException {
-
-        String req = "update offres set title=?,description=?,published=?,prix=?,lieu=?,image=?,created_at=? where id=? ";
+        String req = "update offres set id=?, title=?, description=?, published=?, prix=?, lieu=?, image=?, created_at=? where id=? ";
         PreparedStatement pre = cnx.prepareStatement(req);
-        pre.setString(2,offres.getTitle());
-        pre.setString(3,offres.getDescription());
-        pre.setBoolean(4,offres.isPublished());
-        pre.setDouble(5,offres.getPrix());
-        pre.setString(6,offres.getLieu());
-        pre.setString(7,offres.getImage());
-        pre.setDate(8,offres.getCreated_at());
-        pre.setInt(1,offres.getId());
+        pre.setInt(1, offres.getId()); // Utilisation de l'index 1 pour id
+        pre.setString(2, offres.getTitle()); // Utilisation de l'index 2 pour title
+        pre.setString(3, offres.getDescription()); // Utilisation de l'index 3 pour description
+        pre.setBoolean(4, offres.isPublished()); // Utilisation de l'index 4 pour published
+        pre.setDouble(5, offres.getPrix()); // Utilisation de l'index 5 pour prix
+        pre.setString(6, offres.getLieu()); // Utilisation de l'index 6 pour lieu
+        pre.setString(7, offres.getImage()); // Utilisation de l'index 7 pour image
+        pre.setDate(8, offres.getCreated_at()); // Utilisation de l'index 8 pour created_at
+        pre.setInt(9, offres.getId()); // Utilisation de l'index 9 pour l'ID de mise à jour
         pre.executeUpdate();
-        System.out.println("mise a jour avec succes");
-
-
+        System.out.println("Mise à jour avec succès");
     }
 
     @Override

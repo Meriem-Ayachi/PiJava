@@ -43,7 +43,25 @@ public class AjouterOffre {
         try {
             // Vérifier si la dateTFO est vide
             if (dateTFO.getText().isEmpty()) {
-                throw new IllegalArgumentException("La date est vide.");
+                throw new SQLException("La date est vide.");
+            }
+            if (descriptionTFO.getText().isEmpty()) {
+                throw new SQLException("La description est vide.");
+            }
+            if (titleTFO.getText().isEmpty()) {
+                throw new SQLException("le titre est vide.");
+            }
+            if (imageTFO.getText().isEmpty()) {
+                throw new SQLException("le image est vide.");
+            }
+            if (prixTFO.getText().isEmpty()) {
+                throw new SQLException("le prix est vide.");
+            }
+            if (publishedTFO.getText().isEmpty()) {
+                throw new SQLException("le published est vide.");
+            }
+            if (lieuTFO.getText().isEmpty()) {
+                throw new SQLException("le lieu est vide.");
             }
 
             // Convertir la chaîne de texte en java.sql.Date
@@ -59,6 +77,10 @@ public class AjouterOffre {
                     imageTFO.getText(),
                     date
             ));
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Information");
+            alert.setContentText("Offre ajouter");
+            alert.showAndWait();
         } catch (SQLException e) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Erreur");

@@ -49,6 +49,7 @@ public class Offre_CommentaireService implements IService<Offre_Commentaire> {
 
             List<Offre_Commentaire> comm = new ArrayList<>();
             String req = "SELECT * FROM Offre_Commentaire ";
+            ste = cnx.createStatement();
             try (ResultSet res = ste.executeQuery(req)) {
                 while (res.next()) {
                     Offre_Commentaire commentaire = new Offre_Commentaire(
@@ -63,6 +64,26 @@ public class Offre_CommentaireService implements IService<Offre_Commentaire> {
             return comm;
         }
 
+    public List<Offre_Commentaire> getAll_byOffreId(int offre_Id) throws SQLException {
+
+
+        List<Offre_Commentaire> comm = new ArrayList<>();
+        String req = "SELECT * FROM Offre_Commentaire WHERE offres_id = ?";
+        PreparedStatement pre = cnx.prepareStatement(req);
+        pre.setInt(1, offre_Id);
+        try (ResultSet res = pre.executeQuery()) {
+            while (res.next()) {
+                Offre_Commentaire commentaire = new Offre_Commentaire(
+                        res.getInt("id"),
+                        res.getString("avis"),
+                        res.getDate("created_at"),
+                        res.getInt("offres_id"));
+
+                comm.add(commentaire);
+            }
+        }
+        return comm;
+    }
 
 
 

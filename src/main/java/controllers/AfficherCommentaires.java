@@ -41,19 +41,18 @@ public class AfficherCommentaires {
     private final OffresService em = new OffresService();
 
     @FXML
-    void intialize() {
+    void intialize(Offres offres) {
         try {
-            List<Offre_Commentaire> cm = os.getAll();
+            List<Offre_Commentaire> cm = os.getAll_byOffreId(offres.getId());
             ObservableList<Offre_Commentaire> observableList = FXCollections.observableList(cm);
             tableview.setItems(observableList);
-            AvisColO.setCellValueFactory(new PropertyValueFactory<>("AvisColO"));
-            created_atColO.setCellValueFactory(new PropertyValueFactory<>("created_atColO"));
+            AvisColO.setCellValueFactory(new PropertyValueFactory<>("avis"));
+            created_atColO.setCellValueFactory(new PropertyValueFactory<>("created_at"));
             offres_idCol.setCellValueFactory((cellData -> {
                 Offre_Commentaire offre_commentaires = cellData.getValue();
                 int id = offre_commentaires.getOffres_id();
-                String title = null;
-                title = em.getOne(id).getTitle();
-                return new ReadOnlyStringWrapper(title);
+                int offre_id = em.getOne(id).getId();
+                return new ReadOnlyStringWrapper(String.valueOf(offre_id));
             }));
 
 
@@ -96,7 +95,7 @@ public class AfficherCommentaires {
             Alert noSelectionAlert = new Alert(Alert.AlertType.WARNING);
             noSelectionAlert.setTitle("Aucune sélection");
             noSelectionAlert.setHeaderText(null);
-            noSelectionAlert.setContentText("Veuillez sélectionner un offre à supprimer.");
+            noSelectionAlert.setContentText("Veuillez sélectionner un commentaire à supprimer.");
             noSelectionAlert.showAndWait();
         }
 
@@ -115,5 +114,6 @@ public class AfficherCommentaires {
     }
 
     public void setOffre(Offres selectedOffre) {
+
     }
 }

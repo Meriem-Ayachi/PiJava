@@ -73,7 +73,7 @@ public class AfficherOffre {
             prixColO.setCellValueFactory(new PropertyValueFactory<>("prix"));
             lieuColO.setCellValueFactory(new PropertyValueFactory<>("lieu"));
             imageColO.setCellValueFactory(new PropertyValueFactory<>("image"));
-            dateColO.setCellValueFactory(new PropertyValueFactory<>("date"));
+            dateColO.setCellValueFactory(new PropertyValueFactory<>("created_at"));
 
         } catch (SQLException e) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -86,20 +86,27 @@ public class AfficherOffre {
     }
     @FXML
     void naviguer(ActionEvent event) throws Exception  {
-        Offres offres = tableview.getSelectionModel().getSelectedItem();
-        if (offres != null) {
 
-            Parent root = FXMLLoader.load(getClass().getResource("/ModifierOffre.fxml"));
-            Stage stage = (Stage) modifierO.getScene().getWindow();
-            stage.setScene(new Scene(root));
-            stage.show();
-        }else {
-            Alert noSelectionAlert = new Alert(Alert.AlertType.WARNING);
-            noSelectionAlert.setTitle("Aucune sélection");
-            noSelectionAlert.setHeaderText(null);
-            noSelectionAlert.setContentText("Veuillez sélectionner un offre à modifier.");
-            noSelectionAlert.showAndWait();
+            Offres offres = tableview.getSelectionModel().getSelectedItem();
+            if (offres != null) {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/ModiffierOffre.fxml"));
+                Parent root = loader.load();
+
+                ModiffierOffre controllers = loader.getController();
+                controllers.setOffres(offres); // Pass the Offres object to the edit controller
+
+                Stage stage = (Stage) modifierO.getScene().getWindow();
+                stage.setScene(new Scene(root));
+                stage.show();
+            } else {
+                Alert noSelectionAlert = new Alert(Alert.AlertType.WARNING);
+                noSelectionAlert.setTitle("Aucune sélection");
+                noSelectionAlert.setHeaderText(null);
+                noSelectionAlert.setContentText("Veuillez sélectionner un offre à modifier.");
+                noSelectionAlert.showAndWait();
+
         }
+
 
     }
 
@@ -153,7 +160,7 @@ public class AfficherOffre {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherCommentaires.fxml"));
                 Parent root = loader.load();
                 AfficherCommentaires controller = loader.getController();
-                controller.setOffre(selectedOffre);
+                controller.intialize(selectedOffre);
                 Stage stage = (Stage) commentaires.getScene().getWindow();
                 stage.setScene(new Scene(root));
                 stage.show();

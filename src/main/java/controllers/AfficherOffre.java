@@ -1,14 +1,16 @@
 package controllers;
 
+import javafx.beans.property.ReadOnlyStringWrapper;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 import tn.esprit.models.Offres;
 import tn.esprit.services.OffresService;
 
@@ -17,6 +19,19 @@ import java.sql.SQLException;
 import java.util.List;
 
 public class AfficherOffre {
+
+    @FXML
+    private Button commentaires;
+
+    @FXML
+    private Button modifierO;
+
+    @FXML
+    private TextField titleTFO;
+    @FXML
+    private TextField descriptionTFO;
+    @FXML
+    private TextField dateTFO;
 
     @FXML
     private TableColumn<Offres, Date> dateColO;
@@ -39,22 +54,23 @@ public class AfficherOffre {
     @FXML
     private TableView<Offres> tableview;
 
+
     @FXML
     private TableColumn<Offres, String> titleColO;
 
     private final OffresService os = new OffresService();
 
     @FXML
-    void initialize(){
+    void initialize() {
 
         try {
-            List<Offres> offres= os.getAll();
-            ObservableList<Offres>observableList=FXCollections.observableList(offres);
+            List<Offres> offres = os.getAll();
+            ObservableList<Offres> observableList = FXCollections.observableList(offres);
             tableview.setItems(observableList);
             titleColO.setCellValueFactory(new PropertyValueFactory<>("title"));
             descriptionColO.setCellValueFactory(new PropertyValueFactory<>("description"));
             publishedColO.setCellValueFactory(new PropertyValueFactory<>("published"));
-            prixColO.setCellValueFactory(new PropertyValueFactory<>("prix") );
+            prixColO.setCellValueFactory(new PropertyValueFactory<>("prix"));
             lieuColO.setCellValueFactory(new PropertyValueFactory<>("lieu"));
             imageColO.setCellValueFactory(new PropertyValueFactory<>("image"));
             dateColO.setCellValueFactory(new PropertyValueFactory<>("date"));
@@ -68,11 +84,29 @@ public class AfficherOffre {
 
 
     }
-
     @FXML
-    void ModifierO() {
+    void naviguer(ActionEvent event) throws Exception  {
+        Offres offres = tableview.getSelectionModel().getSelectedItem();
+        if (offres != null) {
+
+            Parent root = FXMLLoader.load(getClass().getResource("/ModifierOffre.fxml"));
+            Stage stage = (Stage) modifierO.getScene().getWindow();
+            stage.setScene(new Scene(root));
+            stage.show();
+        }else {
+            Alert noSelectionAlert = new Alert(Alert.AlertType.WARNING);
+            noSelectionAlert.setTitle("Aucune sélection");
+            noSelectionAlert.setHeaderText(null);
+            noSelectionAlert.setContentText("Veuillez sélectionner un offre à modifier.");
+            noSelectionAlert.showAndWait();
+        }
 
     }
+
+
+
+
+    //
     @FXML
     void SupprimerO(ActionEvent event) {
         Offres offres = tableview.getSelectionModel().getSelectedItem();
@@ -111,4 +145,23 @@ public class AfficherOffre {
 
 
     }
+    @FXML
+    void commentaires(ActionEvent event) throws Exception {
+
+            Offres selectedOffre = tableview.getSelectionModel().getSelectedItem();
+            if (selectedOffre != null) {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherCommentaires.fxml"));
+                Parent root = loader.load();
+                AfficherCommentaires controller = loader.getController();
+                controller.setOffre(selectedOffre);
+                Stage stage = (Stage) commentaires.getScene().getWindow();
+                stage.setScene(new Scene(root));
+                stage.show();
+
+            }
+
+    }
+
+
 }
+

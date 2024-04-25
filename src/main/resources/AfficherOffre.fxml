@@ -5,7 +5,6 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AfficherOffre">
    <children>
       <TableView fx:id="tableview" layoutX="20.0" layoutY="20.0" prefHeight="180.0" prefWidth="526.0">
@@ -19,7 +18,8 @@
             <TableColumn fx:id="dateColO" prefWidth="75.0" text="date" />
         </columns>
       </TableView>
-      <Button layoutX="83.0" layoutY="274.0" mnemonicParsing="false" onAction="#ModifierO" prefHeight="25.0" prefWidth="72.0" text="Modifier" />
-      <Button layoutX="378.0" layoutY="274.0" mnemonicParsing="false" onAction="#SupprimerO" text="Supprimer" />
+      <Button layoutX="182.0" layoutY="343.0" mnemonicParsing="false" onAction="#SupprimerO" prefHeight="31.0" prefWidth="81.0" text="Supprimer" />
+      <Button fx:id="commentaires" layoutX="447.0" layoutY="343.0" mnemonicParsing="false" onAction="#commentaires" prefHeight="31.0" prefWidth="99.0" text="commentaires" />
+      <Button fx:id="modifierO" layoutX="61.0" layoutY="343.0" mnemonicParsing="false" onAction="#naviguer" prefHeight="31.0" prefWidth="81.0" text="Modifier" />
    </children>
 </AnchorPane>

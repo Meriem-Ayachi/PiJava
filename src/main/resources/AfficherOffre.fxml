@@ -5,21 +5,21 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AfficherOffre">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-image: url('afficheroffres.jpg'); -fx-background-size: cover;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AfficherOffre">
    <children>
-      <TableView fx:id="tableview" layoutX="20.0" layoutY="20.0" prefHeight="180.0" prefWidth="526.0">
+      <TableView fx:id="tableview" layoutX="9.0" layoutY="20.0" prefHeight="298.0" prefWidth="578.0">
         <columns>
-          <TableColumn fx:id="titleColO" prefWidth="75.0" text="title" />
-          <TableColumn fx:id="descriptionColO" prefWidth="75.0" text="description" />
-            <TableColumn fx:id="publishedColO" prefWidth="75.0" text="published" />
-            <TableColumn fx:id="prixColO" prefWidth="75.0" text="prix" />
-            <TableColumn fx:id="lieuColO" prefWidth="75.0" text="lieu" />
-            <TableColumn fx:id="imageColO" prefWidth="75.0" text="image" />
-            <TableColumn fx:id="dateColO" prefWidth="75.0" text="date" />
+          <TableColumn fx:id="titleColO" prefWidth="50.0" text="title" />
+          <TableColumn fx:id="descriptionColO" prefWidth="239.0" text="description" />
+            <TableColumn fx:id="publishedColO" prefWidth="66.0" text="published" />
+            <TableColumn fx:id="prixColO" prefWidth="46.0" text="prix" />
+            <TableColumn fx:id="lieuColO" prefWidth="56.0" text="lieu" />
+            <TableColumn fx:id="imageColO" prefWidth="56.0" text="image" />
+            <TableColumn fx:id="dateColO" prefWidth="63.0" text="date" />
         </columns>
       </TableView>
-      <Button layoutX="182.0" layoutY="343.0" mnemonicParsing="false" onAction="#SupprimerO" prefHeight="31.0" prefWidth="81.0" text="Supprimer" />
-      <Button fx:id="commentaires" layoutX="447.0" layoutY="343.0" mnemonicParsing="false" onAction="#commentaires" prefHeight="31.0" prefWidth="99.0" text="commentaires" />
-      <Button fx:id="modifierO" layoutX="61.0" layoutY="343.0" mnemonicParsing="false" onAction="#naviguer" prefHeight="31.0" prefWidth="81.0" text="Modifier" />
+      <Button layoutX="202.0" layoutY="343.0" mnemonicParsing="false" onAction="#SupprimerO" prefHeight="31.0" prefWidth="81.0" text="Supprimer" />
+      <Button fx:id="commentaires" layoutX="435.0" layoutY="343.0" mnemonicParsing="false" onAction="#commentaires" prefHeight="31.0" prefWidth="111.0" text="commentaires" />
+      <Button fx:id="modifierO" layoutX="91.0" layoutY="343.0" mnemonicParsing="false" onAction="#naviguer" prefHeight="31.0" prefWidth="81.0" text="Modifier" />
    </children>
 </AnchorPane>

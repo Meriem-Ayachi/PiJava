@@ -4,17 +4,16 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ModiffierOffre">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-image: url('modifierunoffre.jpg'); -fx-background-size: cover;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ModiffierOffre">
    <children>
-      <TextField fx:id="titleTFO" layoutX="34.0" layoutY="14.0" />
-      <TextField fx:id="descriptionTFO" layoutX="34.0" layoutY="56.0" />
-      <TextField fx:id="publishedTFO" layoutX="34.0" layoutY="99.0" />
-      <TextField fx:id="prixTFO" layoutX="34.0" layoutY="146.0" />
-      <TextField fx:id="lieuTFO" layoutX="34.0" layoutY="188.0" />
-      <TextField fx:id="imageTFO" layoutX="34.0" layoutY="244.0" />
-      <Button layoutX="320.0" layoutY="106.0" mnemonicParsing="false" onAction="#ModifierO" prefHeight="31.0" prefWidth="96.0" text="Modifier" />
-      <TextField fx:id="dateTFO" layoutX="34.0" layoutY="297.0" />
-      <Button fx:id="btnretour" layoutX="321.0" layoutY="176.0" mnemonicParsing="false" onAction="#naviguer" prefHeight="31.0" prefWidth="96.0" text="Retour" />
+      <TextField fx:id="titleTFO" layoutX="70.0" layoutY="14.0" />
+      <TextField fx:id="descriptionTFO" layoutX="70.0" layoutY="54.0" />
+      <TextField fx:id="publishedTFO" layoutX="70.0" layoutY="94.0" />
+      <TextField fx:id="prixTFO" layoutX="70.0" layoutY="137.0" />
+      <TextField fx:id="lieuTFO" layoutX="70.0" layoutY="179.0" />
+      <TextField fx:id="imageTFO" layoutX="70.0" layoutY="223.0" />
+      <Button layoutX="320.0" layoutY="106.0" mnemonicParsing="false" onAction="#ModifierO" prefHeight="31.0" prefWidth="117.0" text="Modifier" />
+      <TextField fx:id="dateTFO" layoutX="70.0" layoutY="262.0" />
+      <Button fx:id="btnretour" layoutX="321.0" layoutY="176.0" mnemonicParsing="false" onAction="#naviguer" prefHeight="31.0" prefWidth="117.0" text="Retour" />
    </children>
 </AnchorPane>

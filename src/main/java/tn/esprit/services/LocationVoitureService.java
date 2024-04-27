@@ -48,7 +48,11 @@ public class LocationVoitureService implements IService <Location_Voiture> {
             ps.setString(4, lv.getType());
             ps.setString(5, lv.getStatus());
             ps.setInt(6, lv.getVoiture_id());
-            ps.setInt(7, lv.getUser_id());
+            if (lv.getUser_id() == 0){
+                ps.setNull(7, java.sql.Types.INTEGER);
+            }else{
+                ps.setInt(7, lv.getUser_id());
+            }
             ps.setInt(8, lv.getId());
 
             ps.executeUpdate();

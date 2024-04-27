@@ -56,7 +56,7 @@ public class AfficherReclamationUser {
             NomPrenomCol.setCellValueFactory(cellData -> {
                 UserService us = new UserService();
                 Reclamation reclamation = cellData.getValue();
-                User user = us.getOne(reclamation.getUser_id()); // puisque la méthode getUserId() récupère l'ID de l'utilisateur
+                User user = us.getOne(reclamation.getUser_id());
                 String nom = user.getNom();
                 String prenom = user.getPrenom();
                 return new SimpleStringProperty(nom + " " + prenom);

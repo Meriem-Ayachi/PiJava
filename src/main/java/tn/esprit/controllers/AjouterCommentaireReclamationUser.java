@@ -15,9 +15,12 @@ import tn.esprit.models.Reclamation_Commentaire;
 import tn.esprit.models.session;
 import tn.esprit.services.ReclamationService;
 import tn.esprit.services.Reclamation_CommentaireService;
+import tn.esprit.util.BadWordsChecker;
 import tn.esprit.util.Navigator;
 
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -50,9 +53,20 @@ public class AjouterCommentaireReclamationUser {
             return;
         }
 
+        // Vérifier si le contenu du commentaire contient des mots inappropriés
+        String contenu = contenuTF.getText();
+        String encodedContenu = URLEncoder.encode(contenu, "UTF-8");
+
+        BadWordsChecker badWordsChecker = new BadWordsChecker();
+
+        if (badWordsChecker.containsBadWords(encodedContenu)) {
+            afficherErreur("Le commentaire contient des mots inappropriés.");
+            return;
+        }
+
         Reclamation_CommentaireService commentaireService = new Reclamation_CommentaireService();
         Reclamation_Commentaire commentaire = new Reclamation_Commentaire();
-        commentaire.setContenu(contenuTF.getText());
+        commentaire.setContenu(contenu);
         commentaire.setReclamation_id(currentRec.getId());
         Timestamp currentTimestamp = new Timestamp(System.currentTimeMillis());
         commentaire.setDate_creation(currentTimestamp);
@@ -80,6 +94,7 @@ public class AjouterCommentaireReclamationUser {
         stage.setScene(scene);
         stage.show();
     }
+
 
     private void afficherErreur(String message) {
         Alert alert = new Alert(Alert.AlertType.ERROR);

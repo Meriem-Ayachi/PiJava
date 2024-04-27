@@ -38,6 +38,7 @@ public class AfficherCommentaireReclamationAdmin {
 
     @FXML
     void initialize(Reclamation reclamation) {
+
         currentRec = reclamation;
         refresh();
     }

@@ -15,6 +15,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import tn.esprit.interfaces.RefreshCallBack;
 import tn.esprit.models.Reclamation;
 import tn.esprit.models.User;
 import tn.esprit.models.session;
@@ -30,7 +31,7 @@ import java.util.List;
 import java.util.Random;
 import java.util.ResourceBundle;
 
-public class AfficherReclamationUser implements Initializable {
+public class AfficherReclamationUser implements Initializable, RefreshCallBack {
 
     @FXML
     private ListView<Reclamation> listview;
@@ -161,7 +162,7 @@ public class AfficherReclamationUser implements Initializable {
             ModifierReclamationUser controller = loader.getController();
 
             // Appeler la méthode pour initialiser les détails de la réclamation
-            controller.initialize(reclamation);
+            controller.initialize(reclamation , this);
 
             // Afficher l'interface dans une nouvelle fenêtre
             Stage stage = new Stage();
@@ -195,6 +196,7 @@ public class AfficherReclamationUser implements Initializable {
         confirmationAlert.setContentText("La réclamation a été supprimée avec succès.");
         confirmationAlert.showAndWait();
 
+        refresh();
     }
 
     @FXML
@@ -206,14 +208,17 @@ public class AfficherReclamationUser implements Initializable {
 
 
     @FXML
-    void refresh(ActionEvent event) {
+    void refresh() {
 
         listview.getItems().clear(); // Efface tous les éléments actuels de la ListView
         listview.getItems().addAll(rs.getAllByUserId(session.id_utilisateur)); // Ajoute de nouveaux éléments
-
-
     }
 
+    @Override
+    public void onRefreshComplete() {
+        refresh();
+
+    }
 }
 
 

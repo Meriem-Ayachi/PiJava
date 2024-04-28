@@ -5,6 +5,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
+import tn.esprit.interfaces.RefreshCallBack;
 import tn.esprit.models.Reclamation;
 import tn.esprit.services.ReclamationService;
 
@@ -23,8 +24,11 @@ public class ModifierReclamationUser {
     Reclamation reclamation;
     ReclamationService rs = new ReclamationService();
 
+    RefreshCallBack callback ;
 
-    public void initialize(Reclamation rec) {
+
+    public void initialize(Reclamation rec , RefreshCallBack callback) {
+        this.callback = callback;
         this.reclamation = rec;
         sujetTextField.setText(reclamation.getSujet());
         DescriptionTF.setText( reclamation.getDescription());
@@ -72,6 +76,7 @@ public class ModifierReclamationUser {
             alert.setContentText("La réclamation a été mise à jour avec succès.");
             alert.showAndWait();
             ((Stage) DescriptionTF.getScene().getWindow()).close();
+            this.callback.onRefreshComplete();
 
     }
 

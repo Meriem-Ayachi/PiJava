@@ -70,7 +70,6 @@ public class DetailsReclamation {
         Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
         stage.setScene(scene);
         stage.show();
-
     }
 
     void refresh() {

@@ -8,7 +8,7 @@ public class MaConnexion {
 
     //DB
 
-    final String URL = "jdbc:mysql://localhost:4306/pi";
+    final String URL = "jdbc:mysql://localhost:4306/tech";
     final String USR = "root";
     final String PWD = "";
 

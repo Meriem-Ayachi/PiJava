@@ -80,6 +80,9 @@ public class  LoginController {
     public void redirectToInscription(ActionEvent event){
         nav.goToPage_WithEvent("/inscription.fxml", event);
     }
+    public void redirectToResetpassword(ActionEvent event){
+        nav.goToPage_WithEvent("/MotsPassOublierMail.fxml", event);
+    }
 
 
     private void afficherAlerteErreur(String titre, String contenu) {

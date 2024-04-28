@@ -191,4 +191,76 @@ public class LocationVoitureService implements IService <Location_Voiture> {
         return location_Voitures;
 
     }
+
+    public List<Location_Voiture> rechercher(String model, String marque, String type, int maxPrix, int minPrix){
+        List<Location_Voiture> location_Voitures = new ArrayList<>();
+        String req = "SELECT lv.* FROM location_voiture lv";
+        req += " INNER JOIN voiture v ON lv.voiture_id = v.id";
+        req += " WHERE lv.status = 'disponible'";
+        
+        // Add conditions based on parameters
+        if (model != null && !model.isEmpty()) {
+            req += " AND model LIKE ?";
+            model = "%" + model + "%";
+        }
+        if (marque != null && !marque.isEmpty()) {
+            req += " AND marque LIKE ?";
+            marque = "%" + marque + "%";
+        }
+        if (type != null && !type.isEmpty()) {
+            req += " AND type LIKE ?";
+            type = "%" + type + "%";
+        }
+        if (maxPrix > 0) {
+            req += " AND prix <= ?";
+        }
+        if (minPrix > 0) {
+            req += " AND prix >= ?";
+        }
+    
+        // Prepare and execute the query
+        try {
+            PreparedStatement stmt = cnx.prepareStatement(req);
+            int paramIndex = 1;
+            if (model != null && !model.isEmpty()) {
+                stmt.setString(paramIndex, model);
+                paramIndex++;
+            }
+            if (marque != null && !marque.isEmpty()) {
+                stmt.setString(paramIndex, marque);
+                paramIndex++;
+            }
+            if (type != null && !type.isEmpty()) {
+                stmt.setString(paramIndex, type);
+                paramIndex++;
+            }
+            if (maxPrix > 0) {
+                stmt.setInt(paramIndex, maxPrix);
+                paramIndex++;
+            }
+            if (minPrix > 0) {
+                stmt.setInt(paramIndex, minPrix);
+            }
+            ResultSet res = stmt.executeQuery();
+            while (res.next()) {
+                Location_Voiture location_Voiture = new Location_Voiture();
+                location_Voiture.setId(res.getInt(1));
+                location_Voiture.setPrix(res.getInt(2));
+                location_Voiture.setDate_debut(res.getDate(3));
+                location_Voiture.setDatefin(res.getDate(4));
+                location_Voiture.setType(res.getString(5));
+                location_Voiture.setStatus(res.getString(6));
+                location_Voiture.setVoiture_id(res.getInt(7));
+                location_Voiture.setUser_id(res.getInt(8));
+
+                location_Voitures.add(location_Voiture);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    
+        return location_Voitures;
+    }
+    
+
 }

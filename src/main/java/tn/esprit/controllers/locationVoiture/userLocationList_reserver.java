@@ -15,6 +15,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import tn.esprit.MainFX;
 import tn.esprit.models.Location_Voiture;
+import tn.esprit.models.Voiture;
 import tn.esprit.models.session;
 import tn.esprit.services.LocationVoitureService;
 import tn.esprit.services.VoitureService;
@@ -44,14 +45,18 @@ public class userLocationList_reserver {
                 } else {
                     // Create labels for destination, departure date, and arrival date
 
-                    Label voitureLabel = new Label("Voiture: " + voitureService.getOne(item.getVoiture_id()));
+
+                    Voiture v = voitureService.getOne(item.getVoiture_id());
+                    Label voitureLabel = new Label(v.getModel());
+                    Label marqueLabel = new Label("Marque: " + v.getMarque());
                     Label typeLabel = new Label("Type: " + item.getType());
-                    Label prixLabel = new Label("Prix: " + item.getPrix());
+                    Label prixLabel = new Label("Prix (par jour): " + item.getPrix());
                     Label data_debutLabel = new Label("Date debut: " + item.getDate_debut());
                     Label date_finLabel = new Label("Date fin: " + item.getDatefin());
                     
                     // Set styles for labels
                     voitureLabel.setStyle("-fx-font-weight: bold; -fx-font-size: 14pt;");
+                    marqueLabel.setStyle("-fx-font-size: 12pt;");
                     typeLabel.setStyle("-fx-font-size: 12pt;");
                     prixLabel.setStyle("-fx-font-size: 12pt;");
                     data_debutLabel.setStyle("-fx-font-size: 12pt;");
@@ -67,7 +72,7 @@ public class userLocationList_reserver {
 
                     // Create a VBox to hold all labels vertically
                     VBox labelsVBox = new VBox();
-                    labelsVBox.getChildren().addAll(voitureLabel,typeLabel, prixLabel, data_debutLabel, date_finLabel);
+                    labelsVBox.getChildren().addAll(voitureLabel,marqueLabel, typeLabel, prixLabel, data_debutLabel, date_finLabel);
                     labelsVBox.setAlignment(Pos.CENTER_LEFT); // Align children to the left
                     labelsVBox.setSpacing(5); // Adjust spacing between elements
 

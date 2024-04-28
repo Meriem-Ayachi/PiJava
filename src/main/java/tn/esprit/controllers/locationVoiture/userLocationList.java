@@ -8,11 +8,14 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TextField;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import tn.esprit.MainFX;
 import tn.esprit.models.Location_Voiture;
+import tn.esprit.models.Voiture;
 import tn.esprit.services.LocationVoitureService;
 import tn.esprit.services.VoitureService;
 import tn.esprit.util.Navigator;
@@ -21,6 +24,7 @@ public class userLocationList {
     
     @FXML
     private ListView<Location_Voiture> listview;
+
     
     private final LocationVoitureService LocationService = new LocationVoitureService();
     private final VoitureService voitureService = new VoitureService();
@@ -40,18 +44,17 @@ public class userLocationList {
                 } else {
                     // Create labels for destination, departure date, and arrival date
 
-                    Label voitureLabel = new Label("Voiture: " + voitureService.getOne(item.getVoiture_id()));
+                    Voiture v = voitureService.getOne(item.getVoiture_id());
+                    Label voitureLabel = new Label(v.getModel());
+                    Label marqueLabel = new Label("Marque: " + v.getMarque());
                     Label typeLabel = new Label("Type: " + item.getType());
-                    Label prixLabel = new Label("Prix: " + item.getPrix());
-                    Label data_debutLabel = new Label("Date debut: " + item.getDate_debut());
-                    Label date_finLabel = new Label("Date fin: " + item.getDatefin());
+                    Label prixLabel = new Label("Prix (par jour): " + item.getPrix());
                     
                     // Set styles for labels
                     voitureLabel.setStyle("-fx-font-weight: bold; -fx-font-size: 14pt;");
+                    marqueLabel.setStyle("-fx-font-size: 12pt;");
                     typeLabel.setStyle("-fx-font-size: 12pt;");
                     prixLabel.setStyle("-fx-font-size: 12pt;");
-                    data_debutLabel.setStyle("-fx-font-size: 12pt;");
-                    date_finLabel.setStyle("-fx-font-size: 12pt;");
 
                     // Create "Show More" button
                     Button DetailsButton = new Button("Details");
@@ -63,7 +66,7 @@ public class userLocationList {
 
                     // Create a VBox to hold all labels vertically
                     VBox labelsVBox = new VBox();
-                    labelsVBox.getChildren().addAll(voitureLabel,typeLabel, prixLabel, data_debutLabel, date_finLabel);
+                    labelsVBox.getChildren().addAll(voitureLabel, marqueLabel,typeLabel, prixLabel);
                     labelsVBox.setAlignment(Pos.CENTER_LEFT); // Align children to the left
                     labelsVBox.setSpacing(5); // Adjust spacing between elements
 
@@ -109,4 +112,57 @@ public class userLocationList {
         nav.goToPage("/userLocationList_reserver.fxml");
     }
 
+
+    //recherche Code
+    private String typeSearch, marqueSearch, modelSearch;
+    private int minPrixSearch, maxPrixSearch;
+
+    @FXML
+    void recherche(ActionEvent event) {
+        List<Location_Voiture> locationVoitureList = LocationService.rechercher(modelSearch, marqueSearch, typeSearch, maxPrixSearch, minPrixSearch);
+        listview.getItems().clear(); 
+        listview.getItems().addAll(locationVoitureList);
+    }
+
+    @FXML
+    void typeChanged(KeyEvent event) {
+        String searchText = ((TextField) event.getSource()).getText();
+        typeSearch = searchText;
+    }
+
+    @FXML
+    void modelChanged(KeyEvent event) {
+        String searchText = ((TextField) event.getSource()).getText();
+        modelSearch = searchText;
+    }
+
+    @FXML
+    void marqueChanged(KeyEvent event) {
+        String searchText = ((TextField) event.getSource()).getText();
+        marqueSearch = searchText;
+    }
+
+    @FXML
+    void maxPrixChanged(KeyEvent event) {
+        try {
+            String searchText = ((TextField) event.getSource()).getText();
+            int prix = Integer.parseInt(searchText);
+            maxPrixSearch = prix;
+        } catch (NumberFormatException e) {
+            maxPrixSearch = 0;
+            return;
+        }
+    }
+
+    @FXML
+    void minPrixChanged(KeyEvent event) {
+        try {
+            String searchText = ((TextField) event.getSource()).getText();
+            int prix = Integer.parseInt(searchText);
+            minPrixSearch = prix;
+        } catch (NumberFormatException e) {
+            minPrixSearch = 0;
+            return;
+        }
+    }
 }

@@ -80,14 +80,14 @@ public class AjouterCommentaireReclamationUser {
             alert.showAndWait();
         }
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherCommentaireReclamationUser.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/DetailsReclamation.fxml"));
         Parent root = loader.load();
 
         // Obtenir le contrôleur associé à l'interface
-        AfficherCommentaireReclamationUser controller = loader.getController();
+        DetailsReclamation controller = loader.getController();
 
         // Appeler la méthode pour initialiser les détails de la réclamation
-        controller.initialize(currentRec);
+        controller.initializeDetails(currentRec);
 
         Scene scene = new Scene(root);
         Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();

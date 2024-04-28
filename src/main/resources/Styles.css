@@ -139,3 +139,13 @@
     -fx-text-fill: white; /* Couleur du texte de la ligne sélectionnée */
 }
 
+
+.modifierButton {
+    -fx-background-color: #FFA500; /* Orange */
+}
+/* Style for Delete button */
+.deleteButton {
+    -fx-background-color: #FF4500; /* Orange Red */
+}
+
+

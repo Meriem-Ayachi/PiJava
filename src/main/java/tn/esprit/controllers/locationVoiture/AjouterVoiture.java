@@ -1,11 +1,19 @@
 package tn.esprit.controllers.locationVoiture;
 
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.StandardCopyOption;
+import java.util.UUID;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.text.Text;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import tn.esprit.MainFX;
 import tn.esprit.models.Voiture;
@@ -28,6 +36,10 @@ public class AjouterVoiture {
     @FXML
     private TextField capaciteTF;
     
+    @FXML
+    private Text uploadedFileName;
+
+    private File selectedFile;
 
     @FXML
     void AfficherVoitures(ActionEvent event) {
@@ -97,14 +109,16 @@ public class AjouterVoiture {
             return;
         }
 
+        // image control sasie
+        if (selectedFile == null) {
+            afficherErreur("No image selected.");
+            return;
+        }
+
 
         VoitureService voitureService = new VoitureService();
         Voiture voiture = new Voiture();
-        voiture.setMarque(marqueTF.getText());
-        voiture.setModel(modelTF.getText());
-        voiture.setCouleur(couleurTF.getText());
-        voiture.setEnergy(energyTF.getValue());
-        voiture.setCapacite(Integer.parseInt(capaciteTF.getText()));
+
         {
             // confirmation dialog
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
@@ -115,6 +129,23 @@ public class AjouterVoiture {
             if (result != ButtonType.OK) {
                 return;
             }
+            //  upload the selected image
+            String randomFileName = UUID.randomUUID().toString() + getFileExtension(selectedFile.getName());
+            File destFile = new File(System.getProperty("user.home") + "/Downloads/" + randomFileName);
+            try {
+                Files.copy(selectedFile.toPath(), destFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
+            } catch (IOException e) {
+                e.printStackTrace();
+                afficherErreur("Error uploading image: " + e.getMessage());
+                return;
+            }
+            //set the item
+            voiture.setImage_file_name(destFile.getAbsolutePath());
+            voiture.setMarque(marqueTF.getText());
+            voiture.setModel(modelTF.getText());
+            voiture.setCouleur(couleurTF.getText());
+            voiture.setEnergy(energyTF.getValue());
+            voiture.setCapacite(Integer.parseInt(capaciteTF.getText()));
             // add item
             voitureService.add(voiture);
             // go to the list
@@ -129,6 +160,29 @@ public class AjouterVoiture {
         alert.setTitle("Erreur");
         alert.setContentText(message);
         alert.showAndWait();
+    }
+
+
+    @FXML
+    void uploadFile(ActionEvent event) {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Choose Image File");
+        fileChooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.jpeg", "*.gif")
+        );
+        selectedFile = fileChooser.showOpenDialog(MainFX.getPrimaryStage());
+        if (selectedFile != null) {
+            uploadedFileName.setText(selectedFile.getName());
+        }
+    }
+
+
+    private String getFileExtension(String fileName) {
+        int lastIndex = fileName.lastIndexOf('.');
+        if (lastIndex != -1 && lastIndex < fileName.length() - 1) {
+            return fileName.substring(lastIndex);
+        }
+        return "";
     }
 
     /*private void afficherMessage(String message) {

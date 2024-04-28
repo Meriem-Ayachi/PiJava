@@ -13,6 +13,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
@@ -58,9 +60,9 @@ public class userLocationList {
                     setText(null);
                     setGraphic(null);
                 } else {
-                    // Create labels for destination, departure date, and arrival date
-
                     Voiture v = voitureService.getOne(item.getVoiture_id());
+                    
+                    // Create labels for destination, departure date, and arrival date
                     Label voitureLabel = new Label(v.getModel());
                     Label marqueLabel = new Label("Marque: " + v.getMarque());
                     Label typeLabel = new Label("Type: " + item.getType());
@@ -94,17 +96,33 @@ public class userLocationList {
 
                     // Create an AnchorPane to hold all elements
                     AnchorPane anchorPane = new AnchorPane();
+                    ImageView imageView = new ImageView();
+
+                    String imagePath = v.getImage_file_name();
+                    if ( imagePath != null && !imagePath.isEmpty()){
+                        // Load the image
+                        Image image = new Image("file:" + imagePath);
+    
+                        // Create the ImageView with the loaded image
+                        imageView = new ImageView(image);
+                        imageView.setFitWidth(100); // Set width as per your requirement
+                        imageView.setPreserveRatio(true); // Preserve aspect ratio
+    
+                        // Set image position
+                        AnchorPane.setTopAnchor(imageView, 5.0);
+                        AnchorPane.setLeftAnchor(imageView, 5.0);
+                    }
 
                     // Set labels position
                     AnchorPane.setTopAnchor(labelsVBox, 5.0);
-                    AnchorPane.setLeftAnchor(labelsVBox, 5.0); // Adjust left offset as needed
+                    AnchorPane.setLeftAnchor(labelsVBox, 120.0); 
 
                     // Set price and button position
                     AnchorPane.setTopAnchor(ButtonsVBox, 5.0);
                     AnchorPane.setRightAnchor(ButtonsVBox, 5.0);
 
                     // Add all elements to the AnchorPane
-                    anchorPane.getChildren().addAll(labelsVBox, ButtonsVBox);
+                    anchorPane.getChildren().addAll(imageView, labelsVBox, ButtonsVBox);
 
                     // Set the layout as the graphic for the ListCell
                     setGraphic(anchorPane);

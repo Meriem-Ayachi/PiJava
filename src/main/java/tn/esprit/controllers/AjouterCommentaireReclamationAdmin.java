@@ -15,9 +15,11 @@ import tn.esprit.models.Reclamation_Commentaire;
 import tn.esprit.models.session;
 import tn.esprit.services.ReclamationService;
 import tn.esprit.services.Reclamation_CommentaireService;
+import tn.esprit.util.BadWordsChecker;
 import tn.esprit.util.Navigator;
 
 import java.io.IOException;
+import java.net.URLEncoder;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -47,6 +49,17 @@ public class AjouterCommentaireReclamationAdmin {
 
         if (contenuTF.getText().length() < 3) {
             afficherErreur("Le contenu du commentaire doit comporter au moins 3 caractères.");
+            return;
+        }
+
+        // Vérifier si le contenu du commentaire contient des mots inappropriés
+        String contenu = contenuTF.getText();
+        String encodedContenu = URLEncoder.encode(contenu, "UTF-8");
+
+        BadWordsChecker badWordsChecker = new BadWordsChecker();
+
+        if (badWordsChecker.containsBadWords(encodedContenu)) {
+            afficherErreur("Le commentaire contient des mots inappropriés.");
             return;
         }
 

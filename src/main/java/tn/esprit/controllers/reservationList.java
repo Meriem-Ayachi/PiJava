@@ -190,9 +190,9 @@ public class reservationList {
         if (rdvs.isEmpty()) {
             // Afficher une boîte de dialogue avec le message approprié
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Aucun rendez-vous");
+            alert.setTitle("Aucune reservation");
             alert.setHeaderText(null);
-            alert.setContentText("Aucun rendez-vous n'est pris pour cette date.");
+            alert.setContentText("Aucune reservation n'est pris pour cette date.");
             alert.showAndWait();
         } else {
             // Ajouter les rendez-vous à la ListView

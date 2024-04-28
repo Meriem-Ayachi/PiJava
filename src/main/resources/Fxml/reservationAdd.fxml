@@ -15,12 +15,12 @@
         <!-- Cadre bleu avec opacité faible -->
         <AnchorPane layoutY="0.0" prefHeight="357.0" prefWidth="570.0">
             <!-- Labels et champs du formulaire -->
-            <Label layoutX="19.0" layoutY="7.0" text="Date de départ" />
-            <Label layoutX="19.0" layoutY="41.0" text="Date de retour" />
-            <Label layoutX="19.0" layoutY="80.0" text="Classe" />
-            <Label layoutX="19.0" layoutY="119.0" text="Destination de départ" />
-            <Label layoutX="14.0" layoutY="158.0" text="Destination de retour" />
-            <Label layoutX="14.0" layoutY="197.0" text="Nombre de personnes" />
+            <Label layoutX="19.0" layoutY="7.0" text="Date de départ" textFill="#FFFFFF" />
+            <Label layoutX="19.0" layoutY="41.0" text="Date de retour" textFill="#FFFFFF" />
+            <Label layoutX="19.0" layoutY="80.0" text="Classe" textFill="#FFFFFF" />
+            <Label layoutX="19.0" layoutY="119.0" text="Destination de départ" textFill="#FFFFFF" />
+            <Label layoutX="14.0" layoutY="158.0" text="Destination de retour" textFill="#FFFFFF" />
+            <Label layoutX="14.0" layoutY="197.0" text="Nombre de personnes" textFill="#FFFFFF" />
             <DatePicker fx:id="dateDepartPicker" layoutX="150.0" layoutY="4.0" />
             <DatePicker fx:id="dateRetourPicker" layoutX="150.0" layoutY="37.0" />
             <ComboBox fx:id="classeComboBox" layoutX="150.0" layoutY="76.0">
@@ -41,9 +41,9 @@
         </AnchorPane>
     </AnchorPane>
 
-     <Label layoutX="146.0" layoutY="14.0" text="Ajouter une réservation" textFill="#326f40">
-         <font>
-             <Font name="Sitka Text Italic" size="18.0" />
-         </font>
-     </Label>
+    <Label layoutX="146.0" layoutY="14.0" text="Ajouter une réservation" textFill="#FFFFFF">
+        <font>
+            <Font name="Sitka Text Italic" size="18.0" />
+        </font>
+    </Label>
 </AnchorPane>

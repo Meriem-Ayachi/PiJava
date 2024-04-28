@@ -1,10 +1,14 @@
 package tn.esprit.controllers.locationVoiture;
 
 import java.util.List;
+
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
@@ -25,12 +29,24 @@ public class userLocationList {
     @FXML
     private ListView<Location_Voiture> listview;
 
+    @FXML
+    private ComboBox<String> typeComboBox;
     
     private final LocationVoitureService LocationService = new LocationVoitureService();
     private final VoitureService voitureService = new VoitureService();
 
     @FXML
     void initialize() {
+        //initialize the values of the type comboBox
+        ObservableList<String> typeList = FXCollections.observableArrayList(
+            "Sports"
+            , "Famille"
+            , "Minivan"
+            , "Luxe"
+        );
+        typeComboBox.setItems(typeList);
+
+        //prepare the listView
         List<Location_Voiture> locationsVoiture = LocationService.getAll_unreserved();
         listview.getItems().addAll(locationsVoiture);
 
@@ -118,28 +134,28 @@ public class userLocationList {
     private int minPrixSearch, maxPrixSearch;
 
     @FXML
-    void recherche(ActionEvent event) {
+    void recherche() {
         List<Location_Voiture> locationVoitureList = LocationService.rechercher(modelSearch, marqueSearch, typeSearch, maxPrixSearch, minPrixSearch);
         listview.getItems().clear(); 
         listview.getItems().addAll(locationVoitureList);
     }
 
     @FXML
-    void typeChanged(KeyEvent event) {
-        String searchText = ((TextField) event.getSource()).getText();
-        typeSearch = searchText;
+    void typeChanged(ActionEvent event) {
+        typeSearch = typeComboBox.getValue();
+        recherche();
     }
 
     @FXML
     void modelChanged(KeyEvent event) {
-        String searchText = ((TextField) event.getSource()).getText();
-        modelSearch = searchText;
+        modelSearch = ((TextField) event.getSource()).getText();
+        recherche();
     }
 
     @FXML
     void marqueChanged(KeyEvent event) {
-        String searchText = ((TextField) event.getSource()).getText();
-        marqueSearch = searchText;
+        marqueSearch = ((TextField) event.getSource()).getText();
+        recherche();
     }
 
     @FXML
@@ -152,6 +168,7 @@ public class userLocationList {
             maxPrixSearch = 0;
             return;
         }
+        recherche();
     }
 
     @FXML
@@ -164,5 +181,6 @@ public class userLocationList {
             minPrixSearch = 0;
             return;
         }
+        recherche();
     }
 }

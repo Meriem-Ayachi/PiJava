@@ -11,6 +11,9 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseButton;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import tn.esprit.models.Reclamation;
 import tn.esprit.models.User;
@@ -149,38 +152,32 @@ public class AfficherReclamationAdmin {
         }
     }
     @FXML
-    void onTableRowClicked() {
+    void onTableRowClicked(MouseEvent event) throws IOException {
         selectedReclamation = tableview.getSelectionModel().getSelectedItem();
-    }
 
+        if (event.getButton() == MouseButton.PRIMARY && event.getClickCount() == 2) {
 
+            if (selectedReclamation != null) {
+                // Charger le fichier FXML de l'interface des détails de la réclamation
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/DetailsReclamationAdmin.fxml"));
+                AnchorPane detailsReclamationPane = loader.load();
 
-    @FXML
-    void GoToCommentaire(ActionEvent event) {
-        if (selectedReclamation != null) {
-            Reclamation reclamation = rs.getOne(selectedReclamation.getId());
+                // Obtenir le contrôleur associé à l'interface
+                DetailsReclamationAdmin controller = loader.getController();
 
-            try {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherCommentaireReclamationAdmin.fxml"));
-                Parent root = loader.load();
+                // Appeler la méthode pour initialiser les détails de la réclamation
+                controller.initializeDetails(selectedReclamation);
 
-                // pass param
-                AfficherCommentaireReclamationAdmin controller = loader.getController();
-                controller.initialize(reclamation);
-
-                Scene scene = new Scene(root);
-                Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
-                stage.setScene(scene);
+                // Afficher l'interface dans une nouvelle fenêtre
+                Stage stage = new Stage();
+                stage.setScene(new Scene(detailsReclamationPane));
                 stage.show();
-            } catch (IOException e) {
-                e.printStackTrace();
             }
-
-        }else{
-            showError("Vous devez sélectionner une réclamation");
         }
-
     }
+
+
+
 
     String nom, prenom;
     Byte estTraite;

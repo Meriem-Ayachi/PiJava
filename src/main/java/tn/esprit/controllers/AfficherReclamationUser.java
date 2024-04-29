@@ -1,21 +1,15 @@
 package tn.esprit.controllers;
 
-import javafx.beans.property.SimpleStringProperty;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
@@ -29,10 +23,7 @@ import tn.esprit.util.Navigator;
 
 import java.io.IOException;
 import java.net.URL;
-import java.sql.SQLException;
-import java.sql.Timestamp;
 import java.util.List;
-import java.util.Random;
 import java.util.ResourceBundle;
 
 
@@ -124,9 +115,9 @@ public class AfficherReclamationUser implements Initializable, RefreshCallBack {
     @FXML
     private void afficherDetailsReclamation(Reclamation reclamation) throws IOException {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/DetailsReclamation.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/DetailsReclamationUser.fxml"));
             AnchorPane detailsReclamationPane = loader.load();
-            DetailsReclamation controller = loader.getController();
+            DetailsReclamationUser controller = loader.getController();
 
             // Appeler la méthode pour initialiser les détails de la réclamation
             controller.initializeDetails(reclamation);

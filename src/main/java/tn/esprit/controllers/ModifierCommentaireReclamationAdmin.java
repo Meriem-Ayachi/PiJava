@@ -76,14 +76,14 @@ public class ModifierCommentaireReclamationAdmin {
     }
 
     private void GoToCommentaires(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherCommentaireReclamationAdmin.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/DetailsReclamationAdmin.fxml"));
         Parent root = loader.load();
 
         // Obtenir le contrôleur associé à l'interface
-        AfficherCommentaireReclamationAdmin controller = loader.getController();
+        DetailsReclamationAdmin controller = loader.getController();
 
         // Appeler la méthode pour initialiser les détails de la réclamation
-        controller.initialize(currentRec);
+        controller.initializeDetails(currentRec);
 
         Scene scene = new Scene(root);
         Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();

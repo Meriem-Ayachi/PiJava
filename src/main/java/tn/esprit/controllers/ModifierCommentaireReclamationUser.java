@@ -6,19 +6,14 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
-import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import tn.esprit.models.Reclamation;
 import tn.esprit.models.Reclamation_Commentaire;
 import tn.esprit.services.ReclamationService;
 import tn.esprit.services.Reclamation_CommentaireService;
-import tn.esprit.util.Navigator;
 
 import java.io.IOException;
-import java.sql.Timestamp;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 
 public class ModifierCommentaireReclamationUser {
 
@@ -78,11 +73,11 @@ public class ModifierCommentaireReclamationUser {
     }
 
     private void GoToCommentaires(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/DetailsReclamation.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/DetailsReclamationUser.fxml"));
         Parent root = loader.load();
 
         // Obtenir le contrôleur associé à l'interface
-        DetailsReclamation controller = loader.getController();
+        DetailsReclamationUser controller = loader.getController();
 
         // Appeler la méthode pour initialiser les détails de la réclamation
         controller.initializeDetails(currentRec);

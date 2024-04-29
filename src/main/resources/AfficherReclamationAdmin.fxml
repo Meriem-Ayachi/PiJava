@@ -20,7 +20,7 @@
              </font>
           </Label>
           <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" text="Retour" />
-          <TableView fx:id="tableview" layoutX="14.0" layoutY="136.0" onMouseClicked="#onTableRowClicked" prefHeight="220.0" prefWidth="548.0" stylesheets="@Styles.css">
+          <TableView fx:id="tableview"  layoutX="14.0" layoutY="136.0" onMouseClicked="#onTableRowClicked" prefHeight="220.0" prefWidth="548.0" stylesheets="@Styles.css">
             <columns>
               <TableColumn fx:id="NomPrenomCol" prefWidth="100.0" text="Nom et Prénom" />
               <TableColumn fx:id="SujetCol" prefWidth="50.4000244140625" text="Sujet" />
@@ -31,10 +31,8 @@
 
             </columns>
           </TableView>
-          <Button layoutX="76.0" layoutY="14.0" mnemonicParsing="false" onAction="#Refresh" text="Refresh" />
          <Button layoutX="132.0" layoutY="393.0" mnemonicParsing="false" onAction="#modifierBTN" text="Modifier" />
          <Button layoutX="228.0" layoutY="393.0" mnemonicParsing="false" onAction="#supprimerBTN" text="Supprimer" />
-         <Button layoutX="334.0" layoutY="393.0" mnemonicParsing="false" onAction="#GoToCommentaire" text="Commentaires" />
          <TextField layoutX="29.0" layoutY="77.0" onKeyTyped="#NomTF" promptText="Nom" />
          <TextField layoutX="202.0" layoutY="77.0" onKeyTyped="#PrenomTF" promptText="Prénom" />
          <ComboBox fx:id="estTraiteCB" layoutX="381.0" layoutY="77.0" onAction="#estTraiteChanged" prefWidth="150.0" />

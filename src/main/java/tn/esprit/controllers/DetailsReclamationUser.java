@@ -1,10 +1,8 @@
 package tn.esprit.controllers;
 
-import com.mysql.cj.x.protobuf.MysqlxCrud;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -29,7 +27,7 @@ import java.io.IOException;
 import java.util.List;
 
 
-public class DetailsReclamation implements RefreshCallBack {
+public class DetailsReclamationUser implements RefreshCallBack {
 
     @FXML
     private TextFlow commentsTextFlow;

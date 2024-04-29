@@ -23,8 +23,11 @@
                 <Font name="System Bold Italic" size="22.0" />
             </font>
         </Label>
-      <Button layoutX="893.0" layoutY="14.0" mnemonicParsing="false" onAction="#goBack" text="Back" />
-      <Button layoutX="27.0" layoutY="500.0" mnemonicParsing="false" onAction="#mettreenpromo" text="mettre en promo" />
+        <Button layoutX="893.0" layoutY="14.0" mnemonicParsing="false" onAction="#goBack" text="Back" />
+        <Button layoutX="27.0" layoutY="500.0" mnemonicParsing="false" onAction="#mettreenpromo" text="mettre en promo" />
+
+        <!-- Button to navigate to the statistics page -->
+        <Button layoutX="150.0" layoutY="500.0" mnemonicParsing="false" onAction="#goToStatisticsPage" text="View Statistics" />
     </children>
 
 </AnchorPane>

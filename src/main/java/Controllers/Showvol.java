@@ -7,6 +7,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.AnchorPane;
@@ -205,6 +206,28 @@ public class Showvol implements Initializable {
 
             // Show the new stage
             promoStage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    private void goToStatisticsPage(ActionEvent event) {
+        try {
+            // Load the FXML file for the statistics page
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Statistics.fxml"));
+            Parent root = loader.load();
+
+            // Create a new stage
+            Stage newStage = new Stage();
+            newStage.setTitle("Statistics"); // Set the title of the new window
+
+            // Set the scene in the new stage
+            Scene scene = new Scene(root);
+            newStage.setScene(scene);
+
+            // Show the new stage
+            newStage.show();
         } catch (IOException e) {
             e.printStackTrace();
         }

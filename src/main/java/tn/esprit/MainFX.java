@@ -18,11 +18,11 @@ public class MainFX extends Application {
     @Override
     public void start(Stage primaryStage) {
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/addvol.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/UserOrAdmin.fxml"));
         try {
             Parent root = loader.load();
             Scene scene = new Scene(root);
-            primaryStage.setTitle("AJOUTER UN VOL");
+            primaryStage.setTitle("Application");
             primaryStage.setScene(scene);
             primaryStage.show();
         } catch (IOException e) {

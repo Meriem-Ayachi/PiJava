@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="Controllers.PromoDetailsController"
+      prefWidth="400" prefHeight="300"
+      alignment="CENTER">
+
+    <Label text="Promo Details" style="-fx-font-size: 30px; -fx-font-weight: bold; -fx-text-fill: #0000FF;"/>
+
+    <Label fx:id="promoInfoLabel" wrapText="true" style="-fx-font-weight: bold;" />
+    <Label fx:id="volsInfoLabel" wrapText="true" style="-fx-font-weight: bold;" alignment="CENTER" />
+
+
+
+</VBox>

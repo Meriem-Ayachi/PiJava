@@ -5,8 +5,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
@@ -14,7 +12,6 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
 import tn.esprit.models.Promo_Vols;
 import tn.esprit.models.Vols;
 import tn.esprit.services.Promo_VolsService;
@@ -23,7 +20,7 @@ import tn.esprit.services.VolService;
 import java.io.IOException;
 import java.util.List;
 
-public class PromoVolsListController {
+public class PromoVolsListforuserController {
 
     @FXML
     private ListView<Promo_Vols> promoListView;
@@ -110,12 +107,6 @@ public class PromoVolsListController {
 
                     anchorPane.getChildren().addAll(imageView,infoVBox,pricevbox);
 
-
-                    Button showMoreButton = new Button("show more");
-                    showMoreButton.setOnAction(event->showMoreInfo(item));
-                    pricevbox.getChildren().addAll(showMoreButton);
-
-
                     // Set the layout as the graphic for the ListCell
                     setGraphic(anchorPane);
                 }
@@ -132,22 +123,10 @@ public class PromoVolsListController {
     void goBack(ActionEvent event) {
         Parent root = null;
         try {
-            root = FXMLLoader.load(getClass().getResource("/addvol.fxml"));
+            root = FXMLLoader.load(getClass().getResource("/Showvolforuser.fxml"));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
         promoListView.getScene().setRoot(root);
-    }
-
-    private void showMoreInfo(Promo_Vols promoVols){
-        FXMLLoader loader=new FXMLLoader(getClass().getResource("/promoDetails.fxml"));
-        try {
-            Parent root = loader.load();
-            PromoDetailsController controller=loader.getController();
-            controller.initData(promoVols);
-            Stage stage=new Stage();
-            stage.setScene(new Scene(root));
-            stage.show();
-        } catch (IOException e){e.printStackTrace();}
     }
 }

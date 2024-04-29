@@ -13,6 +13,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import tn.esprit.interfaces.RefreshCallBack;
@@ -30,6 +32,8 @@ import java.sql.Timestamp;
 import java.util.List;
 import java.util.Random;
 import java.util.ResourceBundle;
+
+
 
 public class AfficherReclamationUser implements Initializable, RefreshCallBack {
 
@@ -55,17 +59,24 @@ public class AfficherReclamationUser implements Initializable, RefreshCallBack {
                     setGraphic(null);
                 } else {
                     User user = us.getOne(item.getUser_id());
-                    // Create labels for destination, departure date, and arrival date
-                    Label NomPrenomLabel = new Label("Nom et Prénom: " + user.getNom() + " " + user.getPrenom());
-                    Label sujetLabel = new Label("Sujet: " + item.getSujet());
-                    Label descriptionLabel = new Label("Description: " + item.getDescription());
-                    Label dateSoumissionLabel = new Label("Date de soummission: " + item.getDatesoummission().toString());
 
-                    // Set styles for labels
-                    NomPrenomLabel.setStyle("-fx-font-size: 12pt;");
-                    sujetLabel.setStyle("-fx-font-weight: bold; -fx-font-size: 14pt;");
-                    descriptionLabel.setStyle("-fx-font-size: 12pt;");
-                    dateSoumissionLabel.setStyle("-fx-font-size: 12pt;");
+                    Label sujetTitreLabel = new Label("Sujet:");
+                    Label descriptionTitreLabel = new Label("Description:");
+                    Label dateSoumissionTitreLabel = new Label("Date de soumission:");
+
+                    sujetTitreLabel.setStyle("-fx-font-weight: bold; -fx-text-fill: #387296; -fx-font-size: 14;"); // Bleu clair
+                    descriptionTitreLabel.setStyle("-fx-font-weight: bold; -fx-text-fill: #387296; -fx-font-size: 14;"); // Bleu clair
+                    dateSoumissionTitreLabel.setStyle("-fx-font-weight: bold; -fx-text-fill: #387296; -fx-font-size: 14;"); // Bleu clair
+
+
+                    Label sujetLabel = new Label(item.getSujet());
+                    sujetLabel.setStyle("-fx-text-fill: black; -fx-font-size: 15;"); // Noir
+
+                    Label descriptionLabel = new Label(item.getDescription());
+                    descriptionLabel.setStyle("-fx-text-fill: black; -fx-font-size: 15;"); // Noir
+
+                    Label dateSoumissionLabel = new Label(item.getDatesoummission().toString());
+                    dateSoumissionLabel.setStyle("-fx-text-fill: black; -fx-font-size: 15;"); // Noir
 
                     // Create "Show More" button
                     Button ModifierButton = new Button("Modifier");
@@ -74,6 +85,15 @@ public class AfficherReclamationUser implements Initializable, RefreshCallBack {
 
                     ModifierButton.getStyleClass().add("modifierButton");
                     SupprimerButton.getStyleClass().add("deleteButton");
+
+                    ModifierButton.setStyle("-fx-background-color: #387296; -fx-text-fill: white; -fx-font-size: 14px; -fx-font-weight: bold");
+                    SupprimerButton.setStyle("-fx-background-color: #387296; -fx-text-fill: white; -fx-font-size: 14px; -fx-font-weight: bold");
+                    DetailsButton.setStyle("-fx-background-color: #387296; -fx-text-fill: white; -fx-font-size: 14px; -fx-font-weight: bold");
+
+                    // Ajouter des marges aux boutons
+                    ModifierButton.setMinWidth(80);
+                    SupprimerButton.setMinWidth(80);
+                    DetailsButton.setMinWidth(80);
 
                     // Add action handler for the show more button
                     DetailsButton.setOnAction(event -> {
@@ -92,45 +112,39 @@ public class AfficherReclamationUser implements Initializable, RefreshCallBack {
                         }
                     });
 
-
-
-
                     SupprimerButton.setOnAction(event -> {
                         SupprimerReclamation(item);
                     });
 
-                    // Create a VBox to hold all labels vertically
-                    VBox labelsVBox = new VBox();
-                    labelsVBox.getChildren().addAll(sujetLabel,NomPrenomLabel, descriptionLabel, dateSoumissionLabel);
-                    labelsVBox.setAlignment(Pos.CENTER_LEFT); // Align children to the left
-                    labelsVBox.setSpacing(5); // Adjust spacing between elements
+                    // Create a GridPane to hold all labels in a tabular layout
+                    GridPane gridPane = new GridPane();
+                    gridPane.setHgap(10); // Set horizontal gap between cells
+                    gridPane.setVgap(5); // Set vertical gap between cells
+                    // Ajouter les étiquettes de titre au GridPane
+                    gridPane.addRow(0, sujetTitreLabel, sujetLabel);
+                    gridPane.addRow(1, descriptionTitreLabel, descriptionLabel);
+                    gridPane.addRow(2, dateSoumissionTitreLabel, dateSoumissionLabel);
 
-                    // Create a VBox to hold price label and "Show More" button
-                    VBox ButtonsVBox = new VBox();
-                    ButtonsVBox.getChildren().addAll(ModifierButton,SupprimerButton,DetailsButton);
-                    ButtonsVBox.setAlignment(Pos.CENTER_RIGHT); // Align to the right
-                    ButtonsVBox.setSpacing(5); // Adjust spacing between elements
+                    // Create an HBox to hold buttons horizontally
+                    HBox buttonsHBox = new HBox(ModifierButton, SupprimerButton, DetailsButton);
+                    buttonsHBox.setAlignment(Pos.CENTER_RIGHT); // Align buttons to the right
+                    buttonsHBox.setSpacing(10); // Adjust spacing between buttons
 
-                    // Create an AnchorPane to hold all elements
-                    AnchorPane anchorPane = new AnchorPane();
-
-                    // Set labels position
-                    AnchorPane.setTopAnchor(labelsVBox, 5.0);
-                    AnchorPane.setLeftAnchor(labelsVBox, 5.0); // Adjust left offset as needed
-
-                    // Set price and button position
-                    AnchorPane.setTopAnchor(ButtonsVBox, 5.0);
-                    AnchorPane.setRightAnchor(ButtonsVBox, 5.0);
-
-                    // Add all elements to the AnchorPane
-                    anchorPane.getChildren().addAll(labelsVBox, ButtonsVBox);
+                    // Create a VBox to hold the GridPane and HBox vertically
+                    VBox rootVBox = new VBox(gridPane, buttonsHBox);
+                    rootVBox.setAlignment(Pos.CENTER_LEFT); // Align elements to the left
+                    rootVBox.setSpacing(10); // Adjust spacing between elements
 
                     // Set the layout as the graphic for the ListCell
-                    setGraphic(anchorPane);
+                    setGraphic(rootVBox);
                 }
             }
         });
     }
+
+
+
+
 
     // Méthode appelée lorsque l'utilisateur clique sur une réclamation dans la TableView
     @FXML

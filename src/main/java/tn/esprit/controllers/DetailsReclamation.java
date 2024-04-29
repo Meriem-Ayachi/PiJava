@@ -7,7 +7,9 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 import tn.esprit.models.Reclamation;
@@ -90,10 +92,10 @@ public class DetailsReclamation {
     @FXML
     private void addComment(String username, String comment) {
         Text usernameText = new Text(username + ": ");
-        usernameText.setStyle("-fx-font-weight: bold; -fx-fill: blue;");
+        usernameText.setStyle("-fx-font-weight: bold; -fx-fill: #1E90FF;"); // Bleu
 
         Text commentContent = new Text(comment);
-        commentContent.setStyle("-fx-fill: black;");
+        commentContent.setStyle("-fx-fill: #333333;"); // Noir
         commentContent.setFont(Font.font("Arial", Font.getDefault().getSize()));
         commentContent.setWrappingWidth(MAX_TEXT_WIDTH);
 
@@ -105,33 +107,43 @@ public class DetailsReclamation {
 
     private void addComment_withDelete(String username, String comment, int commentId) {
         Text usernameText = new Text(username + ": ");
-        usernameText.setStyle("-fx-font-weight: bold; -fx-fill: blue;");
+        usernameText.setStyle("-fx-font-weight: bold; -fx-fill: #387296; -fx-font-size: 17px;\n"); // Bleu avec une taille de police de 17px
 
         Text commentContent = new Text(comment);
-        commentContent.setStyle("-fx-fill: black;");
-        commentContent.setFont(Font.font("Arial", Font.getDefault().getSize()));
+        commentContent.setStyle("-fx-font-weight: bold; -fx-fill: black; -fx-font-size: 14px;\n"); // Noir avec une taille de police de 14px
+        commentContent.setFont(Font.font("Arial", FontWeight.NORMAL, 12)); // Définir une taille de police normale avec une taille de 12px
         commentContent.setWrappingWidth(MAX_TEXT_WIDTH);
 
         Button deleteButton = new Button("Delete");
+        deleteButton.setStyle("-fx-background-color: #DC143C; -fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 14px;\n"); // Rouge, en gras et taille de police de 14px
         deleteButton.setOnAction(event -> {
             rcs.delete(commentId);
             refresh();
         });
+
         Button updateButton = new Button("Update");
+        updateButton.setStyle("-fx-background-color: #4682B4; -fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 14px;\n"); // Bleu acier, en gras et taille de police de 14px
         updateButton.setOnAction(event -> {
             try {
                 GoToUpdate(event , commentId);
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
-
         });
 
-        TextFlow commentFlow = new TextFlow(usernameText, new Text("\n"), commentContent, new Text("\n"), deleteButton , updateButton);
+
+
+
+
+        HBox buttonsHBox = new HBox(deleteButton, updateButton);
+        buttonsHBox.setSpacing(5);
+
+        TextFlow commentFlow = new TextFlow(usernameText, new Text("\n"), commentContent, new Text("\n"), buttonsHBox);
         commentFlow.setMaxWidth(MAX_TEXT_WIDTH);
 
         commentsTextFlow.getChildren().addAll(commentFlow, new Text("\n\n"));
     }
+
 
     private void GoToUpdate (ActionEvent event ,int commentID) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/ModifierCommentaireReclamationUser.fxml"));

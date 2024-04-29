@@ -8,10 +8,9 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import tn.esprit.models.Reclamation;
 import tn.esprit.models.User;
@@ -45,6 +44,10 @@ public class AfficherReclamationAdmin {
     @FXML
     private TableView<Reclamation> tableview;
 
+    @FXML
+    private ComboBox<String> estTraiteCB;
+
+
     private final ReclamationService rs = new ReclamationService();
     UserService us = new UserService();
 
@@ -53,6 +56,14 @@ public class AfficherReclamationAdmin {
 
     @FXML
     void initialize(){
+
+        ObservableList<String> typeList = FXCollections.observableArrayList(
+                "Toutes"
+                , "Traitées"
+                , "Non traitées"
+        );
+        estTraiteCB.setItems(typeList);
+        estTraiteCB.setValue("Toutes");
 
         try{
 
@@ -168,6 +179,42 @@ public class AfficherReclamationAdmin {
         }else{
             showError("Vous devez sélectionner une réclamation");
         }
+
+    }
+
+    String nom, prenom;
+    Byte estTraite;
+    void recherche ()
+    {
+        List <Reclamation> reclamations = rs.recherche(nom , prenom , estTraite);
+        tableview.setItems(FXCollections.observableArrayList(reclamations));
+    }
+
+    @FXML
+    void NomTF(KeyEvent event) {
+        nom = ((TextField) event.getSource()).getText();
+        recherche();
+    }
+
+    @FXML
+    void PrenomTF(KeyEvent event) {
+        prenom = ((TextField) event.getSource()).getText();
+        recherche();
+
+    }
+
+    @FXML
+    void estTraiteChanged(ActionEvent event) {
+        String search = estTraiteCB.getValue();
+        if(search . equals("Traitées"))
+            estTraite = 1;
+        else if (search . equals("Non traitées")) {
+            estTraite = 0;
+        }
+        else
+            estTraite = null;
+
+        recherche();
 
     }
 }

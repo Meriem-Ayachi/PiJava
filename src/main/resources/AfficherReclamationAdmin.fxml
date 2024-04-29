@@ -1,24 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="Styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.AfficherReclamationAdmin">
     <fx:include source="sidebarAdmin.fxml" />
-    <AnchorPane layoutX="211.0" layoutY="38.0" prefHeight="402.0" prefWidth="500.0" style="-fx-background-color: #ececec;">
+    <AnchorPane layoutX="200.0" layoutY="-2.0" prefHeight="463.0" prefWidth="613.0" style="-fx-background-color: #ececec;">
 
         <children>
-          <Label layoutX="197.0" layoutY="21.0" text="Les réclamations">
+          <Label layoutX="190.0" layoutY="4.0" text="Les réclamations">
              <font>
                 <Font size="30.0" />
              </font>
           </Label>
           <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" text="Retour" />
-          <TableView fx:id="tableview" layoutX="14.0" layoutY="82.0" onMouseClicked="#onTableRowClicked" prefHeight="220.0" prefWidth="548.0" stylesheets="@Styles.css">
+          <TableView fx:id="tableview" layoutX="14.0" layoutY="136.0" onMouseClicked="#onTableRowClicked" prefHeight="220.0" prefWidth="548.0" stylesheets="@Styles.css">
             <columns>
               <TableColumn fx:id="NomPrenomCol" prefWidth="100.0" text="Nom et Prénom" />
               <TableColumn fx:id="SujetCol" prefWidth="50.4000244140625" text="Sujet" />
@@ -29,10 +31,13 @@
 
             </columns>
           </TableView>
-          <Button layoutX="87.0" layoutY="44.0" mnemonicParsing="false" onAction="#Refresh" text="Refresh" />
-         <Button layoutX="124.0" layoutY="327.0" mnemonicParsing="false" onAction="#modifierBTN" text="Modifier" />
-         <Button layoutX="229.0" layoutY="327.0" mnemonicParsing="false" onAction="#supprimerBTN" text="Supprimer" />
-         <Button layoutX="338.0" layoutY="327.0" mnemonicParsing="false" onAction="#GoToCommentaire" text="Commentaires" />
+          <Button layoutX="76.0" layoutY="14.0" mnemonicParsing="false" onAction="#Refresh" text="Refresh" />
+         <Button layoutX="132.0" layoutY="393.0" mnemonicParsing="false" onAction="#modifierBTN" text="Modifier" />
+         <Button layoutX="228.0" layoutY="393.0" mnemonicParsing="false" onAction="#supprimerBTN" text="Supprimer" />
+         <Button layoutX="334.0" layoutY="393.0" mnemonicParsing="false" onAction="#GoToCommentaire" text="Commentaires" />
+         <TextField layoutX="29.0" layoutY="77.0" onKeyTyped="#NomTF" promptText="Nom" />
+         <TextField layoutX="202.0" layoutY="77.0" onKeyTyped="#PrenomTF" promptText="Prénom" />
+         <ComboBox fx:id="estTraiteCB" layoutX="381.0" layoutY="77.0" onAction="#estTraiteChanged" prefWidth="150.0" />
        </children>
     </AnchorPane>
 

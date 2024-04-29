@@ -1,21 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="Styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.ModifierCommentaireReclamationUser">
+<AnchorPane prefHeight="309.0" prefWidth="474.0" stylesheets="Styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.ModifierCommentaireReclamationUser">
    <children>
-      <Label layoutX="152.0" layoutY="25.0" text="Modifier commentaire">
+      <Label layoutX="96.0" layoutY="43.0" text="Modifier commentaire" textFill="#387296">
          <font>
             <Font size="30.0" />
          </font>
       </Label>
-      <TextField fx:id="contenuTF" layoutX="51.0" layoutY="155.0" promptText="Contenu" />
+      <TextField fx:id="contenuTF" layoutX="50.0" layoutY="140.0" prefHeight="38.0" prefWidth="179.0" promptText="Contenu" />
 
-      <Button layoutX="377.0" layoutY="295.0" mnemonicParsing="false" onAction="#modifierCommentaire" text="Modifier" />
+      <Button layoutX="317.0" layoutY="229.0" mnemonicParsing="false" onAction="#modifierCommentaire" text="Modifier" />
    </children>
 </AnchorPane>

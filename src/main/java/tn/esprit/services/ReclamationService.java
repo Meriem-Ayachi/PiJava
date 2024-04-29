@@ -154,6 +154,82 @@ public class ReclamationService  implements IService<Reclamation> {
         return reclamations;
     }
 
+    public List<Reclamation> recherche (String nom , String prenom , Byte estTraite)
+    {
+        List<Reclamation> reclamations = new ArrayList<>();
+        String req = "SELECT rec.* FROM reclamation rec";
+        req += " INNER JOIN user u ON rec.user_id = u.id";
+
+        boolean firstValue = true;
+
+        // Add conditions based on parameters
+        if (nom != null && !nom.isEmpty()) {
+            if (firstValue)
+                {req += " WHERE nom LIKE ?";
+                    firstValue = false;
+                }
+            else
+                req += " AND nom LIKE ?";
+            nom = "%" + nom + "%";
+        }
+        if (prenom != null && !prenom.isEmpty()) {
+            if (firstValue)
+            {req += " WHERE prenom LIKE ?";
+                firstValue = false;
+            }
+            else
+                req += " AND prenom LIKE ?";
+            prenom = "%" + prenom + "%";
+        }
+        if (estTraite != null) {
+            if (firstValue)
+            {req += " WHERE est_traite = ?";
+                firstValue = false;
+            }
+            else
+                req += " AND est_traite = ?";
+        }
+        System.out.println(req);
+
+        // Prepare and execute the query
+        try {
+            PreparedStatement stmt = cnx.prepareStatement(req);
+            int paramIndex = 1;
+            if (nom != null && !nom.isEmpty()) {
+                stmt.setString(paramIndex, nom);
+                paramIndex++;
+            }
+            if (prenom != null && !prenom.isEmpty()) {
+                stmt.setString(paramIndex, prenom);
+                paramIndex++;
+            }
+            if (estTraite != null) {
+                stmt.setByte(paramIndex, estTraite);
+                paramIndex++;
+            }
+
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+
+                Reclamation reclamation = new Reclamation();
+                reclamation.setId(rs.getInt(1));
+                reclamation.setSujet(rs.getString(2));
+                reclamation.setDescription(rs.getString(3));
+                reclamation.setDatesoummission(rs.getTimestamp(4));
+                reclamation.setEst_traite(rs.getByte(5));
+                reclamation.setUser_id(rs.getInt(6));
+
+
+                reclamations.add(reclamation);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return reclamations;
+
+    }
+
+
 
 }
 

@@ -8,6 +8,10 @@ import javafx.stage.Stage;
 import tn.esprit.interfaces.RefreshCallBack;
 import tn.esprit.models.Reclamation;
 import tn.esprit.services.ReclamationService;
+import tn.esprit.util.BadWordsChecker;
+
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 
 public class ModifierReclamationUser {
 
@@ -49,6 +53,18 @@ public class ModifierReclamationUser {
         }
 
             String nouveauSujet = sujetTextField.getText();
+            BadWordsChecker badWordsChecker = new BadWordsChecker();
+            try {
+                String encodedSujet = URLEncoder.encode(nouveauSujet, "UTF-8");
+                if (badWordsChecker.containsBadWords(encodedSujet)) {
+                    afficherErreur("Le sujet contient des mots inappropriés.");
+                    return;
+                }
+            } catch (UnsupportedEncodingException e) {
+                // Gérer l'exception d'encodage
+                e.printStackTrace();
+                return;
+            }
 
 
         // Vérifier si le champ description est vide
@@ -61,6 +77,17 @@ public class ModifierReclamationUser {
             return;
         }
             String nouvelleDescription = DescriptionTF.getText();
+            try {
+                String encodedDescription = URLEncoder.encode(nouvelleDescription, "UTF-8");
+                if (badWordsChecker.containsBadWords(encodedDescription)) {
+                    afficherErreur("La description contient des mots inappropriés.");
+                    return;
+                }
+            } catch (UnsupportedEncodingException e) {
+                // Gérer l'exception d'encodage
+                e.printStackTrace();
+                return;
+            }
 
             // Mettre à jour la réclamation avec les nouvelles valeurs
             reclamation.setSujet(nouveauSujet);

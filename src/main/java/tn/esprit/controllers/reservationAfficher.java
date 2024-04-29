@@ -45,6 +45,11 @@ public class reservationAfficher {
     private Reservation selectedReservation;
     private Reservationservices reservationService = new Reservationservices() {
         @Override
+        public void generatePDF(List<Reservation> reservations, String filePath) {
+            
+        }
+
+        @Override
         public List<hotel> rechercherParNom(String nom) {
             return null;
         }
@@ -119,6 +124,12 @@ public class reservationAfficher {
             afficherAucuneReservationSelectionneeAlert();
         }
     }
+
+
+
+
+
+
 
     @FXML
     private void genererPDF() {
@@ -205,7 +216,7 @@ public class reservationAfficher {
     }
 
     @FXML
-    private void fermerFenetre() {
+   private void fermerFenetre() {
         dateDepartLabel.getScene().getWindow().hide();
     }
 

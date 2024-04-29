@@ -13,7 +13,7 @@ public class MainFX extends Application {
     @Override
     public void start(Stage primaryStage) {
         try {
-            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/Fxml/hotelAdd.fxml")));
+            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/Fxml/reservationAdd.fxml")));
             Scene scene = new Scene(root);
 
             // Ajuster la taille de la scène

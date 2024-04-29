@@ -35,6 +35,11 @@ public class reservationModifier {
     private Reservation reservationToModify;
     private Reservationservices reservationService = new Reservationservices() {
         @Override
+        public void generatePDF(List<Reservation> reservations, String filePath) {
+
+        }
+
+        @Override
         public List<hotel> rechercherParNom(String nom) {
             return null;
         }

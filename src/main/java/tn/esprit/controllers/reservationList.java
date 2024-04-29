@@ -80,6 +80,11 @@ public class reservationList {
 
     private Reservationservices rdvService = new Reservationservices() {
         @Override
+        public void generatePDF(List<Reservation> reservations, String filePath) {
+
+        }
+
+        @Override
         public List<hotel> rechercherParNom(String nom) {
             return null;
         }
@@ -101,6 +106,11 @@ public class reservationList {
 
     public reservationList() {
         reservationService = new Reservationservices() {
+            @Override
+            public void generatePDF(List<Reservation> reservations, String filePath) {
+
+            }
+
             @Override
             public List<hotel> rechercherParNom(String nom) {
                 return null;

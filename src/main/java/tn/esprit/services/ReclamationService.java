@@ -189,7 +189,6 @@ public class ReclamationService  implements IService<Reclamation> {
             else
                 req += " AND est_traite = ?";
         }
-        System.out.println(req);
 
         // Prepare and execute the query
         try {

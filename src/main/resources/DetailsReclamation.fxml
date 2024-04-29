@@ -19,7 +19,7 @@
             <Font name="System Bold Italic" size="16.0" />
          </font></Label>
 
-        <VBox layoutX="86.0" layoutY="139.0" prefHeight="300.0" prefWidth="400.0">
+        <VBox layoutX="14.0" layoutY="139.0" prefHeight="300.0" prefWidth="400.0">
             <children>
                 <ScrollPane prefHeight="300.0" prefWidth="400.0">
                     <content>
@@ -31,10 +31,12 @@
             </children>
         </VBox>
 
-        <Button layoutX="419.0" layoutY="99.0" mnemonicParsing="false" onAction="#AddCommBTN" prefHeight="32.0" prefWidth="173.0" style="-fx-background-color: #387296; -fx-text-fill: white;" text="Ajouter un commentaire">
+        <Button layoutX="421.0" layoutY="264.0" mnemonicParsing="false" onAction="#AddCommBTN" prefHeight="32.0" prefWidth="173.0" style="-fx-background-color: #387296; -fx-text-fill: white;" text="Ajouter un commentaire">
             <font>
                 <Font name="System Bold" size="13.0" />
             </font>
         </Button>
+      <Button layoutX="342.0" layoutY="101.0" mnemonicParsing="false" onAction="#SupprimerReclamation" text="Supprimer" />
+      <Button layoutX="265.0" layoutY="101.0" mnemonicParsing="false" onAction="#GoToModifierReclamation" text="Modifier" />
     </children>
 </AnchorPane>

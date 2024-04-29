@@ -1,8 +1,10 @@
 package tn.esprit.controllers;
 
+import com.mysql.cj.x.protobuf.MysqlxCrud;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -12,6 +14,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
+import tn.esprit.interfaces.RefreshCallBack;
 import tn.esprit.models.Reclamation;
 import tn.esprit.models.Reclamation_Commentaire;
 import tn.esprit.models.User;
@@ -26,7 +29,7 @@ import java.io.IOException;
 import java.util.List;
 
 
-public class DetailsReclamation {
+public class DetailsReclamation implements RefreshCallBack {
 
     @FXML
     private TextFlow commentsTextFlow;
@@ -46,15 +49,21 @@ public class DetailsReclamation {
     private UserService us = new UserService();
 
 
-
+    RefreshCallBack callback ;
 
 
     // Méthode pour initialiser les détails de la réclamation dans l'interface
-    public void initializeDetails(Reclamation reclamation) {
+    public void initializeDetails(Reclamation reclamation ) {
+
         this.reclamation = reclamation;
         sujetLabel.setText("Sujet : " + reclamation.getSujet());
         descriptionLabel.setText("Description : " + reclamation.getDescription());
         refresh();
+    }
+
+    public void UpdateCallBack (RefreshCallBack callback)
+    {
+        this.callback = callback;
     }
 
     public void AddCommBTN(ActionEvent event) throws IOException {
@@ -115,7 +124,7 @@ public class DetailsReclamation {
         commentContent.setWrappingWidth(MAX_TEXT_WIDTH);
 
         Button deleteButton = new Button("Delete");
-        deleteButton.setStyle("-fx-background-color: #DC143C; -fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 14px;\n"); // Rouge, en gras et taille de police de 14px
+        deleteButton.setStyle("-fx-end-margin:10px ; -fx-background-color: #DC143C; -fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 14px;\n"); // Rouge, en gras et taille de police de 14px
         deleteButton.setOnAction(event -> {
             rcs.delete(commentId);
             refresh();
@@ -138,7 +147,7 @@ public class DetailsReclamation {
         HBox buttonsHBox = new HBox(deleteButton, updateButton);
         buttonsHBox.setSpacing(5);
 
-        TextFlow commentFlow = new TextFlow(usernameText, new Text("\n"), commentContent, new Text("\n"), buttonsHBox);
+        TextFlow commentFlow = new TextFlow(usernameText, new Text("\n\n"), commentContent, new Text("\n\n"), buttonsHBox);
         commentFlow.setMaxWidth(MAX_TEXT_WIDTH);
 
         commentsTextFlow.getChildren().addAll(commentFlow, new Text("\n\n"));
@@ -159,6 +168,62 @@ public class DetailsReclamation {
         Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
         stage.setScene(scene);
         stage.show();
+    }
+
+
+    @FXML
+    private void GoToModifierReclamation(ActionEvent event) throws IOException {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ModifierReclamationUser.fxml"));
+            AnchorPane detailsReclamationPane = loader.load();
+            ModifierReclamationUser controller = loader.getController();
+
+            // Appeler la méthode pour initialiser les détails de la réclamation
+            controller.initialize(reclamation , this);
+
+            // Afficher l'interface dans une nouvelle fenêtre
+            Stage stage = new Stage();
+            stage.setScene(new Scene(detailsReclamationPane));
+            stage.show();
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    public void SupprimerReclamation(ActionEvent event) {
+
+        // confirmation dialog
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Confirmation");
+        alert.setContentText("Voulez-vous supprimer cette réclamation");
+        ButtonType result = alert.showAndWait().orElse(ButtonType.CANCEL);
+        // check if user has declined
+        if (result != ButtonType.OK) {
+            return;
+        }
+
+        reclamationService.delete(reclamation.getId());
+
+        // Afficher un message de confirmation
+        Alert confirmationAlert = new Alert(Alert.AlertType.INFORMATION);
+        confirmationAlert.setTitle("Suppression réussie");
+        confirmationAlert.setHeaderText(null);
+        confirmationAlert.setContentText("La réclamation a été supprimée avec succès.");
+        confirmationAlert.showAndWait();
+
+        ((Stage) descriptionLabel.getScene().getWindow()).close();
+        this.callback.onRefreshComplete();
+    }
+
+
+    @Override
+    public void onRefreshComplete() {
+        this.reclamation = reclamationService.getOne(this.reclamation.getId());
+        sujetLabel.setText("Sujet : " + reclamation.getSujet());
+        descriptionLabel.setText("Description : " + reclamation.getDescription());
+
     }
 
 }

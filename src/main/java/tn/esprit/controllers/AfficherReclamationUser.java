@@ -4,6 +4,7 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -17,6 +18,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 import tn.esprit.interfaces.RefreshCallBack;
 import tn.esprit.models.Reclamation;
 import tn.esprit.models.User;
@@ -58,6 +60,17 @@ public class AfficherReclamationUser implements Initializable, RefreshCallBack {
                     setText(null);
                     setGraphic(null);
                 } else {
+
+                    setOnMouseClicked(event -> {
+                        // Votre logique pour afficher les détails de la réclamation
+                        try {
+                            afficherDetailsReclamation(item);
+                        } catch (IOException e) {
+                            throw new RuntimeException(e);
+                        }
+                    });
+
+
                     User user = us.getOne(item.getUser_id());
 
                     Label sujetTitreLabel = new Label("Sujet:");
@@ -78,43 +91,8 @@ public class AfficherReclamationUser implements Initializable, RefreshCallBack {
                     Label dateSoumissionLabel = new Label(item.getDatesoummission().toString());
                     dateSoumissionLabel.setStyle("-fx-text-fill: black; -fx-font-size: 15;"); // Noir
 
-                    // Create "Show More" button
-                    Button ModifierButton = new Button("Modifier");
-                    Button SupprimerButton = new Button("Supprimer");
-                    Button DetailsButton = new Button("Details");
-
-                    ModifierButton.getStyleClass().add("modifierButton");
-                    SupprimerButton.getStyleClass().add("deleteButton");
-
-                    ModifierButton.setStyle("-fx-background-color: #387296; -fx-text-fill: white; -fx-font-size: 14px; -fx-font-weight: bold");
-                    SupprimerButton.setStyle("-fx-background-color: #387296; -fx-text-fill: white; -fx-font-size: 14px; -fx-font-weight: bold");
-                    DetailsButton.setStyle("-fx-background-color: #387296; -fx-text-fill: white; -fx-font-size: 14px; -fx-font-weight: bold");
-
-                    // Ajouter des marges aux boutons
-                    ModifierButton.setMinWidth(80);
-                    SupprimerButton.setMinWidth(80);
-                    DetailsButton.setMinWidth(80);
-
                     // Add action handler for the show more button
-                    DetailsButton.setOnAction(event -> {
-                        try {
-                            afficherDetailsReclamation(item);
-                        } catch (IOException e) {
-                            throw new RuntimeException(e);
-                        }
-                    });
 
-                    ModifierButton.setOnAction(event -> {
-                        try {
-                            GoToModifierReclamation(item);
-                        } catch (IOException e) {
-                            throw new RuntimeException(e);
-                        }
-                    });
-
-                    SupprimerButton.setOnAction(event -> {
-                        SupprimerReclamation(item);
-                    });
 
                     // Create a GridPane to hold all labels in a tabular layout
                     GridPane gridPane = new GridPane();
@@ -125,13 +103,9 @@ public class AfficherReclamationUser implements Initializable, RefreshCallBack {
                     gridPane.addRow(1, descriptionTitreLabel, descriptionLabel);
                     gridPane.addRow(2, dateSoumissionTitreLabel, dateSoumissionLabel);
 
-                    // Create an HBox to hold buttons horizontally
-                    HBox buttonsHBox = new HBox(ModifierButton, SupprimerButton, DetailsButton);
-                    buttonsHBox.setAlignment(Pos.CENTER_RIGHT); // Align buttons to the right
-                    buttonsHBox.setSpacing(10); // Adjust spacing between buttons
 
                     // Create a VBox to hold the GridPane and HBox vertically
-                    VBox rootVBox = new VBox(gridPane, buttonsHBox);
+                    VBox rootVBox = new VBox(gridPane);
                     rootVBox.setAlignment(Pos.CENTER_LEFT); // Align elements to the left
                     rootVBox.setSpacing(10); // Adjust spacing between elements
 
@@ -156,9 +130,22 @@ public class AfficherReclamationUser implements Initializable, RefreshCallBack {
 
             // Appeler la méthode pour initialiser les détails de la réclamation
             controller.initializeDetails(reclamation);
+            controller.UpdateCallBack(this);
+
 
             // Afficher l'interface dans une nouvelle fenêtre
             Stage stage = new Stage();
+
+            stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+                @Override
+                public void handle(WindowEvent event) {
+                    event.consume(); // Consume the event to prevent the window from closing automatically
+
+                    // Execute your function here
+                    handleCloseRequest(stage);
+                }
+            });
+
             stage.setScene(new Scene(detailsReclamationPane));
             stage.show();
         }
@@ -167,51 +154,6 @@ public class AfficherReclamationUser implements Initializable, RefreshCallBack {
         }
     }
 
-
-    @FXML
-    private void GoToModifierReclamation(Reclamation reclamation) throws IOException {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ModifierReclamationUser.fxml"));
-            AnchorPane detailsReclamationPane = loader.load();
-            ModifierReclamationUser controller = loader.getController();
-
-            // Appeler la méthode pour initialiser les détails de la réclamation
-            controller.initialize(reclamation , this);
-
-            // Afficher l'interface dans une nouvelle fenêtre
-            Stage stage = new Stage();
-            stage.setScene(new Scene(detailsReclamationPane));
-            stage.show();
-        }
-        catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    @FXML
-    private void SupprimerReclamation (Reclamation rec){
-
-        // confirmation dialog
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setTitle("Confirmation");
-        alert.setContentText("Voulez-vous supprimer cette réclamation");
-        ButtonType result = alert.showAndWait().orElse(ButtonType.CANCEL);
-        // check if user has declined
-        if (result != ButtonType.OK) {
-            return;
-        }
-
-        rs.delete(rec.getId());
-
-        // Afficher un message de confirmation
-        Alert confirmationAlert = new Alert(Alert.AlertType.INFORMATION);
-        confirmationAlert.setTitle("Suppression réussie");
-        confirmationAlert.setHeaderText(null);
-        confirmationAlert.setContentText("La réclamation a été supprimée avec succès.");
-        confirmationAlert.showAndWait();
-
-        refresh();
-    }
 
     @FXML
     void GoToAjouter(ActionEvent event) {
@@ -231,6 +173,13 @@ public class AfficherReclamationUser implements Initializable, RefreshCallBack {
     @Override
     public void onRefreshComplete() {
         refresh();
+
+    }
+
+
+    private void handleCloseRequest(Stage stage) {
+        refresh();
+        stage.close();
 
     }
 }

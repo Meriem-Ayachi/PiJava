@@ -5,6 +5,7 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Orientation;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -25,6 +26,8 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
+import javafx.scene.shape.Line;
+
 
 
 
@@ -51,6 +54,8 @@ public class AfficherReclamationUser implements Initializable, RefreshCallBack {
                     setText(null);
                     setGraphic(null);
                 } else {
+
+
 
                     setOnMouseClicked(event -> {
                         // Votre logique pour afficher les détails de la réclamation
@@ -94,11 +99,14 @@ public class AfficherReclamationUser implements Initializable, RefreshCallBack {
                     gridPane.addRow(1, descriptionTitreLabel, descriptionLabel);
                     gridPane.addRow(2, dateSoumissionTitreLabel, dateSoumissionLabel);
 
+                    // Créer une ligne horizontale de séparation
+                    Separator separator = new Separator();
+                    separator.setOrientation(Orientation.HORIZONTAL);
 
-                    // Create a VBox to hold the GridPane and HBox vertically
-                    VBox rootVBox = new VBox(gridPane);
-                    rootVBox.setAlignment(Pos.CENTER_LEFT); // Align elements to the left
-                    rootVBox.setSpacing(10); // Adjust spacing between elements
+                    // Créer un VBox pour contenir les éléments
+                    VBox rootVBox = new VBox(gridPane, separator);
+                    rootVBox.setAlignment(Pos.CENTER_LEFT); // Alignement à gauche
+                    rootVBox.setSpacing(10); // Espace entre les éléments
 
                     // Set the layout as the graphic for the ListCell
                     setGraphic(rootVBox);

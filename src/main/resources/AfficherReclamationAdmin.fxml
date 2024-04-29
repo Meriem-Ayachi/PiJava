@@ -14,29 +14,30 @@
     <AnchorPane layoutX="200.0" layoutY="-2.0" prefHeight="463.0" prefWidth="613.0" style="-fx-background-color: #ececec;">
 
         <children>
-          <Label layoutX="190.0" layoutY="4.0" text="Les réclamations">
-             <font>
-                <Font size="30.0" />
-             </font>
-          </Label>
-          <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" text="Retour" />
-          <TableView fx:id="tableview"  layoutX="14.0" layoutY="136.0" onMouseClicked="#onTableRowClicked" prefHeight="220.0" prefWidth="548.0" stylesheets="@Styles.css">
-            <columns>
-              <TableColumn fx:id="NomPrenomCol" prefWidth="100.0" text="Nom et Prénom" />
-              <TableColumn fx:id="SujetCol" prefWidth="50.4000244140625" text="Sujet" />
-                <TableColumn fx:id="DescriptionCol" prefWidth="75.0" text="Description " />
-                <TableColumn fx:id="DateSoumissionCol" prefWidth="122.39996337890625" text="Date de soumission" />
-                <TableColumn fx:id="EstTraiteCol" minWidth="5.59991455078125" prefWidth="92.0" text="EstTraite" />
-                <TableColumn prefWidth="106.4000244140625" text="Actions" />
-
-            </columns>
-          </TableView>
-         <Button layoutX="132.0" layoutY="393.0" mnemonicParsing="false" onAction="#modifierBTN" text="Modifier" />
-         <Button layoutX="228.0" layoutY="393.0" mnemonicParsing="false" onAction="#supprimerBTN" text="Supprimer" />
-         <TextField layoutX="29.0" layoutY="77.0" onKeyTyped="#NomTF" promptText="Nom" />
-         <TextField layoutX="202.0" layoutY="77.0" onKeyTyped="#PrenomTF" promptText="Prénom" />
-         <ComboBox fx:id="estTraiteCB" layoutX="381.0" layoutY="77.0" onAction="#estTraiteChanged" prefWidth="150.0" />
-       </children>
+            <Label layoutX="167.0" layoutY="22.0" text="Les réclamations" textFill="#38bdea">
+                <font>
+                    <Font name="Arial Rounded MT Bold" size="30.0" />
+                </font>
+            </Label>
+            <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="54.0" style="-fx-background-color: #387296;" text="Retour" textFill="WHITE">
+            <font>
+               <Font name="System Bold" size="12.0" />
+            </font></Button>
+            <TableView fx:id="tableview" layoutX="14.0" layoutY="117.0" onMouseClicked="#onTableRowClicked" prefHeight="293.0" prefWidth="548.0" style="-fx-background-color: #ffffff; -fx-border-color: #cccccc; -fx-border-width: 1px;" stylesheets="@Styles.css">
+                <columns>
+                    <TableColumn fx:id="NomPrenomCol" prefWidth="100.0" text="Nom et Prénom" />
+                    <TableColumn fx:id="SujetCol" prefWidth="50.4000244140625" text="Sujet" />
+                    <TableColumn fx:id="DescriptionCol" prefWidth="75.0" text="Description " />
+                    <TableColumn fx:id="DateSoumissionCol" prefWidth="122.39996337890625" text="Date de soumission" />
+                    <TableColumn fx:id="EstTraiteCol" minWidth="5.59991455078125" prefWidth="92.0" text="EstTraite" />
+                    <TableColumn prefWidth="106.4000244140625" text="Actions" />
+                </columns>
+            </TableView>
+            <Button layoutX="418.0" layoutY="419.0" mnemonicParsing="false" onAction="#modifierBTN" prefHeight="36.0" prefWidth="62.0" style="-fx-background-color: #387296;" text="Modifier" textFill="WHITE" />
+            <Button layoutX="495.0" layoutY="419.0" mnemonicParsing="false" onAction="#supprimerBTN" prefHeight="36.0" prefWidth="71.0" style="-fx-background-color: #d32f2f;" text="Supprimer" textFill="WHITE" />
+            <TextField layoutX="29.0" layoutY="77.0" onKeyTyped="#NomTF" promptText="Nom" />
+            <TextField layoutX="202.0" layoutY="77.0" onKeyTyped="#PrenomTF" promptText="Prénom" />
+            <ComboBox fx:id="estTraiteCB" layoutX="381.0" layoutY="77.0" onAction="#estTraiteChanged" prefWidth="150.0" />
+        </children>
     </AnchorPane>
-
 </AnchorPane>

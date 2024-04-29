@@ -6,6 +6,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Font;
@@ -105,8 +107,18 @@ public class DetailsReclamationAdmin implements RefreshCallBack {
         commentContent.setFont(Font.font("Arial", FontWeight.NORMAL, 12)); // Définir une taille de police normale avec une taille de 12px
         commentContent.setWrappingWidth(MAX_TEXT_WIDTH);
 
-        Button deleteButton = new Button("Delete");
-        deleteButton.setStyle("-fx-end-margin:10px ; -fx-background-color: #DC143C; -fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 14px;\n"); // Rouge, en gras et taille de police de 14px
+        Button deleteButton = new Button("");
+
+        String imagePath = "/images/delete.png"; // Chemin de votre image locale
+        Image image = new Image(getClass().getResourceAsStream(imagePath));
+        ImageView imageView = new ImageView(image);
+
+        // Ajustez la taille de l'image au besoin
+        imageView.setFitWidth(20);
+        imageView.setFitHeight(20);
+        // Définir l'image comme le graphique du bouton
+        deleteButton.setGraphic(imageView);
+        deleteButton.setStyle("-fx-background-color: transparent; "); // Rouge, en gras et taille de police de 14px
         deleteButton.setOnAction(event -> {
             rcs.delete(commentId);
             refresh();
@@ -127,15 +139,34 @@ public class DetailsReclamationAdmin implements RefreshCallBack {
         commentContent.setFont(Font.font("Arial", FontWeight.NORMAL, 12)); // Définir une taille de police normale avec une taille de 12px
         commentContent.setWrappingWidth(MAX_TEXT_WIDTH);
 
-        Button deleteButton = new Button("Delete");
-        deleteButton.setStyle("-fx-end-margin:10px ; -fx-background-color: #DC143C; -fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 14px;\n"); // Rouge, en gras et taille de police de 14px
+        Button deleteButton = new Button("");
+
+        String imagePath = "/images/delete.png"; // Chemin de votre image locale
+        Image image = new Image(getClass().getResourceAsStream(imagePath));
+        ImageView imageView = new ImageView(image);
+
+        // Ajustez la taille de l'image au besoin
+        imageView.setFitWidth(20);
+        imageView.setFitHeight(20);
+        // Définir l'image comme le graphique du bouton
+        deleteButton.setGraphic(imageView);
+        deleteButton.setStyle("-fx-background-color: transparent; "); // Rouge, en gras et taille de police de 14px
         deleteButton.setOnAction(event -> {
             rcs.delete(commentId);
             refresh();
         });
 
-        Button updateButton = new Button("Update");
-        updateButton.setStyle("-fx-background-color: #4682B4; -fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 14px;\n"); // Bleu acier, en gras et taille de police de 14px
+        Button updateButton = new Button("");
+
+        String imagePath2 = "/images/pen.png"; // Chemin de votre image locale
+        Image image2 = new Image(getClass().getResourceAsStream(imagePath2));
+        ImageView imageView2 = new ImageView(image2);
+
+        // Ajustez la taille de l'image au besoin
+        imageView2.setFitWidth(20);
+        imageView2.setFitHeight(20);
+        updateButton.setGraphic(imageView2);
+        updateButton.setStyle("-fx-background-color: transparent;"); // Bleu acier, en gras et taille de police de 14px
         updateButton.setOnAction(event -> {
             try {
                 GoToUpdate(event , commentId);
@@ -143,8 +174,6 @@ public class DetailsReclamationAdmin implements RefreshCallBack {
                 throw new RuntimeException(e);
             }
         });
-
-
 
 
 

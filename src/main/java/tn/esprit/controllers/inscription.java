@@ -115,7 +115,9 @@ public class inscription {
 
                     // Afficher une confirmation
                     redirectToLoginPage(event);
-                    EmailsUtils.envoyerEmailConfirmation(user);
+                    new Thread(() -> {
+                        EmailsUtils.envoyerEmailConfirmation(user);
+                    }).start();
                 } else {
                     // Verification window failed to open, show an error message or take appropriate action
                     showAlert(Alert.AlertType.ERROR, "Erreur", "Code de vérification incorrect.");

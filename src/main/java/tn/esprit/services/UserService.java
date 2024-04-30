@@ -47,7 +47,7 @@ public class UserService implements IService <User> {
 
     @Override
     public void update(User o) {
-        String req = "update User set email=?, roles=?, is_verified=?, nom=? , prenom=? ,num_tel=? where id=?";
+        String req = "update user set email=?, roles=?, is_verified=?, nom=? , prenom=? ,num_tel=? where id=?";
         try {
             PreparedStatement ps = cnx.prepareStatement(req);
             String rolesJson = new Gson().toJson(o.getRoles());
@@ -62,6 +62,23 @@ public class UserService implements IService <User> {
 
             ps.executeUpdate();
             System.out.println("Utilisateur modifiée avec succès");
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
+
+    public void updatePassword(User o) {
+        String req = "update user set password=? where id=?";
+        try {
+            PreparedStatement ps = cnx.prepareStatement(req);
+            String encryptedPassword = BCrypt.hashpw(o.getPassword(), BCrypt.gensalt());
+            ps.setString(1, encryptedPassword);
+            ps.setInt(2, o.getId());
+
+            ps.executeUpdate();
+            System.out.println("Utilisateur mot de passe a été modifiée avec succès");
 
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -124,7 +141,7 @@ public class UserService implements IService <User> {
         try {
             PreparedStatement ps = cnx.prepareStatement(req);
             ps.setInt(1,id);
-            
+
             ResultSet res = ps.executeQuery();
             if (res.next()){
                 User user = new User();
@@ -149,8 +166,8 @@ public class UserService implements IService <User> {
         }
     }
 
-    
-    public boolean emailExists(String email) { 
+
+    public boolean emailExists(String email) {
         String req = "SELECT * FROM user WHERE email=?";
         try (PreparedStatement preparedStatement = cnx.prepareStatement(req)) {
             preparedStatement.setString(1, email);

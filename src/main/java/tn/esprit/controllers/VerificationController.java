@@ -35,7 +35,7 @@ public class VerificationController {
         if (codeSaisi.equals(verificationCode)) {
             // Code de vérification valide, vous pouvez ici ajouter le code pour finaliser l'inscription
             // userService.finaliserInscription(userEmail);
-            showAlert(Alert.AlertType.INFORMATION, "Succès", "Inscription réussie !");
+            showAlert(Alert.AlertType.INFORMATION, "Succès", "Code de verification réussie !");
             verificationSuccessful = true; // Marquer la vérification comme réussie
             closeVerificationWindow();
         } else {

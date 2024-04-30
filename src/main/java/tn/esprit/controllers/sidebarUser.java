@@ -3,6 +3,8 @@ package tn.esprit.controllers;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import tn.esprit.models.User;
 import tn.esprit.models.session;
 import tn.esprit.services.UserService;
@@ -14,7 +16,10 @@ public class sidebarUser {
     @FXML
     private Label name;
 
-    
+    @FXML
+    private ImageView ImageUser;
+
+
     UserService userService=new UserService();
     Navigator nav = new Navigator();
     
@@ -22,6 +27,13 @@ public class sidebarUser {
     @FXML
     void initialize() {
         updateLabels();
+        User user = userService.getOne(session.id_utilisateur);
+        String imagepath = user.getImagefilename();
+        if (imagepath != null){
+            Image image = new Image("file:" + imagepath);
+            ImageUser.setImage(image);
+        }
+
     }
     
 

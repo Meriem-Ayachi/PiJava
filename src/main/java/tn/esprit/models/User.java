@@ -9,13 +9,22 @@ public class User {
 
     private int is_verified;
 
+    public String getImagefilename() {
+        return imagefilename;
+    }
+
+    public void setImagefilename(String imagefilename) {
+        this.imagefilename = imagefilename;
+    }
+
+    private String imagefilename;
     //constructor
 
     public User()
     {
 
     }
-    public User(String email, String[] roles, String password, int is_verified, String nom, String prenom,int num_tel)
+    public User(String email, String[] roles, String password, int is_verified, String nom, String prenom, int num_tel, String imagefilename)
     {
 
         this.email = email;
@@ -25,9 +34,10 @@ public class User {
         this.nom = nom;
         this.prenom = prenom;
         this.num_tel = num_tel;
+        this.imagefilename = imagefilename;
     }
 
-    public User(int id, String email, String[] roles, String password, int is_verified, String nom, String prenom,int num_tel)
+    public User(int id, String email, String[] roles, String password, int is_verified, String nom, String prenom, int num_tel, String imagefilename)
     {
         this.id = id;
         this.email = email;
@@ -39,8 +49,7 @@ public class User {
         this.num_tel = num_tel;
 
 
-
-
+        this.imagefilename = imagefilename;
     }
 
     //Getter and setters

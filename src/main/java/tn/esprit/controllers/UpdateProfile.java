@@ -4,12 +4,21 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.text.Text;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import tn.esprit.models.User;
 import tn.esprit.models.session;
 import tn.esprit.services.UserService;
 import tn.esprit.util.Navigator;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.StandardCopyOption;
+import java.util.UUID;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -26,6 +35,12 @@ public class UpdateProfile {
 
     @FXML
     private TextField prenomTF;
+
+    @FXML
+    private Text imagename;
+
+    @FXML
+    private ImageView imageuser;
 
     @FXML
     void updateprofile(ActionEvent event) {
@@ -50,7 +65,27 @@ public class UpdateProfile {
             showAlert(Alert.AlertType.ERROR, "Erreur de saisie", "Le numéro de téléphone doit être numérique et contenir 8 chiffres.");
             return;
         }
+        if (selectedFile != null) {
+            //delete the old image
+            try {
+                File file = new File(currentUser.getImagefilename());
+                file.delete();
+            } catch (Exception e) {
 
+            }
+            //upload the new image
+            String randomFileName = UUID.randomUUID().toString() + getFileExtension(selectedFile.getName());
+            File destFile = new File(System.getProperty("user.home") + "/Downloads/" + randomFileName);
+            try {
+                Files.copy(selectedFile.toPath(), destFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
+            } catch (IOException e) {
+                e.printStackTrace();
+                afficherErreur("Error uploading image: " + e.getMessage());
+                return;
+            }
+            currentUser.setImagefilename(destFile.getAbsolutePath());
+        }
+        System.out.println(currentUser.getImagefilename());
         currentUser.setNom(nomTF.getText());
         currentUser.setPrenom(prenomTF.getText());
         currentUser.setNum_tel(Integer.parseInt(numtelTF.getText()));
@@ -89,6 +124,11 @@ public class UpdateProfile {
         prenomTF.setText(user.getPrenom());
         emailTF.setText(user.getEmail());
         numtelTF.setText(String.valueOf(user.getNum_tel()));
+        String imagepath = user.getImagefilename();
+        if (imagepath != null){
+            Image image = new Image("file:" + imagepath);
+            imageuser.setImage(image);
+        }
 
     }
 UserService userservice = new UserService();
@@ -115,5 +155,40 @@ UserService userservice = new UserService();
     private boolean isNumeric(String str) {
         return str.matches("\\d+");
     }
+
+
+
+private File selectedFile;
+    @FXML
+    void uploadimage(ActionEvent event) {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Choose Image File");
+
+        // Set initial directory to user's home directory
+        fileChooser.setInitialDirectory(new File(System.getProperty("user.home")));
+        Stage stage = ((Stage) imagename.getScene().getWindow());
+        selectedFile = fileChooser.showOpenDialog(stage);
+        if (selectedFile != null) {
+            imagename.setText(selectedFile.getName());
+        }
+    }
+
+
+    private void afficherErreur(String message) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Erreur");
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
+
+
+    private String getFileExtension(String fileName) {
+        int lastIndex = fileName.lastIndexOf('.');
+        if (lastIndex != -1 && lastIndex < fileName.length() - 1) {
+            return fileName.substring(lastIndex);
+        }
+        return "";
+    }
+
 
 }

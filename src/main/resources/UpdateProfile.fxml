@@ -7,10 +7,11 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #7F8EE3;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.UpdateProfile">
     <fx:include source="sidebarUser.fxml" />
-    <AnchorPane layoutX="211.0" layoutY="46.0" prefHeight="402.0" prefWidth="542.0" style="-fx-background-color: #ececec;">
+    <AnchorPane layoutX="203.0" layoutY="32.0" prefHeight="406.0" prefWidth="583.0" style="-fx-background-color: #ececec;">
     <children>
         <Label layoutX="125.0" layoutY="28.0" text="Modifier vos informations" textFill="#36261c85">
             <font>
@@ -41,12 +42,14 @@
         <TextField fx:id="emailTF" layoutX="144.0" layoutY="237.0" prefHeight="30.0" prefWidth="246.0" />
         <!-- Add text fields for other properties... -->
 
-        <Button layoutX="184.0" layoutY="294.0" mnemonicParsing="false" onAction="#updateprofile" prefHeight="26.0" prefWidth="165.0" text="Mettre à jour" textFill="#4b3d3d" />
-        <ImageView fitHeight="57.0" fitWidth="104.0" layoutX="60.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
+        <Button layoutX="174.0" layoutY="345.0" mnemonicParsing="false" onAction="#updateprofile" prefHeight="26.0" prefWidth="165.0" text="Mettre à jour" textFill="#4b3d3d" />
+        <ImageView fx:id="imageuser" fitHeight="57.0" fitWidth="104.0" layoutX="60.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
             <image>
                 <Image url="@images/UserIcon.png" />
             </image>
         </ImageView>
+         <Button layoutX="182.0" layoutY="291.0" mnemonicParsing="false" onAction="#uploadimage" text="Upload image" />
+         <Text fx:id="imagename" layoutX="273.0" layoutY="308.0" strokeType="OUTSIDE" strokeWidth="0.0" />
     </children>
 </AnchorPane>
 </AnchorPane>

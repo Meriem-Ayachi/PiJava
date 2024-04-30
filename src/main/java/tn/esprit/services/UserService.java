@@ -47,7 +47,7 @@ public class UserService implements IService <User> {
 
     @Override
     public void update(User o) {
-        String req = "update user set email=?, roles=?, is_verified=?, nom=? , prenom=? ,num_tel=? where id=?";
+        String req = "update user set email=?, roles=?, is_verified=?, nom=? , prenom=? ,num_tel=? ,imagefilename=? where id=?";
         try {
             PreparedStatement ps = cnx.prepareStatement(req);
             String rolesJson = new Gson().toJson(o.getRoles());
@@ -57,7 +57,8 @@ public class UserService implements IService <User> {
             ps.setString(4, o.getNom());
             ps.setString(5, o.getPrenom());
             ps.setInt(6, o.getNum_tel());
-            ps.setInt(7, o.getId());
+            ps.setString(7, o.getImagefilename());
+            ps.setInt(8, o.getId());
 
 
             ps.executeUpdate();
@@ -123,6 +124,7 @@ public class UserService implements IService <User> {
                 user.setPrenom(rs.getString(7));
                 user.setNum_tel(rs.getInt(8
                 ));
+                user.setImagefilename(rs.getString(9));
 
 
 
@@ -137,7 +139,7 @@ public class UserService implements IService <User> {
     @Override
     public User getOne(int id) {
 
-        String req = "select id, email, roles, is_verified, prenom, nom, num_tel from user where id=?";
+        String req = "select id, email, roles, is_verified, prenom, nom, num_tel, imagefilename from user where id=?";
         try {
             PreparedStatement ps = cnx.prepareStatement(req);
             ps.setInt(1,id);
@@ -157,6 +159,7 @@ public class UserService implements IService <User> {
                 user.setPrenom(res.getString("prenom"));
                 user.setNom(res.getString("nom"));
                 user.setNum_tel(res.getInt("num_tel"));
+                user.setImagefilename(res.getString("imagefilename"));
                 return user;
             }else{
                 return null;

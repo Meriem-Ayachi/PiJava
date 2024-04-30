@@ -6,6 +6,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -14,6 +15,7 @@ import javafx.stage.Stage;
 import tn.esprit.models.Offres;
 import tn.esprit.services.OffresService;
 
+import java.io.IOException;
 import java.sql.Date;
 import java.sql.SQLException;
 import java.util.List;
@@ -48,8 +50,6 @@ public class AfficherOffre {
     @FXML
     private TableColumn<Offres, Double> prixColO;
 
-    @FXML
-    private TableColumn<Offres, Boolean> publishedColO;
 
     @FXML
     private TableView<Offres> tableview;
@@ -69,7 +69,6 @@ public class AfficherOffre {
             tableview.setItems(observableList);
             titleColO.setCellValueFactory(new PropertyValueFactory<>("title"));
             descriptionColO.setCellValueFactory(new PropertyValueFactory<>("description"));
-            publishedColO.setCellValueFactory(new PropertyValueFactory<>("published"));
             prixColO.setCellValueFactory(new PropertyValueFactory<>("prix"));
             lieuColO.setCellValueFactory(new PropertyValueFactory<>("lieu"));
             imageColO.setCellValueFactory(new PropertyValueFactory<>("image"));
@@ -104,15 +103,8 @@ public class AfficherOffre {
                 noSelectionAlert.setHeaderText(null);
                 noSelectionAlert.setContentText("Veuillez sélectionner un offre à modifier.");
                 noSelectionAlert.showAndWait();
-
         }
-
-
     }
-
-
-
-
     //
     @FXML
     void SupprimerO(ActionEvent event) {
@@ -149,8 +141,6 @@ public class AfficherOffre {
             noSelectionAlert.setContentText("Veuillez sélectionner un offre à supprimer.");
             noSelectionAlert.showAndWait();
         }
-
-
     }
     @FXML
     void commentaires(ActionEvent event) throws Exception {
@@ -164,11 +154,23 @@ public class AfficherOffre {
                 Stage stage = (Stage) commentaires.getScene().getWindow();
                 stage.setScene(new Scene(root));
                 stage.show();
-
             }
-
     }
+    @FXML
+    void gostat(ActionEvent event) {
+        Parent root = null;
+        try {
+            root = FXMLLoader.load(getClass().getResource("/Statistique.fxml"));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
 
+        // Access the scene from a control that belongs to the current scene
+        Node sourceNode = (Node) event.getSource();
+        Stage stage = (Stage) sourceNode.getScene().getWindow();
+        stage.setScene(new Scene(root));
+        stage.show();
+    }
 
 }
 

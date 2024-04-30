@@ -109,15 +109,12 @@ public class Offres {
 
     @Override
     public String toString() {
-        return "Offres{" +
-                "id=" + id +
-                ", published=" + published +
-                ", prix=" + prix +
-                ", title='" + title + '\'' +
-                ", description='" + description + '\'' +
-                ", lieu='" + lieu + '\'' +
-                ", image='" + image + '\'' +
-                ", created_at='" + created_at + '\'' +
-                '}';
+        return "" +
+                "" + image + '\n' +
+                "" + prix + '\n' +
+                "" + title + '\n' +
+                "" + description + '\n' +
+                "" + lieu + '\n' +
+                "" + created_at + '\n' ;
     }
 }

@@ -1,14 +1,18 @@
 package tn.esprit.controllers.locationVoiture;
 
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.AnchorPane;
 import tn.esprit.MainFX;
+import tn.esprit.interfaces.RefreshCallBack;
 import tn.esprit.models.Voiture;
 import tn.esprit.services.VoitureService;
 import tn.esprit.util.Navigator;
@@ -17,7 +21,7 @@ import javafx.scene.control.TableColumn;
 import javafx.stage.Stage;
 
 
-public class ListVoitures {
+public class ListVoitures implements RefreshCallBack{
     @FXML
     private TableView<Voiture> voitureTableView;
 
@@ -56,43 +60,38 @@ public class ListVoitures {
     }
 
     @FXML
-    void supprimerSelectedVoiture() {
-        if (selectedVoiture != null) {
-            voitureService.delete(selectedVoiture.getId());
-            refreshTable();
-            selectedVoiture = null;
-        }else{
-            showError("Vous devez sélectionner une voiture");
-        }
-    }
-
-    @FXML
-    void goToModifier(ActionEvent event) {
-        if (selectedVoiture != null) {
-            Voiture voiture = voitureService.getOne(selectedVoiture.getId());
-            
-            Stage stage = MainFX.getPrimaryStage();
-            Navigator nav = new Navigator(stage);
-            nav.goTo_ModifierVoiture("/ModifierVoiture.fxml", voiture);
-        }else{
-            showError("Vous devez sélectionner une voiture");
-        }
-    }
-
-    @FXML
     void onTableRowClicked() {
-        selectedVoiture = voitureTableView.getSelectionModel().getSelectedItem();
+        try {
+            selectedVoiture = voitureTableView.getSelectionModel().getSelectedItem();
+            
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/DetailsVoiture.fxml"));
+            AnchorPane detailsVoitureAnchorPane = loader.load();
+            DetailsVoiture controller = loader.getController();
+
+            // Appeler la méthode pour initialiser les détails de la réclamation
+            controller.initialize(selectedVoiture);
+            controller.initializeCallback(this);
+
+            // Afficher l'interface dans une nouvelle fenêtre
+            Stage stage = new Stage();
+
+            stage.setScene(new Scene(detailsVoitureAnchorPane));
+            stage.show();
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     private void refreshTable() {
         voitureTableView.setItems(FXCollections.observableArrayList(voitureService.getAll()));
     }
 
-    private void showError(String message) {
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle("Error");
-        alert.setContentText(message);
-        alert.showAndWait();
+
+    @Override
+    public void onRefreshComplete() {
+        refreshTable();
     }
+
 
 }

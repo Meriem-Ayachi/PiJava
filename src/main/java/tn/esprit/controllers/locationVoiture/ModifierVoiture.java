@@ -10,6 +10,9 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
@@ -40,6 +43,7 @@ public class ModifierVoiture {
     private TextField capaciteTF;
 
     private int voiture_id;
+    private Voiture currentVoiture;
 
     @FXML
     private Text uploadedFileName;
@@ -49,6 +53,7 @@ public class ModifierVoiture {
     public void initialize(Voiture voiture) {
         // get id
         voiture_id = voiture.getId();
+        currentVoiture = voiture;
         // fill the UI with the voiture values
         marqueTF.setText(voiture.getMarque());
         modelTF.setText(voiture.getModel());
@@ -67,9 +72,21 @@ public class ModifierVoiture {
 
     @FXML
     void AfficherVoitures(ActionEvent event) {
-        Stage stage = MainFX.getPrimaryStage();
-        Navigator nav = new Navigator(stage);
-        nav.goToPage("/ListVoitures.fxml");
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/DetailsVoiture.fxml"));
+            Parent root;
+            root = loader.load();
+            
+            DetailsVoiture controller = loader.getController();
+            controller.initialize(currentVoiture);
+            
+            Scene scene = new Scene(root);
+            Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
@@ -169,10 +186,9 @@ public class ModifierVoiture {
             // add item
             voitureService.update(voiture);
             
-            // go to the list
-            Stage stage = MainFX.getPrimaryStage();
-            Navigator nav = new Navigator(stage);
-            nav.goToPage("/ListVoitures.fxml");
+            // go back to details
+            currentVoiture = voiture;
+            AfficherVoitures(event);
         }
     }
 

@@ -96,6 +96,13 @@
         </dependency>
 
 
+        <dependency>
+            <groupId>org.jfree</groupId>
+            <artifactId>jfreechart</artifactId>
+            <version>1.5.3</version> <!-- Utilisez la version la plus récente -->
+        </dependency>
+
+
     </dependencies>
 
     <build>

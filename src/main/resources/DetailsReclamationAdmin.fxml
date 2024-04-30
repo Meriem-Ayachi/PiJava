@@ -8,20 +8,20 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.TextFlow?>
 
-<AnchorPane prefHeight="453.0" prefWidth="619.0" stylesheets="Styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.DetailsReclamationAdmin">
+<AnchorPane prefHeight="508.0" prefWidth="657.0" stylesheets="Styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.DetailsReclamationAdmin">
     <children>
-        <Label fx:id="sujetLabel" layoutX="86.0" layoutY="27.0" text="Sujet :" textFill="#54bec9">
+        <Label fx:id="sujetLabel" layoutX="86.0" layoutY="27.0" text="Sujet :" textFill="#7e7e7e">
             <font>
                 <Font name="System Bold Italic" size="16.0" />
             </font></Label>
-        <Label fx:id="descriptionLabel" layoutX="84.0" layoutY="63.0" text="Description :" textFill="#54bec9">
+        <Label fx:id="descriptionLabel" layoutX="84.0" layoutY="63.0" text="Description :" textFill="#7e7e7e">
             <font>
                 <Font name="System Bold Italic" size="16.0" />
             </font></Label>
 
-        <VBox layoutX="14.0" layoutY="139.0" prefHeight="300.0" prefWidth="400.0">
+        <VBox layoutX="14.0" layoutY="169.0" prefHeight="316.0" prefWidth="630.0">
             <children>
-                <ScrollPane prefHeight="300.0" prefWidth="400.0">
+                <ScrollPane prefHeight="322.0" prefWidth="630.0">
                     <content>
                         <TextFlow fx:id="commentsTextFlow" prefWidth="400" style="-fx-max-width: 300; -fx-background-color: #f5f5f5;">
                             <!-- Add your comments here -->
@@ -31,7 +31,7 @@
             </children>
         </VBox>
 
-        <Button layoutX="421.0" layoutY="264.0" mnemonicParsing="false" onAction="#AddCommBTN" prefHeight="32.0" prefWidth="173.0" style="-fx-background-color: #387296; -fx-text-fill: white;" text="Ajouter un commentaire">
+        <Button layoutX="28.0" layoutY="121.0" mnemonicParsing="false" onAction="#AddCommBTN" prefHeight="32.0" prefWidth="185.0" style="-fx-background-color: #2596be; -fx-text-fill: white;" text="+ Ajouter un commentaire">
             <font>
                 <Font name="System Bold" size="13.0" />
             </font>

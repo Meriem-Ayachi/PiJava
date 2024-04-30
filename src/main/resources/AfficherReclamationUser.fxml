@@ -16,7 +16,7 @@
                 </font>
             </Label>
             <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" text="Retour" textFill="WHITE" style="-fx-background-color: #2596be; -fx-font-weight: bold; -fx-font-size: 18px;" />
-            <ListView fx:id="listview" layoutX="36.0" layoutY="67.0" prefHeight="281.0" prefWidth="635.0" />
+            <ListView style="-fx-background-color: transparent; -fx-selection-bar: transparent;" fx:id="listview" layoutX="36.0" layoutY="67.0" prefHeight="281.0" prefWidth="635.0" />
             <Button layoutX="582.0" layoutY="374.0" mnemonicParsing="false" onAction="#GoToAjouter" text="Ajouter" style="-fx-background-color: #2596be; -fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 18px;" />
         </children>
     </AnchorPane>

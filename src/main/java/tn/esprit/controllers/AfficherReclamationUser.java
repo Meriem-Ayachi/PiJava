@@ -5,6 +5,7 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
 import javafx.geometry.Orientation;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -54,9 +55,6 @@ public class AfficherReclamationUser implements Initializable, RefreshCallBack {
                     setText(null);
                     setGraphic(null);
                 } else {
-
-
-
                     setOnMouseClicked(event -> {
                         // Votre logique pour afficher les détails de la réclamation
                         try {
@@ -103,10 +101,11 @@ public class AfficherReclamationUser implements Initializable, RefreshCallBack {
                     Separator separator = new Separator();
                     separator.setOrientation(Orientation.HORIZONTAL);
 
-                    // Créer un VBox pour contenir les éléments
+                    // Créer un VBox pour contenir les éléments avec un padding et un espacement spécifiques
                     VBox rootVBox = new VBox(gridPane, separator);
                     rootVBox.setAlignment(Pos.CENTER_LEFT); // Alignement à gauche
-                    rootVBox.setSpacing(10); // Espace entre les éléments
+                    rootVBox.setSpacing(10); // Espace vertical entre les éléments
+                    rootVBox.setPadding(new Insets(10)); // Padding autour du VBox
 
                     // Set the layout as the graphic for the ListCell
                     setGraphic(rootVBox);
@@ -114,10 +113,6 @@ public class AfficherReclamationUser implements Initializable, RefreshCallBack {
             }
         });
     }
-
-
-
-
 
     // Méthode appelée lorsque l'utilisateur clique sur une réclamation dans la TableView
     @FXML
@@ -182,7 +177,3 @@ public class AfficherReclamationUser implements Initializable, RefreshCallBack {
 
     }
 }
-
-
-
-

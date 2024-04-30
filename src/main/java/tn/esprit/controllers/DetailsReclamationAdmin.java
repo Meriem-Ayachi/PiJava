@@ -3,6 +3,7 @@ package tn.esprit.controllers;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Orientation;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -10,6 +11,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
@@ -109,7 +111,7 @@ public class DetailsReclamationAdmin implements RefreshCallBack {
 
         Button deleteButton = new Button("");
 
-        String imagePath = "/images/delete.png"; // Chemin de votre image locale
+        String imagePath = "/images/deleteComm.png"; // Chemin de votre image locale
         Image image = new Image(getClass().getResourceAsStream(imagePath));
         ImageView imageView = new ImageView(image);
 
@@ -124,10 +126,23 @@ public class DetailsReclamationAdmin implements RefreshCallBack {
             refresh();
         });
 
-        TextFlow commentFlow = new TextFlow(usernameText, new Text("\n"), commentContent, new Text("\n"), deleteButton);
-        commentFlow.setMaxWidth(MAX_TEXT_WIDTH);
+        HBox buttonsHBox = new HBox(deleteButton);
+        buttonsHBox.setSpacing(10);
 
-        commentsTextFlow.getChildren().addAll(commentFlow, new Text("\n\n"));
+        Separator separator = new Separator();
+        separator.setOrientation(Orientation.HORIZONTAL); // Définir l'orientation de la séparatrice comme horizontale
+
+        VBox commentVBox = new VBox(usernameText, commentContent);
+        commentVBox.setSpacing(10);
+
+        HBox commentBox = new HBox(commentVBox, buttonsHBox);
+        commentBox.setSpacing(20);
+
+        VBox commentContainer = new VBox(commentBox, separator); // Ajouter la séparatrice sous le commentaire
+        commentContainer.setSpacing(20);
+
+        commentsTextFlow.getChildren().addAll(commentContainer);
+
     }
 
     private void addComment_withDeleteAndUpdate(String username, String comment, int commentId) {
@@ -141,7 +156,7 @@ public class DetailsReclamationAdmin implements RefreshCallBack {
 
         Button deleteButton = new Button("");
 
-        String imagePath = "/images/delete.png"; // Chemin de votre image locale
+        String imagePath = "/images/deleteComm.png"; // Chemin de votre image locale
         Image image = new Image(getClass().getResourceAsStream(imagePath));
         ImageView imageView = new ImageView(image);
 
@@ -158,7 +173,7 @@ public class DetailsReclamationAdmin implements RefreshCallBack {
 
         Button updateButton = new Button("");
 
-        String imagePath2 = "/images/pen.png"; // Chemin de votre image locale
+        String imagePath2 = "/images/editComm.png"; // Chemin de votre image locale
         Image image2 = new Image(getClass().getResourceAsStream(imagePath2));
         ImageView imageView2 = new ImageView(image2);
 
@@ -176,14 +191,22 @@ public class DetailsReclamationAdmin implements RefreshCallBack {
         });
 
 
-
         HBox buttonsHBox = new HBox(deleteButton, updateButton);
-        buttonsHBox.setSpacing(5);
+        buttonsHBox.setSpacing(10);
 
-        TextFlow commentFlow = new TextFlow(usernameText, new Text("\n\n"), commentContent, new Text("\n\n"), buttonsHBox);
-        commentFlow.setMaxWidth(MAX_TEXT_WIDTH);
+        Separator separator = new Separator();
+        separator.setOrientation(Orientation.HORIZONTAL); // Définir l'orientation de la séparatrice comme horizontale
 
-        commentsTextFlow.getChildren().addAll(commentFlow, new Text("\n\n"));
+        VBox commentVBox = new VBox(usernameText, commentContent);
+        commentVBox.setSpacing(10);
+
+        HBox commentBox = new HBox(commentVBox, buttonsHBox);
+        commentBox.setSpacing(20);
+
+        VBox commentContainer = new VBox(commentBox, separator); // Ajouter la séparatrice sous le commentaire
+        commentContainer.setSpacing(20);
+
+        commentsTextFlow.getChildren().addAll(commentContainer);
     }
 
 

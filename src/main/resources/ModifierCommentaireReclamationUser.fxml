@@ -15,6 +15,9 @@
       </Label>
       <TextField fx:id="contenuTF" layoutX="50.0" layoutY="140.0" prefHeight="38.0" prefWidth="179.0" promptText="Contenu" />
 
-      <Button layoutX="317.0" layoutY="229.0" mnemonicParsing="false" onAction="#modifierCommentaire" text="Modifier" />
+      <Button layoutX="304.0" layoutY="215.0" mnemonicParsing="false" onAction="#modifierCommentaire" prefHeight="38.0" prefWidth="74.0" style="-fx-background-color: #387296;" text="Modifier" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font></Button>
    </children>
 </AnchorPane>

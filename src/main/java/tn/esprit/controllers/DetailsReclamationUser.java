@@ -3,6 +3,8 @@ package tn.esprit.controllers;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Insets;
+import javafx.geometry.Orientation;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -10,6 +12,8 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Priority;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
@@ -28,13 +32,12 @@ import tn.esprit.services.UserService;
 import java.io.IOException;
 import java.util.List;
 
-
 public class DetailsReclamationUser implements RefreshCallBack {
 
     @FXML
     private TextFlow commentsTextFlow;
 
-    private static final double MAX_TEXT_WIDTH = 300;
+    private static final double MAX_TEXT_WIDTH = 500;
 
 
     @FXML
@@ -48,8 +51,14 @@ public class DetailsReclamationUser implements RefreshCallBack {
 
     private UserService us = new UserService();
 
+    @FXML
+    private Label nbCommentairesLabel;
+
+
 
     RefreshCallBack callback ;
+
+
 
 
     // Méthode pour initialiser les détails de la réclamation dans l'interface
@@ -59,7 +68,10 @@ public class DetailsReclamationUser implements RefreshCallBack {
         sujetLabel.setText("Sujet : " + reclamation.getSujet());
         descriptionLabel.setText("Description : " + reclamation.getDescription());
         refresh();
+
     }
+
+
 
     public void UpdateCallBack (RefreshCallBack callback)
     {
@@ -67,25 +79,27 @@ public class DetailsReclamationUser implements RefreshCallBack {
     }
 
     public void AddCommBTN(ActionEvent event) throws IOException {
-
+        // Charger le fichier FXML et initialiser le contrôleur
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/AjouterCommentaireReclamationUser.fxml"));
         Parent root = loader.load();
-
-        // Obtenir le contrôleur associé à l'interface
         AjouterCommentaireReclamationUser controller = loader.getController();
-
-        // Appeler la méthode pour initialiser les détails de la réclamation
         controller.initialize(reclamation);
 
+        // Afficher la nouvelle scène
         Scene scene = new Scene(root);
         Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
         stage.setScene(scene);
         stage.show();
+
+
     }
 
     void refresh() {
         commentsTextFlow.getChildren().clear();
         List<Reclamation_Commentaire> reclamationCommentaireList = rcs.getAllByReclamationId(reclamation.getId());
+
+        // Récupérer le nombre de commentaires
+        int numberOfComments = reclamationCommentaireList.size();
 
         for (Reclamation_Commentaire commentaire : reclamationCommentaireList) {
             User user = us.getOne(commentaire.getUser_id());
@@ -95,23 +109,43 @@ public class DetailsReclamationUser implements RefreshCallBack {
             } else {
                 addComment(username, commentaire.getContenu());
             }
+
         }
+        setLabelText( numberOfComments + " Commentaires " );
+
     }
 
+    private void setLabelText(String text) {
+
+        nbCommentairesLabel.setText(text);
+    }
     @FXML
     private void addComment(String username, String comment) {
         Text usernameText = new Text(username + ": ");
-        usernameText.setStyle("-fx-font-weight: bold; -fx-fill: #1E90FF;"); // Bleu
+        usernameText.setStyle("-fx-font-weight: bold; -fx-fill: #387296; -fx-font-size: 17px;\n"); // Bleu avec une taille de police de 17px
 
         Text commentContent = new Text(comment);
-        commentContent.setStyle("-fx-fill: #333333;"); // Noir
-        commentContent.setFont(Font.font("Arial", Font.getDefault().getSize()));
+        commentContent.setStyle("-fx-font-weight: bold; -fx-fill: black; -fx-font-size: 14px;\n"); // Noir avec une taille de police de 14px
+        commentContent.setFont(Font.font("Arial", FontWeight.NORMAL, 12)); // Définir une taille de police normale avec une taille de 12px
         commentContent.setWrappingWidth(MAX_TEXT_WIDTH);
 
-        TextFlow commentFlow = new TextFlow(usernameText, new Text("\n"), commentContent);
-        commentFlow.setMaxWidth(MAX_TEXT_WIDTH);
 
-        commentsTextFlow.getChildren().addAll(commentFlow, new Text("\n\n"));
+
+        Separator separator = new Separator();
+        separator.setOrientation(Orientation.HORIZONTAL); // Définir l'orientation de la séparatrice comme horizontale
+
+        VBox commentVBox = new VBox(usernameText, commentContent);
+        commentVBox.setSpacing(10);
+
+        HBox commentBox = new HBox(commentVBox);
+        commentBox.setSpacing(20);
+
+        VBox commentContainer = new VBox(commentBox, separator); // Ajouter la séparatrice sous le commentaire
+        commentContainer.setSpacing(20);
+
+        commentsTextFlow.getChildren().addAll(commentContainer);
+
+
     }
 
     private void addComment_withDelete(String username, String comment, int commentId) {
@@ -124,17 +158,12 @@ public class DetailsReclamationUser implements RefreshCallBack {
         commentContent.setWrappingWidth(MAX_TEXT_WIDTH);
 
 
-
         Button deleteButton = new Button("");
-
-        String imagePath = "/images/delete.png"; // Chemin de votre image locale
+        String imagePath = "/images/deleteComm.png"; // Chemin de votre image locale
         Image image = new Image(getClass().getResourceAsStream(imagePath));
         ImageView imageView = new ImageView(image);
-
-        // Ajustez la taille de l'image au besoin
-        imageView.setFitWidth(20);
-        imageView.setFitHeight(20);
-        // Définir l'image comme le graphique du bouton
+        imageView.setFitWidth(15);
+        imageView.setFitHeight(15);
         deleteButton.setGraphic(imageView);
         deleteButton.setStyle("-fx-background-color: transparent; "); // Rouge, en gras et taille de police de 14px
         deleteButton.setOnAction(event -> {
@@ -143,14 +172,11 @@ public class DetailsReclamationUser implements RefreshCallBack {
         });
 
         Button updateButton = new Button("");
-
-        String imagePath2 = "/images/pen.png"; // Chemin de votre image locale
+        String imagePath2 = "/images/editComm.png"; // Chemin de votre image locale
         Image image2 = new Image(getClass().getResourceAsStream(imagePath2));
         ImageView imageView2 = new ImageView(image2);
-
-        // Ajustez la taille de l'image au besoin
-        imageView2.setFitWidth(20);
-        imageView2.setFitHeight(20);
+        imageView2.setFitWidth(15);
+        imageView2.setFitHeight(15);
         updateButton.setGraphic(imageView2);
         updateButton.setStyle("-fx-background-color: transparent;"); // Bleu acier, en gras et taille de police de 14px
         updateButton.setOnAction(event -> {
@@ -161,18 +187,29 @@ public class DetailsReclamationUser implements RefreshCallBack {
             }
         });
 
-
-
-
-
         HBox buttonsHBox = new HBox(deleteButton, updateButton);
-        buttonsHBox.setSpacing(5);
+        buttonsHBox.setSpacing(10);
 
-        TextFlow commentFlow = new TextFlow(usernameText, new Text("\n\n"), commentContent, new Text("\n\n"), buttonsHBox);
-        commentFlow.setMaxWidth(MAX_TEXT_WIDTH);
+        Separator separator = new Separator();
+        separator.setOrientation(Orientation.HORIZONTAL);
 
-        commentsTextFlow.getChildren().addAll(commentFlow, new Text("\n\n"));
+        VBox commentVBox = new VBox(usernameText, commentContent);
+        commentVBox.setSpacing(10);
+
+        HBox commentBox = new HBox(commentVBox, buttonsHBox);
+        commentBox.setSpacing(20);
+
+
+        VBox commentContainer = new VBox(commentBox, separator); // Ajouter la séparatrice sous le commentaire
+        commentContainer.setSpacing(20);
+
+        commentsTextFlow.getChildren().addAll(commentContainer);
+
+
     }
+
+
+
 
 
     private void GoToUpdate (ActionEvent event ,int commentID) throws IOException {
@@ -236,6 +273,8 @@ public class DetailsReclamationUser implements RefreshCallBack {
 
         ((Stage) descriptionLabel.getScene().getWindow()).close();
         this.callback.onRefreshComplete();
+
+
     }
 
 

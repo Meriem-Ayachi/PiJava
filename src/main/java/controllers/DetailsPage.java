@@ -8,9 +8,12 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import tn.esprit.models.Offres;
 import tn.esprit.services.OffresService;
+
+import java.io.IOException;
 
 public class DetailsPage {
 
@@ -19,18 +22,31 @@ public class DetailsPage {
     private ListView<Offres> listview;
     @FXML
     private Button commenter;
+    @FXML
+    private Offres offres;
+
 
     @FXML
     private Button reserver;
 
 
     private final OffresService os = new OffresService();
-    @FXML
-    void Commenter(ActionEvent event) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("/AjouterCommentairefront.fxml"));
-        Stage stage = (Stage) commenter.getScene().getWindow();
-        stage.setScene(new Scene(root));
-        stage.show();
+
+    public void Commenter(ActionEvent event) throws IOException {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/AjouterCommentairefront.fxml"));
+            AnchorPane detailsOffrePane = loader.load();
+            AjouterCommentairefront controller = loader.getController();
+
+            controller.initialize(offres);
+
+            Stage stage = new Stage();
+            stage.setScene(new Scene(detailsOffrePane));
+            stage.show();
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 
@@ -43,6 +59,7 @@ public class DetailsPage {
     @FXML
     public void initialize(Offres selectedOffre) {
         if (selectedOffre != null) {
+            offres=selectedOffre;
             Offres loadedOffre = os.getOne(selectedOffre.getId());
             if (loadedOffre != null) {
                 listview.getItems().add(loadedOffre);

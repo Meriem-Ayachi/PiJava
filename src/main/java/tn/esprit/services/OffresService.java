@@ -7,9 +7,11 @@ import tn.esprit.util.MaConnexion;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
-public class OffresService implements IService <Offres>{
+public class OffresService implements IService <Offres> {
     public Statement ste;
 
     Connection cnx = MaConnexion.getInstance().getCnx();
@@ -21,16 +23,15 @@ public class OffresService implements IService <Offres>{
         String req = "INSERT INTO offres (`title`, `description`, `published`, `prix`, `lieu`, `image`, `created_at`) VALUES (?, ?, ?,?,?,?,?)";
         try (PreparedStatement pre = cnx.prepareStatement(req)) {
             pre.setString(1, offre.getTitle());
-            pre.setString(2,offre.getDescription());
-            pre.setBoolean(3,offre.isPublished());
-            pre.setDouble(4,offre.getPrix());
-            pre.setString(5,offre.getLieu());
-            pre.setString(6,offre.getImage());
-            pre.setDate(7,offre.getCreated_at());
+            pre.setString(2, offre.getDescription());
+            pre.setBoolean(3, offre.isPublished());
+            pre.setDouble(4, offre.getPrix());
+            pre.setString(5, offre.getLieu());
+            pre.setString(6, offre.getImage());
+            pre.setDate(7, offre.getCreated_at());
             pre.executeUpdate();
             System.out.println("ajout avec succes");
-        }
-        catch (SQLException e) {
+        } catch (SQLException e) {
             System.out.println("Erreur lors de la mise à jour : " + e.getMessage());
             // Afficher un message d'erreur dans l'interface
             Alert errorAlert = new Alert(Alert.AlertType.ERROR);
@@ -59,10 +60,10 @@ public class OffresService implements IService <Offres>{
     }
 
     @Override
-    public void delete(int id ) throws SQLException {
+    public void delete(int id) throws SQLException {
         String req = "delete from offres where id =? ";
         PreparedStatement pre = cnx.prepareStatement(req);
-        pre.setInt(1,id);
+        pre.setInt(1, id);
         pre.executeUpdate();
         System.out.println("suppression avec succes");
 
@@ -73,9 +74,9 @@ public class OffresService implements IService <Offres>{
         List<Offres> off = new ArrayList<>();
         String req = "select * from offres";
         ste = cnx.createStatement();
-        ResultSet res =ste.executeQuery(req);
-        while (res.next()){
-            Offres p = new Offres(res.getInt(1),res.getString("title"),res.getString("description") ,res.getBoolean("published"),res.getDouble(5),res.getString("lieu"),res.getString("image"),res.getDate("created_at"));
+        ResultSet res = ste.executeQuery(req);
+        while (res.next()) {
+            Offres p = new Offres(res.getInt(1), res.getString("title"), res.getString("description"), res.getBoolean("published"), res.getDouble(5), res.getString("lieu"), res.getString("image"), res.getDate("created_at"));
 
             off.add(p);
         }
@@ -110,6 +111,24 @@ public class OffresService implements IService <Offres>{
         }
     }
 
+    public List<Offres> triParCritere(String critere) throws SQLException {
+        if (critere == null) {
+            // Si le critère est null, retourner la liste non triée
+            return getAll();
+        }
+
+        switch (critere) {
+            case "title":
+                return getAll().stream().sorted(Comparator.comparing(Offres::getTitle)).collect(Collectors.toList());
+            case "prix":
+                return getAll().stream().sorted(Comparator.comparing(Offres::getPrix)).collect(Collectors.toList());
+
+            case "created_at":
+                return getAll().stream().sorted(Comparator.comparing(Offres::getCreated_at)).collect(Collectors.toList());
+            default:
+                return getAll();
+        }
+    }
 
 
 }

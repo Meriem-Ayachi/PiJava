@@ -17,11 +17,12 @@ public class Offre_CommentaireService implements IService<Offre_Commentaire> {
     @Override
 
     public void add(Offre_Commentaire offreCommentaire) throws SQLException {
-        String req = "INSERT INTO Offre_Commentaire (avis, created_at, offres_id) VALUES (?, ?, ?)";
+        String req = "INSERT INTO Offre_Commentaire (avis, created_at, offres_id,active) VALUES (?, ?, ?,?)";
         try (PreparedStatement pre = cnx.prepareStatement(req)) {
             pre.setString(1, offreCommentaire.getAvis());
             pre.setDate(2, offreCommentaire.getCreated_at());
             pre.setInt(3, offreCommentaire.getOffres_id());
+            pre.setBoolean(4, offreCommentaire.isActive());
             pre.executeUpdate();
             System.out.println("ajout avec succès");
         }
@@ -56,7 +57,8 @@ public class Offre_CommentaireService implements IService<Offre_Commentaire> {
                             res.getInt("id"),
                             res.getString("avis"),
                             res.getDate("created_at"),
-                            res.getInt("offres_id"));
+                            res.getInt("offres_id"),
+                            res.getBoolean("active"));
 
                     comm.add(commentaire);
                 }
@@ -77,7 +79,8 @@ public class Offre_CommentaireService implements IService<Offre_Commentaire> {
                         res.getInt("id"),
                         res.getString("avis"),
                         res.getDate("created_at"),
-                        res.getInt("offres_id"));
+                        res.getInt("offres_id"),
+                        res.getBoolean("active"));
 
                 comm.add(commentaire);
             }

@@ -8,14 +8,16 @@ public class Offre_Commentaire {
     private String avis;
     private Date created_at;
     private int offres_id;
+    private boolean active;
 
     //constructor
 
-    public Offre_Commentaire(int id, String avis, Date created_at,int offres_id) {
+    public Offre_Commentaire(int id, String avis, Date created_at,int offres_id,boolean active) {
         this.id = id;
         this.avis = avis;
         this.created_at = created_at;
         this.offres_id=offres_id;
+        this.active=active;
     }
 
 
@@ -24,12 +26,21 @@ public class Offre_Commentaire {
         this.created_at = created_at;
     }
 
-    public Offre_Commentaire(String avis, Date created_at , int offres_id) {
+    public Offre_Commentaire(String avis, Date created_at , int offres_id,boolean active) {
         this.avis = avis;
         this.created_at = created_at;
         this.offres_id=offres_id;
+        this.active=active;
     }
     //getters and setters
+
+    public boolean isActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
+    }
 
     public int getId() {
         return id;

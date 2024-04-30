@@ -1,4 +1,6 @@
 package controllers;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -6,6 +8,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import tn.esprit.models.Offres;
 import tn.esprit.services.OffresService;
@@ -21,12 +24,20 @@ public class Home implements Initializable {
     private ListView<Offres> listview;
     @FXML
     private Button details;
+    @FXML
+    private ComboBox<String> combobox;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
       try {
           List<Offres> offres = os.getAll();
           listview.getItems().addAll(offres);
+          // Ajouter les critères de tri à la ComboBox
+          combobox.getItems().addAll( "prix","created_at");
+
+          // Sélectionner par défaut le premier élément dans la ComboBox
+          combobox.getSelectionModel().selectFirst();
 
 
           }catch (SQLException e) {
@@ -50,4 +61,17 @@ public class Home implements Initializable {
             stage.show();
         }
     }
+    @FXML
+    void tri(ActionEvent event) {
+        try {
+            List<Offres> offres = os.triParCritere(combobox.getValue());
+            ObservableList<Offres> observableOffres = FXCollections.observableList(offres);
+            listview.setItems(observableOffres);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+
+
 }

@@ -7,6 +7,7 @@ import javafx.scene.control.TextField;
 
 import tn.esprit.models.Offre_Commentaire;
 
+import tn.esprit.models.Offres;
 import tn.esprit.services.Offre_CommentaireService;
 import tn.esprit.services.OffresService;
 
@@ -14,6 +15,7 @@ import java.sql.Date;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.List;
 
 public class AjouterCommentairefront {
@@ -22,10 +24,9 @@ public class AjouterCommentairefront {
     private TextField AvisTFO;
 
     @FXML
-    private TextField dateTFO;
-
-    @FXML
     private ListView<Offre_Commentaire> listview;
+    @FXML
+    private Offres offres;
 
     private final Offre_CommentaireService oc = new Offre_CommentaireService();
 
@@ -34,25 +35,54 @@ public class AjouterCommentairefront {
     void Ajoutercommentaire(ActionEvent event) {
         try {
             // Check if the dateTFO text is in the correct format
-            String dateString = dateTFO.getText();
-            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-            dateFormat.setLenient(false);
-            Date date = new Date(dateFormat.parse(dateString).getTime());
+            // Get today's date
+            LocalDate today = LocalDate.now();
+
+// Convert LocalDate to java.sql.Date
+            Date date = Date.valueOf(today);
+
             // Proceed with adding the Offre_Commentaire object
             oc.add(new Offre_Commentaire(
                     AvisTFO.getText(),
-                    date
+                    date,
+                    offres.getId(),false
             ));
 
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Information");
             alert.setContentText("Offre ajoutée");
             alert.showAndWait();
-        } catch (ParseException | SQLException e) {
+            refrech();
+        } catch (SQLException e) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Erreur");
             alert.setContentText(e.getMessage());
             alert.showAndWait();
         }
     }
+    @FXML
+    void initialize (Offres offres) {
+        this.offres=offres;
+        refrech();
+    }
+
+  //afficher commentaire
+    @FXML
+    void refrech () {
+
+        try {
+            List<Offre_Commentaire> commentaire = null;
+            commentaire = oc.getAll_byOffreId(offres.getId());
+            listview.getItems().addAll(commentaire);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+
+    }
+
+
+
+
+
 }

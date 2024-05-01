@@ -52,9 +52,9 @@ public class sidebarUser {
         System.out.println("Homepage user");
     }
 
-    public void directToProfile(ActionEvent event) {
+    public void directToProfie(ActionEvent event) {
         Navigator nav = new Navigator();
-        nav.goToPage_WithEvent("/ProfileUser.fxml",event);
+        nav.goToPage_WithEvent("/UpdateProfile.fxml",event);
     }
 
 }

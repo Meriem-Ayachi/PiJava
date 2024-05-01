@@ -39,8 +39,7 @@ public class UpdateProfile {
     @FXML
     private Text imagename;
 
-    @FXML
-    private ImageView imageuser;
+
 
     @FXML
     void updateprofile(ActionEvent event) {
@@ -99,7 +98,7 @@ public class UpdateProfile {
         showConfirmationAlert("User updated successfully!");
 
         Navigator nav = new Navigator();
-        nav.goToPage_WithEvent("/ProfileUser.fxml",event);
+        nav.goToPage_WithEvent("/UpdateProfile.fxml",event);
     }
 
 
@@ -124,11 +123,6 @@ public class UpdateProfile {
         prenomTF.setText(user.getPrenom());
         emailTF.setText(user.getEmail());
         numtelTF.setText(String.valueOf(user.getNum_tel()));
-        String imagepath = user.getImagefilename();
-        if (imagepath != null){
-            Image image = new Image("file:" + imagepath);
-            imageuser.setImage(image);
-        }
 
     }
 UserService userservice = new UserService();

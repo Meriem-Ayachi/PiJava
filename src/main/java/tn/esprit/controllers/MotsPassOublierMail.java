@@ -15,6 +15,7 @@ import javafx.scene.control.ProgressBar;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import tn.esprit.services.UserService;
+import tn.esprit.util.Navigator;
 
 import static tn.esprit.util.EmailsUtils.sendVerificationEmail_ForgotPassword;
 
@@ -132,6 +133,9 @@ public class MotsPassOublierMail {
             e.printStackTrace();
         }
     }
-
+    public void directToLogin(ActionEvent event) {
+        Navigator nav = new Navigator();
+        nav.goToPage_WithEvent("/Log.fxml",event);
+    }
 
 }

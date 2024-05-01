@@ -26,12 +26,12 @@
                 <Font size="13.0" />
             </font>
         </Button>
-        <Text layoutX="182.0" layoutY="85.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Réinitialiser le mot de passe">
+        <Text layoutX="221.0" layoutY="79.0" strokeType="OUTSIDE" strokeWidth="0.0" text="vérification code">
             <font>
-                <Font name="System Bold" size="18.0" />
+                <Font name="System Bold" size="20.0" />
             </font>
         </Text>
-        <Text layoutX="134.0" layoutY="105.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Entrez votre code de verification pour réinitialiser votre mot de passe." />
+        <Text layoutX="153.0" layoutY="111.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Entrez le code de vérification pour finaliser la vérification." />
         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#559ada" height="45.0" layoutY="384.0" stroke="#9e9d9d" strokeType="INSIDE" width="625.0">
             <cursor>
                 <Cursor fx:constant="E_RESIZE" />

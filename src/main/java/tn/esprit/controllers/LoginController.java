@@ -70,7 +70,7 @@ public class  LoginController {
     }
 
     private void redirectToUserPage(ActionEvent event) {
-        nav.goToPage_WithEvent("/ProfileUser.fxml", event);
+        nav.goToPage_WithEvent("/UpdateProfile.fxml", event);
     }
 
     private void redirectToAdminPage(ActionEvent event) {

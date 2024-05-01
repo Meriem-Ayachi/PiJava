@@ -153,4 +153,23 @@ public abstract class VolService implements IService<Vols> {
     }
 
 
+
+
+    public List<String> getAllDestinations() {
+        List<String> destinations = new ArrayList<>();
+        String query = "SELECT DISTINCT destination FROM vols";
+        try (Statement statement = cnx.createStatement();
+             ResultSet resultSet = statement.executeQuery(query)) {
+            while (resultSet.next()) {
+                String destination = resultSet.getString("destination");
+                destinations.add(destination);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException("Error retrieving destinations", e);
+        }
+        return destinations;
+    }
+
+
+
 }

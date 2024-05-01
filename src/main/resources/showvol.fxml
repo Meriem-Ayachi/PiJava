@@ -28,6 +28,8 @@
 
         <!-- Button to navigate to the statistics page -->
         <Button layoutX="150.0" layoutY="500.0" mnemonicParsing="false" onAction="#goToStatisticsPage" text="View Statistics" />
+        <Button layoutX="270.0" layoutY="500.0" mnemonicParsing="false" onAction="#printToPdf" text="Print to PDF" />
+
     </children>
 
 </AnchorPane>

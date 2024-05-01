@@ -1,5 +1,8 @@
 package Controllers;
 
+import com.itextpdf.text.PageSize;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfWriter;
 import javafx.event.ActionEvent;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -7,8 +10,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
-import javafx.scene.Node;
-import javafx.scene.Parent;
+import javafx.geometry.Rectangle2D;
+import javafx.scene.*;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
@@ -17,10 +20,10 @@ import tn.esprit.models.Vols;
 import tn.esprit.services.VolService;
 import javafx.fxml.Initializable;
 
+import java.io.FileOutputStream;
 import java.util.*;
 
 import javafx.scene.control.ListCell;
-import javafx.scene.Scene;
 
 import javafx.util.Callback;
 import java.net.URL;
@@ -52,6 +55,17 @@ import javafx.fxml.Initializable;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import tn.esprit.models.Vols;
+
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+
+import javafx.embed.swing.SwingFXUtils;
+import javax.imageio.ImageIO;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+
+
 
 
 public class Showvol implements Initializable {
@@ -232,6 +246,59 @@ public class Showvol implements Initializable {
             e.printStackTrace();
         }
     }
+
+
+
+
+
+    @FXML
+    private void printToPdf(ActionEvent event) {
+        // Create a new Document
+        Document document = new Document();
+
+        try {
+            // Define the file name and location
+            String pdfFilePath = "C:/Users/melek/Downloads/vols.pdf";
+            PdfWriter.getInstance(document, new FileOutputStream(pdfFilePath));
+            document.open();
+
+            // Take a snapshot of the ListView
+            SnapshotParameters parameters = new SnapshotParameters();
+
+            // Set snapshot dimensions to match ListView dimensions
+            parameters.setViewport(new Rectangle2D(0, 0, listview.getWidth(), listview.getHeight()));
+
+            parameters.setDepthBuffer(true);
+            parameters.setFill(javafx.scene.paint.Color.TRANSPARENT);
+            javafx.scene.image.WritableImage image = listview.snapshot(parameters, null);
+
+            // Convert the snapshot to a buffered image
+            java.awt.image.BufferedImage bufferedImage = SwingFXUtils.fromFXImage(image, null);
+
+            // Save the snapshot as an image file
+            File imageFile = new File("snapshot.png");
+            ImageIO.write(bufferedImage, "png", imageFile);
+
+            // Embed the image into the PDF document
+            com.itextpdf.text.Image pdfImage = com.itextpdf.text.Image.getInstance(imageFile.getPath());
+            document.add(pdfImage);
+
+            // Close the document
+            document.close();
+
+            // Show success message or handle further actions
+            System.out.println("PDF generated successfully at: " + pdfFilePath);
+        } catch (DocumentException | IOException e) {
+            // Handle exceptions
+            e.printStackTrace();
+        }
+    }
+
+
+
+
+
+
 
 
 

@@ -8,31 +8,37 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
-import javafx.scene.control.ListView;
+import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.web.WebEngine;
+import javafx.scene.web.WebView;
 import javafx.stage.Stage;
+import org.json.JSONArray;
+import org.json.JSONObject;
 import tn.esprit.models.Vols;
 import tn.esprit.services.VolService;
 import javafx.fxml.Initializable;
 
+import java.net.URI;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
+import java.time.LocalDate;
 import java.util.*;
 
-import javafx.scene.control.ListCell;
 import javafx.scene.Scene;
 
 import javafx.util.Callback;
 import java.net.URL;
 import java.util.List;
 
-import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
@@ -58,6 +64,32 @@ public class Showvolforuser implements Initializable {
     @FXML
     private ListView<Vols> listview;
 
+
+
+    @FXML
+    private DatePicker startDatePicker;
+
+    @FXML
+    private DatePicker endDatePicker;
+
+    @FXML
+    private ComboBox<String> classComboBox;
+
+    @FXML
+    private TextField minPriceField;
+
+    @FXML
+    private TextField maxPriceField;
+
+    @FXML
+    private ComboBox<String> destinationComboBox;
+
+    @FXML
+    private ComboBox<String> countryComboBox;
+
+
+
+
     private final VolService vs = new VolService() {
 
     };
@@ -65,6 +97,9 @@ public class Showvolforuser implements Initializable {
     @FXML
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
+        List<String> destinations = vs.getAllDestinations();
+        destinationComboBox.setItems(FXCollections.observableArrayList(destinations));
         List<Vols> vols = vs.getAll();
         listview.getItems().addAll(vols);
 
@@ -220,6 +255,221 @@ public class Showvolforuser implements Initializable {
         stage.setScene(new Scene(root));
         stage.show();
     }
+
+
+
+
+    @FXML
+    private void handleFilterChange(ActionEvent event) {
+        // Retrieve filter criteria
+        LocalDate startDate = startDatePicker.getValue();
+        LocalDate endDate = endDatePicker.getValue();
+        String selectedClass = classComboBox.getValue();
+        double minPrice = 0;
+        double maxPrice = 0;
+
+        // Check if minPriceField and maxPriceField are not empty before parsing
+        if (!minPriceField.getText().isEmpty()) {
+            minPrice = Double.parseDouble(minPriceField.getText());
+        }
+        if (!maxPriceField.getText().isEmpty()) {
+            maxPrice = Double.parseDouble(maxPriceField.getText());
+        }
+
+        String destination = destinationComboBox.getValue();
+
+        // Filter the flight list based on criteria
+        List<Vols> filteredFlights = filterFlights(startDate, endDate, selectedClass, minPrice, maxPrice, destination);
+
+        // Update the ListView with filtered flights
+        listview.getItems().clear();
+        listview.getItems().addAll(filteredFlights);
+    }
+
+    // Method to filter flights based on criteria
+    private List<Vols> filterFlights(LocalDate startDate, LocalDate endDate, String selectedClass, double minPrice, double maxPrice, String destination) {
+        List<Vols> allFlights = vs.getAll();
+        List<Vols> filteredFlights = new ArrayList<>();
+
+        for (Vols flight : allFlights) {
+            // Apply filter conditions
+
+            LocalDate departureDate = LocalDate.parse(flight.getDatedepart());
+
+            // Check if the flight meets all other criteria
+            if ((startDate == null || departureDate.isAfter(startDate)) &&
+                    (endDate == null || departureDate.isBefore(endDate)) &&
+                    (selectedClass == null || flight.getClasse().equals(selectedClass)) &&
+                    (destination == null || flight.getDestination().equals(destination))) {
+
+                // Check if the flight's price is within the specified range (if provided)
+                if ((minPrice == 0 || flight.getPrix() >= minPrice) &&
+                        (maxPrice == 0 || flight.getPrix() <= maxPrice)) {
+                    // Flight meets all filter criteria
+                    filteredFlights.add(flight);
+                }
+            }
+        }
+
+        return filteredFlights;
+    }
+
+
+
+
+    @FXML
+    private void showCountryInfo(ActionEvent event) {
+        // Get the selected country from the ComboBox
+        String selectedCountry = countryComboBox.getValue();
+
+        // Define a map to associate country names with their country codes
+        Map<String, String> countryCodes = new HashMap<>();
+        countryCodes.put("France", "FR");
+        countryCodes.put("Spain", "ES");
+        countryCodes.put("Italy", "IT");
+        countryCodes.put("Tunisia","Tn");
+        // Add more countries and their codes as needed
+
+        // Get the country code for the selected country
+        String countryCode = countryCodes.get(selectedCountry);
+
+        // Check if the country code is not null
+        if (countryCode != null) {
+            // Construct the URL for fetching country information
+            String apiUrl = "https://restcountries.com/v3/alpha/" + countryCode.toLowerCase();
+
+            // Fetch country information from the API
+            JSONObject countryInfo = fetchCountryInfo(apiUrl);
+
+            // Check if countryInfo is not null and contains necessary data
+            if (countryInfo != null && countryInfo.has("name")) {
+                // Construct the HTML content with dynamic data
+                String googleMapsUrl = countryInfo.getJSONObject("maps").getString("googleMaps");
+
+                String htmlContent = "<!DOCTYPE html>\n" +
+                        "<html lang=\"en\">\n" +
+                        "<head>\n" +
+                        "    <meta charset=\"UTF-8\">\n" +
+                        "    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n" +
+                        "    <title>Country Information</title>\n" +
+                        "    <style>\n" +
+                        "        /* Paste your CSS styles here */\n" +
+                        "    </style>\n" +
+                        "</head>\n" +
+                        "<body>\n" +
+                        "<main>\n" +
+                        "    <h1>Country Information</h1>\n" +
+                        "    <h2>Names:</h2>\n" +
+                        "    <p>Common Name: " + countryInfo.getJSONObject("name").getString("common") + "</p>\n" +
+                        "    <p>Official Name: " + countryInfo.getJSONObject("name").getString("official") + "</p>\n" +
+
+                        "    <h2>Top-Level Domain:</h2>\n" +
+                        "    <p>" + countryInfo.getJSONArray("tld").getString(0) + "</p>\n" +
+                        "    <h2>Country Codes:</h2>\n" +
+                        "    <p>Alpha-2 Code: " + countryInfo.getString("cca2") + "</p>\n" +
+                        "    <p>Numeric Code: " + countryInfo.getString("ccn3") + "</p>\n" +
+                        "    <p>Alpha-3 Code: " + countryInfo.getString("cca3") + "</p>\n" +
+                        "    <p>IOC Code: " + countryInfo.getString("cioc") + "</p>\n" +
+                        "    <h2>Independence and Status:</h2>\n" +
+                        "    <p>Independent: " + (countryInfo.getBoolean("independent") ? "Yes" : "No") + "</p>\n" +
+                        "    <p>Status: " + countryInfo.getString("status") + "</p>\n" +
+                        "    <p>UN Member: " + (countryInfo.getBoolean("unMember") ? "Yes" : "No") + "</p>\n" +
+                        "    <h2>Currency</h2>\n" +
+                        "    <p><strong>Currency:</strong> " + countryInfo.getJSONObject("currencies").keys().next() + "</p>\n" +
+                        "    <h2>International Dialing:</h2>\n" +
+                        "    <p>Root: " + countryInfo.getJSONObject("idd").getString("root") + "</p>\n" +
+                        "    <p>Suffixes: " + countryInfo.getJSONObject("idd").getJSONArray("suffixes").join(", ") + "</p>\n" +
+                        "    <h2>Capital:</h2>\n" +
+                        "    <p>" + countryInfo.getJSONArray("capital").getString(0) + "</p>\n" +
+                        "    <h2>Alternate Spellings:</h2>\n" +
+                        "    <p>" + countryInfo.getJSONArray("altSpellings").join(", ") + "</p>\n" +
+                        "    <h2>Languages:</h2>\n" +
+                        "    <ul>\n";
+
+// Add languages dynamically
+                JSONArray languages = countryInfo.getJSONObject("languages").names();
+                if (languages != null) {
+                    for (int i = 0; i < languages.length(); i++) {
+                        String languageCode = languages.getString(i);
+                        String languageName = countryInfo.getJSONObject("languages").getString(languageCode);
+                        htmlContent += "        <li>" + languageCode + ": " + languageName + "</li>\n";
+                    }
+                }
+
+                htmlContent += "    </ul>\n" +
+                        "    <h2>Geographical Information:</h2>\n" +
+                        "    <p>Region: " + countryInfo.getString("region") + "</p>\n" +
+                        "    <p>Subregion: " + countryInfo.getString("subregion") + "</p>\n" +
+                        "    <p>Latlng: " + countryInfo.getJSONArray("latlng").join(", ") + "</p>\n" +
+                        "    <p>Landlocked: " + (countryInfo.getBoolean("landlocked") ? "Yes" : "No") + "</p>\n" +
+                        "    <p>Borders: " + countryInfo.getJSONArray("borders").join(", ") + "</p>\n" +
+                        "    <p>Area: " + countryInfo.getDouble("area") + " square kilometers</p>\n" +
+                        "    <h2>Flag and Maps:</h2>\n" +
+                        "    <img src=\"" + countryInfo.getJSONArray("flags").getString(0) + "\" alt=\"Country Flag\">\n" +
+                        "    <p>Google Maps: <a href=\"" + countryInfo.getJSONObject("maps").getString("googleMaps") + "\" target=\"_blank\">Link</a></p>\n" +
+                        "    <p>OpenStreet Maps: <a href=\"" + countryInfo.getJSONObject("maps").getString("openStreetMaps") + "\" target=\"_blank\">Link</a></p>\n" +
+                        "    <h2>Population and Other Details:</h2>\n" +
+                        "    <p>Population: " + countryInfo.getLong("population") + "</p>\n" +
+                        "    <p>FIFA Code: " + countryInfo.getString("fifa") + "</p>\n" +
+                        "    <p>Timezones: " + countryInfo.getJSONArray("timezones").join(", ") + "</p>\n" +
+                        "    <p>Continents: " + countryInfo.getJSONArray("continents").join(", ") + "</p>\n" +
+
+
+                        "</main>\n" +
+                        "</body>\n" +
+                        "</html>";
+
+                // Create a WebView to display the country information
+                WebView webView = new WebView();
+                WebEngine webEngine = webView.getEngine();
+
+                // Load HTML content into the WebView
+                webEngine.loadContent(htmlContent);
+
+                // Create a new stage to display the WebView
+                Stage stage = new Stage();
+                stage.setTitle("Country Information: " + selectedCountry);
+                stage.setScene(new Scene(webView, 800, 600));
+                stage.show();
+            } else {
+                // Handle the case where country information is not available
+                System.out.println("Country information not available for: " + selectedCountry);
+            }
+        } else {
+            // Handle the case where the country code is null (selected country not found)
+            System.out.println("Country code not found for selected country: " + selectedCountry);
+        }
+    }
+
+    // Method to fetch country information from the API
+    private JSONObject fetchCountryInfo(String apiUrl) {
+        try {
+            // Send HTTP GET request to the API URL
+            HttpClient client = HttpClient.newHttpClient();
+            HttpRequest request = HttpRequest.newBuilder()
+                    .uri(URI.create(apiUrl))
+                    .build();
+            HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+
+            // Parse the JSON response array
+            JSONArray jsonArray = new JSONArray(response.body());
+
+            // Extract the JSON object from the array
+            JSONObject countryInfo = jsonArray.getJSONObject(0);
+
+            // Print the extracted country information
+            System.out.println("Country Information: " + countryInfo.toString());
+
+            // Return the country information
+            return countryInfo;
+        } catch (Exception e) {
+            // Handle exceptions (e.g., network errors, JSON parsing errors)
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+
 
 
 

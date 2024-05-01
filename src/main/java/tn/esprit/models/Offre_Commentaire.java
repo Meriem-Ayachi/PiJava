@@ -79,8 +79,8 @@ public class Offre_Commentaire {
     @Override
     public String toString() {
         return "" +
-                "avis=" + avis + '\n' +
-                "created_at=" + created_at + '\n' +
-                "offres_id=" + offres_id  ;
+                "" + avis + '\n' +
+                "" + created_at + '\n' ;
+
     }
 }

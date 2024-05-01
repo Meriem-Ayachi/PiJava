@@ -12,6 +12,7 @@ import tn.esprit.services.OffresService;
 import java.io.IOException;
 import java.sql.Date;
 import java.sql.SQLException;
+import java.time.LocalDate;
 
 public class AjouterOffre {
 
@@ -33,20 +34,19 @@ public class AjouterOffre {
     @FXML
     private TextField imageTFO;
 
-    @FXML
-    private TextField dateTFO;
+
 
     private final OffresService os = new OffresService();
 
     @FXML
     void AjouterO(ActionEvent event) {
         try {
-            // Vérifier si la dateTFO est vide
-            if (dateTFO.getText().isEmpty()) {
-                throw new SQLException("La date est vide.");
-            }
+
             if (descriptionTFO.getText().isEmpty()) {
                 throw new SQLException("La description est vide.");
+            }
+            if (descriptionTFO.getText().length() > 20) {
+                throw new SQLException("La description ne doit pas dépasser 20 caractères.");
             }
             if (titleTFO.getText().isEmpty()) {
                 throw new SQLException("le titre est vide.");
@@ -57,6 +57,9 @@ public class AjouterOffre {
             if (prixTFO.getText().isEmpty()) {
                 throw new SQLException("le prix est vide.");
             }
+            if (Double.parseDouble(prixTFO.getText()) == 0.0) {
+                throw new SQLException("Le prix ne peut pas être égal à zéro.");
+            }
             if (publishedTFO.getText().isEmpty()) {
                 throw new SQLException("le published est vide.");
             }
@@ -64,10 +67,11 @@ public class AjouterOffre {
                 throw new SQLException("le lieu est vide.");
             }
 
-            // Convertir la chaîne de texte en java.sql.Date
-            Date date = Date.valueOf(dateTFO.getText());
+            // Get today's date
+            LocalDate today = LocalDate.now();
 
-            // Ajouter l'offre avec la date convertie
+// Convert LocalDate to java.sql.Date
+            Date date = Date.valueOf(today);
             os.add(new Offres(
                     titleTFO.getText(),
                     descriptionTFO.getText(),

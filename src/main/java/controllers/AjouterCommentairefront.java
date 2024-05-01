@@ -34,7 +34,10 @@ public class AjouterCommentairefront {
     @FXML
     void Ajoutercommentaire(ActionEvent event) {
         try {
-            // Check if the dateTFO text is in the correct format
+            if (AvisTFO.getText().isEmpty()) {
+                throw new SQLException("Avis est vide.");
+            }
+
             // Get today's date
             LocalDate today = LocalDate.now();
 
@@ -50,7 +53,7 @@ public class AjouterCommentairefront {
 
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Information");
-            alert.setContentText("Offre ajoutée");
+            alert.setContentText("Commentaire ajoutée");
             alert.showAndWait();
             refrech();
         } catch (SQLException e) {

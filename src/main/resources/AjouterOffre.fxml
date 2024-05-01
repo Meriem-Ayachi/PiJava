@@ -11,7 +11,6 @@
       <TextField fx:id="prixTFO" layoutX="89.0" layoutY="143.0" promptText="prix" />
       <TextField fx:id="lieuTFO" layoutX="89.0" layoutY="181.0" promptText="lieu" />
       <TextField fx:id="imageTFO" layoutX="89.0" layoutY="223.0" promptText="image" />
-      <TextField fx:id="dateTFO" layoutX="89.0" layoutY="262.0" promptText="date" />
       <Button layoutX="127.0" layoutY="311.0" mnemonicParsing="false" onAction="#AjouterO" prefHeight="25.0" prefWidth="73.0" text="Ajouter" />
       <TextField fx:id="publishedTFO" layoutX="89.0" layoutY="104.0" promptText="published" />
       <Button layoutX="400.0" layoutY="168.0" mnemonicParsing="false" onAction="#naviguer" prefHeight="25.0" prefWidth="143.0" text="liste des offres" />

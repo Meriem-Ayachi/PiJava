@@ -23,8 +23,6 @@ public class ModiffierOffre implements Initializable {
     @FXML
     private Button btnretour;
     @FXML
-    private TextField dateTFO;
-    @FXML
     private TextField descriptionTFO;
     @FXML
     private TextField imageTFO;
@@ -52,7 +50,7 @@ public class ModiffierOffre implements Initializable {
             prixTFO.setText(String.valueOf(offres.getPrix()));
             lieuTFO.setText(offres.getLieu());
             imageTFO.setText(offres.getImage());
-            dateTFO.setText(offres.getCreated_at().toString());
+
         }
     }
 
@@ -67,6 +65,31 @@ public class ModiffierOffre implements Initializable {
             offres.setImage(imageTFO.getText());
 
             try {
+
+                if (descriptionTFO.getText().isEmpty()) {
+                    throw new SQLException("La description est vide.");
+                }
+                if (descriptionTFO.getText().length() > 20) {
+                    throw new SQLException("La description ne doit pas dépasser 20 caractères.");
+                }
+                if (titleTFO.getText().isEmpty()) {
+                    throw new SQLException("le titre est vide.");
+                }
+                if (imageTFO.getText().isEmpty()) {
+                    throw new SQLException("le image est vide.");
+                }
+                if (prixTFO.getText().isEmpty()) {
+                    throw new SQLException("le prix est vide.");
+                }
+                if (Double.parseDouble(prixTFO.getText()) == 0.0) {
+                    throw new SQLException("Le prix ne peut pas être égal à zéro.");
+                }
+                if (publishedTFO.getText().isEmpty()) {
+                    throw new SQLException("le published est vide.");
+                }
+                if (lieuTFO.getText().isEmpty()) {
+                    throw new SQLException("le lieu est vide.");
+                }
                 os.update(offres);
                 System.out.println("Mise à jour réussie avec succès");
 
@@ -82,13 +105,10 @@ public class ModiffierOffre implements Initializable {
                 stage.setScene(new Scene(root));
                 stage.show();
             } catch (SQLException e) {
-                System.out.println("Erreur lors de la mise à jour : " + e.getMessage());
-                Alert errorAlert = new Alert(Alert.AlertType.ERROR);
-                errorAlert.setTitle("Erreur");
-                errorAlert.setHeaderText(null);
-                errorAlert.setContentText("Une erreur est survenue lors de la mise à jour de l'offre.");
-                errorAlert.showAndWait();
-            }
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Erreur");
+                alert.setContentText(e.getMessage());
+                alert.showAndWait();}
         } else {
             System.out.println("Aucune offre à modifier.");
             Alert errorAlert = new Alert(Alert.AlertType.ERROR);

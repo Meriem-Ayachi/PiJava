@@ -14,7 +14,7 @@
     <AnchorPane layoutX="200.0" layoutY="-2.0" prefHeight="498.0" prefWidth="614.0" style="-fx-background-color: #ececec;">
 
         <children>
-            <Label layoutX="149.0" layoutY="27.0" text="Liste des réclamations" textFill="#20318c">
+            <Label layoutX="112.0" layoutY="27.0" text="Liste des réclamations" textFill="#20318c">
                 <font>
                     <Font name="Arial Rounded MT Bold" size="30.0" />
                 </font>
@@ -41,6 +41,10 @@
             <TextField layoutX="29.0" layoutY="77.0" onKeyTyped="#NomTF" promptText="Nom" />
             <TextField layoutX="202.0" layoutY="77.0" onKeyTyped="#PrenomTF" promptText="Prénom" />
             <ComboBox fx:id="estTraiteCB" layoutX="381.0" layoutY="77.0" onAction="#estTraiteChanged" prefWidth="150.0" />
+            <Button layoutX="474.0" layoutY="14.0" onAction="#calculerEtAfficherStatistiques" prefHeight="36.0" prefWidth="133.0" style="-fx-background-color: #387296;" text="Afficher Statistiques" textFill="WHITE">
+            <font>
+               <Font name="System Bold" size="12.0" />
+            </font></Button>
         </children>
     </AnchorPane>
 </AnchorPane>

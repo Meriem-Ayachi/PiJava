@@ -18,8 +18,8 @@
                <Font name="Arial Rounded MT Bold" size="30.0" />
             </font>
          </Label>
-         <TextField fx:id="sujetTF" layoutX="97.0" layoutY="130.0" promptText="Sujet" />
-         <TextArea fx:id="descriptionTF" layoutX="97.0" layoutY="181.0" prefHeight="100.0" prefWidth="200.0" promptText="Description" />
+         <TextField fx:id="sujetTF" layoutX="122.0" layoutY="130.0" promptText="Sujet" />
+         <TextArea fx:id="descriptionTF" layoutX="122.0" layoutY="181.0" prefHeight="100.0" prefWidth="200.0" promptText="Description" />
          <Button fx:id="ajouterBTN" layoutX="399.0" layoutY="181.0" mnemonicParsing="false" onAction="#ajouterReclamation" prefHeight="36.0" prefWidth="75.0" style="-fx-background-color: #387296;" stylesheets="@Styles.css" text="Ajouter" textFill="WHITE">
             <font>
                <Font name="Arial Rounded MT Bold" size="15.0" />
@@ -27,6 +27,9 @@
          <CheckBox fx:id="estTraiteCB" layoutX="381.0" layoutY="222.0" mnemonicParsing="false" text="estTraite" visible="false" />
          <ComboBox fx:id="userIDCB" layoutX="340.0" layoutY="255.0" prefWidth="150.0" promptText="UserIdD" visible="false" />
          <TextField fx:id="dateSouTF" layoutX="341.0" layoutY="130.0" visible="false" />
+         <Label layoutX="64.0" layoutY="133.0" style="-fx-font-size: 14px; -fx-text-fill: #80d8e4; -fx-font-weight: bold;" text="Sujet :" />
+         <Label layoutX="32.0" layoutY="212.0" style="-fx-font-size: 14px; -fx-text-fill: #80d8e4; -fx-font-weight: bold;" text="Description :" />
+
       </children>
    </AnchorPane>
 

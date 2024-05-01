@@ -10,14 +10,16 @@
    <children>
       <Label layoutX="96.0" layoutY="43.0" text="Modifier commentaire" textFill="#387296">
          <font>
-            <Font size="30.0" />
+            <Font name="Arial Rounded MT Bold" size="30.0" />
          </font>
       </Label>
-      <TextField fx:id="contenuTF" layoutX="50.0" layoutY="140.0" prefHeight="38.0" prefWidth="179.0" promptText="Contenu" />
+      <TextField fx:id="contenuTF" layoutX="110.0" layoutY="142.0" prefHeight="38.0" prefWidth="179.0" promptText="Contenu" />
 
       <Button layoutX="304.0" layoutY="215.0" mnemonicParsing="false" onAction="#modifierCommentaire" prefHeight="38.0" prefWidth="74.0" style="-fx-background-color: #387296;" text="Modifier" textFill="WHITE">
          <font>
             <Font name="System Bold" size="13.0" />
          </font></Button>
+      <Label layoutX="47.0" layoutY="151.0" style="-fx-font-size: 14px; -fx-text-fill: #80d8e4; -fx-font-weight: bold;" text="Contenu" />
+
    </children>
 </AnchorPane>

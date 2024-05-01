@@ -36,7 +36,7 @@ public class DetailsReclamationAdmin implements RefreshCallBack {
     @FXML
     private TextFlow commentsTextFlow;
 
-    private static final double MAX_TEXT_WIDTH = 300;
+    private static final double MAX_TEXT_WIDTH = 500;
 
 
     @FXML

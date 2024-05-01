@@ -61,16 +61,13 @@ public class ModifierReclamationAdmin {
             UserService us = new UserService();
             User user = us.getOne(reclamation.getUser_id());
 
-            // Supposons que vous ayez un objet Utilisateur représentant l'utilisateur connecté
             String numeroTelephone = "+216" + user.getNum_tel();
 
-            // Envoyez un SMS à l'utilisateur
             Message message = Message.creator(
                     new PhoneNumber(numeroTelephone),
                     new PhoneNumber("+14013714143"),
                     "Votre réclamation a été modifiée avec succès."
             ).create();
-            // Affichez un message de confirmation
             System.out.println("Message SID: " + message.getSid());
         }
         Navigator nav =new Navigator();
@@ -83,13 +80,6 @@ public class ModifierReclamationAdmin {
         alert.setContentText(message);
         alert.showAndWait();
     }
-
-    /* private void afficherMessage(String message) {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Succès");
-        alert.setContentText(message);
-        alert.showAndWait();
-    }*/
 
     @FXML
     void back(ActionEvent event) {

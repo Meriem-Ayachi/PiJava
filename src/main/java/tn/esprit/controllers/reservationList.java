@@ -93,7 +93,7 @@ public class reservationList {
         public void delete(Reservation reservation) {
 
 
-            
+
         }
     };
 
@@ -254,7 +254,7 @@ public class reservationList {
         LocalDate date = LocalDate.of(year, month, day);
         List<Reservation> rdvs = rdvService.getReservationByDate(date);
         return !rdvs.isEmpty();
-}
+    }
 
 
 
@@ -356,15 +356,15 @@ public class reservationList {
 
     private void afficherRendezVous() {
         // Vider la liste des éléments de la ListView
-       reservationListView
-.getItems().clear();
+        reservationListView
+                .getItems().clear();
 
         // Récupérer la nouvelle liste des rendez-vous
         List<Reservation> reservations = reservationService.getAll();
 
         // Ajouter les nouveaux éléments à la ListView
         reservationListView
-.getItems().addAll(reservations);
+                .getItems().addAll(reservations);
     }
 
 

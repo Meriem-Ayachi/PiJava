@@ -4,7 +4,13 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="492.0" prefWidth="602.0" style="-fx-background-image: url('Fxml/hotel1.jpeg'); -fx-background-size: cover;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.hotelListF">
@@ -27,5 +33,37 @@
             </font>
         </Label>
         <ListView fx:id="hotelListView" layoutX="6.0" layoutY="75.0" prefHeight="352.0" prefWidth="588.0" style="-fx-background-color: transparent;" />
+        <StackPane layoutX="862.0" layoutY="668.0" prefHeight="0.0" prefWidth="0.0" />
+        <!-- Bulle de discussion -->
+        <Pane fx:id="chatBubble" layoutX="394.0" layoutY="205.0" prefHeight="178.0" prefWidth="200.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #18593b; -fx-background-radius: 20; -fx-border-radius: 20; -fx-effect: dropshadow(three-pass-box, rgb(105,191,167), 10, 0, 0, 0);" visible="false" AnchorPane.rightAnchor="8.0">
+            <!-- Contenu de la bulle de discussion -->
+            <Label fx:id="responseLabel" style="-fx-padding: 10px; -fx-font-size: 16px;" text="" textFill="#18593b" />
+
+            <VBox alignment="CENTER" layoutX="10.0" layoutY="20.0" spacing="10">
+                <Button fx:id="question1Button" mnemonicParsing="false" onAction="#handleQuestion1" style="-fx-background-color: #69BFA7; -fx-text-fill: #18593b; -fx-background-radius: 20;" text="Quels sont vos horaires ?" />
+                <Button fx:id="question2Button" mnemonicParsing="false" onAction="#handleQuestion2" style="-fx-background-color: #69BFA7; -fx-text-fill: #18593b; -fx-background-radius: 20;" text="Comment prendre un RDV ?" />
+                <Button fx:id="question3Button" mnemonicParsing="false" onAction="#handleQuestion3" style="-fx-background-color: #69BFA7; -fx-text-fill: #18593b; -fx-background-radius: 20;" text="Qui est derrière AlignVibe ?" />
+                <Button fx:id="question4Button" mnemonicParsing="false" onAction="#handleQuestion3" style="-fx-background-color: #69BFA7; -fx-text-fill: #18593b; -fx-background-radius: 20;" text="Autre question ?" />
+            </VBox>
+        </Pane>
+
+
+
+
+        <Circle fx:id="chatbotCircle" fill="#18593b" layoutX="553.0" layoutY="492.0" radius="35.0" />
+        <!-- Insérer votre gif ici -->
+        <ImageView fx:id="firstGifImageView" fitHeight="122.0" fitWidth="118.0" layoutX="482.0" layoutY="407.0" onMouseClicked="#showChatBubble">
+            <image>
+                <Image url="@chatbot1.gif" />
+            </image>
+        </ImageView>
+        <!-- Deuxième gif à afficher lorsque la bulle de discussion apparaît -->
+        <ImageView fx:id="secondGifImageView" fitHeight="122.0" fitWidth="118.0" layoutX="482.0" layoutY="401.0" onMouseClicked="#showFirstGif" visible="true">
+            <image>
+                <Image url="@chatbot2.gif" />
+            </image>
+        </ImageView>
+        <Label fx:id="floatingMessage" layoutX="494.0" layoutY="373.0" style="-fx-background-color: #18593b; -fx-text-fill: white; -fx-padding: 15px; -fx-border-radius: 20px; -fx-background-radius: 20px; -fx-font-size: 16px;" text="Besoin d'aide ?" visible="false">
+        </Label>
     </children>
 </AnchorPane>

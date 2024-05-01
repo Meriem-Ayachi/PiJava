@@ -1,5 +1,6 @@
 package tn.esprit.controllers;
 
+import javafx.animation.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -9,7 +10,10 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.chart.PieChart;
 import javafx.scene.control.*;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 import tn.esprit.models.hotel;
 import tn.esprit.services.Hotelservices;
 
@@ -18,7 +22,7 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class hotelList {
+public class    hotelList {
 
     public TextField rechercherParNom;
     @FXML
@@ -35,6 +39,9 @@ public class hotelList {
 
     @FXML
     private Label avisLabel;
+
+
+
     private boolean triAscendant = true;
     @FXML
     private TextField rechercheTextField;
@@ -48,7 +55,13 @@ public class hotelList {
     private Hotelservices hotelService = new Hotelservices();
     private ObservableList<hotel> hotels = FXCollections.observableArrayList();
 
+
+
+
     public void initialize() {
+        // Cacher le deuxième GIF initialement
+
+
         // Charger les hôtels depuis le service
         hotels.addAll(hotelService.getAll());
 
@@ -68,7 +81,14 @@ public class hotelList {
 
         // Mettre en place la recherche par nom
         setupRecherche();
+
+        // Ajout d'un gestionnaire d'événements à chaque bouton de question
+
+
+
+
     }
+
 
 
     private void afficherStatistiques() {

@@ -1,31 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Font?>
+<?import java.net.URL?>
+
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="492.0" prefWidth="602.0" style="-fx-background-image: url('Fxml/hotel1.jpeg'); -fx-background-size: cover;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.hotelList">
     <children>
         <!-- Champ de recherche -->
-        <TextField fx:id="rechercheTextField" layoutX="455.0" layoutY="12.0" prefWidth="130.0" promptText="Recherche par nom" />
+        <TextField fx:id="setupRecherche" layoutX="455.0" layoutY="12.0" prefWidth="130.0" promptText="Recherche par nom" />
 
         <!-- Bouton de tri par nombre d'étoiles -->
         <Button fx:id="triEtoilesButton" layoutX="455.0" layoutY="48.0" onAction="#trierParEtoiles" text="Trier par étoiles" />
 
-        <Label fx:id="nomid" layoutX="19.0" layoutY="57.0" />
-        <Label fx:id="nbretoilesid" layoutX="19.0" layoutY="91.0" />
-        <Label fx:id="emplacementid" layoutX="19.0" layoutY="130.0" />
+        <!-- Bouton pour afficher les statistiques -->
+        <Button text="Afficher Statistiques" onAction="#afficherStatistiques" layoutX="300.0" layoutY="48.0"/>
 
-        <Label fx:id="avisid" layoutX="14.0" layoutY="218.0" prefHeight="18.0" prefWidth="78.0" />
-
-        <Label layoutX="241.0" layoutY="3.0" text="list hôtel" textFill="#326f40">
-            <font>
-                <Font name="Sitka Text Italic" size="18.0" />
-            </font>
-        </Label>
-        <ListView fx:id="hotelListView" layoutX="6.0" layoutY="75.0" prefHeight="352.0" prefWidth="588.0" style="-fx-background-color: transparent;" />
+        <!-- ListView avec une apparence personnalisée -->
+        <ListView fx:id="hotelListView" layoutX="6.0" layoutY="75.0" prefHeight="352.0" prefWidth="588.0" style="-fx-background-color: transparent;">
+            <!-- Utilisation d'un style CSS pour formater l'apparence des éléments de la liste -->
+            <stylesheets>
+                <URL value="@listViewStyle.css"/>
+            </stylesheets>
+        </ListView>
     </children>
 </AnchorPane>

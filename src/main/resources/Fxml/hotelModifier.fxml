@@ -6,6 +6,8 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.control.Label?>
 
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
 <AnchorPane prefHeight="571.0" prefWidth="908.0" style="-fx-background-image: url('Fxml/couloir.jpg'); -fx-background-size: cover;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.hotelModifier">
     <!-- Votre mise en page -->
     <children>
@@ -21,6 +23,9 @@
                 <TextField fx:id="emplacementTextField" layoutX="145.0" layoutY="110.0" />
                 <TextField fx:id="avisTextField" layoutX="145.0" layoutY="150.0" />
                 <Button fx:id="modifierF" layoutX="79.0" layoutY="240.0" mnemonicParsing="false" onAction="#sauvegarderModification" text="Modifier" />
+                <ImageView fitWidth="200" fitHeight="200" layoutX="300" layoutY="100">
+                    <Image url="@hotel2.gif" />
+                </ImageView>
             </children>
         </Pane>
     </children>

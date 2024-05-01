@@ -10,7 +10,14 @@
         <maven.compiler.source>21</maven.compiler.source>
         <maven.compiler.target>21</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <arcgis.version>200.4.0</arcgis.version>
     </properties>
+    <repositories>
+        <repository>
+            <id>arcgis</id>
+            <url>https://esri.jfrog.io/artifactory/arcgis</url>
+        </repository>
+    </repositories>
     <dependencies>
         <dependency>
             <groupId>mysql</groupId>
@@ -62,5 +69,35 @@
             <artifactId>java-dotenv</artifactId>
             <version>5.2.2</version>
         </dependency>
+        <dependency>
+            <groupId>com.esri.arcgisruntime</groupId>
+            <artifactId>arcgis-java</artifactId>
+            <version>${arcgis.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.esri.arcgisruntime</groupId>
+            <artifactId>arcgis-java-jnilibs</artifactId>
+            <version>${arcgis.version}</version>
+            <type>zip</type>
+        </dependency>
+        <dependency>
+            <groupId>com.esri.arcgisruntime</groupId>
+            <artifactId>arcgis-java-resources</artifactId>
+            <version>${arcgis.version}</version>
+            <type>zip</type>
+        </dependency>
+        <!--SLF4J dependencies-->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-nop</artifactId>
+            <version>2.0.12</version>
+        </dependency>
+        <dependency>
+            <groupId>com.google.code.geocoder-java</groupId>
+            <artifactId>geocoder-java</artifactId>
+            <version>0.15</version>
+        </dependency>
+
+
     </dependencies>
 </project>

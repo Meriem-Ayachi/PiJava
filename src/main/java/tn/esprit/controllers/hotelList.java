@@ -1,6 +1,5 @@
 package tn.esprit.controllers;
 
-import com.sun.javafx.charts.Legend;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -10,15 +9,11 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.chart.PieChart;
 import javafx.scene.control.*;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import tn.esprit.models.hotel;
 import tn.esprit.services.Hotelservices;
 
 import java.io.IOException;
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -167,77 +162,5 @@ public class hotelList {
             e.printStackTrace();
         }
         // Ajouter votre logique d'affichage des détails de l'hôtel ici
-    }
-
-    @FXML
-    private void supprimerHotel() {
-        hotel selectedHotel = hotelListView.getSelectionModel().getSelectedItem();
-        if (selectedHotel != null) {
-            Alert confirmationDialog = new Alert(Alert.AlertType.CONFIRMATION);
-            confirmationDialog.setTitle("Confirmation de suppression");
-            confirmationDialog.setHeaderText("Voulez-vous vraiment supprimer cet hôtel ?");
-            confirmationDialog.setContentText("Cette action est irréversible.");
-
-            confirmationDialog.showAndWait().ifPresent(response -> {
-                if (response == ButtonType.OK) {
-                    hotelService.delete(selectedHotel);
-                    afficherHotelSupprimeAvecSucces();
-                    hotels.remove(selectedHotel);
-                    effacerDetailsHotel();
-                }
-            });
-        } else {
-            afficherAucunHotelSelectionneAlert();
-        }
-    }
-
-    private void afficherHotelSupprimeAvecSucces() {
-        Alert successAlert = new Alert(Alert.AlertType.INFORMATION);
-        successAlert.setTitle("Suppression réussie");
-        successAlert.setHeaderText(null);
-        successAlert.setContentText("L'hôtel a été supprimé avec succès.");
-        successAlert.showAndWait();
-    }
-
-    private void afficherAucunHotelSelectionneAlert() {
-        Alert alert = new Alert(Alert.AlertType.WARNING);
-        alert.setTitle("Aucun hôtel sélectionné");
-        alert.setHeaderText(null);
-        alert.setContentText("Veuillez sélectionner un hôtel à supprimer.");
-        alert.showAndWait();
-    }
-
-    private void effacerDetailsHotel() {
-        nomLabel.setText("");
-        nbretoileLabel.setText("");
-        emplacementLabel.setText("");
-        avisLabel.setText("");
-    }
-
-    @FXML
-    private void updateHotel() {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Fxml/hotelModifier.fxml"));
-            Parent root = loader.load();
-
-            // Obtenez une référence vers le contrôleur hotelModifier
-            hotelModifier controller = loader.getController();
-
-            // Obtenez l'hôtel sélectionné
-            hotel selectedHotel = hotelListView.getSelectionModel().getSelectedItem();
-
-            if (selectedHotel != null) {
-                // Passez l'hôtel sélectionné au contrôleur de modification
-                controller.initData(selectedHotel);
-
-                Stage stage = new Stage();
-                stage.setScene(new Scene(root));
-                stage.show();
-            } else {
-                afficherAucunHotelSelectionneAlert();
-            }
-        } catch (IOException e) {
-            e.printStackTrace(); // Gérer les erreurs de chargement de la page hotelModifier.fxml
-        }
     }
 }

@@ -7,6 +7,8 @@
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
@@ -37,6 +39,9 @@
             <TextField fx:id="nbrPersonnesTextField" layoutX="150.0" layoutY="193.0" />
             <Button layoutX="92.0" layoutY="308.0" mnemonicParsing="false" onAction="#add" style="-fx-background-color: #326f40; -fx-text-fill: #ffffff; -fx-font-size: 14px; -fx-font-family: 'Arial'; -fx-padding: 10px 20px;" text="Ajouter" />
             <Button layoutX="222.0" layoutY="308.0" mnemonicParsing="false" onAction="#openReservationList" style="-fx-background-color: #326f40; -fx-text-fill: #ffffff; -fx-font-size: 14px; -fx-font-family: 'Arial'; -fx-padding: 10px 20px;" text="Consulter la liste des réservations" />
+          <ImageView fitHeight="120.0" fitWidth="128.0" layoutX="438.0" layoutY="-13.0">
+              <Image url="@avion2.gif" />
+          </ImageView>
 
         </AnchorPane>
     </AnchorPane>

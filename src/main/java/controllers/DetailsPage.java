@@ -8,6 +8,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import tn.esprit.models.Offres;
@@ -56,17 +58,42 @@ public class DetailsPage {
     }
 
 
-    @FXML
-    public void initialize(Offres selectedOffre) {
-        if (selectedOffre != null) {
-            offres=selectedOffre;
-            Offres loadedOffre = os.getOne(selectedOffre.getId());
-            if (loadedOffre != null) {
-                listview.getItems().add(loadedOffre);
+
+
+        @FXML
+        private ImageView imageView; // L'image sera affichée ici
+
+
+        @FXML
+        public void initialize(Offres selectedOffre) {
+            if (selectedOffre != null) {
+                offres = selectedOffre;
+                Offres loadedOffre = os.getOne(selectedOffre.getId());
+                if (loadedOffre != null) {
+                    // Charger l'image depuis l'URL
+                    String imageUrl = loadedOffre.getImage(); // Supposons que getImage() renvoie l'URL de l'image
+                    if (imageUrl != null && !imageUrl.isEmpty()) {
+                        Image image = new Image(imageUrl);
+                        if (image.isError()) {
+                            System.err.println("Erreur lors du chargement de l'image depuis l'URL : " + imageUrl);
+                            // Gérer l'erreur, par exemple, afficher une image par défaut
+                        } else {
+                            // Afficher l'image
+                            imageView.setImage(image);
+                        }
+                    } else {
+                        System.err.println("URL de l'image vide pour l'offre avec ID : " + loadedOffre.getId());
+                        // Gérer le cas où l'URL de l'image est vide
+                    }
+                    listview.getItems().add(loadedOffre);
+
+                    // Vous pouvez également afficher d'autres informations de l'offre ici
+                }
             }
         }
     }
-}
+
+
 
 
 

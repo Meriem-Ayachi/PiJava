@@ -41,7 +41,7 @@ public class AfficherCommentaires {
     private final OffresService em = new OffresService();
 
     @FXML
-    void intialize(Offres offres) {
+    void initialize(Offres offres) {
         try {
             List<Offre_Commentaire> cm = os.getAll_byOffreId(offres.getId());
             ObservableList<Offre_Commentaire> observableList = FXCollections.observableList(cm);

@@ -9,6 +9,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import tn.esprit.models.Offres;
 import tn.esprit.services.OffresService;
@@ -29,23 +31,47 @@ public class Home implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+            try {
+                List<Offres> offres = os.getAll();
+                listview.getItems().addAll(offres);
+                // Ajouter les critères de tri à la ComboBox
+                combobox.getItems().addAll("prix", "created_at");
+                // Sélectionner par défaut le premier élément dans la ComboBox
+                combobox.getSelectionModel().selectFirst();
 
-      try {
-          List<Offres> offres = os.getAll();
-          listview.getItems().addAll(offres);
-          // Ajouter les critères de tri à la ComboBox
-          combobox.getItems().addAll( "prix","created_at");
+                // Configurer la cellule personnalisée pour afficher l'image dans la ListView
+                listview.setCellFactory(param -> new ListCell<Offres>() {
+                    private final ImageView imageView = new ImageView();
+                    @Override
+                    protected void updateItem(Offres offres, boolean empty) {
+                        super.updateItem(offres, empty);
+                        if (empty || offres == null) {
+                            setText(null);
+                            setGraphic(null);
+                        } else {
+                            // Charger l'image depuis l'URL et l'afficher dans l'ImageView
+                            try {
+                                Image image = new Image(offres.getImage());
+                                imageView.setImage(image);
+                                imageView.setFitWidth(70); // Réglez la largeur de l'image
+                                imageView.setPreserveRatio(true); // Préservez les proportions de l'image
+                                setGraphic(imageView);
+                                setText(offres.getTitle()); // Afficher le titre de l'offre comme texte de la cellule
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                                // Gérer les erreurs de chargement de l'image ici
+                            }
+                        }
+                    }
+                });
+            } catch (SQLException e) {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Erreur");
+                alert.setContentText(e.getMessage());
+                alert.showAndWait();
+            }
 
-          // Sélectionner par défaut le premier élément dans la ComboBox
-          combobox.getSelectionModel().selectFirst();
 
-
-          }catch (SQLException e) {
-          Alert alert = new Alert(Alert.AlertType.ERROR);
-          alert.setTitle("error");
-          alert.setContentText(e.getMessage());
-          alert.showAndWait();
-      }
     }
 
     @FXML

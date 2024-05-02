@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Home">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #CFD6EE;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Home">
    <children>
       <ListView fx:id="listview" layoutX="46.0" layoutY="86.0" prefHeight="265.0" prefWidth="532.0" />
       <Label alignment="CENTER" layoutX="90.0" layoutY="47.0" prefHeight="40.0" prefWidth="236.0" text="liste des offres">
@@ -17,6 +17,6 @@
       </Label>
       <Button fx:id="details" layoutX="476.0" layoutY="354.0" mnemonicParsing="false" onAction="#afficherDetails" prefHeight="32.0" prefWidth="102.0" text="details" />
       <ComboBox fx:id="combobox" layoutX="357.0" layoutY="54.0" prefWidth="150.0" />
-      <Button layoutX="524.0" layoutY="54.0" mnemonicParsing="false" onAction="#tri" prefHeight="25.0" prefWidth="62.0" text="Button" />
+      <Button layoutX="524.0" layoutY="54.0" mnemonicParsing="false" onAction="#tri" prefHeight="25.0" prefWidth="62.0" text="Filtrer" />
    </children>
 </AnchorPane>

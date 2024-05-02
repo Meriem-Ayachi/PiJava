@@ -1,25 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.ListView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-image: url('afficheroffres.jpg'); -fx-background-size: cover;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AfficherOffre">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AfficherOffre">
    <children>
-      <TableView fx:id="tableview" layoutX="9.0" layoutY="20.0" prefHeight="298.0" prefWidth="578.0">
-        <columns>
-          <TableColumn fx:id="titleColO" prefWidth="60.0" text="title" />
-          <TableColumn fx:id="descriptionColO" prefWidth="285.0" text="description" />
-            <TableColumn fx:id="prixColO" prefWidth="48.0" text="prix" />
-            <TableColumn fx:id="lieuColO" prefWidth="39.0" text="lieu" />
-            <TableColumn fx:id="imageColO" prefWidth="87.0" text="image" />
-            <TableColumn fx:id="dateColO" prefWidth="58.0" text="date" />
-        </columns>
-      </TableView>
-      <Button layoutX="130.0" layoutY="343.0" mnemonicParsing="false" onAction="#SupprimerO" prefHeight="31.0" prefWidth="81.0" text="Supprimer" />
+
+       <Button layoutX="130.0" layoutY="343.0" mnemonicParsing="false" onAction="#SupprimerO" prefHeight="31.0" prefWidth="81.0" text="Supprimer" />
       <Button fx:id="commentaires" layoutX="475.0" layoutY="343.0" mnemonicParsing="false" onAction="#commentaires" prefHeight="31.0" prefWidth="111.0" text="commentaires" />
       <Button fx:id="modifierO" layoutX="26.0" layoutY="343.0" mnemonicParsing="false" onAction="#naviguer" prefHeight="31.0" prefWidth="81.0" text="Modifier" />
       <Button layoutX="291.0" layoutY="343.0" mnemonicParsing="false" onAction="#gostat" prefHeight="31.0" prefWidth="95.0" text="Statistique" />
+      <ListView fx:id="listview" layoutX="12.0" layoutY="9.0" prefHeight="308.0" prefWidth="574.0" />
+
    </children>
 </AnchorPane>

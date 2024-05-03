@@ -62,12 +62,12 @@ public class hotel {
 
     @Override
     public String toString() {
-        return "hotel{" +
+        return "hotel" +
                 "nom='" + nom + '\'' +
                 ", nbretoile='" + nbretoile + '\'' +
                 ", id=" + id +
                 ", emplacement='" + emplacement + '\'' +
                 ", avis='" + avis + '\'' +
-                '}';
+                ' ';
     }
 }

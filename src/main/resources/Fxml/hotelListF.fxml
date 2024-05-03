@@ -41,8 +41,8 @@
 
             <VBox alignment="CENTER" layoutX="10.0" layoutY="20.0" spacing="10">
                 <Button fx:id="question1Button" mnemonicParsing="false" onAction="#handleQuestion1" style="-fx-background-color: #69BFA7; -fx-text-fill: #18593b; -fx-background-radius: 20;" text="Quels sont vos horaires ?" />
-                <Button fx:id="question2Button" mnemonicParsing="false" onAction="#handleQuestion2" style="-fx-background-color: #69BFA7; -fx-text-fill: #18593b; -fx-background-radius: 20;" text="Comment prendre un RDV ?" />
-                <Button fx:id="question3Button" mnemonicParsing="false" onAction="#handleQuestion3" style="-fx-background-color: #69BFA7; -fx-text-fill: #18593b; -fx-background-radius: 20;" text="Qui est derrière AlignVibe ?" />
+                <Button fx:id="question2Button" mnemonicParsing="false" onAction="#handleQuestion2" style="-fx-background-color: #69BFA7; -fx-text-fill: #18593b; -fx-background-radius: 20;" text="Comment prendre une resrvation ?" />
+                <Button fx:id="question3Button" mnemonicParsing="false" onAction="#handleQuestion3" style="-fx-background-color: #69BFA7; -fx-text-fill: #18593b; -fx-background-radius: 20;" text="Qui est derrière Tech-Voyage ?" />
                 <Button fx:id="question4Button" mnemonicParsing="false" onAction="#handleQuestion3" style="-fx-background-color: #69BFA7; -fx-text-fill: #18593b; -fx-background-radius: 20;" text="Autre question ?" />
             </VBox>
         </Pane>

@@ -86,17 +86,17 @@ public class hotelListF {
 
     @FXML
     private void handleQuestion2() {
-        showResponse("Pour prendre un RDV allez vers espace Rendez-vous puis cliquez sur Prendre un RDV et remplissez le formulaire");
+        showResponse("Pour prendre une reservation allez vers espace reservation puis cliquez sur Prendre un reserver et remplissez le formulaire");
     }
 
     @FXML
     private void handleQuestion3() {
-        showResponse("Les créateurs de AlignVibe sont un groupe de jeunes ingénieurs motivés à aider les gens à améliorer leur lifestyle");
+        showResponse("Les créateurs de Tech-Voyages sont un groupe de jeunes ingénieurs motivés à aider les gens à améliorers leurs voyages");
     }
 
     @FXML
     private void handleQuestion4() {
-        showResponse("Si aucune de ses questions ne correspond à votre besoin, veuillez nous contacter sur notre mail : hamdi.azza@esprit.tn");
+        showResponse("Si aucune de ses questions ne correspond à votre besoin, veuillez nous contacter sur notre Numero : +216 223030620");
     }
     private void showResponseWithTypingEffect(String response) {
         // Initialiser le texte de la réponse avec une chaîne vide

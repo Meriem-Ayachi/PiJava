@@ -1,13 +1,11 @@
 //package tn.esprit.controllers;
-//
-//import com.esri.arcgisruntime.geometry.Point;
+////import com.esri.arcgisruntime.geometry.Point;
 //import com.esri.arcgisruntime.tasks.geocode.GeocodeParameters;
 //import com.esri.arcgisruntime.tasks.geocode.GeocodeResult;
 //import com.esri.arcgisruntime.tasks.geocode.LocatorTask;
 //
 //import java.util.List;
-//
-//public class ArcGISExample {
+//+ple {
 //
 //    public static void main(String[] args) {
 //        // Remplacez "YOUR_API_KEY" par votre clé API ArcGIS

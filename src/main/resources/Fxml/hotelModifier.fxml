@@ -1,32 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
-<?import javafx.scene.control.Label?>
+<?import javafx.scene.shape.Circle?>
 
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.image.Image?>
 <AnchorPane prefHeight="571.0" prefWidth="908.0" style="-fx-background-image: url('Fxml/couloir.jpg'); -fx-background-size: cover;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.hotelModifier">
     <!-- Votre mise en page -->
     <children>
         <!-- Champs de texte et bouton de mise à jour -->
         <Pane layoutX="228.0" layoutY="125.0" prefHeight="297.0" prefWidth="476.0">
             <children>
-                <Label text="Nom:" layoutX="59.0" layoutY="37.0" />
-                <Label text="Nombre d'étoiles:" layoutX="59.0" layoutY="74.0" />
-                <Label text="Emplacement:" layoutX="59.0" layoutY="114.0" />
-                <Label text="Avis:" layoutX="59.0" layoutY="154.0" />
+                <Label layoutX="59.0" layoutY="37.0" text="Nom:" />
+                <Label layoutX="59.0" layoutY="74.0" text="Nombre d'étoiles:" />
+                <Label layoutX="59.0" layoutY="114.0" text="Emplacement:" />
+                <Label layoutX="59.0" layoutY="154.0" text="Avis:" />
                 <TextField fx:id="nomTextField" layoutX="145.0" layoutY="33.0" />
                 <TextField fx:id="nbretoileTextField" layoutX="145.0" layoutY="70.0" />
                 <TextField fx:id="emplacementTextField" layoutX="145.0" layoutY="110.0" />
                 <TextField fx:id="avisTextField" layoutX="145.0" layoutY="150.0" />
                 <Button fx:id="modifierF" layoutX="79.0" layoutY="240.0" mnemonicParsing="false" onAction="#sauvegarderModification" text="Modifier" />
-                <ImageView fitWidth="200" fitHeight="200" layoutX="300" layoutY="100">
-                    <Image url="@hotel2.gif" />
-                </ImageView>
             </children>
         </Pane>
+          <ImageView fitHeight="200" fitWidth="200" layoutX="614.0" layoutY="65.0">
+              <clip>
+                  <Circle centerX="100" centerY="100" radius="100" />
+              </clip>
+              <image>
+                  <Image url="@hotel2.gif" />
+              </image>
+          </ImageView>
     </children>
 </AnchorPane>

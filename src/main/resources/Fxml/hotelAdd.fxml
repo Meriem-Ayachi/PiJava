@@ -6,12 +6,16 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+
+<?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
+
+
+
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-image: url('Fxml/hotel1.jpeg'); -fx-background-size: cover;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.hotelAdd">
     <children>
 
-           <!-- Cadre bleu avec opacité faible -->
         <AnchorPane layoutX="14.0" layoutY="39.0" prefHeight="357.0" prefWidth="570.0">
             <!-- Labels et champs du formulaire -->
             <Label fx:id="nomid" layoutX="19.0" layoutY="7.0" text="Nom" />
@@ -24,21 +28,26 @@
             <Button fx:id="consulterid" layoutX="315.0" layoutY="308.0" mnemonicParsing="false" onAction="#goToHotelList" style="-fx-background-color: #326f40; -fx-text-fill: #ffffff; -fx-font-size: 14px; -fx-font-family: 'Arial'; -fx-padding: 10px 20px;" text="Consulter list" />
             <TextField fx:id="nbetoilesf" layoutX="121.0" layoutY="37.0" />
             <TextField fx:id="emplacementf" layoutX="121.0" layoutY="76.0" />
-           <!-- ImageView pour afficher l'animation GIF -->
-           <ImageView fitHeight="141.0" fitWidth="200.0" layoutX="376.0" layoutY="7.0">
-               <image>
-                   <Image url="@hotel.gif" />
-               </image>
-           </ImageView>
+            <!-- ImageView pour afficher l'animation GIF -->
+            <ImageView fitHeight="141.0" fitWidth="200.0" layoutX="401.0" layoutY="-21.0">
+                <clip>
+                    <Circle centerX="100.0" centerY="70.5" radius="70.5" />
+                </clip>
+                <image>
+                    <Image url="@hotel.gif" />
+                </image>
+            </ImageView>
+
+
         </AnchorPane>
+
         <Label layoutX="218.0" layoutY="14.0" text="Ajouter un hôtel" textFill="#326f40">
             <font>
                 <Font name="Sitka Text Italic" size="18.0" />
             </font>
         </Label>
-        <!-- Bouton dans la barre de navigation -->
-        <AnchorPane prefWidth="600.0" style="-fx-background-color: #CCCCCC;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
-            <Button layoutX="20.0" layoutY="10.0" mnemonicParsing="false" onAction="#goToHotelList" text="Hotel" />
-        </AnchorPane>
+
+        <!-- Définition du lecteur de média -->
+
     </children>
 </AnchorPane>

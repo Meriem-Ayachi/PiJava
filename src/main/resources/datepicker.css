@@ -1,0 +1,22 @@
+/* styles.css */
+
+/* Define styles for the modern DatePicker */
+.modern-datepicker .date-picker-popup > .popup-content {
+    -fx-background-color: #f0f0f0; /* Background color */
+    -fx-border-color: #bdbdbd; /* Border color */
+    -fx-border-radius: 20px; /* Rounded corners */
+
+
+    -fx-background-radius: 20px; /* Rounded corners */
+    -fx-font-size: 14px; /* Font size */
+}
+
+/* Hover effect for the modern DatePicker */
+.modern-datepicker:hover .date-picker-popup > .popup-content {
+    -fx-background-color: #e0e0e0; /* Lighter background color on hover */
+}
+
+/* Focus effect for the modern DatePicker */
+.modern-datepicker:focused .date-picker-popup > .popup-content {
+    -fx-border-color: #4CAF50; /* Border color on focus */
+}

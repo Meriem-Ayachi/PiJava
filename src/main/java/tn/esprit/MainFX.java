@@ -11,6 +11,11 @@ import java.io.IOException;
 
 public class MainFX extends Application {
 
+
+   // private static final int WINDOW_WIDTH = 960;
+   // private static final int WINDOW_HEIGHT = 540; // Set your desired height
+
+
     public static void main(String[] args) {
         launch(args);
     }
@@ -24,6 +29,10 @@ public class MainFX extends Application {
             Scene scene = new Scene(root);
             primaryStage.setTitle("Application");
             primaryStage.setScene(scene);
+           // primaryStage.setMinWidth(WINDOW_WIDTH);
+            //primaryStage.setMaxWidth(WINDOW_WIDTH);
+            //primaryStage.setMinHeight(WINDOW_HEIGHT);
+           // primaryStage.setMaxHeight(WINDOW_HEIGHT);
             primaryStage.show();
         } catch (IOException e) {
             throw new RuntimeException(e);

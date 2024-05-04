@@ -144,7 +144,9 @@ public class Showvolforuser implements Initializable {
                     priceLabel.setStyle("-fx-font-weight: bold; -fx-font-size: 14pt; -fx-text-fill: #518c65;");
 
                     // Create "Show More" button
+
                     Button showMoreButton = new Button("Show More");
+                    showMoreButton.setStyle("-fx-background-color: transparent;-fx-text-fill: #233b9a;-fx-font-size: 14px;-fx-padding: 0 5px;");
 
                     // Add action handler for the show more button
                     showMoreButton.setOnAction(event -> showMoreAction(item));
@@ -328,6 +330,33 @@ public class Showvolforuser implements Initializable {
         countryCodes.put("Spain", "ES");
         countryCodes.put("Italy", "IT");
         countryCodes.put("Tunisia","Tn");
+        countryCodes.put("Germany", "DE");
+        countryCodes.put("United Kingdom", "GB");
+        countryCodes.put("United States", "US");
+        countryCodes.put("Canada", "CA");
+        countryCodes.put("Australia", "AU");
+        countryCodes.put("Japan", "JP");
+        countryCodes.put("China", "CN");
+        countryCodes.put("India", "IN");
+        countryCodes.put("Brazil", "BR");
+        countryCodes.put("Mexico", "MX");
+        countryCodes.put("Argentina", "AR");
+        countryCodes.put("South Africa", "ZA");
+        countryCodes.put("Russia", "RU");
+        countryCodes.put("Sweden", "SE");
+        countryCodes.put("Norway", "NO");
+        countryCodes.put("Finland", "FI");
+        countryCodes.put("Denmark", "DK");
+        countryCodes.put("Netherlands", "NL");
+        countryCodes.put("Belgium", "BE");
+        countryCodes.put("Switzerland", "CH");
+        countryCodes.put("Austria", "AT");
+        countryCodes.put("Greece", "GR");
+        countryCodes.put("Turkey", "TR");
+        countryCodes.put("Egypt", "EG");
+        countryCodes.put("Saudi Arabia", "SA");
+        countryCodes.put("United Arab Emirates", "AE");
+        countryCodes.put("Afrique Du Sud", "ZA");
         // Add more countries and their codes as needed
 
         // Get the country code for the selected country
@@ -429,7 +458,7 @@ public class Showvolforuser implements Initializable {
                 // Create a new stage to display the WebView
                 Stage stage = new Stage();
                 stage.setTitle("Country Information: " + selectedCountry);
-                stage.setScene(new Scene(webView, 800, 600));
+                stage.setScene(new Scene(webView, 960, 540));
                 stage.show();
             } else {
                 // Handle the case where country information is not available

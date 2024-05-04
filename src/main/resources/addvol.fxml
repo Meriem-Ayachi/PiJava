@@ -12,55 +12,65 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="540" prefWidth="960" style="-fx-background-image: url('file:/C:/Users/melek/Desktop/plane.jpg'); -fx-background-color: rgba(0, 0, 0, 0.5);" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.Addvol">    <children>
-        <Label layoutX="306.0" layoutY="82.0" text="Destination">
+<AnchorPane prefHeight="540" prefWidth="960" style="-fx-background-image: url('file:/C:/Users/melek/Documents/GitHub/PiJava/src/main/resources/appbackground.jpg');" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.Addvol">    <children>
+        <Label layoutX="252.0" layoutY="82.0" text="Destination" textFill="WHITE">
             <font>
-                <Font name="System Bold Italic" size="13.0" />
+                <Font name="Inconsolata Regular" size="18.0" />
             </font></Label>
-        <Label layoutX="304.0" layoutY="121.0" text="Date Depart">
+        <Label layoutX="252.0" layoutY="121.0" text="Date Depart" textFill="WHITE">
             <font>
-                <Font name="System Bold Italic" size="13.0" />
+                <Font name="Inconsolata Regular" size="18.0" />
             </font></Label>
-        <Label layoutX="304.0" layoutY="163.0" text="Date arrivee">
+        <Label layoutX="252.0" layoutY="163.0" text="Date arrivee" textFill="WHITE">
             <font>
-                <Font name="System Bold Italic" size="13.0" />
+                <Font name="Inconsolata Regular" size="18.0" />
             </font></Label>
-        <Label layoutX="304.0" layoutY="205.0" text="Point depart">
+        <Label layoutX="252.0" layoutY="205.0" text="Point depart" textFill="WHITE">
             <font>
-                <Font name="System Bold Italic" size="13.0" />
+                <Font name="Inconsolata Regular" size="18.0" />
             </font></Label>
-        <Label layoutX="288.0" layoutY="247.0" text="Nombre de places">
+        <Label layoutX="252.0" layoutY="247.0" text="Nombre de places" textFill="WHITE">
             <font>
-                <Font name="System Bold Italic" size="13.0" />
+                <Font name="Inconsolata Regular" size="18.0" />
             </font></Label>
-        <Label layoutX="289.0" layoutY="288.0" text="Nombre d'escales">
+        <Label layoutX="252.0" layoutY="289.0" text="Nombre d'escales" textFill="WHITE">
             <font>
-                <Font name="System Bold Italic" size="13.0" />
+                <Font name="Inconsolata Regular" size="18.0" />
             </font></Label>
-        <Label layoutX="322.0" layoutY="326.0" text="Classe">
+        <Label layoutX="252.0" layoutY="326.0" text="Classe" textFill="WHITE">
             <font>
-                <Font name="System Bold Italic" size="13.0" />
+                <Font name="Inconsolata Regular" size="18.0" />
             </font></Label>
-        <Label layoutX="327.0" layoutY="368.0" text="Prix">
+        <Label layoutX="252.0" layoutY="368.0" text="Prix" textFill="WHITE">
             <font>
-                <Font name="System Bold Italic" size="13.0" />
+                <Font name="Inconsolata Regular" size="18.0" />
             </font></Label>
-        <Label layoutX="321.0" layoutY="410.0" text="Duree">
+        <Label layoutX="252.0" layoutY="410.0" text="Duree" textFill="WHITE">
             <font>
-                <Font name="System Bold Italic" size="13.0" />
+                <Font name="Inconsolata Regular" size="18.0" />
             </font></Label>
-        <Label layoutX="402.0" layoutY="14.0" text="Ajouter un vol" textFill="#326f40">
+        <Label layoutX="409.0" layoutY="17.0" text="AJOUTER UN VOL" textFill="WHITE">
             <font>
-                <Font name="Sitka Text Italic" size="24.0" />
+                <Font name="Inconsolata Condensed Bold" size="28.0" />
             </font>
         </Label>
-        <DatePicker fx:id="datedepartTF" layoutX="403.0" layoutY="118.0" />
-        <DatePicker fx:id="datearriveeTF" layoutX="403.0" layoutY="160.0" />
-        <TextField fx:id="destinationTF" layoutX="403.0" layoutY="77.0" />
-        <TextField fx:id="pointdepartTF" layoutX="403.0" layoutY="202.0" />
-        <TextField fx:id="nbrplaceTF" layoutX="403.0" layoutY="244.0" />
-        <TextField fx:id="nbrescaleTF" layoutX="403.0" layoutY="285.0" />
-    <ComboBox fx:id="classeComboBox" layoutX="403.0" layoutY="323.0" promptText="Select Class">
+        <DatePicker fx:id="datedepartTF" layoutX="403.0" layoutY="118.0" stylesheets="@datepicker.css">
+         <styleClass>
+            <String fx:value="date-picker-popup" />
+            <String fx:value="modern-datepicker" />
+            <String fx:value="popup-content" />
+         </styleClass></DatePicker>
+        <DatePicker fx:id="datearriveeTF" layoutX="403.0" layoutY="160.0" stylesheets="@datepicker.css">
+         <styleClass>
+            <String fx:value="date-picker-popup" />
+            <String fx:value="modern-datepicker" />
+            <String fx:value="popup-content" />
+         </styleClass></DatePicker>
+        <TextField fx:id="destinationTF" layoutX="403.0" layoutY="77.0" styleClass="modern-textfield" stylesheets="@textfield.css" />
+        <TextField fx:id="pointdepartTF" layoutX="403.0" layoutY="202.0" styleClass="modern-textfield" stylesheets="@textfield.css" />
+        <TextField fx:id="nbrplaceTF" layoutX="403.0" layoutY="244.0" styleClass="modern-textfield" stylesheets="@textfield.css" />
+        <TextField fx:id="nbrescaleTF" layoutX="403.0" layoutY="285.0" styleClass="modern-textfield" stylesheets="@textfield.css" />
+    <ComboBox fx:id="classeComboBox" layoutX="403.0" layoutY="323.0" promptText="Select Class" styleClass="modern-combobox" stylesheets="@ComboBox.css">
         <items>
             <FXCollections fx:factory="observableArrayList">
                 <String fx:value="Economy" />
@@ -69,16 +79,25 @@
             </FXCollections>
         </items>
     </ComboBox>
-        <TextField fx:id="prixTF" layoutX="403.0" layoutY="365.0" />
-        <TextField fx:id="dureeTF" layoutX="403.0" layoutY="407.0" />
-        <Button layoutX="435.0" layoutY="478.0" mnemonicParsing="false" onAction="#ajoutervol" style="-fx-background-color: #326f40; -fx-text-fill: #ffffff; -fx-font-size: 14px; -fx-font-family: 'Arial'; -fx-padding: 10px 20px;" text="Ajouter" />
+        <TextField fx:id="prixTF" layoutX="403.0" layoutY="365.0" styleClass="modern-textfield" stylesheets="@textfield.css" />
+        <TextField fx:id="dureeTF" layoutX="403.0" layoutY="407.0" styleClass="modern-textfield" stylesheets="@textfield.css" />
+        <Button layoutX="435.0" layoutY="478.0" mnemonicParsing="false" onAction="#ajoutervol" styleClass="modern-button" stylesheets="@modern-button.css" text="Ajouter" textFill="WHITE">
+         <font>
+            <Font name="Inconsolata Regular" size="18.0" />
+         </font></Button>
         <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="14.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
             <image>
                 <Image url="@../../../../../../Desktop/techvoyage.png" />
             </image>
         </ImageView>
-      <Button layoutX="14.0" layoutY="64.0" mnemonicParsing="false" onAction="#navigate" style="-fx-background-color: #326f40; -fx-text-fill: #ffffff; -fx-font-size: 14px; -fx-font-family: 'Arial'; -fx-padding: 10px 20px;" text="Liste des Vols" />
-      <Button layoutX="14.0" layoutY="122.0" mnemonicParsing="false" onAction="#gotopromolist" style="-fx-background-color: #326f40; -fx-text-fill: #ffffff; -fx-font-size: 14px; -fx-font-family: 'Arial'; -fx-padding: 10px 20px;" text="Liste des Promos" />
+      <Button layoutX="14.0" layoutY="64.0" mnemonicParsing="false" onAction="#navigate" styleClass="modern-button" stylesheets="@modern-button.css" text="Liste des Vols">
+         <font>
+            <Font name="Inconsolata Regular" size="18.0" />
+         </font></Button>
+      <Button layoutX="14.0" layoutY="122.0" mnemonicParsing="false" onAction="#gotopromolist" styleClass="modern-button" stylesheets="@modern-button.css" text="Liste des Promos">
+         <font>
+            <Font name="Inconsolata Regular" size="18.0" />
+         </font></Button>
     </children>
 
 </AnchorPane>

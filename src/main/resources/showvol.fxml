@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="540" prefWidth="960" style="-fx-background-image: url('file:/C:/Users/melek/Desktop/plane.jpg'); -fx-background-color: rgba(0, 0, 0, 0.5);" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.Showvol">
+<AnchorPane prefHeight="540" prefWidth="960" style="-fx-background-image: url('file:/C:/Users/melek/Documents/GitHub/PiJava/src/main/resources/appbackground.jpg');" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.Showvol">
     <!-- Your content goes here -->
 
     <children>
@@ -18,17 +18,29 @@
             </image>
         </ImageView>
         <ListView fx:id="listview" layoutX="27.0" layoutY="72.0" prefHeight="410.0" prefWidth="892.0" style="-fx-background-image: url('file:/C:/Users/melek/Desktop/plane.jpg');" />
-        <Label layoutX="412.0" layoutY="15.0" text="Liste des vols" textFill="#518c65">
+        <Label layoutX="408.0" layoutY="16.0" text="LISTE DES VOLS" textFill="WHITE">
             <font>
-                <Font name="System Bold Italic" size="22.0" />
+                <Font name="Inconsolata Condensed Bold" size="28.0" />
             </font>
         </Label>
-        <Button layoutX="893.0" layoutY="14.0" mnemonicParsing="false" onAction="#goBack" text="Back" />
-        <Button layoutX="27.0" layoutY="500.0" mnemonicParsing="false" onAction="#mettreenpromo" text="mettre en promo" />
+        <Button layoutX="885.0" layoutY="10.0" mnemonicParsing="false" onAction="#goBack" styleClass="modern-button" stylesheets="@modern-button.css" text="Back">
+         <font>
+            <Font name="Inconsolata Regular" size="18.0" />
+         </font></Button>
+        <Button layoutX="27.0" layoutY="500.0" mnemonicParsing="false" onAction="#mettreenpromo" styleClass="modern-button" stylesheets="@modern-button.css" text="mettre en promo">
+         <font>
+            <Font name="Inconsolata Regular" size="18.0" />
+         </font></Button>
 
         <!-- Button to navigate to the statistics page -->
-        <Button layoutX="150.0" layoutY="500.0" mnemonicParsing="false" onAction="#goToStatisticsPage" text="View Statistics" />
-        <Button layoutX="270.0" layoutY="500.0" mnemonicParsing="false" onAction="#printToPdf" text="Print to PDF" />
+        <Button layoutX="168.0" layoutY="500.0" mnemonicParsing="false" onAction="#goToStatisticsPage" styleClass="modern-button" stylesheets="@modern-button.css" text="View Statistics">
+         <font>
+            <Font name="Inconsolata Regular" size="18.0" />
+         </font></Button>
+        <Button layoutX="292.0" layoutY="500.0" mnemonicParsing="false" onAction="#printToPdf" styleClass="modern-button" stylesheets="@modern-button.css" text="Print to PDF">
+         <font>
+            <Font name="Inconsolata Regular" size="18.0" />
+         </font></Button>
 
     </children>
 

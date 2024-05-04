@@ -21,6 +21,7 @@ public class StatisticsController {
         List<Vols> flights = volService.getAll();
 
         // Analyze flight data and prepare statistics
+        int totalFlights = flights.size();
         int economyCount = 0;
         int businessCount = 0;
         int firstClassCount = 0;
@@ -36,14 +37,16 @@ public class StatisticsController {
             }
         }
 
-        // Create data for the pie chart
-        ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList(
-                new PieChart.Data("Economy", economyCount),
-                new PieChart.Data("Business", businessCount),
-                new PieChart.Data("First Class", firstClassCount)
-        );
+        // Calculate percentages
+        double economyPercentage = (double) economyCount / totalFlights * 100;
+        double businessPercentage = (double) businessCount / totalFlights * 100;
+        double firstClassPercentage = (double) firstClassCount / totalFlights * 100;
 
-        // Set the data to the pie chart
-        pieChart.setData(pieChartData);
+        // Create data for the pie chart with percentages
+        pieChart.getData().addAll(
+                new PieChart.Data("Economy (" + String.format("%.1f", economyPercentage) + "%)", economyCount),
+                new PieChart.Data("Business (" + String.format("%.1f", businessPercentage) + "%)", businessCount),
+                new PieChart.Data("First Class (" + String.format("%.1f", firstClassPercentage) + "%)", firstClassCount)
+        );
     }
 }

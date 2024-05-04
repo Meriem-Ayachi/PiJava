@@ -1,0 +1,17 @@
+/* styles.css */
+
+/* Define styles for the modern button */
+.modern-button {
+    -fx-background-color: #384fad; /* Background color */
+    -fx-background-radius: 15px; /* Rounded corners */
+    -fx-text-fill: white; /* Text color */
+    -fx-font-size: 14px; /* Font size */
+    -fx-padding: 8px 16px; /* Padding */
+    -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.2) , 4,0,0,1 ); /* Shadow effect */
+}
+
+/* Hover effect for the modern button */
+.modern-button:hover {
+    -fx-background-color: #233b9a; /* Darker background color on hover */
+    -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.4) , 6,0,0,2 ); /* Larger shadow on hover */
+}

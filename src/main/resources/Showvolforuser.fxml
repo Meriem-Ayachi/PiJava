@@ -11,9 +11,11 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="540" prefWidth="960" style="-fx-background-image: url('file:/C:/Users/melek/Desktop/plane.jpg'); -fx-background-color: rgba(0, 0, 0, 0.5);" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.Showvolforuser">
+<AnchorPane prefHeight="540" prefWidth="960" style="-fx-background-image: url('file:/C:/Users/melek/Documents/GitHub/PiJava/src/main/resources/appbackground.jpg');" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.Showvolforuser">
     <!-- Your content goes here -->
 
     <children>
@@ -23,21 +25,40 @@
             </image>
         </ImageView>
         <ListView fx:id="listview" layoutX="27.0" layoutY="132.0" prefHeight="350.0" prefWidth="892.0" style="-fx-background-image: url('file:/C:/Users/melek/Desktop/plane.jpg');" />
-        <Label layoutX="412.0" layoutY="15.0" text="Liste des vols" textFill="#518c65">
+        <Label layoutX="407.0" text="LISTE DE VOLS" textFill="WHITE">
             <font>
-                <Font name="System Bold Italic" size="22.0" />
+                <Font name="Inconsolata Condensed Bold" size="28.0" />
             </font>
         </Label>
 
         <!-- Filter Controls -->
-        <Label layoutX="27.0" layoutY="58.0" text="Start Date:" />
-        <DatePicker fx:id="startDatePicker" layoutX="100.0" layoutY="52.0" />
+        <Label layoutX="27.0" layoutY="58.0" text="Start Date:" textFill="WHITE">
+         <font>
+            <Font name="Inconsolata Regular" size="18.0" />
+         </font></Label>
+        <DatePicker fx:id="startDatePicker" layoutX="132.0" layoutY="52.0" stylesheets="@datepicker.css">
+         <styleClass>
+            <String fx:value="date-picker-popup" />
+            <String fx:value="modern-datepicker" />
+            <String fx:value="popup-content" />
+         </styleClass></DatePicker>
 
-        <Label layoutX="27.0" layoutY="89.0" text="End Date:" />
-        <DatePicker fx:id="endDatePicker" layoutX="100.0" layoutY="85.0" />
+        <Label layoutX="27.0" layoutY="89.0" text="End Date:" textFill="WHITE">
+         <font>
+            <Font name="Inconsolata Regular" size="18.0" />
+         </font></Label>
+        <DatePicker fx:id="endDatePicker" layoutX="132.0" layoutY="85.0" stylesheets="@datepicker.css">
+         <styleClass>
+            <String fx:value="date-picker-popup" />
+            <String fx:value="modern-datepicker" />
+            <String fx:value="popup-content" />
+         </styleClass></DatePicker>
 
-        <Label layoutX="350.0" layoutY="55.0" text="Class:" />
-        <ComboBox fx:id="classComboBox" layoutX="411.0" layoutY="51.0">
+        <Label layoutX="350.0" layoutY="58.0" text="Class:" textFill="WHITE">
+         <font>
+            <Font name="Inconsolata Regular" size="18.0" />
+         </font></Label>
+        <ComboBox fx:id="classComboBox" layoutX="432.0" layoutY="46.0" styleClass="modern-combobox" stylesheets="@ComboBox.css">
             <items>
                 <FXCollections fx:factory="observableArrayList">
                     <String fx:value="Economy" />
@@ -48,34 +69,83 @@
             </items>
         </ComboBox>
 
-        <Label layoutX="337.0" layoutY="96.0" text="Min Price:" />
-        <TextField fx:id="minPriceField" layoutX="408.0" layoutY="92.0" />
+        <Label layoutX="337.0" layoutY="89.0" text="Min Price:" textFill="WHITE">
+         <font>
+            <Font name="Inconsolata Regular" size="18.0" />
+         </font></Label>
+        <TextField fx:id="minPriceField" layoutX="432.0" layoutY="85.0" styleClass="modern-textfield" stylesheets="@textfield.css" />
 
-        <Label layoutX="653.0" layoutY="94.0" text="Max Price:" />
-        <TextField fx:id="maxPriceField" layoutX="739.0" layoutY="90.0" />
+        <Label layoutX="633.0" layoutY="89.0" text="Max Price:" textFill="WHITE">
+         <font>
+            <Font name="Inconsolata Regular" size="18.0" />
+         </font></Label>
+        <TextField fx:id="maxPriceField" layoutX="743.0" layoutY="87.0" styleClass="modern-textfield" stylesheets="@textfield.css" />
 
-        <Label layoutX="650.0" layoutY="56.0" text="Destination:" />
-        <ComboBox fx:id="destinationComboBox" layoutX="740.0" layoutY="52.0">
+        <Label layoutX="633.0" layoutY="58.0" text="Destination:" textFill="WHITE">
+         <font>
+            <Font name="Inconsolata Regular" size="18.0" />
+         </font></Label>
+        <ComboBox fx:id="destinationComboBox" layoutX="743.0" layoutY="46.0" styleClass="modern-combobox" stylesheets="@ComboBox.css">
             <!-- Populate with destination options -->
         </ComboBox>
 
-        <Button layoutX="27.0" layoutY="490.0" onAction="#handleFilterChange" text="Apply Filter" />
-        <Button layoutX="160.0" layoutY="490.0" onAction="#navigateToPromoVolsList" text="Promo Vols List" />
+              <Button layoutX="906.0" layoutY="47.0" onAction="#handleFilterChange" styleClass="search-button" stylesheets="@SearchButton.css" />
+        <Button layoutX="16.0" layoutY="490.0" onAction="#navigateToPromoVolsList" styleClass="modern-button" stylesheets="@modern-button.css" text="Promo Vols List">
+         <font>
+            <Font name="Inconsolata Regular" size="18.0" />
+         </font></Button>
 
 
-        <ComboBox fx:id="countryComboBox" layoutX="569.0" layoutY="490.0">
+        <ComboBox fx:id="countryComboBox" layoutX="483.0" layoutY="491.0" styleClass="modern-combobox" stylesheets="@ComboBox.css">
             <!-- Populate with country names -->
             <items>
                 <FXCollections fx:factory="observableArrayList">
                     <String fx:value="France" />
                     <String fx:value="Spain" />
                     <String fx:value="Italy" />
-                    <String fx:value="Tunisia"/>
+                    <String fx:value="Tunisia" />
+                    <String fx:value="Germany" />
+                    <String fx:value="United Kingdom" />
+                    <String fx:value="United States" />
+                    <String fx:value="Canada" />
+                    <String fx:value="Australia" />
+                    <String fx:value="Japan" />
+                    <String fx:value="China" />
+                    <String fx:value="India" />
+                    <String fx:value="Brazil" />
+                    <String fx:value="Mexico" />
+                    <String fx:value="Argentina" />
+                    <String fx:value="South Africa" />
+                    <String fx:value="Russia" />
+                    <String fx:value="Sweden" />
+                    <String fx:value="Norway" />
+                    <String fx:value="Finland" />
+                    <String fx:value="Denmark" />
+                    <String fx:value="Netherlands" />
+                    <String fx:value="Belgium" />
+                    <String fx:value="Switzerland" />
+                    <String fx:value="Austria" />
+                    <String fx:value="Greece" />
+                    <String fx:value="Turkey" />
+                    <String fx:value="Egypt" />
+                    <String fx:value="Saudi Arabia" />
+                    <String fx:value="United Arab Emirates" />
+                    <String fx:value="Afrique Du Sud" />
                     <!-- Add more countries as needed -->
                 </FXCollections>
             </items>
         </ComboBox>
-        <Button layoutX="672.0" layoutY="490.0" onAction="#showCountryInfo" text="Show Info" />
+        <Button layoutX="672.0" layoutY="490.0" onAction="#showCountryInfo" styleClass="modern-button" stylesheets="@modern-button.css" text="Show Info">
+         <font>
+            <Font name="Inconsolata Regular" size="18.0" />
+         </font></Button>
+      <Circle fill="#ffffff00" layoutX="920.0" layoutY="62.0" radius="8.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="2.0" />
+      <Line endX="-90.80000305175781" endY="8.0" layoutX="1025.0" layoutY="67.0" startX="-100.0" stroke="WHITE" strokeWidth="2.0" />
+      <Label layoutX="363.0" layoutY="500.0" text="Country Info" textFill="WHITE">
+         <font>
+            <Font name="Inconsolata Regular" size="18.0" />
+         </font>
+      </Label>
     </children>
 
 

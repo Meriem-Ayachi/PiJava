@@ -112,6 +112,8 @@ public class PromoVolsListController {
 
 
                     Button showMoreButton = new Button("show more");
+                    showMoreButton.setStyle("-fx-background-color: transparent;-fx-text-fill: #233b9a;-fx-font-size: 14px;-fx-padding: 0 5px;");
+
                     showMoreButton.setOnAction(event->showMoreInfo(item));
                     pricevbox.getChildren().addAll(showMoreButton);
 

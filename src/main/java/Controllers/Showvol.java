@@ -1,7 +1,6 @@
 package Controllers;
 
-import com.itextpdf.text.PageSize;
-import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.*;
 import com.itextpdf.text.pdf.PdfWriter;
 import javafx.event.ActionEvent;
 import javafx.collections.FXCollections;
@@ -55,9 +54,6 @@ import javafx.fxml.Initializable;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import tn.esprit.models.Vols;
-
-import com.itextpdf.text.Document;
-import com.itextpdf.text.DocumentException;
 
 import javafx.embed.swing.SwingFXUtils;
 import javax.imageio.ImageIO;
@@ -125,6 +121,8 @@ public class Showvol implements Initializable {
 
                     // Create "Show More" button
                     Button showMoreButton = new Button("Show More");
+                    showMoreButton.setStyle("-fx-background-color: transparent;-fx-text-fill: #233b9a;-fx-font-size: 14px;-fx-padding: 0 5px;");
+
 
                     // Add action handler for the show more button
                     showMoreButton.setOnAction(event -> showMoreAction(item));
@@ -253,14 +251,24 @@ public class Showvol implements Initializable {
 
     @FXML
     private void printToPdf(ActionEvent event) {
-        // Create a new Document
-        Document document = new Document();
+        // Define the custom page width for the PDF
+        float customPageWidth = 1100; // Adjust this value as needed
+
+        // Create a new Document with custom page size
+        Document document = new Document(new Rectangle(customPageWidth, PageSize.A4.getHeight()));
 
         try {
             // Define the file name and location
             String pdfFilePath = "C:/Users/melek/Downloads/vols.pdf";
-            PdfWriter.getInstance(document, new FileOutputStream(pdfFilePath));
+            PdfWriter writer = PdfWriter.getInstance(document, new FileOutputStream(pdfFilePath));
             document.open();
+
+
+            // Add title to the PDF
+            Paragraph title = new Paragraph("");
+            title.setAlignment(Element.ALIGN_CENTER);
+            title.add(new Chunk("Liste Des Vols", FontFactory.getFont(FontFactory.HELVETICA_BOLD, 30)).setGenericTag("h1"));
+            document.add(title);
 
             // Take a snapshot of the ListView
             SnapshotParameters parameters = new SnapshotParameters();
@@ -276,7 +284,7 @@ public class Showvol implements Initializable {
             java.awt.image.BufferedImage bufferedImage = SwingFXUtils.fromFXImage(image, null);
 
             // Save the snapshot as an image file
-            File imageFile = new File("snapshot.png");
+            File imageFile = File.createTempFile("snapshot", ".png");
             ImageIO.write(bufferedImage, "png", imageFile);
 
             // Embed the image into the PDF document
@@ -285,14 +293,22 @@ public class Showvol implements Initializable {
 
             // Close the document
             document.close();
+            writer.close();
+
+            // Delete the temporary image file
+            imageFile.delete();
 
             // Show success message or handle further actions
             System.out.println("PDF generated successfully at: " + pdfFilePath);
-        } catch (DocumentException | IOException e) {
-            // Handle exceptions
+        } catch (DocumentException e) {
+            // Handle DocumentException
+            e.printStackTrace();
+        } catch (IOException e) {
+            // Handle IOException
             e.printStackTrace();
         }
     }
+
 
 
 

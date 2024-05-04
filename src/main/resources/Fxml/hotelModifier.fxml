@@ -9,21 +9,21 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.shape.Circle?>
 
-<AnchorPane prefHeight="571.0" prefWidth="908.0" style="-fx-background-image: url('Fxml/couloir.jpg'); -fx-background-size: cover;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.hotelModifier">
+<AnchorPane prefHeight="571.0" prefWidth="908.0" style="-fx-background-image: url('backgound.jpg'); -fx-background-size: cover;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.hotelModifier">
     <!-- Votre mise en page -->
     <children>
         <!-- Champs de texte et bouton de mise à jour -->
         <Pane layoutX="228.0" layoutY="125.0" prefHeight="297.0" prefWidth="476.0">
             <children>
-                <Label layoutX="59.0" layoutY="37.0" text="Nom:" />
-                <Label layoutX="59.0" layoutY="74.0" text="Nombre d'étoiles:" />
-                <Label layoutX="59.0" layoutY="114.0" text="Emplacement:" />
-                <Label layoutX="59.0" layoutY="154.0" text="Avis:" />
-                <TextField fx:id="nomTextField" layoutX="145.0" layoutY="33.0" />
-                <TextField fx:id="nbretoileTextField" layoutX="145.0" layoutY="70.0" />
-                <TextField fx:id="emplacementTextField" layoutX="145.0" layoutY="110.0" />
-                <TextField fx:id="avisTextField" layoutX="145.0" layoutY="150.0" />
-                <Button fx:id="modifierF" layoutX="79.0" layoutY="240.0" mnemonicParsing="false" onAction="#sauvegarderModification" text="Modifier" />
+                <Label layoutX="59.0" layoutY="37.0" text="Nom:" textFill="WHITE" />
+                <Label layoutX="59.0" layoutY="74.0" text="Nombre d'étoiles:" textFill="WHITE" />
+                <Label layoutX="59.0" layoutY="114.0" text="Emplacement:" textFill="WHITE" />
+                <Label layoutX="59.0" layoutY="154.0" text="Avis:" textFill="WHITE" />
+                <TextField fx:id="nomTextField" layoutX="145.0" layoutY="33.0" styleClass="modern-textfield" stylesheets="@../textfield.css" />
+                <TextField fx:id="nbretoileTextField" layoutX="145.0" layoutY="70.0" styleClass="modern-textfield" stylesheets="@../textfield.css" />
+                <TextField fx:id="emplacementTextField" layoutX="145.0" layoutY="110.0" styleClass="modern-textfield" stylesheets="@../textfield.css" />
+                <TextField fx:id="avisTextField" layoutX="145.0" layoutY="150.0" styleClass="modern-textfield" stylesheets="@../textfield.css" />
+                <Button fx:id="modifierF" layoutX="79.0" layoutY="240.0" mnemonicParsing="false" onAction="#sauvegarderModification" styleClass="modern-button" stylesheets="@../modern-button.css" text="Modifier" />
             </children>
         </Pane>
           <ImageView fitHeight="200" fitWidth="200" layoutX="614.0" layoutY="65.0">

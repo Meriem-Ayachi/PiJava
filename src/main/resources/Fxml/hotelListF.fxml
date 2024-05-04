@@ -13,13 +13,13 @@
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="492.0" prefWidth="602.0" style="-fx-background-image: url('Fxml/hotel1.jpeg'); -fx-background-size: cover;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.hotelListF">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="492.0" prefWidth="602.0" style="-fx-background-image: url('backgound.jpg'); -fx-background-size: cover;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.hotelListF">
     <children>
         <!-- Champ de recherche -->
-        <TextField fx:id="rechercheTextField" layoutX="455.0" layoutY="12.0" prefWidth="130.0" promptText="Recherche par nom" />
+        <TextField fx:id="rechercheTextField" layoutX="455.0" layoutY="12.0" prefWidth="130.0" promptText="Recherche par nom" styleClass="modern-textfield" stylesheets="@../textfield.css" />
 
         <!-- Bouton de tri par nombre d'étoiles -->
-        <Button fx:id="triEtoilesButton" layoutX="455.0" layoutY="48.0" onAction="#trierParEtoiles" text="Trier par étoiles" />
+        <Button fx:id="triEtoilesButton" layoutX="455.0" layoutY="48.0" onAction="#trierParEtoiles" styleClass="modern-button" stylesheets="@../modern-button.css" text="Trier par étoiles" />
 
         <Label fx:id="nomid" layoutX="19.0" layoutY="57.0" />
         <Label fx:id="nbretoilesid" layoutX="19.0" layoutY="91.0" />

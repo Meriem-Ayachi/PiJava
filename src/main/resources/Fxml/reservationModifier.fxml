@@ -6,17 +6,17 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-image: url('Fxml/background22.jpeg'); -fx-background-size: cover; " xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.reservationModifier">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-image: url('backgound.jpg'); -fx-background-size: cover; " xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.reservationModifier">
 
     <children>
-        <TextField fx:id="dateDepartTextField" layoutX="167.0" layoutY="104.0" />
-        <TextField fx:id="dateRetourTextField" layoutX="167.0" layoutY="151.0" />
-        <TextField fx:id="classeTextField" layoutX="167.0" layoutY="199.0" />
-        <TextField fx:id="destinationDepartTextField" layoutX="167.0" layoutY="249.0" />
-        <TextField fx:id="destinationRetourTextField" layoutX="167.0" layoutY="299.0" />
-        <TextField fx:id="nbrPersonnesTextField" layoutX="167.0" layoutY="349.0" />
+        <TextField fx:id="dateDepartTextField" layoutX="167.0" layoutY="104.0" styleClass="modern-textfield" stylesheets="@../textfield.css" />
+        <TextField fx:id="dateRetourTextField" layoutX="167.0" layoutY="151.0" styleClass="modern-textfield" stylesheets="@../textfield.css" />
+        <TextField fx:id="classeTextField" layoutX="167.0" layoutY="199.0" styleClass="modern-textfield" stylesheets="@../textfield.css" />
+        <TextField fx:id="destinationDepartTextField" layoutX="167.0" layoutY="249.0" styleClass="modern-textfield" stylesheets="@../textfield.css" />
+        <TextField fx:id="destinationRetourTextField" layoutX="167.0" layoutY="299.0" styleClass="modern-textfield" stylesheets="@../textfield.css" />
+        <TextField fx:id="nbrPersonnesTextField" layoutX="167.0" layoutY="349.0" styleClass="modern-textfield" stylesheets="@../textfield.css" />
 
-        <Button layoutX="445.0" layoutY="336.0" mnemonicParsing="false" onAction="#sauvegarderModification" text="Sauvegarder" />
+        <Button layoutX="445.0" layoutY="336.0" mnemonicParsing="false" onAction="#sauvegarderModification" styleClass="modern-button" stylesheets="@../modern-button.css" text="Sauvegarder" />
         <ImageView fitHeight="200" fitWidth="200" layoutX="386.0" layoutY="17.0">
             <Image url="@avion1.gif" />
         </ImageView>

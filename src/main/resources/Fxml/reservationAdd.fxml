@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-image: url('Fxml/background22.jpeg'); -fx-background-size: cover;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.reservationAdd">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-image: url('backgound.jpg'); -fx-background-size: cover;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.reservationAdd">
     <AnchorPane layoutY="39.0" prefHeight="357.0" prefWidth="600.0">
         <!-- Cadre bleu avec opacité faible -->
         <AnchorPane layoutY="0.0" prefHeight="357.0" prefWidth="570.0">
@@ -23,9 +23,9 @@
             <Label layoutX="19.0" layoutY="119.0" text="Destination de départ" textFill="#FFFFFF" />
             <Label layoutX="14.0" layoutY="158.0" text="Destination de retour" textFill="#FFFFFF" />
             <Label layoutX="14.0" layoutY="197.0" text="Nombre de personnes" textFill="#FFFFFF" />
-            <DatePicker fx:id="dateDepartPicker" layoutX="150.0" layoutY="4.0" />
-            <DatePicker fx:id="dateRetourPicker" layoutX="150.0" layoutY="37.0" />
-            <ComboBox fx:id="classeComboBox" layoutX="150.0" layoutY="76.0">
+            <DatePicker fx:id="dateDepartPicker" layoutX="150.0" layoutY="4.0" styleClass="date-picker-popup" stylesheets="@../datepicker.css" />
+            <DatePicker fx:id="dateRetourPicker" layoutX="150.0" layoutY="37.0" styleClass="date-picker-popup" stylesheets="@../datepicker.css" />
+            <ComboBox fx:id="classeComboBox" layoutX="150.0" layoutY="76.0" styleClass="modern-combobox" stylesheets="@../ComboBox.css">
                 <items>
                     <FXCollections fx:factory="observableArrayList">
                         <String fx:value="Économique" />
@@ -34,11 +34,11 @@
                     </FXCollections>
                 </items>
             </ComboBox>
-            <ComboBox fx:id="destinationDepartComboBox" layoutX="150.0" layoutY="115.0" />
-            <ComboBox fx:id="destinationRetourComboBox" layoutX="150.0" layoutY="154.0" />
-            <TextField fx:id="nbrPersonnesTextField" layoutX="150.0" layoutY="193.0" />
-            <Button layoutX="92.0" layoutY="308.0" mnemonicParsing="false" onAction="#add" style="-fx-background-color: #326f40; -fx-text-fill: #ffffff; -fx-font-size: 14px; -fx-font-family: 'Arial'; -fx-padding: 10px 20px;" text="Ajouter" />
-            <Button layoutX="222.0" layoutY="308.0" mnemonicParsing="false" onAction="#openReservationList" style="-fx-background-color: #326f40; -fx-text-fill: #ffffff; -fx-font-size: 14px; -fx-font-family: 'Arial'; -fx-padding: 10px 20px;" text="Consulter la liste des réservations" />
+            <ComboBox fx:id="destinationDepartComboBox" layoutX="150.0" layoutY="115.0" styleClass="modern-combobox" stylesheets="@../ComboBox.css" />
+            <ComboBox fx:id="destinationRetourComboBox" layoutX="150.0" layoutY="154.0" styleClass="modern-combobox" stylesheets="@../ComboBox.css" />
+            <TextField fx:id="nbrPersonnesTextField" layoutX="150.0" layoutY="193.0" styleClass="modern-textfield" stylesheets="@../textfield.css" />
+            <Button layoutX="92.0" layoutY="308.0" mnemonicParsing="false" onAction="#add" styleClass="modern-button" stylesheets="@../modern-button.css" text="Ajouter" />
+            <Button layoutX="222.0" layoutY="308.0" mnemonicParsing="false" onAction="#openReservationList" styleClass="modern-button" stylesheets="@../modern-button.css" text="Consulter la liste des réservations" />
           <ImageView fitHeight="120.0" fitWidth="128.0" layoutX="438.0" layoutY="-13.0">
               <Image url="@avion2.gif" />
           </ImageView>

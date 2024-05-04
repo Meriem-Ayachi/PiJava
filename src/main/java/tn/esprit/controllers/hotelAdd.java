@@ -4,9 +4,7 @@ import com.twilio.Twilio;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import tn.esprit.models.Reservation;
 import tn.esprit.models.hotel;
 import tn.esprit.services.Hotelservices;
@@ -16,8 +14,8 @@ import java.io.IOException;
 import java.util.List;
 import com.twilio.rest.api.v2010.account.Message;
 import io.github.cdimascio.dotenv.Dotenv;
-import javafx.scene.media.MediaPlayer;
-
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
 public class hotelAdd {
     private static final Dotenv dotenv = Dotenv.load();
@@ -32,11 +30,29 @@ public class hotelAdd {
     @FXML
     private ListView<hotel> listView;
     @FXML
-    private TextField nbetoilesf;
-    @FXML
     private TextField emplacementf;
     @FXML
     private TextField avisf;
+    @FXML
+    private CheckBox etoile1;
+    @FXML
+    private CheckBox etoile2;
+    @FXML
+    private CheckBox etoile3;
+    @FXML
+    private CheckBox etoile4;
+    @FXML
+    private CheckBox etoile5;
+    @FXML
+    private ImageView etoileImageView1;
+    @FXML
+    private ImageView etoileImageView2;
+    @FXML
+    private ImageView etoileImageView3;
+    @FXML
+    private ImageView etoileImageView4;
+    @FXML
+    private ImageView etoileImageView5;
 
     private final Hotelservices hotelservice = new Hotelservices() {
         @Override
@@ -65,15 +81,12 @@ public class hotelAdd {
         }
         hotel1.setAvis(avis);
 
-        try {
-            int nbetoiles = Integer.parseInt(nbetoilesf.getText());
-            if (nbetoiles >= 1 && nbetoiles <= 5) {
-                hotel1.setNbretoile(String.valueOf(nbetoiles));
-            } else {
-                throw new NumberFormatException();
-            }
-        } catch (NumberFormatException e) {
-            afficherErreur("Veuillez entrer un nombre valide entre 1 et 5 pour le nombre d'étoiles.");
+        // Récupération du nombre d'étoiles
+        int nbetoiles = getNombreEtoiles();
+        if (nbetoiles >= 1 && nbetoiles <= 5) {
+            hotel1.setNbretoile(String.valueOf(nbetoiles));
+        } else {
+            afficherErreur("Veuillez sélectionner entre 1 et 5 étoiles.");
             return;
         }
 
@@ -86,15 +99,22 @@ public class hotelAdd {
         // Nettoyer les champs de saisie
         Nomf.clear();
         emplacementf.clear();
-        nbetoilesf.clear();
         avisf.clear();
+
+        // Désélectionner les cases à cocher étoile
+        etoile1.setSelected(false);
+        etoile2.setSelected(false);
+        etoile3.setSelected(false);
+        etoile4.setSelected(false);
+        etoile5.setSelected(false);
     }
 
     private void afficherSucces(String s) {
+        // À implémenter
     }
 
     private void afficherErreur(String s) {
-        
+        // À implémenter
     }
 
     private void sendSMS() {
@@ -128,61 +148,26 @@ public class hotelAdd {
         return false;
     }
 
-
-
-    // Méthode pour envoyer un e-mail
-//    private void sendEmail() {
-//        // Adresse e-mail du destinataire
-//        String recipient = "maloukabensdira3@gmail.com";
-//
-//        // Objet du message
-//        String subject = "Nouvelle réservation effectuée";
-//
-//        // Contenu du message
-//        String content = "La réservation a été effectuée avec succès !";
-//
-//        // Propriétés pour configurer la connexion SMTP
-//        Properties properties = new Properties();
-//        properties.put("mail.smtp.auth", "true");
-//        properties.put("mail.smtp.starttls.enable", "true");
-//        properties.put("mail.smtp.host", "smtp.gmail.com");
-//        properties.put("mail.smtp.port", "587");
-//
-//        // Adresse e-mail et mot de passe de l'expéditeur
-//        String senderEmail = "malekabdelkader.bensdira@esprit.tn";
-//        String password = "sdira123";
-//
-//        // Création de la session
-//        Session session = Session.getInstance(properties, new Authenticator() {
-//            @Override
-//            protected PasswordAuthentication getPasswordAuthentication() {
-//                return new PasswordAuthentication(senderEmail, password);
-//            }
-//        });
-//
-//        try {
-//            // Création de l'objet MimeMessage
-//            Message message = new MimeMessage(session);
-//
-//            // Définition de l'expéditeur
-//
-//
-//            // Définition du destinataire
-//            message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(recipient));
-//
-//            // Définition de l'objet et du contenu du message
-//            message.setSubject(subject);
-//            message.setText(content);
-//
-//            // Envoi du message
-//            Transport.send(message);
-//
-//            System.out.println("Message envoyé avec succès !");
-//        } catch (MessagingException e) {
-//            e.printStackTrace();
-//            System.out.println("Erreur lors de l'envoi du message : " + e.getMessage());
-//        }
-//    }
+    // Méthode pour récupérer le nombre d'étoiles sélectionné
+    private int getNombreEtoiles() {
+        int nbEtoiles = 0;
+        if (etoile1.isSelected()) {
+            nbEtoiles++;
+        }
+        if (etoile2.isSelected()) {
+            nbEtoiles++;
+        }
+        if (etoile3.isSelected()) {
+            nbEtoiles++;
+        }
+        if (etoile4.isSelected()) {
+            nbEtoiles++;
+        }
+        if (etoile5.isSelected()) {
+            nbEtoiles++;
+        }
+        return nbEtoiles;
+    }
 
     @FXML
     public void goToHotelList(ActionEvent event) {
@@ -210,4 +195,38 @@ public class hotelAdd {
             alert.showAndWait();
         }
     }
+    @FXML
+    private void resetEtoileImages() {
+        // Réinitialiser toutes les images des étoiles à l'image vide
+        etoileImageView1.setImage(new Image("/etoile_vide.png"));
+        etoileImageView2.setImage(new Image("/etoile_vide.png"));
+        etoileImageView3.setImage(new Image("/etoile_vide.png"));
+        etoileImageView4.setImage(new Image("/etoile_vide.png"));
+        etoileImageView5.setImage(new Image("/etoile_vide.png"));
+    }
+
+
+    @FXML
+    private void etoile1Clicked() {
+        // Changez l'image de l'étoile 1 pour l'image pleine
+        etoileImageView1.setImage(new Image("/etoile_pleine.png"));
+        // Réinitialisez les autres étoiles si nécessaire
+        etoileImageView2.setImage(new Image("/etoile_vide.png"));
+        etoileImageView3.setImage(new Image("/etoile_vide.png"));
+        etoileImageView4.setImage(new Image("/etoile_vide.png"));
+        etoileImageView5.setImage(new Image("/etoile_vide.png"));
+    }
+
+    @FXML
+    private void etoile2Clicked() {
+        // Changez l'image de l'étoile 2 pour l'image pleine
+        etoileImageView1.setImage(new Image("/etoile_pleine.png"));
+        etoileImageView2.setImage(new Image("/etoile_pleine.png"));
+        // Réinitialisez les autres étoiles si nécessaire
+        etoileImageView3.setImage(new Image("/etoile_vide.png"));
+        etoileImageView4.setImage(new Image("/etoile_vide.png"));
+        etoileImageView5.setImage(new Image("/etoile_vide.png"));
+    }
+
+    // Ajoutez des méthodes similaires pour les autres étoiles...
 }

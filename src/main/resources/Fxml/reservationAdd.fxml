@@ -38,6 +38,8 @@
             <ComboBox fx:id="destinationRetourComboBox" layoutX="150.0" layoutY="154.0" styleClass="modern-combobox" stylesheets="@../ComboBox.css" />
             <TextField fx:id="nbrPersonnesTextField" layoutX="150.0" layoutY="193.0" styleClass="modern-textfield" stylesheets="@../textfield.css" />
             <Button layoutX="92.0" layoutY="308.0" mnemonicParsing="false" onAction="#add" styleClass="modern-button" stylesheets="@../modern-button.css" text="Ajouter" />
+            <Button layoutX="374.0" layoutY="161.0" mnemonicParsing="false" onAction="#showCountryInfo" styleClass="modern-button" stylesheets="@../modern-button.css" text="Afficher localisation" />
+
             <Button layoutX="222.0" layoutY="308.0" mnemonicParsing="false" onAction="#openReservationList" styleClass="modern-button" stylesheets="@../modern-button.css" text="Consulter la liste des réservations" />
           <ImageView fitHeight="120.0" fitWidth="128.0" layoutX="438.0" layoutY="-13.0">
               <Image url="@avion2.gif" />

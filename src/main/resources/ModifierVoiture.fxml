@@ -8,7 +8,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="494.0" prefWidth="809.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.locationVoiture.ModifierVoiture">
+<AnchorPane prefHeight="402.0" prefWidth="458.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.locationVoiture.ModifierVoiture">
    <children>
       <Label layoutX="185.0" layoutY="28.0" text="Modifier Voiture">
          <font>

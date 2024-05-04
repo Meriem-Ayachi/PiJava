@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="339.0" prefWidth="568.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.locationVoiture.DetailsLocation">
+    <children>
+        <Label layoutX="179.0" layoutY="18.0" text="Details Location">
+            <font>
+            <Font name="System Bold" size="23.0" />
+            </font>
+        </Label>
+        <Label fx:id="PrixDetail" layoutX="155.0" layoutY="109.0" text="Prix:">
+            <font>
+            <Font size="16.0" />
+            </font>
+        </Label>
+        <Label fx:id="TypeDetail" layoutX="155.0" layoutY="146.0" text="Type:">
+            <font>
+            <Font size="16.0" />
+            </font>
+        </Label>
+        <Label fx:id="StatusDetail" layoutX="155.0" layoutY="184.0" text="Status:">
+            <font>
+            <Font size="16.0" />
+            </font>
+        </Label>
+        <Label fx:id="DateDebutDetail" layoutX="151.0" layoutY="227.0" text="Date Debut:">
+            <font>
+            <Font size="16.0" />
+            </font>
+        </Label>
+      <Button layoutX="44.0" layoutY="17.0" mnemonicParsing="false" onAction="#gotoModifier" prefHeight="24.0" prefWidth="26.0" style="-fx-background-color: transparent;">
+         <graphic>
+            <ImageView fitHeight="23.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/pen.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button layoutX="98.0" layoutY="17.0" mnemonicParsing="false" onAction="#supprimer" prefHeight="24.0" prefWidth="26.0" style="-fx-background-color: transparent;">
+         <graphic>
+            <ImageView fitHeight="23.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/trash-bin.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Label fx:id="DateFinDetail" layoutX="155.0" layoutY="265.0" text="Date Fin:">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Button fx:id="voitureDetailB" layoutX="251.0" layoutY="301.0" mnemonicParsing="false" onAction="#gotoVoitureDetail" text="Voiture" visible="false" />
+    </children>
+</AnchorPane>

@@ -1,5 +1,6 @@
 package tn.esprit.controllers.locationVoiture;
 
+import java.io.IOException;
 import java.sql.Date;
 import java.time.LocalDate;
 
@@ -7,6 +8,9 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 import tn.esprit.MainFX;
@@ -34,6 +38,8 @@ public class ModifierLocation {
     private int location_id;
     private int voiture_id;
     private int user_id;
+
+    private LocationVoitureService lvs = new LocationVoitureService();
 
     public void initialize(Location_Voiture locationVoiture) {
         // initialize comboBox
@@ -66,9 +72,22 @@ public class ModifierLocation {
 
     @FXML
     void AfficherLocations(ActionEvent event) {
-        Stage stage = MainFX.getPrimaryStage();
-        Navigator nav = new Navigator(stage);
-        nav.goToPage("/ListLocation.fxml");
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/DetailsLocation.fxml"));
+            Parent root;
+            root = loader.load();
+            
+            DetailsLocation controller = loader.getController();
+            Location_Voiture currentLocation = lvs.getOne(location_id);
+            controller.initialize(currentLocation);
+            
+            Scene scene = new Scene(root);
+            Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
@@ -149,9 +168,7 @@ public class ModifierLocation {
             locationService.update(locationVoiture);
             
             // go to the list
-            Stage stage = MainFX.getPrimaryStage();
-            Navigator nav = new Navigator(stage);
-            nav.goToPage("/ListLocation.fxml");
+            AfficherLocations(event);
         }
     }
 

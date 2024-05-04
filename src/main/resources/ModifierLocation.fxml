@@ -10,23 +10,20 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/scene/layout" xmlns:fx="http://javafx.com/fxml" fx:controller="tn.esprit.controllers.locationVoiture.ModifierLocation">
-   <fx:include source="sidebarAdmin.fxml" />
-   <AnchorPane layoutX="211.0" layoutY="38.0" prefHeight="402.0" prefWidth="458.0" style="-fx-background-color: #ececec;">
-      <children>
-         <Label layoutX="185.0" layoutY="28.0" text="Modifier Voiture">
-            <font>
-               <Font size="30.0" />
-            </font>
-         </Label>
-         <TextField fx:id="prixTF" layoutX="66.0" layoutY="130.0" promptText="Prix" />
-         <DatePicker fx:id="dateDebutTF" layoutX="66.0" layoutY="170.0" promptText="Date Debut" />
-         <DatePicker fx:id="dateFinTF" layoutX="66.0" layoutY="210.0" promptText="Date Fin" />
-         <ComboBox fx:id="typeTF" layoutX="66.0" layoutY="250.0" promptText="Type" />
-         <ComboBox fx:id="statusTF" layoutX="66.0" layoutY="290.0" promptText="Status" />
+<AnchorPane prefHeight="402.0" prefWidth="458.0" style="-fx-background-color: #ececec;" xmlns="http://javafx.com/javafx/scene/layout" xmlns:fx="http://javafx.com/fxml" fx:controller="tn.esprit.controllers.locationVoiture.ModifierLocation">
+   <children>
+      <Label layoutX="185.0" layoutY="28.0" text="Modifier Voiture">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Label>
+      <TextField fx:id="prixTF" layoutX="66.0" layoutY="130.0" promptText="Prix" />
+      <DatePicker fx:id="dateDebutTF" layoutX="66.0" layoutY="170.0" promptText="Date Debut" />
+      <DatePicker fx:id="dateFinTF" layoutX="66.0" layoutY="210.0" promptText="Date Fin" />
+      <ComboBox fx:id="typeTF" layoutX="66.0" layoutY="250.0" promptText="Type" />
+      <ComboBox fx:id="statusTF" layoutX="66.0" layoutY="290.0" promptText="Status" />
 
-         <Button layoutX="381.0" layoutY="334.0" mnemonicParsing="false" onAction="#modifierLocation" text="Modifier" />
-         <Button layoutX="476.0" layoutY="334.0" mnemonicParsing="false" onAction="#AfficherLocations" text="Cancel" />
-      </children>
-   </AnchorPane>
+      <Button layoutX="381.0" layoutY="334.0" mnemonicParsing="false" onAction="#modifierLocation" text="Modifier" />
+      <Button layoutX="476.0" layoutY="334.0" mnemonicParsing="false" onAction="#AfficherLocations" text="Cancel" />
+   </children>
 </AnchorPane>

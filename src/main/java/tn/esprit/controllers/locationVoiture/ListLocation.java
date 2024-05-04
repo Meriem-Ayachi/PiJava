@@ -1,5 +1,6 @@
 package tn.esprit.controllers.locationVoiture;
 
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 
@@ -7,9 +8,13 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.AnchorPane;
 import tn.esprit.MainFX;
+import tn.esprit.interfaces.RefreshCallBack;
 import tn.esprit.models.Location_Voiture;
 import tn.esprit.models.User;
 import tn.esprit.models.Voiture;
@@ -22,7 +27,7 @@ import javafx.scene.control.TableColumn;
 import javafx.stage.Stage;
 
 
-public class ListLocation {
+public class ListLocation implements RefreshCallBack{
     @FXML
     private TableView<Location_Voiture> locationTableView;
 
@@ -88,32 +93,27 @@ public class ListLocation {
     }
 
     @FXML
-    void supprimerSelectedLocation() {
-        if (selectedLocation != null) {
-            LocationService.delete(selectedLocation.getId());
-            refreshTable();
-            selectedLocation = null;
-        }else{
-            showError("Vous devez sélectionner une location");
-        }
-    }
-
-    @FXML
-    void goToModifier(ActionEvent event) {
-        if (selectedLocation != null) {
-            Location_Voiture locationVoiture = LocationService.getOne(selectedLocation.getId());
-            
-            Stage stage = MainFX.getPrimaryStage();
-            Navigator nav = new Navigator(stage);
-            nav.goTo_ModifierLocation("/ModifierLocation.fxml", locationVoiture);
-        }else{
-            showError("Vous devez sélectionner une location");
-        }
-    }
-
-    @FXML
     void onTableRowClicked() {
-        selectedLocation = locationTableView.getSelectionModel().getSelectedItem();
+        try {
+            selectedLocation = locationTableView.getSelectionModel().getSelectedItem();
+            
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/DetailsLocation.fxml"));
+            AnchorPane detailsVoitureAnchorPane = loader.load();
+            DetailsLocation controller = loader.getController();
+
+            // Appeler la méthode pour initialiser les détails de la réclamation
+            controller.initialize(selectedLocation);
+            controller.initializeCallback(this);
+
+            // Afficher l'interface dans une nouvelle fenêtre
+            Stage stage = new Stage();
+
+            stage.setScene(new Scene(detailsVoitureAnchorPane));
+            stage.show();
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     private void refreshTable() {
@@ -127,4 +127,8 @@ public class ListLocation {
         alert.showAndWait();
     }
 
+    @Override
+    public void onRefreshComplete() {
+        refreshTable();
+    }
 }

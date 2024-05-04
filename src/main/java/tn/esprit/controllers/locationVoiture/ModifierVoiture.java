@@ -23,7 +23,6 @@ import javafx.stage.Stage;
 import tn.esprit.MainFX;
 import tn.esprit.models.Voiture;
 import tn.esprit.services.VoitureService;
-import tn.esprit.util.Navigator;
 
 public class ModifierVoiture {
 
@@ -221,9 +220,6 @@ public class ModifierVoiture {
     void uploadFile(ActionEvent event) {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Choose Image File");
-        fileChooser.getExtensionFilters().addAll(
-                new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.jpeg", "*.gif")
-        );
         selectedFile = fileChooser.showOpenDialog(MainFX.getPrimaryStage());
         if (selectedFile != null) {
             uploadedFileName.setText(selectedFile.getName());

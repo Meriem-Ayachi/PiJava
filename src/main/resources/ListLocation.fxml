@@ -27,9 +27,6 @@
 
             <Button text="Ajouter" layoutX="50.0" layoutY="390.0" onAction="#goToAjouter" />
 
-            <Button text="Modifier" layoutX="150.0" layoutY="390.0" onAction="#goToModifier" />
-
-            <Button text="Supprimer" layoutX="250.0" layoutY="390.0" onAction="#supprimerSelectedLocation" />
         </children>
     </AnchorPane>
 </AnchorPane>

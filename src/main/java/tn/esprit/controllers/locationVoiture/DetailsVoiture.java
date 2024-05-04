@@ -10,11 +10,9 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
-import tn.esprit.MainFX;
 import tn.esprit.interfaces.RefreshCallBack;
 import tn.esprit.models.Voiture;
 import tn.esprit.services.VoitureService;
-import tn.esprit.util.Navigator;
 
 import java.io.IOException;
 

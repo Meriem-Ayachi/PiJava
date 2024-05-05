@@ -69,13 +69,12 @@ public class AjouterCommentairefront {
         refrech();
     }
 
-  //afficher commentaire
+    //afficher commentaire
     @FXML
     void refrech () {
 
         try {
-            List<Offre_Commentaire> commentaire = null;
-            commentaire = oc.getAll_byOffreId(offres.getId());
+            List<Offre_Commentaire> commentaire = oc.getAll_byOffreId(offres.getId());
             listview.getItems().addAll(commentaire);
         } catch (SQLException e) {
             throw new RuntimeException(e);

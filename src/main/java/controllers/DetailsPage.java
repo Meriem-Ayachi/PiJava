@@ -7,10 +7,12 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.ListView;
+import javafx.scene.control.Label;
+
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import tn.esprit.models.Offres;
 import tn.esprit.services.OffresService;
@@ -21,7 +23,7 @@ public class DetailsPage {
 
 
     @FXML
-    private ListView<Offres> listview;
+    private GridPane gridpane;
     @FXML
     private Button commenter;
     @FXML
@@ -45,8 +47,7 @@ public class DetailsPage {
             Stage stage = new Stage();
             stage.setScene(new Scene(detailsOffrePane));
             stage.show();
-        }
-        catch (IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
@@ -58,40 +59,49 @@ public class DetailsPage {
     }
 
 
+    @FXML
+    private ImageView imageView; // L'image sera affichée ici
 
 
-        @FXML
-        private ImageView imageView; // L'image sera affichée ici
+    @FXML
+    public void initialize(Offres selectedOffre) {
 
 
-        @FXML
-        public void initialize(Offres selectedOffre) {
-            if (selectedOffre != null) {
-                offres = selectedOffre;
-                Offres loadedOffre = os.getOne(selectedOffre.getId());
-                if (loadedOffre != null) {
-                    // Charger l'image depuis l'URL
-                    String imageUrl = loadedOffre.getImage(); // Supposons que getImage() renvoie l'URL de l'image
-                    if (imageUrl != null && !imageUrl.isEmpty()) {
-                        Image image = new Image(imageUrl);
-                        if (image.isError()) {
-                            System.err.println("Erreur lors du chargement de l'image depuis l'URL : " + imageUrl);
-                            // Gérer l'erreur, par exemple, afficher une image par défaut
-                        } else {
-                            // Afficher l'image
-                            imageView.setImage(image);
-                        }
+        if (selectedOffre != null) {
+            Offres loadedOffre = os.getOne(selectedOffre.getId());
+            if (loadedOffre != null) {
+
+                gridpane.getChildren().clear();
+
+                // Add labels to the grid pane
+                gridpane.add(new Label(loadedOffre.getLieu()), 1, 0);
+                gridpane.add(new Label(loadedOffre.getTitle()), 0, 0);
+                gridpane.add(new Label(loadedOffre.getDescription()), 0, 1);
+                gridpane.add(new Label(String.valueOf(loadedOffre.getCreated_at())), 1, 2);
+                gridpane.add(new Label(String.valueOf(loadedOffre.getPrix())), 0, 2);
+                // Add more labels to display other offer details
+                // Load the image from the URL
+                String imageUrl = loadedOffre.getImage(); // Assume getImage() returns the image URL
+                if (imageUrl != null && !imageUrl.isEmpty()) {
+                    Image image = new Image(imageUrl);
+                    if (image.isError()) {
+                        System.err.println("Error loading image from URL: " + imageUrl);
+                        // Handle the error, e.g., display a default image
                     } else {
-                        System.err.println("URL de l'image vide pour l'offre avec ID : " + loadedOffre.getId());
-                        // Gérer le cas où l'URL de l'image est vide
+                        // Display the image
+                        imageView.setImage(image);
                     }
-                    listview.getItems().add(loadedOffre);
-
-                    // Vous pouvez également afficher d'autres informations de l'offre ici
+                } else {
+                    System.err.println("Empty image URL for offer with ID: " + loadedOffre.getId());
+                    // Handle the case where the image URL is empty
                 }
+
+                // You can also display other information about the offer here without adding to the grid pane
             }
         }
     }
+
+}
 
 
 

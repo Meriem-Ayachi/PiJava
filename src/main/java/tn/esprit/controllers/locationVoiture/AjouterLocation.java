@@ -1,8 +1,6 @@
 package tn.esprit.controllers.locationVoiture;
 
 
-import java.sql.Date;
-import java.time.LocalDate;
 import java.util.List;
 
 import javafx.collections.FXCollections;
@@ -21,12 +19,6 @@ import tn.esprit.util.Navigator;
 public class AjouterLocation {
     @FXML
     private TextField prixTF;
-
-    @FXML
-    private DatePicker dateDebutTF;
-    
-    @FXML
-    private DatePicker dateFinTF;
 
     @FXML
     private ComboBox<String> typeTF;
@@ -73,30 +65,6 @@ public class AjouterLocation {
             return;
         }
 
-        // date debut control sasie
-        if (dateDebutTF.getValue() == null) {
-            afficherErreur("Veuillez saisir un date debut.");
-            return;
-        }
-
-        // date fin control sasie
-        if (dateFinTF.getValue() == null) {
-            afficherErreur("Veuillez saisir un date fin.");
-            return;
-        }
-
-        // date fin > date debut > today
-        LocalDate debut = dateDebutTF.getValue();
-        LocalDate fin = dateFinTF.getValue();
-        LocalDate today = LocalDate.now();
-        if (! fin.isAfter(debut)) {
-            afficherErreur("la date fin doit être supérieure à la date du debut");
-            return;
-        }
-        if (! debut.isAfter(today)) {
-            afficherErreur("la date de début doit être supérieure à la date d'aujourd'hui");
-            return;
-        }
 
         // type control 
         if (typeTF.getValue() == null) {
@@ -115,8 +83,6 @@ public class AjouterLocation {
         LocationVoitureService locationService = new LocationVoitureService();
         Location_Voiture locationVoiture = new Location_Voiture();
         locationVoiture.setPrix(Integer.parseInt(prixTF.getText()));
-        locationVoiture.setDate_debut(Date.valueOf(dateDebutTF.getValue()));
-        locationVoiture.setDatefin(Date.valueOf(dateFinTF.getValue()));
         locationVoiture.setType(typeTF.getValue());
         locationVoiture.setStatus("disponible");
         locationVoiture.setVoiture_id(voitureTF.getValue().getId());

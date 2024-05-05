@@ -1,11 +1,15 @@
 package tn.esprit.controllers.locationVoiture;
 
+import java.sql.Date;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
+
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
 import tn.esprit.MainFX;
@@ -38,13 +42,21 @@ public class userLocation_ShowVoiture {
 
     @FXML
     private Label totalOutput;
+    
+    @FXML
+    private DatePicker dateDebut;
+
+    @FXML
+    private DatePicker dateFin;
 
     private int locationVoitureId = 0;    
     private final LocationVoitureService LocationService = new LocationVoitureService();
     private final VoitureService voitureService = new VoitureService();
+    private Location_Voiture location_Voiture;
 
     @FXML
     public void initialize(Location_Voiture location_Voiture) {
+        this.location_Voiture = location_Voiture;
         Voiture voiture = voitureService.getOne(location_Voiture.getVoiture_id());
         locationVoitureId = location_Voiture.getId();
 
@@ -55,13 +67,6 @@ public class userLocation_ShowVoiture {
         energyOutput.setText(voiture.getEnergy());
         capaciteOutput.setText(String.valueOf(voiture.getCapacite()));
         
-        //calculate the total price
-        LocalDate startDate = location_Voiture.getDate_debut().toLocalDate();
-        LocalDate endDate = location_Voiture.getDatefin().toLocalDate();
-
-        long daysBetween = ChronoUnit.DAYS.between(startDate, endDate);
-
-        totalOutput.setText(String.valueOf(daysBetween * location_Voiture.getPrix()));
     }
 
     @FXML
@@ -74,6 +79,31 @@ public class userLocation_ShowVoiture {
     @FXML
     void reserver(ActionEvent event) {
         try {
+            // date debut control sasie
+            if (dateDebut.getValue() == null) {
+                afficherErreur("Veuillez saisir un date debut.");
+                return;
+            }
+
+            // date fin control sasie
+            if (dateFin.getValue() == null) {
+                afficherErreur("Veuillez saisir un date fin.");
+                return;
+            }
+
+            // date fin > date debut > today
+            LocalDate debut = dateDebut.getValue();
+            LocalDate fin = dateFin.getValue();
+            LocalDate today = LocalDate.now();
+            if (! fin.isAfter(debut)) {
+                afficherErreur("la date fin doit être supérieure à la date du debut");
+                return;
+            }
+            if (! debut.isAfter(today)) {
+                afficherErreur("la date de début doit être supérieure à la date d'aujourd'hui");
+                return;
+            }
+
             //confirmation message
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setTitle("Are you sure ?");
@@ -86,6 +116,8 @@ public class userLocation_ShowVoiture {
             Location_Voiture location_Voiture = LocationService.getOne(locationVoitureId);
             location_Voiture.setUser_id(session.id_utilisateur);
             location_Voiture.setStatus("réservé");
+            location_Voiture.setDate_debut(Date.valueOf(dateDebut.getValue()));
+            location_Voiture.setDatefin(Date.valueOf(dateFin.getValue()));
             LocationService.update(location_Voiture);
             
             //change to my reservation page
@@ -104,4 +136,32 @@ public class userLocation_ShowVoiture {
         alert.showAndWait();
     }
     
+    private void afficherErreur(String message) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Erreur");
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
+
+    @FXML
+    public void dateUpdate(){
+        try {
+            System.out.println("update price");
+            //calculate the total price
+            LocalDate startDate = dateDebut.getValue();
+            LocalDate endDate = dateFin.getValue();
+    
+            long daysBetween = ChronoUnit.DAYS.between(startDate, endDate);
+            if (daysBetween > 0){
+                totalOutput.setText(String.valueOf(daysBetween * location_Voiture.getPrix()));
+            }else{
+                totalOutput.setText("");
+            }
+            
+        } catch (Exception e) {
+            
+        }
+    }
+
+
 }

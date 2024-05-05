@@ -35,9 +35,6 @@ public class DetailsLocation {
     @FXML
     private Label TypeDetail;
 
-    @FXML
-    private Button voitureDetailB;
-
     private Location_Voiture currentLocation;
 
     private final LocationVoitureService locationVoitureService = new LocationVoitureService();
@@ -53,12 +50,17 @@ public class DetailsLocation {
         StatusDetail.setText("Status: " + String.valueOf(locationV.getStatus()));
         PrixDetail.setText("Prix: " + String.valueOf(locationV.getPrix()));
         TypeDetail.setText("Type: " + String.valueOf(locationV.getType()));
-        DateDebutDetail.setText("Date Debut: " + String.valueOf(locationV.getDate_debut().toString()));
-        DateFinDetail.setText("Date Fin: " + String.valueOf(locationV.getDatefin().toString()));
-
-        if (locationV.getVoiture_id() != 0){
-            voitureDetailB.setVisible(true);;
+        if (locationV.getDate_debut() != null){
+            DateDebutDetail.setText("Date Debut: " + String.valueOf(locationV.getDate_debut().toString()));
+        }else{
+            DateDebutDetail.setText("");
         }
+        if (locationV.getDatefin() != null){
+            DateFinDetail.setText("Date Fin: " + String.valueOf(locationV.getDatefin().toString()));
+        }else{
+            DateFinDetail.setText("");
+        }
+
     }
 
     @FXML

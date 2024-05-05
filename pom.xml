@@ -70,30 +70,6 @@
             <artifactId>json</artifactId>
             <version>20231013</version>
         </dependency>
-        
-        <dependency>
-            <groupId>com.esri.arcgisruntime</groupId>
-            <artifactId>arcgis-java</artifactId>
-            <version>${arcgis.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.esri.arcgisruntime</groupId>
-            <artifactId>arcgis-java-jnilibs</artifactId>
-            <version>${arcgis.version}</version>
-            <type>zip</type>
-        </dependency>
-        <dependency>
-            <groupId>com.esri.arcgisruntime</groupId>
-            <artifactId>arcgis-java-resources</artifactId>
-            <version>${arcgis.version}</version>
-            <type>zip</type>
-        </dependency>
-        <!--SLF4J dependencies-->
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-nop</artifactId>
-            <version>2.0.12</version>
-        </dependency>
     </dependencies>
     <build>
         <plugins>

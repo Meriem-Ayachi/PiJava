@@ -24,12 +24,6 @@ public class ModifierLocation {
     private TextField prixTF;
 
     @FXML
-    private DatePicker dateDebutTF;
-    
-    @FXML
-    private DatePicker dateFinTF;
-
-    @FXML
     private ComboBox<String> typeTF;
 
     @FXML
@@ -63,8 +57,6 @@ public class ModifierLocation {
         user_id = locationVoiture.getUser_id();
         // fill the UI with the voiture values
         prixTF.setText(String.valueOf(locationVoiture.getPrix()));
-        dateDebutTF.setValue(locationVoiture.getDate_debut().toLocalDate());
-        dateFinTF.setValue(locationVoiture.getDatefin().toLocalDate());
         typeTF.setValue(locationVoiture.getType());
         statusTF.setValue(String.valueOf(locationVoiture.getStatus()));
         
@@ -104,30 +96,6 @@ public class ModifierLocation {
             return;
         }
 
-        // date debut control sasie
-        if (dateDebutTF.getValue() == null) {
-            afficherErreur("Veuillez saisir un date debut.");
-            return;
-        }
-
-        // date fin control sasie
-        if (dateFinTF.getValue() == null) {
-            afficherErreur("Veuillez saisir un date fin.");
-            return;
-        }
-
-        // date fin > date debut > today
-        LocalDate debut = dateDebutTF.getValue();
-        LocalDate fin = dateFinTF.getValue();
-        LocalDate today = LocalDate.now();
-        if (! fin.isAfter(debut)) {
-            afficherErreur("la date fin doit être supérieure à la date du debut");
-            return;
-        }
-        if (! debut.isAfter(today)) {
-            afficherErreur("la date de début doit être supérieure à la date d'aujourd'hui");
-            return;
-        }
 
         // type control 
         if (typeTF.getValue() == null) {
@@ -143,15 +111,12 @@ public class ModifierLocation {
 
 
         LocationVoitureService locationService = new LocationVoitureService();
-        Location_Voiture locationVoiture = new Location_Voiture();
+        Location_Voiture locationVoiture = locationService.getOne(location_id);
         //set id
-        locationVoiture.setId(location_id);
         locationVoiture.setVoiture_id(voiture_id);
         locationVoiture.setUser_id(user_id);
 
         locationVoiture.setPrix(Double.parseDouble(prixTF.getText()));
-        locationVoiture.setDate_debut(Date.valueOf(dateDebutTF.getValue()));
-        locationVoiture.setDatefin(Date.valueOf(dateFinTF.getValue()));
         locationVoiture.setType(typeTF.getValue());
         locationVoiture.setStatus(statusTF.getValue());
         {

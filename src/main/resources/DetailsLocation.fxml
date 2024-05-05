@@ -57,6 +57,5 @@
             <Font size="16.0" />
          </font>
       </Label>
-      <Button fx:id="voitureDetailB" layoutX="251.0" layoutY="301.0" mnemonicParsing="false" onAction="#gotoVoitureDetail" text="Voiture" visible="false" />
     </children>
 </AnchorPane>

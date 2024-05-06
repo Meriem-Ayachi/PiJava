@@ -30,7 +30,7 @@
 
 
             </TableView>
-            <Button layoutX="398.0" layoutY="624.0" mnemonicParsing="false" onAction="#modifierBTN" prefHeight="36.0" prefWidth="86.0" style="-fx-background-color: #387296;" styleClass="modern-button" stylesheets="@modern-button.css" text="Modifier" textFill="WHITE">
+            <Button layoutX="398.0" layoutY="624.0" mnemonicParsing="false" onAction="#modifierBTN" prefHeight="36.0" prefWidth="86.0" styleClass="modern-button" stylesheets="@modern-button.css" text="Modifier" textFill="WHITE">
             <font>
                <Font name="System Bold" size="13.0" />
             </font></Button>
@@ -41,7 +41,7 @@
             <TextField layoutX="14.0" layoutY="142.0" onKeyTyped="#NomTF" promptText="Nom" styleClass="modern-textfield" stylesheets="@textfield.css" />
             <TextField layoutX="209.0" layoutY="142.0" onKeyTyped="#PrenomTF" promptText="Prénom" styleClass="modern-textfield" stylesheets="@textfield.css" />
             <ComboBox fx:id="estTraiteCB" layoutX="409.0" layoutY="138.0" onAction="#estTraiteChanged" prefWidth="150.0" styleClass="modern-combobox" stylesheets="@ComboBox.css" />
-            <Button layoutX="511.0" layoutY="78.0" onAction="#calculerEtAfficherStatistiques" prefHeight="36.0" prefWidth="157.0" style="-fx-background-color: #387296;" styleClass="modern-button" stylesheets="@modern-button.css" text="Afficher Statistiques" textFill="WHITE">
+            <Button layoutX="511.0" layoutY="78.0" onAction="#calculerEtAfficherStatistiques" prefHeight="36.0" prefWidth="157.0" styleClass="modern-button" stylesheets="@modern-button.css" text="Afficher Statistiques" textFill="WHITE">
             <font>
                <Font name="System Bold" size="12.0" />
             </font></Button>

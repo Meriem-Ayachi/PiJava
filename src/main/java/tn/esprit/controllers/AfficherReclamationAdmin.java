@@ -1,5 +1,6 @@
 package tn.esprit.controllers;
 
+import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -38,7 +39,7 @@ public class AfficherReclamationAdmin {
     private TableColumn<Reclamation, String> DescriptionCol;
 
     @FXML
-    private TableColumn<Reclamation, Byte> EstTraiteCol;
+    private TableColumn<Reclamation, String> EstTraiteCol;
 
     @FXML
     private TableColumn<Reclamation, String> NomPrenomCol;
@@ -77,7 +78,13 @@ public class AfficherReclamationAdmin {
             tableview.setItems(observableList);
             DateSoumissionCol.setCellValueFactory(new PropertyValueFactory<>("datesoummission"));
             DescriptionCol.setCellValueFactory(new PropertyValueFactory<>("description"));
-            EstTraiteCol.setCellValueFactory(new PropertyValueFactory<>("est_traite"));
+            EstTraiteCol.setCellValueFactory(cellData -> {
+                Reclamation reclamation = cellData.getValue();
+                Byte estTraite = reclamation.getEst_traite();
+                String estTraiteStr = (estTraite != null && estTraite == 1) ? "Oui" : "Non";
+                return new SimpleStringProperty(estTraiteStr);
+            });
+
             NomPrenomCol.setCellValueFactory(cellData -> {
                 UserService us = new UserService();
                 Reclamation reclamation = cellData.getValue();

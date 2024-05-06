@@ -6,19 +6,18 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="309.0" prefWidth="474.0" stylesheets="Styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.ModifierCommentaireReclamationAdmin">
+<AnchorPane prefHeight="309.0" prefWidth="474.0" style="-fx-background-image: url('images/background.jpg'); -fx-background-size: cover;" stylesheets="Styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.ModifierCommentaireReclamationAdmin">
     <children>
-        <Label layoutX="96.0" layoutY="43.0" text="Modifier commentaire" textFill="#387296">
+        <Label layoutX="96.0" layoutY="43.0" text="Modifier commentaire" textFill="WHITE">
             <font>
                 <Font name="Arial Rounded MT Bold" size="30.0" />
             </font>
         </Label>
-        <TextField fx:id="contenuTF" layoutX="50.0" layoutY="140.0" prefHeight="38.0" prefWidth="179.0" promptText="Contenu" />
+        <TextField fx:id="contenuTF" layoutX="50.0" layoutY="140.0" prefHeight="38.0" prefWidth="179.0" promptText="Contenu" styleClass="modern-textfield" stylesheets="@textfield.css" />
 
-        <Button layoutX="317.0" layoutY="229.0" mnemonicParsing="false" onAction="#modifierCommentaire" prefHeight="38.0" prefWidth="78.0" style="-fx-background-color: #387296;" text="Modifier" textFill="WHITE">
+        <Button layoutX="317.0" layoutY="229.0" mnemonicParsing="false" onAction="#modifierCommentaire" prefHeight="38.0" prefWidth="88.0" style="-fx-background-color: #387296;" styleClass="modern-button" stylesheets="@modern-button.css" text="Modifier" textFill="WHITE">
          <font>
             <Font name="System Bold" size="14.0" />
          </font></Button>
     </children>
 </AnchorPane>
-

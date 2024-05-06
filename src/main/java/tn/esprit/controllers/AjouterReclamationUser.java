@@ -153,4 +153,8 @@ public class AjouterReclamationUser {
     }
 
 
+    public void back(ActionEvent event) {
+        Navigator nav =new Navigator();
+        nav.goToPage_WithEvent("/AfficherReclamationUser.fxml" , event);
+    }
 }

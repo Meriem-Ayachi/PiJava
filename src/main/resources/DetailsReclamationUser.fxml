@@ -11,9 +11,9 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.TextFlow?>
 
-<AnchorPane prefHeight="528.0" prefWidth="675.0" stylesheets="Styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.DetailsReclamationUser">
+<AnchorPane prefHeight="528.0" prefWidth="675.0" style="-fx-background-image: url('images/background.jpg'); -fx-background-size: cover;" stylesheets="Styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.DetailsReclamationUser">
     <children>
-        <Label fx:id="sujetLabel" layoutX="137.0" layoutY="43.0" text="Sujet :" textFill="#7e7e7e">
+        <Label fx:id="sujetLabel" layoutX="137.0" layoutY="43.0" text="Sujet :" textFill="WHITE">
             <font>
                 <Font name="System" size="16.0" />
             </font>
@@ -22,7 +22,7 @@
             </style>
         </Label>
 
-        <Label fx:id="descriptionLabel" layoutX="112.0" layoutY="82.0" text="Description :" textFill="#7e7e7e">
+        <Label fx:id="descriptionLabel" layoutX="112.0" layoutY="82.0" text="Description :" textFill="WHITE">
             <font>
                 <Font name="System" size="16.0" />
             </font>
@@ -43,7 +43,7 @@
             </children>
         </VBox>
 
-        <Button layoutX="35.0" layoutY="176.0" mnemonicParsing="false" onAction="#AddCommBTN" prefHeight="32.0" prefWidth="185.0" style="-fx-background-color: #2596be; -fx-text-fill: white;" text="+ Ajouter un commentaire">
+        <Button layoutX="35.0" layoutY="176.0" mnemonicParsing="false" onAction="#AddCommBTN" prefHeight="36.0" prefWidth="200.0" style="-fx-background-color: #2596be; -fx-text-fill: white;" styleClass="modern-button" stylesheets="@modern-button.css" text="+ Ajouter un commentaire">
             <font>
                 <Font name="System Bold" size="13.0" />
             </font>
@@ -65,7 +65,7 @@
                </image>
             </ImageView>
          </graphic></Button>
-      <Label fx:id="nbCommentairesLabel" layoutX="35.0" layoutY="147.0" text="Commentaires" textFill="#7e7e7e">
+      <Label fx:id="nbCommentairesLabel" layoutX="35.0" layoutY="147.0" text="Commentaires" textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
          </font></Label>

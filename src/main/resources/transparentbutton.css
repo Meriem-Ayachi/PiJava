@@ -1,0 +1,13 @@
+/* styles.css */
+
+/* Define styles for the transparent button */
+.transparent-button {
+    -fx-background-color: transparent; /* Transparent background */
+    -fx-padding: 0 5px; /* Padding */
+    -fx-border-width: 0; /* No border */
+}
+
+/* Hover effect for the transparent button */
+.transparent-button:hover {
+    -fx-text-fill: #051659; /* Darker text color on hover */
+}

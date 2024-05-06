@@ -33,7 +33,7 @@
                                 <Font name="System Bold" size="18.0" />
                             </font>
                         </Label>
-                        <Button mnemonicParsing="false" onAction="#directToProfie" prefHeight="30.0" prefWidth="105.0" text="Edit Profile" textFill="WHITE">
+                        <Button mnemonicParsing="false" onAction="#directToProfie" prefHeight="30.0" prefWidth="105.0" styleClass="modern-button" stylesheets="@modern-button.css" text="Edit Profile" textFill="WHITE">
                             <font>
                                 <Font name="System Bold" size="12.0" />
                             </font>
@@ -49,14 +49,11 @@
                                         <Image url="@images/HomeIcon.png" />
                                     </image>
                                 </ImageView>
-                                <Label prefHeight="21.0" prefWidth="154.0" text="Home" textFill="WHITE">
-                                    <font>
-                                        <Font name="System Bold" size="15.0" />
-                                    </font>
-                                    <padding>
-                                        <Insets left="15.0" />
-                                    </padding>
-                                </Label>
+                        <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="136.0" styleClass="transparent-button" stylesheets="@transparentbutton.css" text="Home" textFill="#fffdfd">
+                           <font>
+                              <Font name="System Bold" size="13.0" />
+                           </font>
+                        </Button>
                             </children>
                         </HBox>
                         <HBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="45.0" prefWidth="200.0">
@@ -66,14 +63,11 @@
                                         <Image url="@images/icons8-reservation-24.png" />
                                     </image>
                                 </ImageView>
-                                <Label prefHeight="21.0" prefWidth="151.0" text="Reservation" textFill="WHITE">
-                                    <font>
-                                        <Font name="System Bold" size="15.0" />
-                                    </font>
-                                    <padding>
-                                        <Insets left="15.0" />
-                                    </padding>
-                                </Label>
+                        <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="137.0" styleClass="transparent-button" stylesheets="@transparentbutton.css" text="Reservation" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="13.0" />
+                           </font>
+                        </Button>
                             </children>
                             <VBox.margin>
                                 <Insets />
@@ -86,14 +80,11 @@
                                         <Image url="@images/icons8-airplane-take-off-50.png" />
                                     </image>
                                 </ImageView>
-                                <Label prefHeight="21.0" prefWidth="154.0" text="Vols" textFill="WHITE">
-                                    <font>
-                                        <Font name="System Bold" size="15.0" />
-                                    </font>
-                                    <padding>
-                                        <Insets left="15.0" />
-                                    </padding>
-                                </Label>
+                        <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="136.0" styleClass="transparent-button" stylesheets="@transparentbutton.css" text="Vols" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="13.0" />
+                           </font>
+                        </Button>
                             </children>
                         </HBox>
                         <HBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="45.0" prefWidth="200.0">
@@ -103,14 +94,11 @@
                                         <Image url="@images/icons8-car-50.png" />
                                     </image>
                                 </ImageView>
-                                <Label prefHeight="21.0" prefWidth="154.0" text="Voiture" textFill="WHITE">
-                                    <font>
-                                        <Font name="System Bold" size="15.0" />
-                                    </font>
-                                    <padding>
-                                        <Insets left="15.0" />
-                                    </padding>
-                                </Label>
+                        <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="136.0" styleClass="transparent-button" stylesheets="@transparentbutton.css" text="Voiture" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="13.0" />
+                           </font>
+                        </Button>
                             </children>
                         </HBox>
                         <HBox alignment="CENTER" layoutX="10.0" layoutY="145.0" prefHeight="45.0" prefWidth="200.0">
@@ -120,14 +108,11 @@
                                         <Image url="@images/computer_12752396.png" />
                                     </image>
                                 </ImageView>
-                                <Label prefHeight="21.0" prefWidth="154.0" text="Reclamation" textFill="WHITE">
-                                    <font>
-                                        <Font name="System Bold" size="15.0" />
-                                    </font>
-                                    <padding>
-                                        <Insets left="15.0" />
-                                    </padding>
-                                </Label>
+                        <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="136.0" styleClass="transparent-button" stylesheets="@transparentbutton.css" text="Reclamation" textFill="WHITE">
+                           <font>
+                              <Font name="Verdana Bold" size="13.0" />
+                           </font>
+                        </Button>
                             </children>
                         </HBox>
                         <HBox alignment="CENTER" layoutX="10.0" layoutY="190.0" prefHeight="45.0" prefWidth="200.0">
@@ -137,14 +122,11 @@
                                         <Image url="@images/icons8-chat-32.png" />
                                     </image>
                                 </ImageView>
-                                <Label prefHeight="21.0" prefWidth="154.0" text="Forum" textFill="WHITE">
-                                    <font>
-                                        <Font name="System Bold" size="15.0" />
-                                    </font>
-                                    <padding>
-                                        <Insets left="15.0" />
-                                    </padding>
-                                </Label>
+                        <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="136.0" styleClass="transparent-button" stylesheets="@transparentbutton.css" text="Forum" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="13.0" />
+                           </font>
+                        </Button>
                             </children>
                         </HBox>
                     </children>
@@ -152,7 +134,7 @@
                         <Insets top="20.0" />
                     </VBox.margin>
                 </VBox>
-                <Button mnemonicParsing="false" onAction="#disconnect" prefHeight="32.0" prefWidth="188.0" style="-fx-background-color: #BCA3D5;" text="Logout" textFill="WHITE">
+                <Button mnemonicParsing="false" onAction="#disconnect" prefHeight="32.0" prefWidth="188.0" styleClass="modern-button" stylesheets="@modern-button.css" text="Logout" textFill="WHITE">
                     <VBox.margin>
                         <Insets top="20.0" />
                     </VBox.margin>

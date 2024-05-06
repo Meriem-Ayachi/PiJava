@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="463.0" prefWidth="825.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.GestionUtilisateurs">
+<AnchorPane prefHeight="463.0" prefWidth="825.0" stylesheets="@backuser.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.GestionUtilisateurs">
     <fx:include source="sidebarAdmin.fxml" />
     <AnchorPane layoutX="209.0" layoutY="21.0" prefHeight="447.0" prefWidth="624.0" style="-fx-background-color: #ececec;">
         <children>
@@ -17,9 +17,9 @@
                 </font>
             </Label>
 
-            <ScrollPane layoutX="50.0" layoutY="81.0" prefHeight="366.0" prefWidth="461.0">
+            <ScrollPane layoutX="50.0" layoutY="81.0" prefHeight="327.0" prefWidth="415.0">
             <content>
-                    <TableView fx:id="userTableView" onMouseClicked="#onTableRowClicked" prefHeight="315.0" prefWidth="477.0">
+                    <TableView fx:id="userTableView" onMouseClicked="#onTableRowClicked" prefHeight="323.0" prefWidth="413.0">
                     </TableView>
             </content>
             </ScrollPane>

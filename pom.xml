@@ -7,16 +7,17 @@
     <artifactId>Pijava</artifactId>
     <version>1.0-SNAPSHOT</version>
     <properties>
-        <maven.compiler.source>21</maven.compiler.source>
-        <maven.compiler.target>21</maven.compiler.target>
+        <maven.compiler.source>22</maven.compiler.source>
+        <maven.compiler.target>22</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <arcgis.version>200.4.0</arcgis.version>
     </properties>
     <repositories>
         <repository>
-            <id>arcgis</id>
-            <url>https://esri.jfrog.io/artifactory/arcgis</url>
+            <id>osm-releases</id>
+            <url>https://josm.openstreetmap.de/nexus/content/repositories/releases</url>
         </repository>
+
     </repositories>
     <dependencies>
         <!-- Existing dependencies -->
@@ -33,28 +34,16 @@
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-fxml</artifactId>
-            <version>21.0.2</version>
+            <version>22</version>
         </dependency>
-        <dependency>
-            <groupId>com.itextpdf</groupId>
-            <artifactId>itext7-core</artifactId>
-            <version>8.0.2</version>
-        </dependency>
-        <dependency>
-            <groupId>org.kordamp.ikonli</groupId>
-            <artifactId>ikonli-javafx</artifactId>
-            <version>12.2.0</version>
-        </dependency>
+
+        
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-controls</artifactId>
-            <version>21.0.2</version>
+            <version>22</version>
         </dependency>
-        <dependency>
-            <groupId>com.sun.mail</groupId>
-            <artifactId>javax.mail</artifactId>
-            <version>1.6.2</version>
-        </dependency>
+
         <dependency>
             <groupId>org.jsoup</groupId>
             <artifactId>jsoup</artifactId>
@@ -70,51 +59,50 @@
             <artifactId>java-dotenv</artifactId>
             <version>5.2.2</version>
         </dependency>
-        <dependency>
-            <groupId>com.esri.arcgisruntime</groupId>
-            <artifactId>arcgis-java</artifactId>
-            <version>${arcgis.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.esri.arcgisruntime</groupId>
-            <artifactId>arcgis-java-jnilibs</artifactId>
-            <version>${arcgis.version}</version>
-            <type>zip</type>
-        </dependency>
-        <dependency>
-            <groupId>com.esri.arcgisruntime</groupId>
-            <artifactId>arcgis-java-resources</artifactId>
-            <version>${arcgis.version}</version>
-            <type>zip</type>
-        </dependency>
-        <!--SLF4J dependencies-->
+
+
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-nop</artifactId>
             <version>2.0.12</version>
         </dependency>
         <!-- JavaFX Media dependency -->
-        <dependency>
-            <groupId>org.openjfx</groupId>
-            <artifactId>javafx-media</artifactId>
-            <version>22</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.httpcomponents</groupId>
-            <artifactId>httpclient</artifactId>
-            <version>4.5.13</version>
-        </dependency>
 
-        <dependency>
-            <groupId>org.openjfx</groupId>
-            <artifactId>javafx-web</artifactId>
-            <version>22.0.1</version>
-        </dependency>
+
 
         <dependency>
         <groupId>org.json</groupId>
         <artifactId>json</artifactId>
         <version>20240303</version>
         </dependency>
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-web</artifactId>
+            <version>22</version>
+        </dependency>
+        <dependency>
+            <groupId>org.openstreetmap.jmapviewer</groupId>
+            <artifactId>jmapviewer</artifactId>
+            <version>2.16</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-swing</artifactId>
+            <version>22</version>
+        </dependency>
     </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.openjfx</groupId>
+                <artifactId>javafx-maven-plugin</artifactId>
+                <version>0.0.8</version>
+                <configuration>
+                    <mainClass>tn.esprit.MainFX</mainClass>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 </project>

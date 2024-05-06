@@ -1,4 +1,4 @@
-package tn.esprit.test;
+package tn.esprit;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -36,7 +36,7 @@ public class MainFX extends Application {
         }
     }
 
-     //Méthode pour jouer de la musique
+    //Méthode pour jouer de la musique
 //    private void playMusic() {
 //        try {
 //            // Obtenir le chemin absolu du fichier audio

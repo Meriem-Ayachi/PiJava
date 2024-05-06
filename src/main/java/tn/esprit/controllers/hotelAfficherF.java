@@ -6,6 +6,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
+import javafx.scene.web.WebView;
 import javafx.stage.Stage;
 import tn.esprit.models.hotel;
 import tn.esprit.services.Hotelservices;
@@ -14,6 +15,7 @@ import java.io.IOException;
 
 public class hotelAfficherF {
 
+    public WebView webView;
     @FXML
     private Label nomLabel;
 

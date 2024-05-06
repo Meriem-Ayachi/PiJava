@@ -71,6 +71,7 @@ public class reservationAdd implements Initializable {
         initializeDestinationComboBoxes();
     }
 
+
     private void initializeDestinationComboBoxes() {
         // Vous pouvez charger les destinations disponibles à partir de votre source de données
         // ou les définir manuellement ici

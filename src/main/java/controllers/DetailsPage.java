@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 
@@ -16,8 +17,13 @@ import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import tn.esprit.models.Offres;
 import tn.esprit.services.OffresService;
+import tn.esprit.util.MaConnexion;
 
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public class DetailsPage {
 
@@ -66,7 +72,7 @@ public class DetailsPage {
     @FXML
     public void initialize(Offres selectedOffre) {
 
-this.offres=selectedOffre;
+        this.offres=selectedOffre;
         if (selectedOffre != null) {
             Offres loadedOffre = os.getOne(selectedOffre.getId());
             if (loadedOffre != null) {
@@ -100,13 +106,73 @@ this.offres=selectedOffre;
             }
         }
     }
+    @FXML
+    void rateOneStar(ActionEvent event) {
+        rateOffer(offres.getId(), getUserId(), 1);
+    }
 
+    @FXML
+    void rateTwoStars(ActionEvent event) {
+        rateOffer(offres.getId(), getUserId(), 2);
+    }
+
+    @FXML
+    void rateThreeStars(ActionEvent event) {
+        rateOffer(offres.getId(), getUserId(), 3);
+    }
+    private void rateOffer(int offerId, int userId, int ratingValue) {
+        try {
+            // Utilisez la connexion de OffresService ou passez-la en paramètre
+            // Assurez-vous d'avoir une méthode pour récupérer l'ID de l'utilisateur (getUserId par exemple)
+            // Connexion à la base de données
+            Connection cnx = MaConnexion.getInstance().getCnx();
+
+            // Vérifiez si l'utilisateur a déjà noté cette offre
+            String checkQuery = "SELECT * FROM offer_review WHERE offer_list_id = ? AND user_id = ?";
+            PreparedStatement checkStmt = cnx.prepareStatement(checkQuery);
+            checkStmt.setInt(1, offerId);
+            checkStmt.setInt(2, userId);
+            ResultSet checkResult = checkStmt.executeQuery();
+
+            if (checkResult.next()) {
+                // L'utilisateur a déjà noté cette offre, effectuez la mise à jour de la notation
+                String updateQuery = "UPDATE offer_review SET value = ? WHERE offer_list_id = ? AND user_id = ?";
+                PreparedStatement updateStmt = cnx.prepareStatement(updateQuery);
+                updateStmt.setInt(1, ratingValue);
+                updateStmt.setInt(2, offerId);
+                updateStmt.setInt(3, userId);
+                updateStmt.executeUpdate();
+                System.out.println("Note mise à jour avec succès");
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Information");
+                alert.setContentText("Note mise à jour avec succès");
+                alert.showAndWait();
+
+            } else {
+                // L'utilisateur n'a pas encore noté cette offre, ajoutez une nouvelle entrée
+                String insertQuery = "INSERT INTO offer_review (offer_list_id, user_id, value) VALUES (?, ?, ?)";
+                PreparedStatement insertStmt = cnx.prepareStatement(insertQuery);
+                insertStmt.setInt(1, offerId);
+                insertStmt.setInt(2, userId);
+                insertStmt.setInt(3, ratingValue);
+                insertStmt.executeUpdate();
+                System.out.println("Nouvelle note ajoutée avec succès");
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Information");
+                alert.setContentText("Nouvelle note ajoutée avec succès");
+                alert.showAndWait();
+            }
+        } catch (SQLException e) {
+            System.out.println("Erreur lors de la notation de l'offre : " + e.getMessage());
+            e.printStackTrace();
+            // Gérez l'erreur selon vos besoins
+        }
+    }
+
+
+    // Méthode pour récupérer l'ID de l'utilisateur (à adapter selon votre implémentation)
+    private int getUserId() {
+        return 1; // Exemple, vous devez récupérer l'ID de l'utilisateur connecté
+    }
 }
-
-
-
-
-
-
-
 

@@ -66,7 +66,7 @@ public class DetailsPage {
     @FXML
     public void initialize(Offres selectedOffre) {
 
-
+this.offres=selectedOffre;
         if (selectedOffre != null) {
             Offres loadedOffre = os.getOne(selectedOffre.getId());
             if (loadedOffre != null) {

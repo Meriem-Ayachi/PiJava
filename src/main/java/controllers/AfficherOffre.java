@@ -55,7 +55,11 @@ import java.util.ResourceBundle;
                                 imageView.setFitWidth(70); // Réglez la largeur de l'image
                                 imageView.setPreserveRatio(true); // Préservez les proportions de l'image
                                 setGraphic(imageView);
-                                setText(offres.getTitle()); // Afficher le titre de l'offre comme texte de la cellule
+                                setText(offres.getTitle() + // Afficher le titre de l'offre comme texte de la cellule
+                                        "\n"+ offres.getDescription()+
+                                        "\n"+ offres.getLieu()+
+                                        "\n"+ String.valueOf(offres.getPrix())+
+                                        "\n"+ offres.getCreated_at().toString());
                             } catch (Exception e) {
                                 e.printStackTrace();
                                 // Gérer les erreurs de chargement de l'image ici
@@ -144,11 +148,13 @@ import java.util.ResourceBundle;
             Offres selectedOffre = listview.getSelectionModel().getSelectedItem();
             if (selectedOffre != null) {
                 try {
+
                     FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherCommentaires.fxml"));
                     Parent root = loader.load();
 
                     AfficherCommentaires controller = loader.getController();
                     controller.initialize(selectedOffre);
+
 
                     Stage stage = new Stage();
                     stage.setScene(new Scene(root));

@@ -56,7 +56,11 @@ public class Home implements Initializable {
                                 imageView.setFitWidth(70); // Réglez la largeur de l'image
                                 imageView.setPreserveRatio(true); // Préservez les proportions de l'image
                                 setGraphic(imageView);
-                                setText(offres.getTitle()); // Afficher le titre de l'offre comme texte de la cellule
+                                setText(offres.getTitle() +
+                                        "\n"+ String.valueOf(offres.getPrix())+
+                                        "\n"+ offres.getCreated_at().toString()+
+                                        "\n"+ offres.getLieu());
+
                             } catch (Exception e) {
                                 e.printStackTrace();
                                 // Gérer les erreurs de chargement de l'image ici

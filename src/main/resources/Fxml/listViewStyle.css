@@ -1,0 +1,14 @@
+.list-view .list-cell {
+    -fx-padding: 10px;
+    -fx-background-color: #f0f0f0; /* Couleur de fond des éléments de la liste */
+    -fx-border-color: #ccc; /* Couleur de la bordure des éléments de la liste */
+    -fx-border-width: 0 0 1 0; /* Épaisseur de la bordure (seulement en bas) */
+}
+
+.list-view .list-cell:hover {
+    -fx-background-color: #e0e0e0; /* Couleur de fond au survol des éléments de la liste */
+}
+
+.list-view .list-cell:selected {
+    -fx-background-color: #c0c0c0; /* Couleur de fond des éléments sélectionnés de la liste */
+}

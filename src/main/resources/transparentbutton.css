@@ -3,6 +3,8 @@
 /* Define styles for the transparent button */
 .transparent-button {
     -fx-background-color: transparent; /* Transparent background */
+    -fx-text-fill: #687ac4; /* Text color */
+    -fx-font-size: 14px; /* Font size */
     -fx-padding: 0 5px; /* Padding */
     -fx-border-width: 0; /* No border */
 }

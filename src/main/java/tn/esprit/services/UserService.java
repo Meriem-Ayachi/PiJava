@@ -4,11 +4,14 @@ import com.google.gson.Gson;
 
 import org.mindrot.jbcrypt.BCrypt;
 import tn.esprit.interfaces.IService;
+import tn.esprit.models.Reservation;
 import tn.esprit.models.User;
+import tn.esprit.models.hotel;
 import tn.esprit.util.MaConnexion;
 import org.json.*;
 
 import java.sql.*;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -43,6 +46,16 @@ public class UserService implements IService <User> {
         } catch (SQLException ex) {
             throw new RuntimeException(ex);
         }
+    }
+
+    @Override
+    public void generatePDF(List<Reservation> reservations, String filePath) {
+
+    }
+
+    @Override
+    public List<hotel> rechercherParNom(String nom) {
+        return null;
     }
 
     @Override
@@ -249,5 +262,18 @@ public class UserService implements IService <User> {
             System.err.println("Couldnt convert String to JSONArray");
             return null;
         }
+    }
+    
+
+    @Override
+    public List<Reservation> getReservationByDate(LocalDate dateSelectionnee) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getReservationByDate'");
+    }
+
+    @Override
+    public void delete(User t) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'delete'");
     }
 }

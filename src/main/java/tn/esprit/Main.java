@@ -1,19 +1,97 @@
 package tn.esprit;
 
-import tn.esprit.services.UserService;
+import java.time.LocalDate;
+import java.time.format.DateTimeParseException;
+import java.util.List;
+
+import tn.esprit.models.Reservation;
+import tn.esprit.services.Reservationservices;
+import tn.esprit.models.hotel;
+import tn.esprit.services.Hotelservices;
 
 public class Main {
-    public static void main(String[] args)
-    {
+    private static List<Reservation> reservations;
 
-       UserService us = new UserService();
+    public static void main(String[] args) {
+        LocalDate currentDate = LocalDate.now();
 
-      //  User user = new User("test","ROLE_USER","test", (byte) 0, "nour", "qahman", 55221152);
-      //  us.add(user);
+        Reservation res = new Reservation();
 
-       // us.update(new User(24,"test2","ROLE_USER","2536",(byte) 1, "qahman","Nour",52660662));
-       // us.delete(24);
-        System.out.println(us.getAll());
+        Hotelservices ho = new Hotelservices() {
+            @Override
+            public void generatePDF(List<Reservation> reservations, String filePath) {
 
+            }
+
+
+            @Override
+            public void delete(hotel hotel) {
+
+            }
+        };
+        Reservationservices reserve = new Reservationservices() {
+            @Override
+            public void generatePDF(List<Reservation> reservations, String filePath) {
+
+            }
+
+            @Override
+            public List<hotel> rechercherParNom(String nom) {
+                return null;
+            }
+
+            @Override
+            public void delete(Reservation reservation) {
+
+            }
+
+            @Override
+            public void delete(int id) {
+
+            }
+        };
+
+
+
+        System.out.println(ho.getAll());
+
+        Reservation reservation = new Reservation(17, "2023/04/01", "2024/04/10", "Classe 4444", "New York", "Paris", 2);
+        if (validerDate("01/04/2022", currentDate)) { // Valider la date
+
+            res.setDatedepart("01/04/2021");
+
+            reserve.add(res);
+        }
+        int id = 1;
+        reserve.add(reservation);
+        System.out.println(reservation);
+        System.out.println(reserve.getAll());
+
+
+        reserve.update(res);
+
+        reserve.delete(id);
+
+
+        reserve.delete(id);
+
+
+    }
+
+    private static void delete(int idres) {
+    }
+
+    private static boolean validerDate(String dateSaisie, LocalDate currentDate) {
+        try {
+            LocalDate rdvDate = LocalDate.parse(dateSaisie, java.time.format.DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+            if (rdvDate.isBefore(currentDate)) {
+                System.out.println("Erreur : Vous ne pouvez pas saisir une date antérieure à la date actuelle !");
+                return false;
+            }
+            return true;
+        } catch (DateTimeParseException e) {
+            System.out.println("Erreur : Format de date invalide !");
+            return false;
+        }
     }
 }

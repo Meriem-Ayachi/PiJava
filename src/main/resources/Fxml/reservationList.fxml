@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="611.0" style="-fx-background-image: url('backgound.jpg'); -fx-background-size: cover;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.reservationList">
+    <fx:include source="../sidebarUser.fxml" />
+    <AnchorPane layoutX="236.0" layoutY="39.0" prefHeight="402.0" prefWidth="542.0" style="-fx-background-color: #ececec;">
+        <children>
+            <Label layoutX="241.0" layoutY="3.0" text="Liste des réservations" textFill="#326f40">
+                <font>
+                    <Font name="Sitka Text Italic" size="18.0" />
+                </font>
+            </Label>
+            <ListView fx:id="reservationListView" layoutX="39.0" layoutY="42.0" prefHeight="350.0" prefWidth="272.0" />
+            <GridPane fx:id="calendrierGridPane" layoutX="320.0" layoutY="113.0" prefHeight="173.0" prefWidth="278.0" style="-fx-background-color: #e0e0e0;">
+                <columnConstraints>
+                    <ColumnConstraints />
+                    <ColumnConstraints />
+                    <ColumnConstraints />
+                    <ColumnConstraints />
+                    <ColumnConstraints />
+                    <ColumnConstraints />
+                    <ColumnConstraints />
+                </columnConstraints>
+                <rowConstraints>
+                    <RowConstraints />
+                    <RowConstraints />
+                    <RowConstraints />
+                    <RowConstraints />
+                    <RowConstraints />
+                    <RowConstraints />
+                </rowConstraints>
+                <!-- Ajoutez ici la logique pour afficher le calendrier -->
+            </GridPane>
+            <!-- Labels des mois et des années -->
+            <Label fx:id="moisAnneeLabel" layoutX="359.0" layoutY="351.0" prefHeight="30.0" prefWidth="181.0" textFill="#f2f2f2">
+                <font>
+                    <Font name="System Bold" size="20.0" />
+                </font>
+                <effect>
+                    <DropShadow color="#006400" radius="5" spread="0.5" />
+                </effect>
+            </Label>
+            <!-- Boutons de navigation -->
+            <Button fx:id="moisPrecedentButton" layoutX="320.0" layoutY="78.0" onAction="#moisPrecedent" text="❮" />
+            <Button layoutX="560.0" layoutY="78.0" onAction="#moisSuivant" text="❯" />
+            <Label fx:id="moisLabel" layoutX="399.0" layoutY="71.0" prefHeight="38.0" prefWidth="172.0" textFill="#f2f2f2">
+                <font>
+                    <Font name="System Bold" size="26.0" />
+                </font>
+                <effect>
+                    <DropShadow color="#18593b" radius="5" spread="0.5" />
+                </effect>
+            </Label>
+            <Button fx:id="anneePrecedenteButton" layoutX="320.0" layoutY="270.0" onAction="#anneePrecedente" text="❮" />
+            <Button fx:id="anneeSuivanteButton" layoutX="560.0" layoutY="270.0" onAction="#anneeSuivante" text="❯" />
+            <Label fx:id="anneeLabel" layoutX="403.0" layoutY="276.0" prefHeight="38.0" prefWidth="164.0" textFill="#f2f2f2">
+                <font>
+                    <Font name="System Bold" size="26.0" />
+                </font>
+                <effect>
+                    <DropShadow color="#18593b" radius="5" spread="0.5" />
+                </effect>
+            </Label>
+            <Label layoutX="401.0" layoutY="17.0" prefHeight="50.0" prefWidth="116.0" text="Calendrier" textFill="#f2f2f2" underline="true">
+                <font>
+                    <Font name="System Bold" size="23.0" />
+                </font>
+                <effect>
+                    <DropShadow color="#18593b" radius="5" spread="0.5" />
+                </effect>
+            </Label>
+            <!-- Champ de recherche par destination d'aller -->
+            <TextField fx:id="rechercheDestinationTextField" layoutX="39.0" layoutY="10.0" prefWidth="150.0" promptText="Recherche par destination d'aller" styleClass="modern-textfield" stylesheets="@../textfield.css" />
+        </children>
+    </AnchorPane>
+</AnchorPane>

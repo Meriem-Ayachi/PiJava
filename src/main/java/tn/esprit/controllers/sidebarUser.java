@@ -57,5 +57,20 @@ public class sidebarUser {
         nav.goToPage_WithEvent("/UpdateProfile.fxml",event);
     }
 
+
+    @FXML
+    void GoToHotel(ActionEvent event) {
+        Navigator nav = new Navigator();
+        nav.goToPage_WithEvent("/Fxml/hotelListF.fxml",event);
+
+    }
+
+    @FXML
+    void GoToReservation(ActionEvent event) {
+        Navigator nav = new Navigator();
+        nav.goToPage_WithEvent("/Fxml/reservationAdd.fxml",event);
+
+    }
+
 }
 

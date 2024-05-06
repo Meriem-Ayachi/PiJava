@@ -1,40 +1,26 @@
 package tn.esprit.models;
 
-import java.sql.Date;
-import java.sql.Timestamp;
+import java.util.Date;
+import java.util.List;
 
 public class Reservation {
-    //attr
-    private int id,nbredepersonne;
-    private Timestamp datededepart,datederetour;
-    private String classe,destinationdepart,destinationretour;
+    private int id ;
+    private String datedepart;
+    private String dateretour;
+    private String classe;
+    private String destinationdepart;
+    private String destinationretour;
+    private int nbrdepersonne;
 
-    //constructor
-
-
-    public Reservation() {
-    }
-
-    public Reservation(int id, int nbredepersonne, Timestamp datededepart, Timestamp datederetour, String classe, String destinationdepart, String destinationretour) {
-        this.id = id;
-        this.nbredepersonne = nbredepersonne;
-        this.datededepart = datededepart;
-        this.datederetour = datederetour;
+    public Reservation(int id,String datedepart, String dateretour, String classe, String destinationdepart, String destinationretour, int nbrdepersonne) {
+        this.id= id;
+        this.datedepart = datedepart;
+        this.dateretour = dateretour;
         this.classe = classe;
         this.destinationdepart = destinationdepart;
         this.destinationretour = destinationretour;
+        this.nbrdepersonne = nbrdepersonne;
     }
-
-    public Reservation(int nbredepersonne, Timestamp datededepart, Timestamp datederetour, String classe, String destinationdepart, String destinationretour) {
-        this.nbredepersonne = nbredepersonne;
-        this.datededepart = datededepart;
-        this.datederetour = datederetour;
-        this.classe = classe;
-        this.destinationdepart = destinationdepart;
-        this.destinationretour = destinationretour;
-    }
-
-    //getters and setters
 
     public int getId() {
         return id;
@@ -44,28 +30,20 @@ public class Reservation {
         this.id = id;
     }
 
-    public int getNbredepersonne() {
-        return nbredepersonne;
+    public String getDatedepart() {
+        return datedepart;
     }
 
-    public void setNbredepersonne(int nbredepersonne) {
-        this.nbredepersonne = nbredepersonne;
+    public void setDatedepart(String datedepart) {
+        this.datedepart = datedepart;
     }
 
-    public Timestamp getDatededepart() {
-        return datededepart;
+    public String getDateretour() {
+        return dateretour;
     }
 
-    public void setDatededepart(Timestamp datededepart) {
-        this.datededepart = datededepart;
-    }
-
-    public Timestamp getDatederetour() {
-        return datederetour;
-    }
-
-    public void setDatederetour(Timestamp datederetour) {
-        this.datederetour = datederetour;
+    public void setDateretour(String dateretour) {
+        this.dateretour = dateretour;
     }
 
     public String getClasse() {
@@ -92,18 +70,37 @@ public class Reservation {
         this.destinationretour = destinationretour;
     }
 
-    //display
+    public int getNbrdepersonne() {
+        return nbrdepersonne;
+    }
 
+    public void setNbrdepersonne(int nbrdepersonne) {
+        this.nbrdepersonne = nbrdepersonne;
+    }
+
+    public Reservation() {
+
+    }
     @Override
     public String toString() {
         return "Reservation{" +
-                "id=" + id +
-                ", nbredepersonne=" + nbredepersonne +
-                ", datededepart=" + datededepart +
-                ", datederetour=" + datederetour +
+                "datedepart='" + datedepart + '\'' +
+                ", dateretour='" + dateretour + '\'' +
                 ", classe='" + classe + '\'' +
                 ", destinationdepart='" + destinationdepart + '\'' +
                 ", destinationretour='" + destinationretour + '\'' +
+                ", nbrdepersonne=" + nbrdepersonne +
                 '}';
+    }
+
+    public String getidres() {
+        return null;
+    }
+
+    public void add(Reservation reservation) {
+    }
+
+    public List<Reservation> getAll() {
+        return null;
     }
 }

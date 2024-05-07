@@ -2,6 +2,7 @@ package tn.esprit.controllers;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -10,6 +11,11 @@ import tn.esprit.models.User;
 import tn.esprit.models.session;
 import tn.esprit.services.UserService;
 import tn.esprit.util.Navigator;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+import java.io.IOException;
+
 
 
 public class sidebarUser {
@@ -75,6 +81,18 @@ public class sidebarUser {
         nav.goToPage_WithEvent("/Fxml/reservationAdd.fxml",event);
 
     }
+    public void directToListeReclamationUser(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherReclamationUser.fxml"));
+            Parent root = loader.load();
+            Scene scene = new Scene(root);
+            Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
+    }
 }
 

@@ -28,6 +28,8 @@ public interface IService <T>{
 
 
     //4 : All
+
+
     List<T> getAll();
 
     //5 : One

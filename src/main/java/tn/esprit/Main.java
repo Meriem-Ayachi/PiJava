@@ -1,97 +1,45 @@
 package tn.esprit;
 
-import java.time.LocalDate;
-import java.time.format.DateTimeParseException;
-import java.util.List;
+import tn.esprit.models.Reclamation;
+import tn.esprit.models.Reclamation_Commentaire;
+import tn.esprit.services.ReclamationService;
+import tn.esprit.services.Reclamation_CommentaireService;
+import tn.esprit.util.MaConnexion;
+import java.sql.Timestamp;
 
-import tn.esprit.models.Reservation;
-import tn.esprit.services.Reservationservices;
-import tn.esprit.models.hotel;
-import tn.esprit.services.Hotelservices;
 
 public class Main {
-    private static List<Reservation> reservations;
+    public static void main(String[] args)
+    {
+       // MaConnexion mac = MaConnexion.getInstance();
 
-    public static void main(String[] args) {
-        LocalDate currentDate = LocalDate.now();
+        //Reclamation
 
-        Reservation res = new Reservation();
+        //ReclamationService rs = new ReclamationService();
+        //Timestamp dateReclamation = Timestamp.valueOf("2024-03-05 10:55:07");
 
-        Hotelservices ho = new Hotelservices() {
-            @Override
-            public void generatePDF(List<Reservation> reservations, String filePath) {
+        //Reclamation reclamation = new Reclamation("test","test", dateReclamation, (byte) 0, 1);
+        //rs.add(reclamation);
 
-            }
+        //System.out.println(rs.getAll());
+        //rs.update(new Reclamation(17,"test2","test2",dateReclamation,(byte) 0, 2));
+        //rs.delete(17);
 
+        //----------------------------
+        //Commentaire
 
-            @Override
-            public void delete(hotel hotel) {
+        Reclamation_CommentaireService rcs = new Reclamation_CommentaireService();
+        Timestamp dateCreation = Timestamp.valueOf("2024-03-05 10:55:07");
 
-            }
-        };
-        Reservationservices reserve = new Reservationservices() {
-            @Override
-            public void generatePDF(List<Reservation> reservations, String filePath) {
+        //Reclamation_Commentaire commentaire = new Reclamation_Commentaire("test",dateCreation,4,1);
+        //rcs.add(commentaire);
 
-            }
-
-            @Override
-            public List<hotel> rechercherParNom(String nom) {
-                return null;
-            }
-
-            @Override
-            public void delete(Reservation reservation) {
-
-            }
-
-            @Override
-            public void delete(int id) {
-
-            }
-        };
+        System.out.println(rcs.getAll());
 
 
-
-        System.out.println(ho.getAll());
-
-        Reservation reservation = new Reservation(17, "2023/04/01", "2024/04/10", "Classe 4444", "New York", "Paris", 2);
-        if (validerDate("01/04/2022", currentDate)) { // Valider la date
-
-            res.setDatedepart("01/04/2021");
-
-            reserve.add(res);
-        }
-        int id = 1;
-        reserve.add(reservation);
-        System.out.println(reservation);
-        System.out.println(reserve.getAll());
+        //rcs.update(new Reclamation_Commentaire(10,"test2",dateCreation,6, 3));
+        //rcs.delete(10);
 
 
-        reserve.update(res);
-
-        reserve.delete(id);
-
-
-        reserve.delete(id);
-
-
-    }
-
-    private static void delete(int idres) {
-    }
-
-    private static boolean validerDate(String dateSaisie, LocalDate currentDate) {
-        try {
-            LocalDate rdvDate = LocalDate.parse(dateSaisie, java.time.format.DateTimeFormatter.ofPattern("dd/MM/yyyy"));
-            if (rdvDate.isBefore(currentDate)) {
-                System.out.println("Erreur : Vous ne pouvez pas saisir une date antérieure à la date actuelle !");
-                return false;
-            }
-            return true;
-        } catch (DateTimeParseException e) {
-            System.out.println("Erreur : Format de date invalide !");
-            return false;
-        }
     }
 }

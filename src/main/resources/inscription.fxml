@@ -19,12 +19,12 @@
             <!-- Zone du formulaire -->
             <Rectangle arcHeight="10.0" arcWidth="10.0" fill="WHITE" height="552.0" layoutX="374.0" layoutY="-3.0" stroke="WHITE" strokeType="INSIDE" width="522.0" />
 
-            <!-- Titre du formulaire -->
-            <Label layoutX="575.0" prefHeight="50.0" prefWidth="228.0" text="Inscription" textFill="#2939c39c">
-                <font>
-                    <Font name="System Bold" size="40.0" />
-                </font>
-            </Label>
+        <!-- Titre du formulaire -->
+        <Label layoutX="575.0" prefHeight="50.0" prefWidth="228.0" text="Inscription" textFill="#2939c39c">
+            <font>
+                <Font name="System Bold" size="40.0" />
+            </font>
+        </Label>
 
             <!-- Champs du formulaire -->
             <Label layoutX="380.0" layoutY="70.0" text="Nom:">
@@ -82,7 +82,7 @@
                </font>
             </Button>
 
-           
+
 
             <ProgressIndicator fx:id="progressIndicator" layoutX="411.0" layoutY="204.0" prefHeight="169.0" prefWidth="180.0" progress="0.0" visible="false" />
             <ProgressBar fx:id="progressBar" layoutX="349.0" layoutY="236.0" prefHeight="27.0" prefWidth="200.0" progress="0.0" visible="false" />
@@ -121,5 +121,5 @@
          </font>
       </Text>
 
-        </children>
-    </AnchorPane>
+    </children>
+</AnchorPane>

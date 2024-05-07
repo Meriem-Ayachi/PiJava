@@ -146,7 +146,7 @@
                                         <Image url="@images/computer_12752396.png" />
                                     </image>
                                 </ImageView>
-                                <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="202.0" styleClass="transparent-button-white" stylesheets="@transparentbutton.css" text="Gestion des réclamations" textFill="WHITE">
+                                <Button mnemonicParsing="false" onAction="#directToListeReclamation" prefHeight="25.0" prefWidth="202.0" styleClass="transparent-button-white" stylesheets="@transparentbutton.css" text="Gestion des réclamations" textFill="WHITE">
                                     <font>
                                         <Font name="Verdana Bold" size="13.0" />
                                     </font>

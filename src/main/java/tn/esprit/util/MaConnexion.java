@@ -21,7 +21,7 @@ public class MaConnexion {
     private MaConnexion(){
         try {
             cnx = DriverManager.getConnection(URL,USR,PWD);
-            System.out.println("Connexion etablie avec succes");
+            System.out.println("Connexion établie avec succés");
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

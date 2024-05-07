@@ -26,6 +26,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class DetailsPage {
+    @FXML
+    private Label averageRatingLabel;
 
 
     @FXML
@@ -34,6 +36,8 @@ public class DetailsPage {
     private Button commenter;
     @FXML
     private Offres offres;
+    @FXML
+    private Label userCountLabel;
 
 
     @FXML
@@ -72,6 +76,7 @@ public class DetailsPage {
     @FXML
     public void initialize(Offres selectedOffre) {
 
+
         this.offres=selectedOffre;
         if (selectedOffre != null) {
             Offres loadedOffre = os.getOne(selectedOffre.getId());
@@ -105,6 +110,8 @@ public class DetailsPage {
                 // You can also display other information about the offer here without adding to the grid pane
             }
         }
+        double averageRating = calculateAverageRating(selectedOffre.getId());
+        averageRatingLabel.setText(String.format("%.2f", averageRating));
     }
     @FXML
     void rateOneStar(ActionEvent event) {
@@ -174,5 +181,31 @@ public class DetailsPage {
     private int getUserId() {
         return 1; // Exemple, vous devez récupérer l'ID de l'utilisateur connecté
     }
-}
+    private double calculateAverageRating(int offerId) {
+        double averageRating = 0.0;
+        int totalRatings = 0;
 
+        try {
+            Connection conn = MaConnexion.getInstance().getCnx();
+            String query = "SELECT value FROM offer_review WHERE offer_list_id = ?";
+            PreparedStatement stmt = conn.prepareStatement(query);
+            stmt.setInt(1, offerId);
+            ResultSet rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                totalRatings++;
+                averageRating += rs.getDouble("value");
+            }
+
+            if (totalRatings > 0) {
+                averageRating /= totalRatings;
+            }
+        } catch (SQLException e) {
+            System.out.println("Erreur lors du calcul de la moyenne de notation : " + e.getMessage());
+            e.printStackTrace();
+            // Gérer l'erreur selon vos besoins
+        }
+
+        return averageRating;
+    }
+}

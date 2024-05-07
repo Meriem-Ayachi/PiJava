@@ -16,6 +16,7 @@ import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.util.Arrays;
 import java.util.List;
 
 public class AjouterCommentairefront {
@@ -29,6 +30,8 @@ public class AjouterCommentairefront {
     private Offres offres;
 
     private final Offre_CommentaireService oc = new Offre_CommentaireService();
+    private final List<String> badWordsList = Arrays.asList("mot1", "mot2", "mot3"); // Ajoutez vos mots inappropriés ici
+
 
 
     @FXML
@@ -36,6 +39,9 @@ public class AjouterCommentairefront {
         try {
             if (AvisTFO.getText().isEmpty()) {
                 throw new SQLException("Avis est vide.");
+            }
+            if (containsBadWords(AvisTFO.getText())) {
+                throw new SQLException("Le commentaire contient des mots inappropriés.");
             }
 
             // Get today's date
@@ -62,6 +68,14 @@ public class AjouterCommentairefront {
             alert.setContentText(e.getMessage());
             alert.showAndWait();
         }
+    }
+    private boolean containsBadWords(String commentaire) {
+        for (String badWord : badWordsList) {
+            if (commentaire.toLowerCase().contains(badWord.toLowerCase())) {
+                return true;
+            }
+        }
+        return false;
     }
     @FXML
     void initialize (Offres offres) {

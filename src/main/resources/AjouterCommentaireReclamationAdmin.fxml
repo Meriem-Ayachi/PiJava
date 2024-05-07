@@ -6,9 +6,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="286.0" prefWidth="600.0" style="-fx-background-image: url('images/background.jpg'); -fx-background-size: cover;" stylesheets="Styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.AjouterCommentaireReclamationAdmin">
+<AnchorPane prefHeight="286.0" prefWidth="600.0" stylesheets="Styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.AjouterCommentaireReclamationAdmin" style="-fx-background-color:#C9DBDA;">
     <children>
-        <Label layoutX="138.0" layoutY="33.0" text="Ajouter un commentaire" textFill="WHITE">
+        <Label layoutX="138.0" layoutY="33.0" text="Ajouter un commentaire" textFill="WHITE" style="-fx-text-fill: #387296;">
             <font>
                 <Font name="Arial Rounded MT Bold" size="24.0" />
             </font>
@@ -19,7 +19,7 @@
                 <Font name="System Bold" size="13.0" />
             </font>
         </Button>
-        <Label layoutX="67.0" layoutY="120.0" style="-fx-font-size: 14px; -fx-text-fill: #80d8e4; -fx-font-weight: bold;" text="Contenu">
+        <Label layoutX="67.0" layoutY="120.0" style="-fx-font-size: 14px; -fx-text-fill: #5abfcc; -fx-font-weight: bold;" text="Contenu">
             <font>
                 <Font name="Arial" size="14.0" />
             </font>

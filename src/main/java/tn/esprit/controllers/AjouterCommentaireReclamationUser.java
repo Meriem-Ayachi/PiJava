@@ -2,18 +2,22 @@ package tn.esprit.controllers;
 
 import javafx.event.ActionEvent;
 
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 import tn.esprit.models.Reclamation;
 import tn.esprit.models.Reclamation_Commentaire;
 import tn.esprit.models.session;
 import tn.esprit.services.Reclamation_CommentaireService;
 import tn.esprit.util.BadWordsChecker;
+import tn.esprit.util.Navigator;
 
 import java.io.IOException;
 import java.net.URLEncoder;
@@ -96,5 +100,26 @@ public class AjouterCommentaireReclamationUser {
         alert.setContentText(message);
         alert.showAndWait();
     }
-}
+
+    public void back(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/DetailsReclamationUser.fxml"));
+            AnchorPane detailsReclamationPane = loader.load();
+            DetailsReclamationUser controller = loader.getController();
+
+            // Appeler la méthode pour initialiser les détails de la réclamation
+            controller.initializeDetails(currentRec);
+
+            // Afficher l'interface dans une nouvelle fenêtre
+            Stage stage = new Stage();
+
+            stage.setScene(new Scene(detailsReclamationPane));
+            stage.show();
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    }
+
 

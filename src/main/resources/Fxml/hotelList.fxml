@@ -6,22 +6,22 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1200.0" style="-fx-background-image: url('backgound.jpg'); -fx-background-size: cover;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.hotelList">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="680.0" prefWidth="900.0" style="-fx-background-image: url('backgound.jpg'); -fx-background-size: cover;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.hotelList">
     <fx:include source="../sidebarAdmin.fxml" />
-    <AnchorPane layoutX="236.0" layoutY="39.0" prefHeight="758.0" prefWidth="958.0" style="-fx-background-color: #ececec;">
+    <AnchorPane layoutX="216.0" layoutY="7.0" prefHeight="572.0" prefWidth="677.0" style="-fx-background-color: #ececec;">
 
         <children>
             <!-- Champ de recherche -->
-            <TextField fx:id="setupRecherche" layoutX="905.0" layoutY="12.0" prefWidth="130.0" promptText="Recherche par nom" styleClass="modern-textfield" stylesheets="@../textfield.css" />
+            <TextField fx:id="setupRecherche" layoutX="480.0" layoutY="14.0" prefWidth="130.0" promptText="Recherche par nom" styleClass="modern-textfield" stylesheets="@../textfield.css" />
 
             <!-- Bouton de tri par nombre d'étoiles -->
-            <Button fx:id="triEtoilesButton" layoutX="905.0" layoutY="48.0" onAction="#trierParEtoiles" styleClass="modern-button" stylesheets="@../modern-button.css" text="Trier par étoiles" />
+            <Button fx:id="triEtoilesButton" layoutX="480.0" layoutY="50.0" onAction="#trierParEtoiles" styleClass="modern-button" stylesheets="@../modern-button.css" text="Trier par étoiles" />
 
             <!-- Bouton pour afficher les statistiques -->
-            <Button layoutX="640.0" layoutY="48.0" onAction="#afficherStatistiques" styleClass="modern-button" stylesheets="@../modern-button.css" text="Afficher Statistiques" />
+            <Button layoutX="215.0" layoutY="50.0" onAction="#afficherStatistiques" styleClass="modern-button" stylesheets="@../modern-button.css" text="Afficher Statistiques" />
 
             <!-- ListView avec une apparence personnalisée -->
-            <ListView fx:id="hotelListView" layoutX="6.0" layoutY="75.0" prefHeight="682.0" prefWidth="938.0" style="-fx-background-color: transparent;">
+            <ListView fx:id="hotelListView" layoutX="6.0" layoutY="75.0" prefHeight="587.0" prefWidth="636.0" style="-fx-background-color: transparent;">
                 <!-- Utilisation d'un style CSS pour formater l'apparence des éléments de la liste -->
                 <stylesheets>
                     <URL value="@listViewStyle.css" />

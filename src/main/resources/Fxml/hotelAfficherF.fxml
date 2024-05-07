@@ -5,9 +5,9 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="900.0" maxWidth="1200.0" minHeight="721.0" minWidth="1133.0" prefHeight="721.0" prefWidth="1133.0" style="-fx-background-image: url('/backgound.jpg'); -fx-background-size: cover;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.hotelAfficherF">
+<AnchorPane maxHeight="900.0" maxWidth="1200.0" minHeight="721.0" minWidth="1133.0" prefHeight="680.0" prefWidth="900.0" style="-fx-background-image: url('/backgound.jpg'); -fx-background-size: cover;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.hotelAfficherF">
     <fx:include source="../sidebarUser.fxml" />
-    <AnchorPane layoutX="283.0" layoutY="112.0" prefHeight="402.0" prefWidth="974.0" style="-fx-background-color: #ececec;">
+    <AnchorPane layoutX="283.0" layoutY="14.0" prefHeight="661.0" prefWidth="832.0" style="-fx-background-color: #ececec;">
         <children>
             <Label fx:id="nomLabel" layoutX="167.0" layoutY="104.0" />
             <Label fx:id="nbretoileLabel" layoutX="167.0" layoutY="151.0" />

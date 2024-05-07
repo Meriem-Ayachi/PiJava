@@ -43,7 +43,7 @@ public class AfficherOffre implements Initializable {
             listview.getItems().addAll(offres);
 
             // Charger le fichier CSS pour le style des cellules
-            URL cssFileUrl = getClass().getResource("styles.css");
+            URL cssFileUrl = getClass().getResource("/styles.css");
             if (cssFileUrl != null) {
                 String cssFile = cssFileUrl.toExternalForm();
                 listview.getStylesheets().add(cssFile);

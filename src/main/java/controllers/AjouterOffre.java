@@ -61,63 +61,63 @@ public class AjouterOffre {
     @FXML
     void AjouterO(ActionEvent event) {
 
-            try {
-                if (descriptionTFO.getText().isEmpty()) {
-                    throw new SQLException("La description est vide.");
-                }
-                if (descriptionTFO.getText().length() > 30) {
-                    throw new SQLException("La description ne doit pas dépasser 20 caractères.");
-                }
-                if (titleTFO.getText().isEmpty()) {
-                    throw new SQLException("le titre est vide.");
-                }
-                if (prixTFO.getText().isEmpty()) {
-                    throw new SQLException("le prix est vide.");
-                }
-                if (Double.parseDouble(prixTFO.getText()) == 0.0) {
-                    throw new SQLException("Le prix ne peut pas être égal à zéro.");
-                }
-                if (publishedTFO.getText().isEmpty()) {
-                    throw new SQLException("le published est vide.");
-                }
-                if (lieuTFO.getText().isEmpty()) {
-                    throw new SQLException("le lieu est vide.");
-                }
-
-                Image fxImage = imageIV.getImage();
-                if (fxImage != null) {
-                    // Appeler la méthode uploadImageToCloudinary(image) ici
-                    String imageUrl = uploadImageToCloudinary(fxImage);
-
-                    // Get today's date
-                    LocalDate today = LocalDate.now();
-                    Date date = Date.valueOf(today);
-
-                    os.add(new Offres(
-                            titleTFO.getText(),
-                            descriptionTFO.getText(),
-                            Boolean.parseBoolean(publishedTFO.getText()),
-                            Double.parseDouble(prixTFO.getText()),
-                            lieuTFO.getText(),
-                            imageUrl, // Utiliser l'URL de l'image Cloudinary
-                            date
-                    ));
-                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                    alert.setTitle("Information");
-                    alert.setContentText("Offre ajoutée");
-                    alert.showAndWait();
-                } else {
-                    throw new IllegalArgumentException("L'image est nulle.");
-                }
-            } catch (SQLException e) {
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setTitle("Erreur");
-                alert.setContentText(e.getMessage());
-                alert.showAndWait();
-
-            } catch (IOException e) {
-                throw new RuntimeException(e);
+        try {
+            if (descriptionTFO.getText().isEmpty()) {
+                throw new SQLException("La description est vide.");
             }
+            if (descriptionTFO.getText().length() > 30) {
+                throw new SQLException("La description ne doit pas dépasser 20 caractères.");
+            }
+            if (titleTFO.getText().isEmpty()) {
+                throw new SQLException("le titre est vide.");
+            }
+            if (prixTFO.getText().isEmpty()) {
+                throw new SQLException("le prix est vide.");
+            }
+            if (Double.parseDouble(prixTFO.getText()) == 0.0) {
+                throw new SQLException("Le prix ne peut pas être égal à zéro.");
+            }
+            if (publishedTFO.getText().isEmpty()) {
+                throw new SQLException("le published est vide.");
+            }
+            if (lieuTFO.getText().isEmpty()) {
+                throw new SQLException("le lieu est vide.");
+            }
+
+            Image fxImage = imageIV.getImage();
+            if (fxImage != null) {
+                // Appeler la méthode uploadImageToCloudinary(image) ici
+                String imageUrl = uploadImageToCloudinary(fxImage);
+
+                // Get today's date
+                LocalDate today = LocalDate.now();
+                Date date = Date.valueOf(today);
+
+                os.add(new Offres(
+                        titleTFO.getText(),
+                        descriptionTFO.getText(),
+                        Boolean.parseBoolean(publishedTFO.getText()),
+                        Double.parseDouble(prixTFO.getText()),
+                        lieuTFO.getText(),
+                        imageUrl, // Utiliser l'URL de l'image Cloudinary
+                        date
+                ));
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Information");
+                alert.setContentText("Offre ajoutée");
+                alert.showAndWait();
+            } else {
+                throw new IllegalArgumentException("L'image est nulle.");
+            }
+        } catch (SQLException e) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Erreur");
+            alert.setContentText(e.getMessage());
+            alert.showAndWait();
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
 
 
 
@@ -159,22 +159,22 @@ public class AjouterOffre {
     @FXML
     public void choisirImage(ActionEvent actionEvent) {
 
-            FileChooser fileChooser = new FileChooser();
-            fileChooser.setTitle("Choisir une image");
-            fileChooser.getExtensionFilters().addAll(
-                    new FileChooser.ExtensionFilter("Images", "*.png", "*.jpg", "*.jpeg", "*.gif")
-            );
-            File selectedFile = fileChooser.showOpenDialog(null);
-            if (selectedFile != null) {
-                try {
-                    Image image = new Image(selectedFile.toURI().toString());
-                    imageIV.setImage(image);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                    // Gérer l'erreur de chargement de l'image
-                }
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Choisir une image");
+        fileChooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("Images", "*.png", "*.jpg", "*.jpeg", "*.gif")
+        );
+        File selectedFile = fileChooser.showOpenDialog(null);
+        if (selectedFile != null) {
+            try {
+                Image image = new Image(selectedFile.toURI().toString());
+                imageIV.setImage(image);
+            } catch (Exception e) {
+                e.printStackTrace();
+                // Gérer l'erreur de chargement de l'image
             }
         }
+    }
 
 
 }

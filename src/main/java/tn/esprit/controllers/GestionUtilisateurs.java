@@ -26,6 +26,7 @@ public class GestionUtilisateurs {
     private User selectedUser;
 
     private final UserService userService = new UserService();
+    private final LogController logController = new LogController(); // Intégration du LogController
 
     private void refreshTable() {
         userTableView.setItems(FXCollections.observableArrayList(userService.getAll()));
@@ -54,10 +55,6 @@ public class GestionUtilisateurs {
         // fill table
         refreshTable();
     }
-
-
-
-
 
     @FXML
     void supprimerSelectedLocation() {
@@ -103,4 +100,19 @@ public class GestionUtilisateurs {
         alert.showAndWait();
     }
 
+    // Intégration des méthodes de journalisation du UtilisateurController
+    public void connecterUtilisateur(String nomUtilisateur) {
+        // Code pour connecter l'utilisateur
+        logController.saveLog("Utilisateur " + nomUtilisateur + " connecté.", LogType.CONNEXION_UTILISATEUR);
+    }
+
+    public void creerEnregistrement(Utilisateur utilisateur, Enregistrement enregistrement) {
+        // Code pour créer un nouvel enregistrement pour l'utilisateur
+        logController.saveLog("Nouvel enregistrement créé par l'utilisateur " + utilisateur.getNom(), LogType.CREATION_ENREGISTREMENT);
+    }
+
+    public void supprimerEnregistrement(Enregistrement enregistrement) {
+        // Code pour supprimer un enregistrement
+        logController.saveLog("Enregistrement supprimé.", LogType.SUPPRESSION_ENREGISTREMENT);
+    }
 }

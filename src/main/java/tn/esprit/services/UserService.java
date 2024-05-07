@@ -121,7 +121,7 @@ public class UserService implements IService <User> {
     public List<User> getAll() {
         List<User> listuser = new ArrayList<>();
 
-        String req = "select * from User";
+        String req = "select * from user";
         try {
             Statement st = cnx.createStatement();
             ResultSet rs = st.executeQuery(req);
@@ -263,17 +263,81 @@ public class UserService implements IService <User> {
             return null;
         }
     }
-    
 
-    @Override
-    public List<Reservation> getReservationByDate(LocalDate dateSelectionnee) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getReservationByDate'");
+
+    public List<User> recherche (String nom , String prenom)
+    {
+        List<User> listuser = new ArrayList<>();
+        String req = "SELECT * FROM user";
+
+        boolean firstValue = true;
+
+        // Add conditions based on parameters
+        if (nom != null && !nom.isEmpty()) {
+            if (firstValue)
+            {req += " WHERE nom LIKE ?";
+                firstValue = false;
+            }
+            else
+                req += " AND nom LIKE ?";
+            nom = "%" + nom + "%";
+        }
+        if (prenom != null && !prenom.isEmpty()) {
+            if (firstValue)
+            {req += " WHERE prenom LIKE ?";
+                firstValue = false;
+            }
+            else
+                req += " AND prenom LIKE ?";
+            prenom = "%" + prenom + "%";
+        }
+
+        // Prepare and execute the query
+        try {
+            PreparedStatement stmt = cnx.prepareStatement(req);
+            int paramIndex = 1;
+            if (nom != null && !nom.isEmpty()) {
+                stmt.setString(paramIndex, nom);
+                paramIndex++;
+            }
+            if (prenom != null && !prenom.isEmpty()) {
+                stmt.setString(paramIndex, prenom);
+                paramIndex++;
+            }
+
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                User user = new User();
+                user.setId(rs.getInt(1));
+                user.setEmail(rs.getString(2));
+                String[] role = {rs.getString(3)};
+                user.setRoles(role);
+                user.setPassword(rs.getString(4));
+                user.setIs_verified(rs.getByte(5));
+                user.setNom(rs.getString(6));
+                user.setPrenom(rs.getString(7));
+                user.setNum_tel(rs.getInt(8
+                ));
+                user.setImagefilename(rs.getString(9));
+
+                listuser.add(user);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return listuser;
+
     }
 
     @Override
     public void delete(User t) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'delete'");
+    }
+
+    @Override
+    public List<Reservation> getReservationByDate(LocalDate dateSelectionnee) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getReservationByDate'");
     }
 }

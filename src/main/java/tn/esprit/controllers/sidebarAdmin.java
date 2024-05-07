@@ -5,6 +5,7 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import tn.esprit.models.LogType;
 import tn.esprit.models.User;
 import tn.esprit.models.session;
 import tn.esprit.services.UserService;
@@ -24,7 +25,7 @@ public class sidebarAdmin {
 
     UserService userService=new UserService();
     Navigator nav = new Navigator();
-    
+
 
     @FXML
     void initialize() {
@@ -37,6 +38,9 @@ public class sidebarAdmin {
     }
 
     public void disconnect(ActionEvent event) {
+        int oldUserId = session.id_utilisateur;
+        User user = userService.getOne(oldUserId);
+        LogController.saveLog("Utilisateur " + user.getPrenom() + " " + user.getNom() + " deconnecté.", LogType.DECONNEXION_UTILISATEUR, oldUserId);
         session.id_utilisateur = 0;
         nav.goToPage_WithEvent("/log.fxml", event);
     }
@@ -53,9 +57,10 @@ public class sidebarAdmin {
         nav.goToPage_WithEvent("/GestionUtilisateurs.fxml",event);
     }
 
+    public void directToLogs(ActionEvent event) {
 
-
+        Navigator nav = new Navigator();
+        nav.goToPage_WithEvent("/GestionLogs.fxml",event);
+    }
 
 }
-
-

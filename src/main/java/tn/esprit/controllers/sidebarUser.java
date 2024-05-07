@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import tn.esprit.models.LogType;
 import tn.esprit.models.User;
 import tn.esprit.models.session;
 import tn.esprit.services.UserService;
@@ -22,8 +23,8 @@ public class sidebarUser {
 
     UserService userService=new UserService();
     Navigator nav = new Navigator();
-    
-    
+
+
     @FXML
     void initialize() {
         updateLabels();
@@ -35,15 +36,18 @@ public class sidebarUser {
         }
 
     }
-    
 
-    
+
+
     private void updateLabels() {
         User utilisateur = userService.getOne(session.id_utilisateur);
         name.setText(utilisateur.getPrenom() + " " + utilisateur.getNom());
     }
 
     public void disconnect(ActionEvent event) {
+        int oldUserId = session.id_utilisateur;
+        User user = userService.getOne(oldUserId);
+        LogController.saveLog("Utilisateur " + user.getPrenom() + " " + user.getNom() + " deconnecté.", LogType.DECONNEXION_UTILISATEUR, oldUserId);
         session.id_utilisateur = 0;
         nav.goToPage_WithEvent("/log.fxml", event);
     }

@@ -13,3 +13,12 @@
 .transparent-button:hover {
     -fx-text-fill: #051659; /* Darker text color on hover */
 }
+.transparent-button-white {
+    -fx-text-fill: white; /* Text color */
+    -fx-background-color: transparent; /* Transparent background */
+    -fx-padding: 0 5px; /* Padding */
+    -fx-border-width: 0; /* No border */
+}
+.transparent-button-white:hover {
+    -fx-text-fill: #051659; /* Darker text color on hover */
+}

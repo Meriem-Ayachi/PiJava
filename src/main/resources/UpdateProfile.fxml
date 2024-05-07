@@ -20,7 +20,7 @@
       
             <VBox layoutX="-17.0" layoutY="-142.0" prefHeight="703.0" prefWidth="631.0" stylesheets="@user.css" BorderPane.alignment="CENTER">
                 <children>
-                    <Label text="Profil Setting" textFill="WHITE">
+                    <Label text="Paramétrage du profil" textFill="WHITE">
                         <font>
                             <Font name="System Bold" size="25.0" />
                         </font>
@@ -30,7 +30,7 @@
                     </Label>
                     <VBox prefHeight="200.0" prefWidth="100.0" spacing="30.0">
                         <children>
-                            <Label prefHeight="30.0" prefWidth="196.0" text="Profile details" textFill="WHITE">
+                            <Label prefHeight="30.0" prefWidth="196.0" text="Détails du profil" textFill="WHITE">
                                 <font>
                                     <Font name="System Bold" size="20.0" />
                                 </font>
@@ -92,7 +92,7 @@
                     </VBox>
                     <VBox layoutX="10.0" layoutY="106.0" prefHeight="201.0" prefWidth="378.0" spacing="30.0">
                         <children>
-                            <Label prefHeight="30.0" prefWidth="196.0" text="Contact info" textFill="WHITE">
+                            <Label prefHeight="30.0" prefWidth="320.0" text="Informations de contact" textFill="WHITE">
                                 <font>
                                     <Font name="System Bold" size="20.0" />
                                 </font>
@@ -137,12 +137,12 @@
                             <Insets top="25.0" />
                         </padding>
                     </VBox>
-                    <Button mnemonicParsing="false" onAction="#updateprofile" prefHeight="40.0" prefWidth="170.0" styleClass="modern-button" stylesheets="@modern-button.css" text="Save change" textFill="WHITE">
+                    <Button mnemonicParsing="false" onAction="#updateprofile" prefHeight="40.0" prefWidth="247.0" styleClass="modern-button" stylesheets="@modern-button.css" text="Sauvegarder les modifications" textFill="WHITE">
                         <font>
                             <Font name="System Bold" size="14.0" />
                         </font>
                         <VBox.margin>
-                            <Insets left="300.0" top="50.0" />
+                            <Insets left="210.0" top="50.0" />
                         </VBox.margin>
                     </Button>
                 </children>

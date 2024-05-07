@@ -15,14 +15,13 @@ public class MainFX extends Application {
     public void start(Stage primaryStage) {
         try {
             // Charger le fichier FXML
-            Parent root = FXMLLoader.load(getClass().getResource("/Fxml/hotelListF.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("/log.fxml"));
 
             // Créer la scène
             Scene scene = new Scene(root);
 
            
-            primaryStage.setWidth(800); // Définir la largeur souhaitée
-            primaryStage.setHeight(600); // Définir la hauteur souhaitée
+            // Définir la hauteur souhaitée
 
 
 

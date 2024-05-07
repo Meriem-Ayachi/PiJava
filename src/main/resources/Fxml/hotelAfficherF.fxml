@@ -5,19 +5,19 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-image: url('/backgound.jpg'); -fx-background-size: cover;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.hotelAfficherF">
+<AnchorPane maxHeight="900.0" maxWidth="1200.0" minHeight="721.0" minWidth="1133.0" prefHeight="721.0" prefWidth="1133.0" style="-fx-background-image: url('/backgound.jpg'); -fx-background-size: cover;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.hotelAfficherF">
     <fx:include source="../sidebarUser.fxml" />
-    <AnchorPane layoutX="236.0" layoutY="39.0" prefHeight="402.0" prefWidth="542.0" style="-fx-background-color: #ececec;">
+    <AnchorPane layoutX="283.0" layoutY="112.0" prefHeight="402.0" prefWidth="974.0" style="-fx-background-color: #ececec;">
         <children>
             <Label fx:id="nomLabel" layoutX="167.0" layoutY="104.0" />
             <Label fx:id="nbretoileLabel" layoutX="167.0" layoutY="151.0" />
             <Label fx:id="emplacementLabel" layoutX="167.0" layoutY="199.0" />
             <Label fx:id="avisLabel" layoutX="167.0" layoutY="249.0" />
-            <Label layoutX="60.0" layoutY="104.0" text="Nom:" textFill="WHITE" />
-            <Label layoutX="60.0" layoutY="151.0" text="Nombre d'étoiles:" textFill="WHITE" />
-            <Label layoutX="60.0" layoutY="199.0" text="Emplacement:" textFill="WHITE" />
-            <Label layoutX="60.0" layoutY="249.0" text="Avis:" textFill="WHITE" />
-            <ImageView fitHeight="200" fitWidth="200" layoutX="300" layoutY="100">
+            <Label layoutX="60.0" layoutY="104.0" text="Nom:" />
+            <Label layoutX="60.0" layoutY="151.0" text="Nombre d'étoiles:" />
+            <Label layoutX="60.0" layoutY="199.0" text="Emplacement:" />
+            <Label layoutX="60.0" layoutY="249.0" text="Avis:" />
+            <ImageView fitHeight="200" fitWidth="200" layoutX="608.0" layoutY="81.0">
                 <Image url="@hotel2.gif" />
             </ImageView>
         </children>

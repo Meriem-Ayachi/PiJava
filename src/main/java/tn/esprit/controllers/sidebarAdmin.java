@@ -63,4 +63,10 @@ public class sidebarAdmin {
         nav.goToPage_WithEvent("/GestionLogs.fxml",event);
     }
 
+    public void directDashboard(ActionEvent event) {
+
+        Navigator nav = new Navigator();
+        nav.goToPage_WithEvent("/ProfileAdmin.fxml",event);
+    }
+
 }

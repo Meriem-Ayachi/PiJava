@@ -110,4 +110,11 @@ private boolean validateEmail(String email) {
         return str.matches("\\d+");
     }
 
+
+    public void directToUserm_back(ActionEvent event) {
+
+        Navigator nav = new Navigator();
+        nav.goToPage_WithEvent("/GestionUtilisateurs.fxml",event);
+    }
+
 }

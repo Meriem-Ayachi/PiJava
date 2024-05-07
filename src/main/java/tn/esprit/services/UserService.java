@@ -47,18 +47,16 @@ public class UserService implements IService <User> {
 
     @Override
     public void update(User o) {
-        String req = "update user set email=?, roles=?, is_verified=?, nom=? , prenom=? ,num_tel=? ,imagefilename=? where id=?";
+        String req = "update user set email=?,is_verified=?, nom=? , prenom=? ,num_tel=? ,imagefilename=? where id=?";
         try {
             PreparedStatement ps = cnx.prepareStatement(req);
-            String rolesJson = new Gson().toJson(o.getRoles());
             ps.setString(1, o.getEmail());
-            ps.setString(2, rolesJson);
-            ps.setInt(3, o.getIs_verified());
-            ps.setString(4, o.getNom());
-            ps.setString(5, o.getPrenom());
-            ps.setInt(6, o.getNum_tel());
-            ps.setString(7, o.getImagefilename());
-            ps.setInt(8, o.getId());
+            ps.setInt(2, o.getIs_verified());
+            ps.setString(3, o.getNom());
+            ps.setString(4, o.getPrenom());
+            ps.setInt(5, o.getNum_tel());
+            ps.setString(6, o.getImagefilename());
+            ps.setInt(7, o.getId());
 
 
             ps.executeUpdate();

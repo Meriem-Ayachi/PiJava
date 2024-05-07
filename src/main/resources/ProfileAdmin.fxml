@@ -3,16 +3,22 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.ProfileAdmin">
     <fx:include source="sidebarAdmin.fxml" />
-    <AnchorPane layoutX="305.0" layoutY="17.0" prefHeight="566.0" prefWidth="458.0" style="-fx-background-color: #ececec;">
+    <AnchorPane layoutX="271.0" prefHeight="686.0" prefWidth="629.0" style="-fx-background-color: #ececec;">
         <children>
-            <Label layoutX="60.0" layoutY="49.0" prefHeight="27.0" prefWidth="160.0" text="admin" textFill="#73592f">
+            <Label layoutX="23.0" prefHeight="64.0" prefWidth="440.0" text="Tableau de Bord Administrateur" textFill="#73592f">
                 <font>
-                    <Font name="System Bold" size="51.0" />
+                    <Font name="Book Antiqua Bold" size="29.0" />
                 </font>
             </Label>
+         <Text layoutX="23.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gérez efficacement votre agence de voyages avec notre interface d'administration intuitive.">
+            <font>
+               <Font name="Californian FB Italic" size="12.0" />
+            </font>
+         </Text>
         </children>
     </AnchorPane>
 

@@ -6,6 +6,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.fxml.FXML;
+import tn.esprit.models.LogType;
+import tn.esprit.models.User;
 import tn.esprit.models.session;
 import tn.esprit.services.UserService;
 import tn.esprit.util.Navigator;
@@ -48,6 +50,9 @@ public class  LoginController {
         if (authentifie) {
             // Authentification réussie, vérifier si l'utilisateur est bloqué
             int userId = userService.getUtilisateurid(emailTF.getText());
+            User user = userService.getOne(userId);
+            // Save Log
+            connecterUtilisateur(user);
             // Si l'utilisateur n'est pas bloqué, continuer avec le reste de la logique
             int p = userId;
             session.id_utilisateur = p;
@@ -76,7 +81,7 @@ public class  LoginController {
     private void redirectToAdminPage(ActionEvent event) {
         nav.goToPage_WithEvent("/ProfileAdmin.fxml", event);
     }
-    
+
     public void redirectToInscription(ActionEvent event){
         nav.goToPage_WithEvent("/inscription.fxml", event);
     }
@@ -93,4 +98,8 @@ public class  LoginController {
         alerte.showAndWait();
     }
 
+    // Logs functions
+    public void connecterUtilisateur(User user) {
+        LogController.saveLog("Utilisateur " + user.getPrenom() + " " + user.getNom() + " connecté.", LogType.CONNEXION_UTILISATEUR, user.getId());
+    }
 }

@@ -14,10 +14,10 @@ import tn.esprit.models.User;
 
 public class EmailsUtils {
 
-    private static final String SMTP_HOST = "sandbox.smtp.mailtrap.io";
-    private static final String SMTP_PORT = "2525";
-    private static final String USERNAME = "db54164829303d";
-    private static final String PASSWORD = "987f7fb01ffe1d";
+    private static final String SMTP_HOST = "smtp.mailersend.net";
+    private static final String SMTP_PORT = "587";
+    private static final String USERNAME = "MS_JVCDn1@trial-7dnvo4de5onl5r86.mlsender.net";
+    private static final String PASSWORD = "psmR5xD2478oJ8WT";
 
     private static final String EMAIL_REGEX =
             "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
@@ -64,7 +64,7 @@ public class EmailsUtils {
 
             // Part 2: HTML co
             String htmlContent1 = "<!DOCTYPE html>" +
-                    "<html lang=\"en\">" +
+                    "<html lang=\"fr\">" +
                     "<head>" +
                     "    <meta charset=\"UTF-8\">" +
                     "    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">" +
@@ -98,9 +98,9 @@ public class EmailsUtils {
                     "    <div class=\"container\">" +
                     "        <h1>Confirmation</h1>" +
                     "        <p>Bienvenue!</p>" +
-                    "        <p>Merci beaucoup d'avoir rejoint notre communauté. Nous sommes ravis de vous accueillir.</p>" +
-                    "        <p>N'hésitez pas à explorer notre site et à nous contacter si vous avez des questions ou des suggestions.</p>" +
-                    "        <p>A bientôt!</p>" +
+                    "        <p>Merci beaucoup d'avoir rejoint notre communaute. Nous sommes ravis de vous accueillir.</p>" +
+                    "        <p>N'hesitez pas à explorer notre site et a nous contacter si vous avez des questions ou des suggestions.</p>" +
+                    "        <p>A bientot!</p>" +
                     "    </div>" +
                     "</body>" +
                     "</html>";
@@ -115,7 +115,7 @@ public class EmailsUtils {
 
             Transport.send(message);
 
-            System.out.println("E-mail de confirmation envoyé avec succès.");
+            System.out.println("E-mail de confirmation envoye avec succès.");
 
         } catch (MessagingException e) {
             e.printStackTrace();
@@ -141,7 +141,7 @@ public class EmailsUtils {
             Message message = new MimeMessage(session);
             message.setFrom(new InternetAddress(USERNAME));
             message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(toEmail));
-            message.setSubject("Vérification de l'e-mail");
+            message.setSubject("Verification de l'e-mail");
             message.setText("");
             Multipart multipart = new MimeMultipart();
 
@@ -156,7 +156,7 @@ public class EmailsUtils {
                     "<head>" +
                     "  <meta charset=\"UTF-8\">" +
                     "  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">" +
-                    "  <title>Code de vérification</title>" +
+                    "  <title>Code de verification</title>" +
                     "  <style>" +
                     "    body {" +
                     "      font-family: Arial, sans-serif;" +
@@ -181,9 +181,9 @@ public class EmailsUtils {
                     "<body>" +
                     "  <div class=\"verification-code\">" +
                     "    <h1>Code de vérification</h1>" +
-                    "    <p>Nous vous avons envoyé un code de vérification unique.</p>" +
-                    "    <p>Votre code de vérification est : <strong>" + verificationCode  + " </strong></p>" +
-                    "    <p>Assurez-vous de ne pas partager ce code avec quiconque, car il est destiné à des fins de sécurité personnelles.</p>" +
+                    "    <p>Nous vous avons envoyé un code de verification unique.</p>" +
+                    "    <p>Votre code de verification est : <strong>" + verificationCode  + " </strong></p>" +
+                    "    <p>Assurez-vous de ne pas partager ce code avec quiconque, car il est destine a des fins de securite personnelles.</p>" +
                     "  </div>" +
                     "</body>" +
                     "</html>";
@@ -199,7 +199,7 @@ public class EmailsUtils {
 
             Transport.send(message);
 
-            System.out.println("E-mail de vérification envoyé avec succès."+verificationCode);
+            System.out.println("E-mail de vérification envoye avec succes."+verificationCode);
 
         } catch (MessagingException e) {
             e.printStackTrace();
@@ -241,7 +241,7 @@ public class EmailsUtils {
                     "<head>" +
                     "  <meta charset=\"UTF-8\">" +
                     "  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">" +
-                    "  <title>Code de vérification</title>" +
+                    "  <title>Code de verification</title>" +
                     "  <style>" +
                     "    body {" +
                     "      font-family: Arial, sans-serif;" +
@@ -266,9 +266,9 @@ public class EmailsUtils {
                     "<body>" +
                     "  <div class=\"verification-code\">" +
                     "    <h1>Reset password verification code</h1>" +
-                    "    <p>Nous vous avons envoyé un code de vérification unique.</p>" +
-                    "    <p>Votre code de vérification est : <strong>" + verificationCode  + " </strong></p>" +
-                    "    <p>Assurez-vous de ne pas partager ce code avec quiconque, car il est destiné à des fins de sécurité personnelles.</p>" +
+                    "    <p>Nous vous avons envoye un code de verification unique.</p>" +
+                    "    <p>Votre code de verification est : <strong>" + verificationCode  + " </strong></p>" +
+                    "    <p>Assurez-vous de ne pas partager ce code avec quiconque, car il est destine a des fins de securite personnelles.</p>" +
                     "  </div>" +
                     "</body>" +
                     "</html>";
@@ -327,7 +327,7 @@ public class EmailsUtils {
 
             // Part 2: HTML co
             String htmlContent1 = "<!DOCTYPE html>" +
-                    "<html lang=\"en\">" +
+                    "<html lang=\"fr\">" +
                     "<head>" +
                     "    <meta charset=\"UTF-8\">" +
                     "    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">" +
@@ -360,9 +360,9 @@ public class EmailsUtils {
                     "<body>" +
                     "    <div class=\"container\">" +
                     "        <h1>Confirmation</h1>" +
-                    "        <p>Votre mot de passe a été modifié avec succès!</p>" +
-                    "        <p>Merci beaucoup d'avoir utilisé notre service de réinitialisation de mot de passe.</p>" +
-                    "        <p>N'hésitez pas à nous contacter si vous avez d'autres questions ou des préoccupations.</p>" +
+                    "        <p>Votre mot de passe a ete modifie avec succes!</p>" +
+                    "        <p>Merci beaucoup d'avoir utilise notre service de reinitialisation de mot de passe.</p>" +
+                    "        <p>N'hesitez pas a nous contacter si vous avez d'autres questions ou des preoccupations.</p>" +
                     "        <p>Meilleures salutations!</p>" +
                     "    </div>" +
                     "</body>" +

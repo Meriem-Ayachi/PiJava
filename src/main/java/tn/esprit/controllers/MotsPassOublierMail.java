@@ -135,7 +135,7 @@ public class MotsPassOublierMail {
     }
     public void directToLogin(ActionEvent event) {
         Navigator nav = new Navigator();
-        nav.goToPage_WithEvent("/Log.fxml",event);
+        nav.goToPage_WithEvent("/log.fxml",event);
     }
 
 }

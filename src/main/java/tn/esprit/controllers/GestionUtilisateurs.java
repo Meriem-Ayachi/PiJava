@@ -9,10 +9,12 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import tn.esprit.models.User;
 import tn.esprit.services.UserService;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyEvent;
 
 import java.io.IOException;
 import java.util.Arrays;
@@ -20,13 +22,21 @@ import java.util.List;
 
 public class GestionUtilisateurs {
 
+
     @FXML
     private TableView<User> userTableView;
 
     private User selectedUser;
 
+    private String nom, prenom;
+
+    @FXML
+    private TextField nomTF;
+
+    @FXML
+    private TextField prenomTF;
+
     private final UserService userService = new UserService();
-    private final LogController logController = new LogController(); // Intégration du LogController
 
     private void refreshTable() {
         userTableView.setItems(FXCollections.observableArrayList(userService.getAll()));
@@ -57,20 +67,19 @@ public class GestionUtilisateurs {
     }
 
     @FXML
-    void supprimerSelectedLocation() {
+    void supprimerSelectedUser() {
         if (selectedUser != null) {
             userService.delete(selectedUser.getId());
             refreshTable();
             selectedUser = null;
         }else{
-            showError("Vous devez sélectionner une location");
+            showError("Vous devez sélectionner un user");
         }
     }
 
     @FXML
     void goToModifier(ActionEvent event) {
         if (selectedUser != null) {
-            User locationVoiture = userService.getOne(selectedUser.getId());
             try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/ModifierUserparAdmin.fxml"));
                 Parent root = loader.load();
@@ -84,7 +93,7 @@ public class GestionUtilisateurs {
                 e.printStackTrace();
             }
         }else{
-            showError("Vous devez sélectionner une location");
+            showError("Vous devez sélectionner un user");
         }
     }
 
@@ -100,19 +109,24 @@ public class GestionUtilisateurs {
         alert.showAndWait();
     }
 
-    // Intégration des méthodes de journalisation du UtilisateurController
-    public void connecterUtilisateur(String nomUtilisateur) {
-        // Code pour connecter l'utilisateur
-        logController.saveLog("Utilisateur " + nomUtilisateur + " connecté.", LogType.CONNEXION_UTILISATEUR);
+
+    @FXML
+    void recherche() {
+        List<User> locationVoitureList = userService.recherche(nom, prenom);
+        userTableView.getItems().clear();
+        userTableView.getItems().addAll(locationVoitureList);
     }
 
-    public void creerEnregistrement(Utilisateur utilisateur, Enregistrement enregistrement) {
-        // Code pour créer un nouvel enregistrement pour l'utilisateur
-        logController.saveLog("Nouvel enregistrement créé par l'utilisateur " + utilisateur.getNom(), LogType.CREATION_ENREGISTREMENT);
+    @FXML
+    void prenomChanged(KeyEvent event) {
+        prenom= prenomTF.getText();
+        recherche();
     }
 
-    public void supprimerEnregistrement(Enregistrement enregistrement) {
-        // Code pour supprimer un enregistrement
-        logController.saveLog("Enregistrement supprimé.", LogType.SUPPRESSION_ENREGISTREMENT);
+    @FXML
+    void nomChanged(KeyEvent event) {
+        nom = nomTF.getText();
+        recherche();
     }
+
 }

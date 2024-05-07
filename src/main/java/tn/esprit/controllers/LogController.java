@@ -1,26 +1,17 @@
 package tn.esprit.controllers;
 import tn.esprit.models.Log;
 import tn.esprit.models.LogType;
+import tn.esprit.services.LogService;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
 
 public class LogController {
-    private List<Log> logs;
+    private static LogService logService = new LogService();
 
-    public LogController() {
-        this.logs = new ArrayList<>();
+    public static void saveLog(String message, LogType logType, int userId) {
+        LocalDateTime currentDateTime = LocalDateTime.now();
+        Log log = new Log(currentDateTime,logType.name(), message, userId);
+        logService.add(log);
     }
 
-    public void saveLog(String message, LogType logType) {
-        Log log = new Log();
-        logs.add(log);
-        // Vous pouvez également enregistrer le log dans une base de données ou dans un fichier, selon vos besoins.
-    }
-
-    // Méthode pour récupérer tous les logs
-    public List<Log> getAllLogs() {
-        return logs;
-    }
 }

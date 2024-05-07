@@ -7,11 +7,17 @@ public class Log {
     private LocalDateTime timestamp;
     private String type;
     private String description;
-    private String userId;
+    private int userId;
 
     public Log(){
     }
-    public Log(long logId, LocalDateTime timestamp, String type, String description, String userId) {
+    public Log(LocalDateTime timestamp, String type, String description, int userId){
+        this.timestamp = timestamp;
+        this.type = type;
+        this.description = description;
+        this.userId = userId;
+    }
+    public Log(long logId, LocalDateTime timestamp, String type, String description, int userId) {
         this.logId = logId;
         this.timestamp = timestamp;
         this.type = type;
@@ -52,11 +58,11 @@ public class Log {
         this.description = description;
     }
 
-    public String getUserId() {
+    public int getUserId() {
         return userId;
     }
 
-    public void setUserId(String userId) {
+    public void setUserId(int userId) {
         this.userId = userId;
     }
 

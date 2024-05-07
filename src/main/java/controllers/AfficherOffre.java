@@ -23,6 +23,8 @@ import java.util.ResourceBundle;
         private final OffresService os = new OffresService();
         @FXML
         private Button commentaires;
+        @FXML
+        private Button ajouter;
 
         @FXML
         private Button modifierO;
@@ -178,6 +180,14 @@ import java.util.ResourceBundle;
                 showAlert("Erreur de chargement", "Une erreur s'est produite lors du chargement de la vue des statistiques.");
             }
         }
+        @FXML
+        void ajouter(ActionEvent event) throws Exception  {
+                Parent root = FXMLLoader.load(getClass().getResource("/AjouterOffre.fxml"));
+                Stage stage = (Stage) ajouter.getScene().getWindow();
+                stage.setScene(new Scene(root));
+                stage.show();
+
+        }
 
         private void showAlert(String title, String message) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -185,6 +195,7 @@ import java.util.ResourceBundle;
             alert.setContentText(message);
             alert.showAndWait();
         }
+
 
 
 

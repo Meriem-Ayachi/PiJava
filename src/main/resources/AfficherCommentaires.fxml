@@ -5,16 +5,16 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AfficherCommentaires">
+<AnchorPane prefHeight="680.0" prefWidth="900.0" style="-fx-background-image: url('background.jpg'); -fx-background-size: cover;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AfficherCommentaires">
    <children>
-      <TableView fx:id="tableview" layoutX="55.0" layoutY="61.0" prefHeight="230.0" prefWidth="481.0">
+      <TableView fx:id="tableview" layoutX="38.0" layoutY="84.0" prefHeight="386.0" prefWidth="716.0">
         <columns>
           <TableColumn fx:id="AvisColO" prefWidth="135.0" text="avis" />
-          <TableColumn fx:id="created_atColO" prefWidth="184.0" text="created_at" />
-            <TableColumn fx:id="offres_idCol" prefWidth="161.0" text="offres_id" />
+          <TableColumn fx:id="created_atColO" prefWidth="234.0" text="created_at" />
+            <TableColumn fx:id="offres_idCol" prefWidth="346.0" text="offres_id" />
         </columns>
       </TableView>
-      <Button layoutX="145.0" layoutY="327.0" mnemonicParsing="false" onAction="#Supprimercommentaire" prefHeight="25.0" prefWidth="86.0" text="Supprimer" />
-      <Button fx:id="btnretour" layoutX="308.0" layoutY="327.0" mnemonicParsing="false" onAction="#naviguer" prefHeight="25.0" prefWidth="118.0" text="liste des offres" />
+      <Button layoutX="103.0" layoutY="596.0" mnemonicParsing="false" onAction="#Supprimercommentaire" prefHeight="36.0" prefWidth="114.0" styleClass="modern-button" stylesheets="@modern-button.css" text="Supprimer" />
+      <Button fx:id="btnretour" layoutX="504.0" layoutY="596.0" mnemonicParsing="false" onAction="#naviguer" prefHeight="36.0" prefWidth="189.0" styleClass="modern-button" stylesheets="@modern-button.css" text="liste des offres" />
    </children>
 </AnchorPane>

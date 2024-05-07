@@ -1,10 +1,15 @@
 package controllers;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 
+import javafx.stage.Stage;
 import tn.esprit.models.Offre_Commentaire;
 
 import tn.esprit.models.Offres;
@@ -23,6 +28,8 @@ public class AjouterCommentairefront {
 
     @FXML
     private TextField AvisTFO;
+    @FXML
+    private Button naviguer;
 
     @FXML
     private ListView<Offre_Commentaire> listview;
@@ -94,6 +101,14 @@ public class AjouterCommentairefront {
             throw new RuntimeException(e);
         }
 
+
+    }
+    @FXML
+    void naviguer(ActionEvent event) throws Exception {
+            Parent root = FXMLLoader.load(getClass().getResource("/DetailsPage.fxml"));
+            Stage stage = (Stage) naviguer.getScene().getWindow();
+            stage.setScene(new Scene(root));
+            stage.show();
 
     }
 

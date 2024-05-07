@@ -5,10 +5,11 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AjouterCommentairefront">
+<AnchorPane prefHeight="680.0" prefWidth="900.0" style="-fx-background-image: url('background.jpg'); -fx-background-size: cover;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AjouterCommentairefront">
    <children>
-      <Button layoutX="225.0" layoutY="50.0" mnemonicParsing="false" onAction="#Ajoutercommentaire" prefHeight="25.0" prefWidth="110.0" text="Ajouter" />
-      <TextField fx:id="AvisTFO" layoutX="23.0" layoutY="50.0" />
-      <ListView fx:id="listview" layoutX="23.0" layoutY="103.0" prefHeight="266.0" prefWidth="555.0" />
+      <Button layoutX="539.0" layoutY="115.0" mnemonicParsing="false" onAction="#Ajoutercommentaire" prefHeight="25.0" prefWidth="110.0" styleClass="modern-button" stylesheets="@modern-button.css" text="Ajouter" />
+      <TextField fx:id="AvisTFO" layoutX="46.0" layoutY="107.0" prefHeight="51.0" prefWidth="474.0" styleClass="modern-textfield" stylesheets="@textfield.css" />
+      <ListView fx:id="listview" layoutX="23.0" layoutY="185.0" prefHeight="426.0" prefWidth="842.0" />
+      <Button fx:id="naviguer" layoutX="23.0" layoutY="25.0" mnemonicParsing="false" onAction="#naviguer" prefHeight="25.0" prefWidth="62.0" styleClass="transparent-button" stylesheets="@transparentbutton.css" text="Retour" />
    </children>
 </AnchorPane>

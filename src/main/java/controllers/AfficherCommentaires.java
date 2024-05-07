@@ -80,7 +80,7 @@ public class AfficherCommentaires {
                         Alert confirmation = new Alert(Alert.AlertType.INFORMATION);
                         confirmation.setTitle("Suppression réussie");
                         confirmation.setHeaderText(null);
-                        confirmation.setContentText("L'offre a été supprimé avec succès.");
+                        confirmation.setContentText("Commentaire a été supprimé avec succès.");
                         confirmation.showAndWait();
                     } catch (SQLException e) {
                         Alert error = new Alert(Alert.AlertType.ERROR);

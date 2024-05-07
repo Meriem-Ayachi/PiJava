@@ -4,15 +4,15 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ModiffierOffre">
+<AnchorPane prefHeight="680.0" prefWidth="900.0" style="-fx-background-image: url('background.jpg'); -fx-background-size: cover;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ModiffierOffre">
    <children>
-      <TextField fx:id="titleTFO" layoutX="70.0" layoutY="14.0" />
-      <TextField fx:id="descriptionTFO" layoutX="70.0" layoutY="54.0" />
-      <TextField fx:id="publishedTFO" layoutX="70.0" layoutY="94.0" />
-      <TextField fx:id="prixTFO" layoutX="70.0" layoutY="137.0" />
-      <TextField fx:id="lieuTFO" layoutX="70.0" layoutY="179.0" />
-      <TextField fx:id="imageTFO" layoutX="70.0" layoutY="223.0" />
-      <Button layoutX="320.0" layoutY="106.0" mnemonicParsing="false" onAction="#ModifierO" prefHeight="31.0" prefWidth="117.0" text="Modifier" />
-      <Button fx:id="btnretour" layoutX="321.0" layoutY="176.0" mnemonicParsing="false" onAction="#naviguer" prefHeight="31.0" prefWidth="117.0" text="Retour" />
+      <TextField fx:id="titleTFO" layoutX="79.0" layoutY="48.0" prefHeight="52.0" prefWidth="192.0" styleClass="modern-textfield" stylesheets="@textfield.css" />
+      <TextField fx:id="descriptionTFO" layoutX="79.0" layoutY="139.0" prefHeight="52.0" prefWidth="192.0" styleClass="modern-textfield" stylesheets="@textfield.css" />
+      <TextField fx:id="publishedTFO" layoutX="79.0" layoutY="247.0" prefHeight="52.0" prefWidth="192.0" styleClass="modern-textfield" stylesheets="@textfield.css" />
+      <TextField fx:id="prixTFO" layoutX="79.0" layoutY="357.0" prefHeight="52.0" prefWidth="192.0" styleClass="modern-textfield" stylesheets="@textfield.css" />
+      <TextField fx:id="lieuTFO" layoutX="79.0" layoutY="461.0" prefHeight="52.0" prefWidth="192.0" styleClass="modern-textfield" stylesheets="@textfield.css" />
+      <TextField fx:id="imageTFO" layoutX="79.0" layoutY="564.0" prefHeight="52.0" prefWidth="192.0" styleClass="modern-textfield" stylesheets="@textfield.css" />
+      <Button layoutX="497.0" layoutY="273.0" mnemonicParsing="false" onAction="#ModifierO" prefHeight="52.0" prefWidth="143.0" styleClass="modern-button" stylesheets="@modern-button.css" text="Modifier" />
+      <Button fx:id="btnretour" layoutX="497.0" layoutY="350.0" mnemonicParsing="false" onAction="#naviguer" prefHeight="52.0" prefWidth="143.0" styleClass="modern-button" stylesheets="@modern-button.css" text="Retour" />
    </children>
 </AnchorPane>

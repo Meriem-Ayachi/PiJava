@@ -36,8 +36,7 @@ public class DetailsPage {
     private Button commenter;
     @FXML
     private Offres offres;
-    @FXML
-    private Label userCountLabel;
+
 
 
     @FXML
@@ -67,6 +66,9 @@ public class DetailsPage {
     void Reserver(ActionEvent event) {
 
     }
+
+    @FXML
+    private Button backtohome;
 
 
     @FXML
@@ -207,5 +209,16 @@ public class DetailsPage {
         }
 
         return averageRating;
+    }
+
+
+    @FXML
+    void backtohome(ActionEvent event) throws Exception {
+
+            Parent root = FXMLLoader.load(getClass().getResource("/home.fxml"));
+            Stage stage = (Stage) backtohome.getScene().getWindow();
+            stage.setScene(new Scene(root));
+            stage.show();
+
     }
 }

@@ -1,0 +1,26 @@
+/* styles.css */
+
+/* Define styles for the modern ComboBox */
+.modern-combobox {
+    -fx-background-color: #f0f0f0; /* Background color */
+    -fx-border-color: #bdbdbd;
+    -fx-background-radius: 15px; /* Rounded corners */
+    -fx-border-radius: 15px; /* Rounded corners */
+    -fx-text-fill: #333333; /* Text color */
+    -fx-font-size: 14px; /* Font size */
+    -fx-padding: 1px 1px; /* Padding */
+    -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.2) , 4,0,0,1 ); /* Shadow effect */
+}
+
+/* Hover effect for the modern ComboBox */
+.modern-combobox:hover {
+    -fx-background-color: #e0e0e0; /* Darker background color on hover */
+    -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.4) , 6,0,0,2 ); /* Larger shadow on hover */
+
+}
+
+.modern-combobox:focused{
+
+    -fx-border-color: #051659; /* Border color on focus */
+    -fx-border-width: 1px;
+}

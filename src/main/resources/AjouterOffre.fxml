@@ -5,16 +5,16 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #CFD6EE;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AjouterOffre">
+<AnchorPane prefHeight="680.0" prefWidth="900.0" style="-fx-background-image: url('background.jpg'); -fx-background-size: cover;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AjouterOffre">
    <children>
-      <TextField fx:id="titleTFO" layoutX="89.0" layoutY="23.0" promptText="title" />
-      <TextField fx:id="descriptionTFO" layoutX="89.0" layoutY="62.0" promptText="description" />
-      <TextField fx:id="prixTFO" layoutX="89.0" layoutY="143.0" promptText="prix" />
-      <TextField fx:id="lieuTFO" layoutX="89.0" layoutY="181.0" promptText="lieu" />
-      <Button layoutX="268.0" layoutY="263.0" mnemonicParsing="false" onAction="#choisirImage" prefHeight="25.0" prefWidth="90.0" text="Choisir Image" />
-      <ImageView fx:id="imageIV" fitHeight="104.0" fitWidth="130.0" layoutX="99.0" layoutY="223.0" />
-      <Button layoutX="128.0" layoutY="347.0" mnemonicParsing="false" onAction="#AjouterO" prefHeight="25.0" prefWidth="73.0" text="Ajouter" />
-      <TextField fx:id="publishedTFO" layoutX="89.0" layoutY="104.0" promptText="published" />
-      <Button fx:id="liste" layoutX="400.0" layoutY="168.0" mnemonicParsing="false" onAction="#naviguer" prefHeight="25.0" prefWidth="143.0" text="liste des offres" />
+      <TextField fx:id="titleTFO" layoutX="82.0" layoutY="48.0" prefHeight="45.0" prefWidth="190.0" promptText="title" styleClass="modern-textfield" stylesheets="@textfield.css" />
+      <TextField fx:id="descriptionTFO" layoutX="82.0" layoutY="114.0" prefHeight="45.0" prefWidth="190.0" promptText="description" styleClass="modern-textfield" stylesheets="@textfield.css" />
+      <TextField fx:id="prixTFO" layoutX="82.0" layoutY="254.0" prefHeight="45.0" prefWidth="190.0" promptText="prix" styleClass="modern-textfield" stylesheets="@textfield.css" />
+      <TextField fx:id="lieuTFO" layoutX="79.0" layoutY="324.0" prefHeight="45.0" prefWidth="190.0" promptText="lieu" styleClass="modern-textfield" stylesheets="@textfield.css" />
+      <Button layoutX="312.0" layoutY="455.0" mnemonicParsing="false" onAction="#choisirImage" prefHeight="45.0" prefWidth="138.0" styleClass="modern-button" stylesheets="@modern-button.css" text="Choisir Image" />
+      <ImageView fx:id="imageIV" fitHeight="150.0" fitWidth="190.0" layoutX="79.0" layoutY="402.0" />
+      <Button layoutX="119.0" layoutY="601.0" mnemonicParsing="false" onAction="#AjouterO" prefHeight="45.0" prefWidth="99.0" styleClass="modern-button" stylesheets="@modern-button.css" text="Ajouter" />
+      <TextField fx:id="publishedTFO" layoutX="82.0" layoutY="182.0" prefHeight="45.0" prefWidth="190.0" promptText="published" styleClass="modern-textfield" stylesheets="@textfield.css" />
+      <Button fx:id="liste" layoutX="619.0" layoutY="197.0" mnemonicParsing="false" onAction="#naviguer" prefHeight="45.0" prefWidth="157.0" styleClass="modern-button" stylesheets="@modern-button.css" text="liste des offres" />
    </children>
 </AnchorPane>

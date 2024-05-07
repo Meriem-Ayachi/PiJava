@@ -26,8 +26,8 @@ import java.util.Set;
 public class ModifierReclamationAdmin {
 
     private static final Dotenv dotenv = Dotenv.load();
-    private static final String ACCOUNT_SID = dotenv.get("ACCOUNT_SID");
-    private static final String AUTH_TOKEN = dotenv.get("AUTH_TOKEN");
+    private static final String ACCOUNT_SID = dotenv.get("ACCOUNT_SID_Meriem");
+    private static final String AUTH_TOKEN = dotenv.get("AUTH_TOKEN_Meriem");
 
     static {
         Twilio.init(ACCOUNT_SID, AUTH_TOKEN);

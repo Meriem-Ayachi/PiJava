@@ -10,7 +10,7 @@ public class MainFX extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherReclamationUser.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherReclamationAdmin.fxml"));
         Scene scene = new Scene(loader.load());
         stage.setTitle("Hello!");
         stage.setScene(scene);

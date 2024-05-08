@@ -12,12 +12,12 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="900.0" prefWidth="1200.0" style="-fx-background-image: url('backgound.jpg'); -fx-background-size: cover;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.reservationAdd">
+<AnchorPane prefHeight="680.0" prefWidth="822.0" style="-fx-background-image: url('backgound.jpg'); -fx-background-size: cover;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.reservationAdd">
     <fx:include source="../sidebarUser.fxml" />
-    <AnchorPane layoutX="282.0" layoutY="39.0" prefHeight="402.0" prefWidth="964.0" style="-fx-background-color: #ececec;">
-        <AnchorPane layoutY="39.0" prefHeight="357.0" prefWidth="600.0">
+    <AnchorPane layoutX="282.0" prefHeight="680.0" prefWidth="822.0" style="-fx-background-color: #ececec;">
+        <AnchorPane layoutY="39.0" prefHeight="403.0" prefWidth="803.0">
             <!-- Cadre bleu avec opacité faible -->
-            <AnchorPane layoutY="29.0" prefHeight="358.0" prefWidth="1010.0">
+            <AnchorPane layoutY="29.0" prefHeight="374.0" prefWidth="822.0">
                 <!-- Labels et champs du formulaire -->
                 <Label layoutX="19.0" layoutY="7.0" text="Date de départ" />
                 <Label layoutX="19.0" layoutY="41.0" text="Date de retour" />
@@ -43,7 +43,7 @@
                 <Button layoutX="428.0" layoutY="153.0" mnemonicParsing="false" onAction="#showCountryInfo" styleClass="modern-button" stylesheets="@../modern-button.css" text="Afficher localisation" />
 
                 <Button layoutX="222.0" layoutY="308.0" mnemonicParsing="false" onAction="#openReservationList" styleClass="modern-button" stylesheets="@../modern-button.css" text="Consulter la liste des réservations" />
-                <ImageView fitHeight="120.0" fitWidth="128.0" layoutX="838.0" layoutY="-13.0">
+                <ImageView fitHeight="120.0" fitWidth="128.0" layoutX="668.0" layoutY="3.0">
                     <Image url="@avion2.gif" />
                 </ImageView>
 

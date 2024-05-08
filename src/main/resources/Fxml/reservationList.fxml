@@ -11,17 +11,17 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="611.0" style="-fx-background-image: url('backgound.jpg'); -fx-background-size: cover;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.reservationList">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="680.0" prefWidth="1113.0" style="-fx-background-image: url('backgound.jpg'); -fx-background-size: cover;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.reservationList">
     <fx:include source="../sidebarUser.fxml" />
-    <AnchorPane layoutX="283.0" layoutY="55.0" prefHeight="386.0" prefWidth="551.0" style="-fx-background-color: #ececec;">
+    <AnchorPane layoutX="283.0" prefHeight="680.0" prefWidth="822.0" style="-fx-background-color: #ececec;">
         <children>
-            <Label layoutX="241.0" layoutY="3.0" text="Liste des réservations" textFill="#326f40">
+            <Label layoutX="247.0" layoutY="46.0" text="Liste des réservations" textFill="#326f40">
                 <font>
                     <Font name="Sitka Text Italic" size="18.0" />
                 </font>
             </Label>
-            <ListView fx:id="reservationListView" layoutX="39.0" layoutY="42.0" prefHeight="350.0" prefWidth="272.0" />
-            <GridPane fx:id="calendrierGridPane" layoutX="320.0" layoutY="113.0" prefHeight="173.0" prefWidth="278.0" style="-fx-background-color: #e0e0e0;">
+            <ListView fx:id="reservationListView" layoutX="45.0" layoutY="85.0" prefHeight="350.0" prefWidth="411.0" />
+            <GridPane fx:id="calendrierGridPane" layoutX="500.0" layoutY="163.0" prefHeight="173.0" prefWidth="278.0" style="-fx-background-color: #e0e0e0;">
                 <columnConstraints>
                     <ColumnConstraints />
                     <ColumnConstraints />
@@ -42,7 +42,7 @@
                 <!-- Ajoutez ici la logique pour afficher le calendrier -->
             </GridPane>
             <!-- Labels des mois et des années -->
-            <Label fx:id="moisAnneeLabel" layoutX="359.0" layoutY="351.0" prefHeight="30.0" prefWidth="181.0" textFill="#f2f2f2">
+            <Label fx:id="moisAnneeLabel" layoutX="539.0" layoutY="401.0" prefHeight="30.0" prefWidth="181.0" textFill="#f2f2f2">
                 <font>
                     <Font name="System Bold" size="20.0" />
                 </font>
@@ -51,9 +51,9 @@
                 </effect>
             </Label>
             <!-- Boutons de navigation -->
-            <Button fx:id="moisPrecedentButton" layoutX="320.0" layoutY="78.0" onAction="#moisPrecedent" text="❮" />
-            <Button layoutX="560.0" layoutY="78.0" onAction="#moisSuivant" text="❯" />
-            <Label fx:id="moisLabel" layoutX="399.0" layoutY="71.0" prefHeight="38.0" prefWidth="172.0" textFill="#f2f2f2">
+            <Button fx:id="moisPrecedentButton" layoutX="500.0" layoutY="128.0" onAction="#moisPrecedent" text="❮" />
+            <Button layoutX="740.0" layoutY="128.0" onAction="#moisSuivant" text="❯" />
+            <Label fx:id="moisLabel" layoutX="579.0" layoutY="121.0" prefHeight="38.0" prefWidth="172.0" textFill="#f2f2f2">
                 <font>
                     <Font name="System Bold" size="26.0" />
                 </font>
@@ -61,9 +61,9 @@
                     <DropShadow color="#18593b" radius="5" spread="0.5" />
                 </effect>
             </Label>
-            <Button fx:id="anneePrecedenteButton" layoutX="320.0" layoutY="282.0" onAction="#anneePrecedente" text="❮" />
-            <Button fx:id="anneeSuivanteButton" layoutX="560.0" layoutY="283.0" onAction="#anneeSuivante" text="❯" />
-            <Label fx:id="anneeLabel" layoutX="403.0" layoutY="276.0" prefHeight="38.0" prefWidth="164.0" textFill="#f2f2f2">
+            <Button fx:id="anneePrecedenteButton" layoutX="500.0" layoutY="332.0" onAction="#anneePrecedente" text="❮" />
+            <Button fx:id="anneeSuivanteButton" layoutX="740.0" layoutY="333.0" onAction="#anneeSuivante" text="❯" />
+            <Label fx:id="anneeLabel" layoutX="583.0" layoutY="326.0" prefHeight="38.0" prefWidth="164.0" textFill="#f2f2f2">
                 <font>
                     <Font name="System Bold" size="26.0" />
                 </font>
@@ -71,7 +71,7 @@
                     <DropShadow color="#18593b" radius="5" spread="0.5" />
                 </effect>
             </Label>
-            <Label layoutX="401.0" layoutY="17.0" prefHeight="50.0" prefWidth="116.0" text="Calendrier" textFill="#f2f2f2" underline="true">
+            <Label layoutX="581.0" layoutY="67.0" prefHeight="50.0" prefWidth="116.0" text="Calendrier" textFill="#f2f2f2" underline="true">
                 <font>
                     <Font name="System Bold" size="23.0" />
                 </font>
@@ -80,7 +80,7 @@
                 </effect>
             </Label>
             <!-- Champ de recherche par destination d'aller -->
-            <TextField fx:id="rechercheDestinationTextField" layoutX="39.0" layoutY="10.0" prefWidth="150.0" promptText="Recherche par destination d'aller" styleClass="modern-textfield" stylesheets="@../textfield.css" />
+            <TextField fx:id="rechercheDestinationTextField" layoutX="45.0" layoutY="53.0" prefWidth="150.0" promptText="Recherche par destination d'aller" styleClass="modern-textfield" stylesheets="@../textfield.css" />
         </children>
     </AnchorPane>
 </AnchorPane>

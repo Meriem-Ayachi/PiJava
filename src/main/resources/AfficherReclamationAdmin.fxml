@@ -11,37 +11,37 @@
 
 <AnchorPane prefHeight="680.0" prefWidth="900.0" stylesheets="Styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.AfficherReclamationAdmin">
     <fx:include source="sidebarAdmin.fxml" />
-    <AnchorPane layoutX="264.0" prefHeight="684.0" prefWidth="699.0" style="-fx-background-image: url('images/background.jpg'); -fx-background-size: cover;">
+    <AnchorPane layoutX="264.0" prefHeight="680.0" prefWidth="822.0" style="-fx-background-image: url('images/background.jpg'); -fx-background-size: cover;">
 
         <children>
-            <Label layoutX="100.0" layoutY="26.0" text="Liste des réclamations" textFill="WHITE">
+            <Label layoutX="127.0" layoutY="32.0" text="Liste des réclamations" textFill="WHITE">
                 <font>
                     <Font name="Arial Rounded MT Bold" size="30.0" />
                 </font>
             </Label>
-            <TableView fx:id="tableview" layoutX="12.0" layoutY="200.0" onMouseClicked="#onTableRowClicked" prefHeight="414.0" prefWidth="675.0" style="-fx-background-color: #20318c; -fx-background-radius: 14 14 0 0;" stylesheets="@Styles.css">
+            <TableView fx:id="tableview" layoutX="12.0" layoutY="200.0" onMouseClicked="#onTableRowClicked" prefHeight="414.0" prefWidth="785.0" style="-fx-background-color: #20318c; -fx-background-radius: 14 14 0 0;" stylesheets="@Styles.css">
                 <columns>
                     <TableColumn fx:id="NomPrenomCol" prefWidth="131.0" style="-fx-text-fill: #5f5f64; -fx-font-weight: bold;" text="Nom et Prénom" />
-                    <TableColumn fx:id="SujetCol" prefWidth="63.0" style="-fx-text-fill: #5f5f64; -fx-font-weight: bold;" text="Sujet" />
-                    <TableColumn fx:id="DescriptionCol" prefWidth="200.0" style="-fx-text-fill: #5f5f64; -fx-font-weight: bold;" text="Description" />
-                    <TableColumn fx:id="DateSoumissionCol" prefWidth="158.0" style="-fx-text-fill: #5f5f64; -fx-font-weight: bold;" text="Date de soumission" />
-                    <TableColumn fx:id="EstTraiteCol" minWidth="5.59991455078125" prefWidth="122.0" style="-fx-text-fill: #5f5f64; -fx-font-weight: bold;" text="EstTraite" />
+                    <TableColumn fx:id="SujetCol" prefWidth="111.0" style="-fx-text-fill: #5f5f64; -fx-font-weight: bold;" text="Sujet" />
+                    <TableColumn fx:id="DescriptionCol" prefWidth="267.0" style="-fx-text-fill: #5f5f64; -fx-font-weight: bold;" text="Description" />
+                    <TableColumn fx:id="DateSoumissionCol" prefWidth="157.0" style="-fx-text-fill: #5f5f64; -fx-font-weight: bold;" text="Date de soumission" />
+                    <TableColumn fx:id="EstTraiteCol" minWidth="5.59991455078125" prefWidth="106.0" style="-fx-text-fill: #5f5f64; -fx-font-weight: bold;" text="EstTraite" />
                 </columns>
 
 
             </TableView>
-            <Button layoutX="398.0" layoutY="624.0" mnemonicParsing="false" onAction="#modifierBTN" prefHeight="36.0" prefWidth="86.0" styleClass="modern-button" stylesheets="@modern-button.css" text="Modifier" textFill="WHITE">
+            <Button layoutX="577.0" layoutY="630.0" mnemonicParsing="false" onAction="#modifierBTN" prefHeight="36.0" prefWidth="86.0" styleClass="modern-button" stylesheets="@modern-button.css" text="Modifier" textFill="WHITE">
             <font>
                <Font name="System Bold" size="13.0" />
             </font></Button>
-            <Button layoutX="502.0" layoutY="624.0" mnemonicParsing="false" onAction="#supprimerBTN" prefHeight="36.0" prefWidth="99.0" style="-fx-background-color: #D22B2B;" styleClass="modern-button" stylesheets="@modern-button.css" text="Supprimer" textFill="WHITE">
+            <Button layoutX="681.0" layoutY="630.0" mnemonicParsing="false" onAction="#supprimerBTN" prefHeight="36.0" prefWidth="99.0" style="-fx-background-color: #D22B2B;" styleClass="modern-button" stylesheets="@modern-button.css" text="Supprimer" textFill="WHITE">
             <font>
                <Font name="System Bold" size="13.0" />
             </font></Button>
-            <TextField layoutX="107.0" layoutY="142.0" onKeyTyped="#NomTF" promptText="Nom" styleClass="modern-textfield" stylesheets="@textfield.css" />
-            <TextField layoutX="302.0" layoutY="142.0" onKeyTyped="#PrenomTF" promptText="Prénom" styleClass="modern-textfield" stylesheets="@textfield.css" />
-            <ComboBox fx:id="estTraiteCB" layoutX="502.0" layoutY="138.0" onAction="#estTraiteChanged" prefWidth="150.0" styleClass="modern-combobox" stylesheets="@ComboBox.css" />
-            <Button layoutX="511.0" layoutY="78.0" onAction="#calculerEtAfficherStatistiques" prefHeight="36.0" prefWidth="157.0" styleClass="modern-button" stylesheets="@modern-button.css" text="Afficher Statistiques" textFill="WHITE">
+            <TextField layoutX="134.0" layoutY="148.0" onKeyTyped="#NomTF" promptText="Nom" styleClass="modern-textfield" stylesheets="@textfield.css" />
+            <TextField layoutX="329.0" layoutY="148.0" onKeyTyped="#PrenomTF" promptText="Prénom" styleClass="modern-textfield" stylesheets="@textfield.css" />
+            <ComboBox fx:id="estTraiteCB" layoutX="529.0" layoutY="144.0" onAction="#estTraiteChanged" prefWidth="150.0" styleClass="modern-combobox" stylesheets="@ComboBox.css" />
+            <Button layoutX="538.0" layoutY="84.0" onAction="#calculerEtAfficherStatistiques" prefHeight="36.0" prefWidth="157.0" styleClass="modern-button" stylesheets="@modern-button.css" text="Afficher Statistiques" textFill="WHITE">
             <font>
                <Font name="System Bold" size="12.0" />
             </font></Button>

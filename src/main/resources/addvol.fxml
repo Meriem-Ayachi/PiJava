@@ -12,9 +12,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="540" prefWidth="960" style="-fx-background-image: url('images/background.jpg');" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.Addvol">    
+<AnchorPane prefHeight="680.0" prefWidth="822.0" style="-fx-background-image: url('images/background.jpg');" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.Addvol">    
     <fx:include source="sidebarAdmin.fxml" />
-    <AnchorPane layoutX="354.0" layoutY="89.0" prefHeight="427.0" prefWidth="514.0" style="-fx-background-color: #ececec;">
+    <AnchorPane layoutX="269.0" prefHeight="680.0" prefWidth="822.0" style="-fx-background-color: #ececec;">
         <children>
             <Label layoutX="252.0" layoutY="82.0" text="Destination" textFill="WHITE">
                 <font>

@@ -8,28 +8,28 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="463.0" prefWidth="825.0" stylesheets="@backuser.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.GestionUtilisateurs">
+<AnchorPane prefHeight="680.0" prefWidth="822.0" stylesheets="@backuser.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.GestionUtilisateurs">
     <fx:include source="sidebarAdmin.fxml" />
-    <AnchorPane layoutX="275.0" prefHeight="680.0" prefWidth="632.0" style="-fx-background-color: #ececec;" stylesheets="@textfield.css">
+    <AnchorPane layoutX="270.0" prefHeight="680.0" prefWidth="822.0" style="-fx-background-color: #ececec;" stylesheets="@textfield.css">
         <children>
-            <Label layoutX="14.0" layoutY="14.0" text="Listes des utilisateurs">
+            <Label layoutX="106.0" layoutY="14.0" text="Listes des utilisateurs">
                 <font>
                     <Font name="System Bold" size="30.0" />
                 </font>
             </Label>
 
-            <ScrollPane layoutX="66.0" layoutY="106.0" prefHeight="529.0" prefWidth="454.0">
+            <ScrollPane layoutX="17.0" layoutY="106.0" prefHeight="557.0" prefWidth="773.0">
                 <content>
-                    <TableView fx:id="userTableView" onMouseClicked="#onTableRowClicked" prefHeight="525.0" prefWidth="457.0">
+                    <TableView fx:id="userTableView" onMouseClicked="#onTableRowClicked" prefHeight="555.0" prefWidth="771.0">
                     </TableView>
                 </content>
             </ScrollPane>
 
-            <Button layoutX="419.0" layoutY="19.0" onAction="#goToModifier" prefHeight="36.0" prefWidth="97.0" style="-fx-background-color: #4EC6F7;" styleClass="modern-button" stylesheets="@modern-button.css" text="Modifier" />
+            <Button layoutX="511.0" layoutY="19.0" onAction="#goToModifier" prefHeight="36.0" prefWidth="97.0" style="-fx-background-color: #4EC6F7;" styleClass="modern-button" stylesheets="@modern-button.css" text="Modifier" />
 
-            <Button layoutX="527.0" layoutY="19.0" onAction="#supprimerSelectedUser" prefHeight="36.0" prefWidth="97.0" style="-fx-background-color: #F95730;" styleClass="modern-button" stylesheets="@modern-button.css" text="Supprimer" />
-            <TextField fx:id="nomTF" layoutX="116.0" layoutY="61.0" onKeyTyped="#nomChanged" promptText="Nom" styleClass="modern-textfield" />
-            <TextField fx:id="prenomTF" layoutX="313.0" layoutY="61.0" onKeyTyped="#prenomChanged" promptText="Prenom" styleClass="modern-textfield" />
+            <Button layoutX="619.0" layoutY="19.0" onAction="#supprimerSelectedUser" prefHeight="36.0" prefWidth="97.0" style="-fx-background-color: #F95730;" styleClass="modern-button" stylesheets="@modern-button.css" text="Supprimer" />
+            <TextField fx:id="nomTF" layoutX="208.0" layoutY="61.0" onKeyTyped="#nomChanged" promptText="Nom" styleClass="modern-textfield" />
+            <TextField fx:id="prenomTF" layoutX="405.0" layoutY="61.0" onKeyTyped="#prenomChanged" promptText="Prenom" styleClass="modern-textfield" />
         </children>
     </AnchorPane>
 </AnchorPane>

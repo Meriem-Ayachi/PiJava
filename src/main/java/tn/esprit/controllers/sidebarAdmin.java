@@ -72,6 +72,14 @@ public class sidebarAdmin {
         Navigator nav = new Navigator();
         nav.goToPage_WithEvent("/AfficherReclamationAdmin.fxml", actionEvent);
     }
+
+
+    @FXML
+    void GoToHotel(ActionEvent event) {
+        Navigator nav = new Navigator();
+        nav.goToPage_WithEvent("/Fxml/hotelList.fxml",event);
+
+    }
 }
 
 

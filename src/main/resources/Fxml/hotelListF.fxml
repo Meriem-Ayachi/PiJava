@@ -13,15 +13,15 @@
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="680.0" prefWidth="900.0" style="-fx-background-image: url('backgound.jpg'); -fx-background-size: cover;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.hotelListF">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="680.0" prefWidth="1115.0" style="-fx-background-image: url('backgound.jpg'); -fx-background-size: cover;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.hotelListF">
     <fx:include source="../sidebarUser.fxml" />
-    <AnchorPane layoutX="285.0" layoutY="6.0" prefHeight="647.0" prefWidth="613.0" style="-fx-background-color: #ececec;">
+    <AnchorPane layoutX="285.0" layoutY="6.0" prefHeight="665.0" prefWidth="822.0" style="-fx-background-color: #ececec;">
         <children>
             <!-- Champ de recherche -->
-            <TextField fx:id="rechercheTextField" layoutX="449.0" layoutY="23.0" prefWidth="130.0" promptText="Recherche par nom" styleClass="modern-textfield" stylesheets="@../textfield.css" />
+            <TextField fx:id="rechercheTextField" layoutX="636.0" layoutY="30.0" prefWidth="130.0" promptText="Recherche par nom" styleClass="modern-textfield" stylesheets="@../textfield.css" />
 
             <!-- Bouton de tri par nombre d'étoiles -->
-            <Button fx:id="triEtoilesButton" layoutX="449.0" layoutY="59.0" onAction="#trierParEtoiles" styleClass="modern-button" stylesheets="@../modern-button.css" text="Trier par étoiles" />
+            <Button fx:id="triEtoilesButton" layoutX="636.0" layoutY="66.0" onAction="#trierParEtoiles" styleClass="modern-button" stylesheets="@../modern-button.css" text="Trier par étoiles" />
 
             <Label fx:id="nomid" layoutX="19.0" layoutY="57.0" />
             <Label fx:id="nbretoilesid" layoutX="19.0" layoutY="91.0" />
@@ -34,8 +34,8 @@
                     <Font name="Sitka Text Italic" size="18.0" />
                 </font>
             </Label>
-            <ListView fx:id="hotelListView" layoutX="14.0" layoutY="105.0" prefHeight="560.0" prefWidth="568.0" style="-fx-background-color: transparent;" />
-            <StackPane layoutX="425.0" layoutY="643.0" prefHeight="0.0" prefWidth="0.0" />
+            <ListView fx:id="hotelListView" layoutX="14.0" layoutY="105.0" prefHeight="560.0" prefWidth="795.0" style="-fx-background-color: transparent;" />
+            <StackPane layoutX="644.0" layoutY="659.0" prefHeight="0.0" prefWidth="0.0" />
             <!-- Bulle de discussion -->
             <Pane fx:id="chatBubble" layoutX="80.0" layoutY="180.0" prefHeight="178.0" prefWidth="210.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #18593b; -fx-background-radius: 20; -fx-border-radius: 20; -fx-effect: dropshadow(three-pass-box, rgb(105,191,167), 10, 0, 0, 0);" visible="false" AnchorPane.rightAnchor="34.0">
                 <!-- Contenu de la bulle de discussion -->
@@ -52,15 +52,15 @@
 
 
 
-            <Circle fx:id="chatbotCircle" fill="#18593b" layoutX="501.0" layoutY="467.0" radius="35.0" />
+            <Circle fx:id="chatbotCircle" fill="#18593b" layoutX="720.0" layoutY="483.0" radius="35.0" />
             <!-- Insérer votre gif ici -->
-            <ImageView fx:id="firstGifImageView" fitHeight="122.0" fitWidth="118.0" layoutX="430.0" layoutY="382.0" onMouseClicked="#showChatBubble">
+            <ImageView fx:id="firstGifImageView" fitHeight="122.0" fitWidth="118.0" layoutX="649.0" layoutY="398.0" onMouseClicked="#showChatBubble">
                 <image>
                     <Image url="@chatbot1.gif" />
                 </image>
             </ImageView>
             <!-- Deuxième gif à afficher lorsque la bulle de discussion apparaît -->
-            <ImageView fx:id="secondGifImageView" fitHeight="122.0" fitWidth="118.0" layoutX="430.0" layoutY="382.0" onMouseClicked="#showFirstGif" visible="true">
+            <ImageView fx:id="secondGifImageView" fitHeight="122.0" fitWidth="118.0" layoutX="649.0" layoutY="398.0" onMouseClicked="#showFirstGif" visible="true">
                 <image>
                     <Image url="@chatbot2.gif" />
                 </image>

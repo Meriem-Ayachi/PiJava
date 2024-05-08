@@ -104,7 +104,7 @@
                               <Image url="@images/hotel.png" />
                            </image>
                         </ImageView>
-                        <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="200.0" styleClass="transparent-button-white" stylesheets="@transparentbutton.css" text="Gestion des hotels" textFill="#fffdfd">
+                        <Button mnemonicParsing="false" onAction="#GoToHotel" prefHeight="25.0" prefWidth="200.0" styleClass="transparent-button-white" stylesheets="@transparentbutton.css" text="Gestion des hotels" textFill="#fffdfd">
                            <font>
                               <Font name="System Bold" size="13.0" />
                            </font>

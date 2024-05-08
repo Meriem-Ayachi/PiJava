@@ -15,7 +15,7 @@
                     <Font name="System Bold Italic" size="30.0" />
                 </font>
             </Label>
-            <ListView fx:id="listview" layoutX="40.0" layoutY="67.0" prefHeight="524.0" prefWidth="719.0" style="-fx-background-color: #93D7D5; -fx-selection-bar: transparent;" />
+            <ListView fx:id="listview" layoutX="40.0" layoutY="67.0" prefHeight="524.0" prefWidth="746.0" style="-fx-background-color: #93D7D5; -fx-selection-bar: transparent;" />
             <Button layoutX="670.0" layoutY="620.0" mnemonicParsing="false" onAction="#GoToAjouter" prefHeight="46.0" prefWidth="89.0" styleClass="modern-button" stylesheets="@modern-button.css" text="Ajouter" />
         </children>
     </AnchorPane>

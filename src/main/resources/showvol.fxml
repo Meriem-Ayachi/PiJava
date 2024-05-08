@@ -11,7 +11,7 @@
 <AnchorPane prefHeight="540" prefWidth="960" style="-fx-background-image: url('images/background.jpg');" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.Showvol">
     <!-- Your content goes here -->
     <fx:include source="sidebarAdmin.fxml" />
-    <AnchorPane layoutX="305.0" layoutY="17.0" prefHeight="566.0" prefWidth="458.0" style="-fx-background-color: #ececec;">
+    <AnchorPane layoutX="271.0" layoutY="1.0" prefHeight="680.0" prefWidth="822.0" style="-fx-background-color: #ececec;">
         
         <children>
             <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
@@ -19,13 +19,13 @@
                     <Image url="@../../../../../../Desktop/techvoyage.png" />
                 </image>
             </ImageView>
-            <ListView fx:id="listview" layoutX="27.0" layoutY="72.0" prefHeight="410.0" prefWidth="892.0" style="-fx-background-image: url('file:/C:/Users/melek/Desktop/plane.jpg');" />
-            <Label layoutX="408.0" layoutY="16.0" text="LISTE DES VOLS" textFill="WHITE">
+            <ListView fx:id="listview" layoutX="27.0" layoutY="72.0" prefHeight="410.0" prefWidth="784.0" style="-fx-background-image: url('file:/C:/Users/melek/Desktop/plane.jpg');" />
+            <Label layoutX="294.0" layoutY="14.0" text="LISTE DES VOLS" textFill="WHITE">
                 <font>
                     <Font name="Inconsolata Condensed Bold" size="28.0" />
                 </font>
             </Label>
-            <Button layoutX="885.0" layoutY="10.0" mnemonicParsing="false" onAction="#goBack" styleClass="modern-button" stylesheets="@modern-button.css" text="Back">
+            <Button layoutX="742.0" layoutY="23.0" mnemonicParsing="false" onAction="#goBack" styleClass="modern-button" stylesheets="@modern-button.css" text="Back">
             <font>
                 <Font name="Inconsolata Regular" size="18.0" />
             </font></Button>

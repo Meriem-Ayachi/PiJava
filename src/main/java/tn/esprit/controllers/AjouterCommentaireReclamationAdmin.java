@@ -7,6 +7,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -72,11 +73,16 @@ public class AjouterCommentaireReclamationAdmin {
         commentaire.setUser_id(session.id_utilisateur);
 
         {
-            commentaireService.add(commentaire);
+            // Afficher une confirmation
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-            alert.setTitle("Succès");
-            alert.setContentText("Commentaire ajouté");
-            alert.showAndWait();
+            alert.setTitle("Confirmation");
+            alert.setContentText("Modifier Commmentaire ?");
+            ButtonType result = alert.showAndWait().orElse(ButtonType.CANCEL);
+            // check if user has declined
+            if (result != ButtonType.OK) {
+                return;
+            }
+            commentaireService.add(commentaire);
         }
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/DetailsReclamationAdmin.fxml"));

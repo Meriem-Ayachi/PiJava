@@ -10,12 +10,12 @@
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="680.0" prefWidth="900.0" style="-fx-background-image: url('/backgound.jpg'); -fx-background-size: cover;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.hotelAdd">
+<AnchorPane fx:id="anchorPane"  prefHeight="680.0" prefWidth="822.0" style="-fx-background-image: url('/backgound.jpg'); -fx-background-size: cover;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.hotelAdd">
     <fx:include source="../sidebarAdmin.fxml" />
-    <AnchorPane layoutX="206.0" layoutY="3.0" prefHeight="595.0" prefWidth="683.0" style="-fx-background-color: #ececec;">
+    <AnchorPane layoutX="268.0" layoutY="1.0" prefHeight="680.0" prefWidth="613.0" style="-fx-background-color: #ececec;">
         <children>
 
-            <AnchorPane layoutX="14.0" layoutY="39.0" prefHeight="339.0" prefWidth="674.0">
+            <AnchorPane layoutX="-3.0" layoutY="9.0" prefHeight="401.0" prefWidth="633.0">
                 <!-- Labels et champs du formulaire -->
                 <Label fx:id="nomid" layoutX="19.0" layoutY="7.0" text="Nom" />
                 <!-- Utilisation de CheckBox pour sélectionner le nombre d'étoiles -->
@@ -33,7 +33,7 @@
                 <Button fx:id="consulterid" layoutX="315.0" layoutY="308.0" mnemonicParsing="false" onAction="#goToHotelList" styleClass="modern-button" stylesheets="@../modern-button.css" text="Consulter list" />
                 <TextField fx:id="emplacementf" layoutX="121.0" layoutY="76.0" styleClass="modern-textfield" stylesheets="@../textfield.css" />
                 <!-- ImageView pour afficher l'animation GIF -->
-                <ImageView fitHeight="145.0" fitWidth="191.0" layoutX="483.0" layoutY="52.0">
+                <ImageView fitHeight="145.0" fitWidth="199.0" layoutX="429.0" layoutY="52.0">
                     <clip>
                         <Circle centerX="100.0" centerY="70.5" radius="70.5" />
                     </clip>
@@ -41,13 +41,13 @@
                         <Image url="@hotel.gif" />
                     </image>
                 </ImageView>
+   
+               <Label layoutX="468.0" layoutY="11.0" text="Ajouter un hôtel">
+                   <font>
+                       <Font name="Sitka Text Italic" size="18.0" />
+                   </font>
+               </Label>
             </AnchorPane>
-
-            <Label layoutX="518.0" layoutY="14.0" text="Ajouter un hôtel">
-                <font>
-                    <Font name="Sitka Text Italic" size="18.0" />
-                </font>
-            </Label>
 
         </children>
     </AnchorPane>

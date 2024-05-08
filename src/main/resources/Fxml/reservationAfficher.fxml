@@ -4,23 +4,22 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="900.0" maxWidth="1200.0" minHeight="721.0" minWidth="1133.0" prefHeight="721.0" prefWidth="1133.0" style="-fx-background-image: url('backgound.jpg'); -fx-background-size: cover;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.reservationAfficher">
-    <fx:include source="../sidebarUser.fxml" />
-    <AnchorPane layoutX="285.0" layoutY="63.0" prefHeight="721.0" prefWidth="1133.0" style="-fx-background-color: #ececec;">
+<AnchorPane prefHeight="424.0" prefWidth="525.0" style="-fx-background-image: url('backgound.jpg'); -fx-background-size: cover;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.reservationAfficher">
+    <AnchorPane prefHeight="471.0" prefWidth="612.0" style="-fx-background-color: #ececec;">
         <children>
-            <Label fx:id="dateDepartLabel" layoutX="157.0" layoutY="68.0" />
-            <Label fx:id="dateRetourLabel" layoutX="157.0" layoutY="107.0" />
-            <Label fx:id="classeLabel" layoutX="157.0" layoutY="148.0" />
-            <Label fx:id="destinationDepartLabel" layoutX="157.0" layoutY="185.0" />
-            <Label fx:id="destinationRetourLabel" layoutX="157.0" layoutY="224.0" />
-            <Label fx:id="nbrPersonnesLabel" layoutX="157.0" layoutY="264.0" />
-            <Button fx:id="pdfButton" layoutX="480.0" layoutY="332.0" mnemonicParsing="false" onAction="#genererPDF" styleClass="modern-button" stylesheets="@../modern-button.css" text="PDF" />
+            <Label fx:id="dateDepartLabel" layoutX="71.0" layoutY="73.0" />
+            <Label fx:id="dateRetourLabel" layoutX="71.0" layoutY="112.0" />
+            <Label fx:id="classeLabel" layoutX="71.0" layoutY="153.0" />
+            <Label fx:id="destinationDepartLabel" layoutX="71.0" layoutY="190.0" />
+            <Label fx:id="destinationRetourLabel" layoutX="71.0" layoutY="229.0" />
+            <Label fx:id="nbrPersonnesLabel" layoutX="71.0" layoutY="269.0" />
+            <Button fx:id="pdfButton" layoutX="376.0" layoutY="351.0" mnemonicParsing="false" onAction="#genererPDF" styleClass="modern-button" stylesheets="@../modern-button.css" text="PDF" />
 
             <!-- Bouton Modifier -->
-            <Button fx:id="modifierButton" layoutX="281.0" layoutY="332.0" mnemonicParsing="false" onAction="#updateReservation" styleClass="modern-button" stylesheets="@../modern-button.css" text="Modifier" />
+            <Button fx:id="modifierButton" layoutX="177.0" layoutY="351.0" mnemonicParsing="false" onAction="#updateReservation" styleClass="modern-button" stylesheets="@../modern-button.css" text="Modifier" />
 
             <!-- Bouton Supprimer -->
-            <Button fx:id="supprimerButton" layoutX="366.0" layoutY="332.0" mnemonicParsing="false" onAction="#supprimerReservation" styleClass="modern-button" stylesheets="@../modern-button.css" text="Supprimer" />
+            <Button fx:id="supprimerButton" layoutX="262.0" layoutY="351.0" mnemonicParsing="false" onAction="#supprimerReservation" styleClass="modern-button" stylesheets="@../modern-button.css" text="Supprimer" />
         </children>
     </AnchorPane>
 </AnchorPane>

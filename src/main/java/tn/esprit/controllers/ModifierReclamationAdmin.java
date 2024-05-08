@@ -62,7 +62,7 @@ public class ModifierReclamationAdmin {
             // Afficher une confirmation
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setTitle("Confirmation");
-            alert.setContentText("Ajouter Commentaire ?");
+            alert.setContentText("Êtes-vous sûr de vouloir modifier l'état de la réclamation ?");
             ButtonType result = alert.showAndWait().orElse(ButtonType.CANCEL);
             // check if user has declined
             if (result != ButtonType.OK) {

@@ -1,5 +1,6 @@
 package tn.esprit.controllers;
 
+import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.List;
 
@@ -20,6 +21,19 @@ import tn.esprit.services.LogService;
 
 public class GestionLogs {
 
+
+
+    @FXML
+    private TableColumn<Log, LocalDateTime> timeColumn;
+
+    @FXML
+    private TableColumn<Log, String> typeColumn;
+
+    @FXML
+    private TableColumn<Log, String> descriptionColumn;
+
+    @FXML
+    private TableColumn<Log, String> userIdColumn;
     @FXML
     private TableView<Log> logsTableView;
 
@@ -45,6 +59,7 @@ public class GestionLogs {
 
     @FXML
     void initialize() {
+        try{
         //initialize the values of the type comboBox
         ObservableList<String> typeList = FXCollections.observableArrayList();
         for (LogType type : LogType.values()) {
@@ -52,23 +67,18 @@ public class GestionLogs {
         }
         logTypeComboBox.setItems(typeList);
 
-        TableColumn<Log, String> timeColumn = new TableColumn<>("Timestamp");
-        TableColumn<Log, String> typeColumn = new TableColumn<>("Type");
-        TableColumn<Log, String> descriptionColumn = new TableColumn<>("Description");
-        TableColumn<Log, String> userIdColumn = new TableColumn<>("user");
-
         timeColumn.setCellValueFactory(new PropertyValueFactory<>("timestamp"));
         typeColumn.setCellValueFactory(new PropertyValueFactory<>("type"));
         descriptionColumn.setCellValueFactory(new PropertyValueFactory<>("description"));
         userIdColumn.setCellValueFactory(new PropertyValueFactory<>("userId"));
 
         // add columns
-        List<TableColumn<Log, ?>> columns = Arrays.asList(
-                timeColumn,
-                typeColumn,
-                descriptionColumn,
-                userIdColumn);
-        logsTableView.getColumns().addAll(columns);
+        } catch (Exception e) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setContentText(e.getMessage());
+            alert.showAndWait();
+        }
 
         // fill table
         refreshTable();

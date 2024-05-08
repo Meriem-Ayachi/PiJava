@@ -1,6 +1,7 @@
 package tn.esprit.controllers;
 
 import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -21,7 +22,17 @@ import java.util.Arrays;
 import java.util.List;
 
 public class GestionUtilisateurs {
+    @FXML
+    private TableColumn<User, String> nomColumn;
 
+    @FXML
+    private TableColumn<User, String> prenomColumn;
+
+    @FXML
+    private TableColumn<User, String> emailColumn;
+
+    @FXML
+    private TableColumn<User, Integer> numtelColumn;
 
     @FXML
     private TableView<User> userTableView;
@@ -44,25 +55,21 @@ public class GestionUtilisateurs {
 
     @FXML
     void initialize() {
-        TableColumn<User, String> nomColumn = new TableColumn<>("nom");
-        TableColumn<User, String> prenomColumn = new TableColumn<>("prenom");
-        TableColumn<User, String> emailColumn = new TableColumn<>("email");
-        TableColumn<User, String> numtelColumn = new TableColumn<>("numtel");
-
+        try{
+        List<User> user = userService.getAll();
+        ObservableList<User> observableList = FXCollections.observableList(user);
+        userTableView.setItems(observableList);
         nomColumn.setCellValueFactory(new PropertyValueFactory<>("nom"));
         prenomColumn.setCellValueFactory(new PropertyValueFactory<>("prenom"));
         emailColumn.setCellValueFactory(new PropertyValueFactory<>("email"));
         numtelColumn.setCellValueFactory(new PropertyValueFactory<>("num_tel"));
 
-        // add columns
-        List<TableColumn<User, ?>> columns = Arrays.asList(
-                nomColumn,
-                prenomColumn,
-                emailColumn,
-                numtelColumn);
-        userTableView.getColumns().addAll(columns);
-
-        // fill table
+            } catch (Exception e) {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error");
+                alert.setContentText(e.getMessage());
+                alert.showAndWait();
+        }
         refreshTable();
     }
 

@@ -16,8 +16,8 @@
 <AnchorPane prefHeight="680.0" prefWidth="905.0" style="-fx-background-image: url('images/bkc.jpg'); -fx-background-size: cover;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.UpdateProfile">
     <fx:include source="sidebarUser.fxml" />
     <AnchorPane layoutX="297.0" layoutY="120.0">
-    <children>
-      
+        <children>
+
             <VBox layoutX="-17.0" layoutY="-142.0" prefHeight="703.0" prefWidth="631.0" stylesheets="@user.css" BorderPane.alignment="CENTER">
                 <children>
                     <Label text="Paramétrage du profil" textFill="WHITE">
@@ -148,10 +148,10 @@
                 </children>
             </VBox>
 
-    </children>
-      <stylesheets>
-         <URL value="@modern-button.css" />
-         <URL value="@textfield.css" />
-      </stylesheets>
-</AnchorPane>
+        </children>
+        <stylesheets>
+            <URL value="@modern-button.css" />
+            <URL value="@textfield.css" />
+        </stylesheets>
+    </AnchorPane>
 </AnchorPane>

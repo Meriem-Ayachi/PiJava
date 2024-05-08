@@ -4,6 +4,7 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -22,6 +23,12 @@
             <ScrollPane layoutX="15.0" layoutY="106.0" prefHeight="571.0" prefWidth="608.0">
                 <content>
                     <TableView fx:id="logsTableView" onMouseClicked="#onTableRowClicked" prefHeight="568.0" prefWidth="603.0">
+                        <columns>
+                            <TableColumn fx:id="timeColumn" prefWidth="147.0" style="-fx-text-fill: #5f5f64; -fx-font-weight: bold;" text="Timestamp" />
+                            <TableColumn fx:id="typeColumn" prefWidth="180.0" style="-fx-text-fill: #5f5f64; -fx-font-weight: bold;" text="Type" />
+                            <TableColumn fx:id="descriptionColumn" minWidth="0.0" prefWidth="219.0" style="-fx-text-fill: #5f5f64; -fx-font-weight: bold;" text="Description" />
+                            <TableColumn fx:id="userIdColumn" prefWidth="48.0" style="-fx-text-fill: #5f5f64; -fx-font-weight: bold;" text="user" />
+                        </columns>
                     </TableView>
                 </content>
             </ScrollPane>

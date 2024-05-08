@@ -23,7 +23,7 @@
                     <children>
                         <ImageView fx:id="ImageUser" fitHeight="75.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true" styleClass="profile-picture">
                             <image>
-                                <Image url="@images/UserIcon.png" />
+                                <Image url="@images/Admin.png" />
                             </image>
                             <cursor>
                                 <Cursor fx:constant="NONE" />
@@ -34,7 +34,7 @@
                                 <Font name="System Bold" size="18.0" />
                             </font>
                         </Label>
-                  <Button mnemonicParsing="false" onAction="#directDashboard" prefHeight="25.0" prefWidth="110.0" text="Tableau de Bord" textFill="WHITE" />
+                  <Button mnemonicParsing="false" onAction="#directDashboard" prefHeight="25.0" prefWidth="110.0" styleClass="modern-button2" stylesheets="@modern-button.css" text="Tableau de Bord" textFill="WHITE" />
                     </children>
                 </VBox>
                 <VBox prefHeight="344.0" prefWidth="282.0" spacing="7.0">
@@ -57,7 +57,7 @@
                      <children>
                         <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@images/history.png" />
+                              <Image url="@images/file.png" />
                            </image>
                         </ImageView>
                         <Button mnemonicParsing="false" onAction="#directToLogs" prefHeight="25.0" prefWidth="200.0" styleClass="transparent-button-white" stylesheets="@transparentbutton.css" text="Historique des utilisateurs" textFill="#eee9e9">
@@ -71,7 +71,7 @@
                             <children>
                                 <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
                                     <image>
-                                        <Image url="@images/jewelry.png" />
+                                        <Image url="@images/new-offer.png" />
                                     </image>
                                 </ImageView>
                                 <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="201.0" styleClass="transparent-button-white" stylesheets="@transparentbutton.css" text="Gestion des offres" textFill="#fffdfd">

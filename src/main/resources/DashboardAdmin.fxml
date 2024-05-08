@@ -5,7 +5,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.ProfileAdmin">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.DashboardAdmin">
     <fx:include source="sidebarAdmin.fxml" />
     <AnchorPane layoutX="271.0" prefHeight="686.0" prefWidth="629.0" style="-fx-background-color: #ececec;">
         <children>
@@ -16,7 +16,7 @@
             </Label>
          <Text layoutX="23.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gérez efficacement votre agence de voyages avec notre interface d'administration intuitive.">
             <font>
-               <Font name="Californian FB Italic" size="12.0" />
+               <Font name="Cambria Math" size="12.0" />
             </font>
          </Text>
         </children>

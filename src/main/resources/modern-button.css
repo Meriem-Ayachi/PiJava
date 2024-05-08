@@ -9,6 +9,14 @@
     -fx-padding: 8px 16px; /* Padding */
     -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.2) , 4,0,0,1 ); /* Shadow effect */
 }
+.modern-button2 {
+    -fx-background-radius: 13px; /* Rounded corners */
+    -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.2) , 4,0,0,1 ); /* Shadow effect */
+}
+.modern-button2:hover {
+    -fx-background-color: #233b9a; /* Darker background color on hover */
+    -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.4) , 6,0,0,2 ); /* Larger shadow on hover */
+}
 
 /* Hover effect for the modern button */
 .modern-button:hover {

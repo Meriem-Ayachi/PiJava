@@ -48,7 +48,7 @@ public class sidebarAdmin {
     public void directToHomepage_back(ActionEvent event) {
 
         Navigator nav = new Navigator();
-        nav.goToPage_WithEvent("/ProfileAdmin.fxml",event);
+        nav.goToPage_WithEvent("/DashboardAdmin.fxml",event);
     }
 
     public void directToUserm_back(ActionEvent event) {
@@ -66,7 +66,7 @@ public class sidebarAdmin {
     public void directDashboard(ActionEvent event) {
 
         Navigator nav = new Navigator();
-        nav.goToPage_WithEvent("/ProfileAdmin.fxml",event);
+        nav.goToPage_WithEvent("/DashboardAdmin.fxml",event);
     }
 
 }

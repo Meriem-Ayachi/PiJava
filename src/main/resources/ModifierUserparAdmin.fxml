@@ -12,9 +12,9 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #F1F1F1;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.ModifierUserparAdmin">
     <fx:include source="sidebarAdmin.fxml" />
-   <AnchorPane layoutX="269.0" prefHeight="684.0" prefWidth="660.0">
+   <AnchorPane layoutX="269.0" prefHeight="694.0" prefWidth="660.0" style="-fx-background-color: #CDDAEC;">
       <children>
-          <AnchorPane layoutX="75.0" layoutY="114.0" prefHeight="384.0" prefWidth="510.0" style="-fx-background-color: #ececec;">
+          <AnchorPane layoutX="92.0" layoutY="135.0" prefHeight="384.0" prefWidth="497.0" style="-fx-background-color: #CED6E3;">
               <children>
                   <Label layoutX="125.0" layoutY="28.0" text="Modifier vos informations" textFill="#36261c85">
                       <font>

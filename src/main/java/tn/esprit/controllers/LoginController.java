@@ -79,7 +79,7 @@ public class  LoginController {
     }
 
     private void redirectToAdminPage(ActionEvent event) {
-        nav.goToPage_WithEvent("/ProfileAdmin.fxml", event);
+        nav.goToPage_WithEvent("/DashboardAdmin.fxml", event);
     }
 
     public void redirectToInscription(ActionEvent event){

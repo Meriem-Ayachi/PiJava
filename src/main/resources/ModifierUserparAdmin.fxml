@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
 <?import java.net.URL?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
@@ -11,50 +12,74 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #F1F1F1;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.ModifierUserparAdmin">
     <fx:include source="sidebarAdmin.fxml" />
-    <AnchorPane layoutX="270.0" prefHeight="680.0" prefWidth="822.0" style="-fx-background-color: #ececec;">
-        <children>
-            <Label layoutX="301.0" layoutY="196.0" text="Modifier vos informations" textFill="#36261c85">
-                <font>
-                    <Font name="System Bold" size="20.0" />
-                </font>
-            </Label>
-            <Label layoutX="231.0" layoutY="280.0" text="Nom :" textFill="#000000a4">
-                <font>
-                    <Font name="System Bold" size="16.0" />
-                </font></Label>
-            <Label layoutX="233.0" layoutY="324.0" text="Prénom :" textAlignment="CENTER" textFill="#000000b5">
-                <font>
-                    <Font name="System Bold" size="15.0" />
-                </font></Label>
-            <Label layoutX="233.0" layoutY="370.0" prefHeight="25.0" prefWidth="75.0" text="num tel :" textFill="#000000b5">
-                <font>
-                    <Font name="System Bold" size="16.0" />
-                </font></Label>
-            <Label layoutX="240.0" layoutY="419.0" text="Email :" textFill="#000000c4">
-                <font>
-                    <Font name="System Bold" size="16.0" />
-                </font></Label>
-            <!-- Add labels for other properties... -->
-
-            <TextField fx:id="nomTF" layoutX="318.0" layoutY="277.0" prefHeight="30.0" prefWidth="256.0" styleClass="modern-textfield" />
-            <TextField fx:id="prenomTF" layoutX="318.0" layoutY="320.0" prefHeight="30.0" prefWidth="256.0" styleClass="modern-textfield" />
-            <TextField fx:id="numtelTF" layoutX="318.0" layoutY="368.0" prefHeight="30.0" prefWidth="256.0" styleClass="modern-textfield" />
-            <TextField fx:id="emailTF" layoutX="319.0" layoutY="416.0" prefHeight="30.0" prefWidth="256.0" styleClass="modern-textfield" />
-            <!-- Add text fields for other properties... -->
-
-            <Button layoutX="360.0" layoutY="458.0" mnemonicParsing="false" onAction="#ModifierUser" prefHeight="39.0" prefWidth="165.0" style="-fx-background-color: #5AA0FE;" styleClass="modern-button" text="Mettre à jour" textFill="#4b3d3d">
-            <font>
-               <Font name="System Bold" size="14.0" />
-            </font></Button>
-            <ImageView fitHeight="57.0" fitWidth="104.0" layoutX="236.0" layoutY="183.0" pickOnBounds="true" preserveRatio="true">
-                <image>
-                    <Image url="@images/UserIcon.png" />
-                </image>
-            </ImageView>
-        </children>
-      <stylesheets>
-         <URL value="@modern-button.css" />
-         <URL value="@textfield.css" />
-      </stylesheets>
-    </AnchorPane>
+   <AnchorPane layoutX="269.0" prefHeight="694.0" prefWidth="660.0" style="-fx-background-color: #CDDAEC;">
+      <children>
+          <AnchorPane layoutX="92.0" layoutY="135.0" prefHeight="384.0" prefWidth="497.0" style="-fx-background-color: #CED6E3;">
+              <children>
+                  <Label layoutX="125.0" layoutY="28.0" text="Modifier vos informations" textFill="#36261c85">
+                      <font>
+                          <Font name="System Bold" size="20.0" />
+                      </font>
+                  </Label>
+                  <Label layoutX="55.0" layoutY="112.0" text="Nom :" textFill="#000000a4">
+                      <font>
+                          <Font name="System Bold" size="16.0" />
+                      </font>
+               </Label>
+                  <Label layoutX="57.0" layoutY="156.0" text="Prénom :" textAlignment="CENTER" textFill="#000000b5">
+                      <font>
+                          <Font name="System Bold" size="15.0" />
+                      </font>
+               </Label>
+                  <Label layoutX="57.0" layoutY="202.0" prefHeight="25.0" prefWidth="75.0" text="num tel :" textFill="#000000b5">
+                      <font>
+                          <Font name="System Bold" size="16.0" />
+                      </font>
+               </Label>
+                  <Label layoutX="64.0" layoutY="251.0" text="Email :" textFill="#000000c4">
+                      <font>
+                          <Font name="System Bold" size="16.0" />
+                      </font>
+               </Label>
+                  <!-- Add labels for other properties... -->
+      
+                  <TextField fx:id="nomTF" layoutX="142.0" layoutY="109.0" prefHeight="30.0" prefWidth="256.0" styleClass="modern-textfield" />
+                  <TextField fx:id="prenomTF" layoutX="142.0" layoutY="152.0" prefHeight="30.0" prefWidth="256.0" styleClass="modern-textfield" />
+                  <TextField fx:id="numtelTF" layoutX="142.0" layoutY="200.0" prefHeight="30.0" prefWidth="256.0" styleClass="modern-textfield" />
+                  <TextField fx:id="emailTF" layoutX="143.0" layoutY="248.0" prefHeight="30.0" prefWidth="256.0" styleClass="modern-textfield" />
+                  <!-- Add text fields for other properties... -->
+      
+                  <Button layoutX="184.0" layoutY="290.0" mnemonicParsing="false" onAction="#ModifierUser" prefHeight="39.0" prefWidth="165.0" style="-fx-background-color: #5AA0FE;" styleClass="modern-button" text="Mettre à jour" textFill="#4b3d3d">
+                  <font>
+                     <Font name="System Bold" size="14.0" />
+                  </font>
+               </Button>
+                  <ImageView fitHeight="57.0" fitWidth="104.0" layoutX="60.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
+                      <image>
+                          <Image url="@images/UserIcon.png" />
+                      </image>
+                  </ImageView>
+              </children>
+            <stylesheets>
+               <URL value="@modern-button.css" />
+               <URL value="@textfield.css" />
+            </stylesheets>
+          </AnchorPane>
+         <Button layoutX="14.0" layoutY="21.0" mnemonicParsing="false" onAction="#directToUserm_back" prefHeight="30.0" prefWidth="122.0" text="Back" textFill="#e80a0a">
+            <stylesheets>
+               <URL value="@modern-button.css" />
+               <URL value="@transparentbutton.css" />
+            </stylesheets>
+            <styleClass>
+               <String fx:value="modern-button" />
+               <String fx:value="transparent-button-white" />
+            </styleClass>
+         </Button>
+         <ImageView fitHeight="30.0" fitWidth="33.0" layoutX="22.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+               <Image url="@images/retourIcon.png" />
+            </image>
+         </ImageView>
+      </children>
+   </AnchorPane>
 </AnchorPane>

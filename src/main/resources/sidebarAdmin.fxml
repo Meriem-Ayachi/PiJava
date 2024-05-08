@@ -12,18 +12,18 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="684.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.sidebarAdmin">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="694.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.sidebarAdmin">
     <left>
         <VBox prefHeight="690.0" prefWidth="270.0" spacing="15.0" style="-fx-background-color: #4C7DC9;" BorderPane.alignment="CENTER">
             <children>
-                <VBox alignment="CENTER" prefHeight="110.0" prefWidth="270.0" spacing="15.0">
+                <VBox alignment="CENTER" prefHeight="110.0" prefWidth="270.0" spacing="11.0">
                     <VBox.margin>
                         <Insets top="45.0" />
                     </VBox.margin>
                     <children>
-                        <ImageView fx:id="ImageUser" fitHeight="88.0" fitWidth="88.0" pickOnBounds="true" preserveRatio="true" styleClass="profile-picture">
+                        <ImageView fx:id="ImageUser" fitHeight="75.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true" styleClass="profile-picture">
                             <image>
-                                <Image url="@images/UserIcon.png" />
+                                <Image url="@images/Admin.png" />
                             </image>
                             <cursor>
                                 <Cursor fx:constant="NONE" />
@@ -34,9 +34,10 @@
                                 <Font name="System Bold" size="18.0" />
                             </font>
                         </Label>
+                  <Button mnemonicParsing="false" onAction="#directDashboard" prefHeight="25.0" prefWidth="110.0" styleClass="modern-button2" stylesheets="@modern-button.css" text="Tableau de Bord" textFill="WHITE" />
                     </children>
                 </VBox>
-                <VBox prefHeight="344.0" prefWidth="282.0" spacing="12.0">
+                <VBox prefHeight="344.0" prefWidth="282.0" spacing="7.0">
                     <children>
                   <HBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="49.0" prefWidth="304.0">
                      <children>
@@ -56,7 +57,7 @@
                      <children>
                         <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@images/history.png" />
+                              <Image url="@images/file.png" />
                            </image>
                         </ImageView>
                         <Button mnemonicParsing="false" onAction="#directToLogs" prefHeight="25.0" prefWidth="200.0" styleClass="transparent-button-white" stylesheets="@transparentbutton.css" text="Historique des utilisateurs" textFill="#eee9e9">
@@ -70,7 +71,7 @@
                             <children>
                                 <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
                                     <image>
-                                        <Image url="@images/jewelry.png" />
+                                        <Image url="@images/new-offer.png" />
                                     </image>
                                 </ImageView>
                                 <Button mnemonicParsing="false" onAction="#GoToOffres" prefHeight="25.0" prefWidth="201.0" styleClass="transparent-button-white" stylesheets="@transparentbutton.css" text="Gestion des offres" textFill="#fffdfd">

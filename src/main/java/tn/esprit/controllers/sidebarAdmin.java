@@ -45,12 +45,6 @@ public class sidebarAdmin {
         nav.goToPage_WithEvent("/log.fxml", event);
     }
 
-    public void directToHomepage_back(ActionEvent event) {
-
-        Navigator nav = new Navigator();
-        nav.goToPage_WithEvent("/ProfileAdmin.fxml",event);
-    }
-
     public void directToUserm_back(ActionEvent event) {
 
         Navigator nav = new Navigator();
@@ -61,6 +55,12 @@ public class sidebarAdmin {
 
         Navigator nav = new Navigator();
         nav.goToPage_WithEvent("/GestionLogs.fxml",event);
+    }
+
+    public void directDashboard(ActionEvent event) {
+
+        Navigator nav = new Navigator();
+        nav.goToPage_WithEvent("/DashboardAdmin.fxml",event);
     }
 
     public void directToVol(ActionEvent event) {

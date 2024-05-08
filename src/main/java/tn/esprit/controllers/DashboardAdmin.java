@@ -1,5 +1,5 @@
 package tn.esprit.controllers;
 
-public class ProfileAdmin {
+public class DashboardAdmin {
     
 }

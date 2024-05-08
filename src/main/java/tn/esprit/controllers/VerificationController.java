@@ -35,11 +35,11 @@ public class VerificationController {
         if (codeSaisi.equals(verificationCode)) {
             // Code de vérification valide, vous pouvez ici ajouter le code pour finaliser l'inscription
             // userService.finaliserInscription(userEmail);
-            showAlert(Alert.AlertType.INFORMATION, "Succès", "Code de verification réussie !");
+            showAlert(Alert.AlertType.INFORMATION, "Succès", "La vérification a été réussie avec succès. !");
             verificationSuccessful = true; // Marquer la vérification comme réussie
             closeVerificationWindow();
         } else {
-            showAlert(Alert.AlertType.ERROR, "Erreur", "Code de vérification invalide.");
+            showAlert(Alert.AlertType.ERROR, "Erreur", "Désolé, le code de vérification que vous avez saisi semble incorrect. Veuillez vérifier le code et réessayer.");
         }
     }
 

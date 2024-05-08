@@ -67,6 +67,10 @@ public class sidebarUser {
         nav.goToPage_WithEvent("/UpdateProfile.fxml",event);
     }
 
+    public void directToVol(ActionEvent event) {
+        Navigator nav = new Navigator();
+        nav.goToPage_WithEvent("/Showvolforuser.fxml",event);
+    }
 
     @FXML
     void GoToHotel(ActionEvent event) {

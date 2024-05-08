@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="540" prefWidth="960" style="-fx-background-image: url('images/background.jpg');" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.Showvol">
+    <!-- Your content goes here -->
+    <fx:include source="sidebarAdmin.fxml" />
+    <AnchorPane layoutX="305.0" layoutY="17.0" prefHeight="566.0" prefWidth="458.0" style="-fx-background-color: #ececec;">
+        
+        <children>
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                <image>
+                    <Image url="@../../../../../../Desktop/techvoyage.png" />
+                </image>
+            </ImageView>
+            <ListView fx:id="listview" layoutX="27.0" layoutY="72.0" prefHeight="410.0" prefWidth="892.0" style="-fx-background-image: url('file:/C:/Users/melek/Desktop/plane.jpg');" />
+            <Label layoutX="408.0" layoutY="16.0" text="LISTE DES VOLS" textFill="WHITE">
+                <font>
+                    <Font name="Inconsolata Condensed Bold" size="28.0" />
+                </font>
+            </Label>
+            <Button layoutX="885.0" layoutY="10.0" mnemonicParsing="false" onAction="#goBack" styleClass="modern-button" stylesheets="@modern-button.css" text="Back">
+            <font>
+                <Font name="Inconsolata Regular" size="18.0" />
+            </font></Button>
+            <Button layoutX="27.0" layoutY="500.0" mnemonicParsing="false" onAction="#mettreenpromo" styleClass="modern-button" stylesheets="@modern-button.css" text="mettre en promo">
+            <font>
+                <Font name="Inconsolata Regular" size="18.0" />
+            </font></Button>
+
+            <!-- Button to navigate to the statistics page -->
+            <Button layoutX="168.0" layoutY="500.0" mnemonicParsing="false" onAction="#goToStatisticsPage" styleClass="modern-button" stylesheets="@modern-button.css" text="View Statistics">
+            <font>
+                <Font name="Inconsolata Regular" size="18.0" />
+            </font></Button>
+            <Button layoutX="292.0" layoutY="500.0" mnemonicParsing="false" onAction="#printToPdf" styleClass="modern-button" stylesheets="@modern-button.css" text="Print to PDF">
+            <font>
+                <Font name="Inconsolata Regular" size="18.0" />
+            </font></Button>
+
+        </children>
+    </AnchorPane>
+
+</AnchorPane>

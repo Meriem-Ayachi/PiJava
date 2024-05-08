@@ -1,24 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-
-<AnchorPane prefHeight="600.0" prefWidth="800.0" style="-fx-background-image: url('/backgound.jpg'); -fx-background-size: cover;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.hotelAfficherF">
-    <AnchorPane layoutX="50.0" layoutY="50.0" prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: #ececec;">
-        <children>
-            <Label fx:id="nomLabel" layoutX="50.0" layoutY="50.0" />
-            <Label fx:id="nbretoileLabel" layoutX="50.0" layoutY="100.0" />
-            <Label fx:id="emplacementLabel" layoutX="50.0" layoutY="150.0" />
-            <Label fx:id="avisLabel" layoutX="50.0" layoutY="200.0" />
-            <Label layoutX="50.0" layoutY="50.0" text="Nom:" textFill="WHITE" />
-            <Label layoutX="50.0" layoutY="100.0" text="Nombre d'étoiles:" textFill="WHITE" />
-            <Label layoutX="50.0" layoutY="150.0" text="Emplacement:" textFill="WHITE" />
-            <Label layoutX="50.0" layoutY="200.0" text="Avis:" textFill="WHITE" />
-            <ImageView fitHeight="200" fitWidth="200" layoutX="400.0" layoutY="50.0">
-                <Image url="@hotel2.gif" />
-            </ImageView>
-        </children>
-    </AnchorPane>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Button?>
+<AnchorPane prefHeight="600.0" prefWidth="800.0" style="-fx-background-image: url('/background.jpg'); -fx-background-size: cover;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.hotelModifier">
+    <children>
+        <AnchorPane layoutX="50.0" layoutY="50.0" prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: #ececec;">
+            <children>
+                <TextField fx:id="nomTextField" layoutX="150.0" layoutY="50.0" promptText="Nom" />
+                <TextField fx:id="nbretoileTextField" layoutX="150.0" layoutY="100.0" promptText="Nombre d'étoiles" />
+                <TextField fx:id="emplacementTextField" layoutX="150.0" layoutY="150.0" promptText="Emplacement" />
+                <TextField fx:id="avisTextField" layoutX="150.0" layoutY="200.0" promptText="Avis" />
+                <Button layoutX="150.0" layoutY="250.0" mnemonicParsing="false" onAction="#sauvegarderModification" text="Sauvegarder" />
+                <ImageView fitHeight="200" fitWidth="200" layoutX="400.0" layoutY="50.0">
+                    <image>
+                        <Image url="@hotel2.gif" />
+                    </image>
+                </ImageView>
+            </children>
+        </AnchorPane>
+    </children>
 </AnchorPane>

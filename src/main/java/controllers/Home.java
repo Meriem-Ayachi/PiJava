@@ -16,6 +16,7 @@ import javafx.stage.Stage;
 import tn.esprit.models.Offres;
 import tn.esprit.services.OffresService;
 
+
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.List;
@@ -33,6 +34,10 @@ public class Home implements Initializable {
 
     @FXML
     private ComboBox<String> combobox;
+
+    @FXML
+    private Label notificationLabel;
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -112,5 +117,12 @@ public class Home implements Initializable {
         alert.setTitle(title);
         alert.setContentText(message);
         alert.showAndWait();
+    }
+
+
+
+    // Méthode pour recevoir et afficher la notification
+    public void setNotification(String message) {
+        notificationLabel.setText(message);
     }
 }

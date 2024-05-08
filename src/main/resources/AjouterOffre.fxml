@@ -5,6 +5,8 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.control.Label?>
 <AnchorPane prefHeight="680.0" prefWidth="900.0" style="-fx-background-image: url('background.jpg'); -fx-background-size: cover;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AjouterOffre">
    <children>
       <TextField fx:id="titleTFO" layoutX="82.0" layoutY="48.0" prefHeight="45.0" prefWidth="190.0" promptText="title" styleClass="modern-textfield" stylesheets="@textfield.css" />
@@ -16,5 +18,12 @@
       <Button layoutX="119.0" layoutY="601.0" mnemonicParsing="false" onAction="#AjouterO" prefHeight="45.0" prefWidth="99.0" styleClass="modern-button" stylesheets="@modern-button.css" text="Ajouter" />
       <TextField fx:id="publishedTFO" layoutX="82.0" layoutY="182.0" prefHeight="45.0" prefWidth="190.0" promptText="published" styleClass="modern-textfield" stylesheets="@textfield.css" />
       <Button fx:id="liste" layoutX="619.0" layoutY="197.0" mnemonicParsing="false" onAction="#naviguer" prefHeight="45.0" prefWidth="157.0" styleClass="modern-button" stylesheets="@modern-button.css" text="liste des offres" />
+      <StackPane fx:id="notificationPane" prefWidth="200" prefHeight="50" style="-fx-background-color: lightblue;" layoutX="684.0" layoutY="48.0">
+         <!-- Vos éléments de notification peuvent être ajoutés ici -->
+         <children>
+            <Label fx:id="notificationLabel" textFill="#000000" />
+         </children>
+      </StackPane>
    </children>
+
 </AnchorPane>

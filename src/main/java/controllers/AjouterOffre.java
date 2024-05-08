@@ -1,7 +1,10 @@
 package controllers;
 
+
 import com.cloudinary.Cloudinary;
 import com.cloudinary.utils.ObjectUtils;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -10,11 +13,14 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.StackPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 import tn.esprit.models.Offres;
 import tn.esprit.services.OffresService;
 import javafx.embed.swing.SwingFXUtils;
@@ -40,6 +46,8 @@ public class AjouterOffre {
 
     @FXML
     private TextField prixTFO;
+    @FXML
+    private StackPane notificationPane;
 
     @FXML
     private TextField lieuTFO;
@@ -49,7 +57,9 @@ public class AjouterOffre {
     @FXML
     private Button liste;
 
+
     private final OffresService os = new OffresService();
+
 
     // Cloudinary initialization
     private final Cloudinary cloudinary = new Cloudinary(ObjectUtils.asMap(
@@ -60,67 +70,109 @@ public class AjouterOffre {
 
     @FXML
     void AjouterO(ActionEvent event) {
-
         try {
-            if (descriptionTFO.getText().isEmpty()) {
-                throw new SQLException("La description est vide.");
-            }
-            if (descriptionTFO.getText().length() > 30) {
-                throw new SQLException("La description ne doit pas dépasser 20 caractères.");
-            }
-            if (titleTFO.getText().isEmpty()) {
-                throw new SQLException("le titre est vide.");
-            }
-            if (prixTFO.getText().isEmpty()) {
-                throw new SQLException("le prix est vide.");
-            }
-            if (Double.parseDouble(prixTFO.getText()) == 0.0) {
-                throw new SQLException("Le prix ne peut pas être égal à zéro.");
-            }
-            if (publishedTFO.getText().isEmpty()) {
-                throw new SQLException("le published est vide.");
-            }
-            if (lieuTFO.getText().isEmpty()) {
-                throw new SQLException("le lieu est vide.");
-            }
+            validateFields(); // Validate input fields
+            String imageUrl = uploadImageToCloudinary(imageIV.getImage());
+            LocalDate today = LocalDate.now();
+            Date date = Date.valueOf(today);
+            os.add(new Offres(
+                    titleTFO.getText(),
+                    descriptionTFO.getText(),
+                    Boolean.parseBoolean(publishedTFO.getText()),
+                    Double.parseDouble(prixTFO.getText()),
+                    lieuTFO.getText(),
+                    imageUrl,
+                    date
+            ));
+            sendNotificationToHome("Offre ajoutée avec succès");
+        } catch (SQLException | IOException | IllegalArgumentException e) {
+            showAlert("Erreur", e.getMessage());
+        }
+    }
 
-            Image fxImage = imageIV.getImage();
-            if (fxImage != null) {
-                // Appeler la méthode uploadImageToCloudinary(image) ici
-                String imageUrl = uploadImageToCloudinary(fxImage);
+    private void validateFields() throws SQLException {
+        if (descriptionTFO.getText().isEmpty()) {
+            throw new SQLException("La description est vide.");
+        }
+        if (descriptionTFO.getText().length() > 30) {
+            throw new SQLException("La description ne doit pas dépasser 30 caractères.");
+        }
+        if (titleTFO.getText().isEmpty()) {
+            throw new SQLException("Le titre est vide.");
+        }
+        if (prixTFO.getText().isEmpty()) {
+            throw new SQLException("Le prix est vide.");
+        }
+        if (Double.parseDouble(prixTFO.getText()) == 0.0) {
+            throw new SQLException("Le prix ne peut pas être égal à zéro.");
+        }
+        if (publishedTFO.getText().isEmpty()) {
+            throw new SQLException("Le champ 'published' est vide.");
+        }
+        if (lieuTFO.getText().isEmpty()) {
+            throw new SQLException("Le lieu est vide.");
+        }
+        if (imageIV.getImage() == null) {
+            throw new IllegalArgumentException("L'image est nulle.");
+        }
+    }
 
-                // Get today's date
-                LocalDate today = LocalDate.now();
-                Date date = Date.valueOf(today);
+    private void showAlert(String title, String message) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle(title);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
 
-                os.add(new Offres(
-                        titleTFO.getText(),
-                        descriptionTFO.getText(),
-                        Boolean.parseBoolean(publishedTFO.getText()),
-                        Double.parseDouble(prixTFO.getText()),
-                        lieuTFO.getText(),
-                        imageUrl, // Utiliser l'URL de l'image Cloudinary
-                        date
-                ));
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Information");
-                alert.setContentText("Offre ajoutée");
-                alert.showAndWait();
-            } else {
-                throw new IllegalArgumentException("L'image est nulle.");
-            }
-        } catch (SQLException e) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Erreur");
-            alert.setContentText(e.getMessage());
-            alert.showAndWait();
+    private Timeline notificationTimeline;
 
-        } catch (IOException e) {
-            throw new RuntimeException(e);
+    private void showNotification(String message) {
+        if (notificationPane != null) { // Vérifiez que notificationPane n'est pas null avant de l'utiliser
+            notificationPane.setVisible(true);
+            notificationPane.getChildren().clear();
+            Label label = new Label(message);
+            notificationPane.getChildren().add(label);
+
+            notificationTimeline = new Timeline(new KeyFrame(Duration.minutes(5), event -> {
+                notificationPane.setVisible(false);
+                notificationTimeline.stop();
+            }));
+            notificationTimeline.setCycleCount(1);
+            notificationTimeline.play();
+        } else {
+            showAlert("Erreur", "notificationPane est null. Vérifiez votre FXML.");
         }
 
 
 
+    // Créer une Timeline pour gérer la durée d'affichage de la notification (5 minutes)
+        notificationTimeline = new Timeline(new KeyFrame(Duration.minutes(15), event -> {
+            notificationPane.setVisible(false); // Masquer la notification après 5 minutes
+            notificationTimeline.stop(); // Arrêter la Timeline
+        }));
+        notificationTimeline.setCycleCount(1); // Exécuter une seule fois
+        notificationTimeline.play(); // Démarrer la Timeline
+    }
+    private void sendNotificationToHome(String message) {
+        try {
+            // Charger le fichier FXML de la vue Home
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Home.fxml"));
+            Parent root = loader.load();
+
+            // Obtenir le contrôleur de la vue Home
+            Home homeController = loader.getController();
+
+            // Appeler la méthode setNotification du contrôleur Home pour afficher la notification
+            homeController.setNotification(message);
+
+            // Créer une nouvelle fenêtre pour afficher la vue Home avec la notification
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+            showAlert("Erreur", "Erreur lors de l'affichage de la notification");
+        }
     }
 
     //télécharger une image vers Cloudinary.

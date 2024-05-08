@@ -5,9 +5,10 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="680.0" prefWidth="900.0" style="-fx-background-image: url('background.jpg'); -fx-background-size: cover;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Home">
+<AnchorPane prefHeight="680.0" prefWidth="900.0" style="-fx-background-image: url('background.jpg'); -fx-background-size: cover;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Home">
    <children>
       <ListView fx:id="listview" layoutX="46.0" layoutY="143.0" prefHeight="444.0" prefWidth="826.0" />
       <Label alignment="CENTER" layoutX="176.0" layoutY="36.0" prefHeight="40.0" prefWidth="400.0" text="liste des offres">
@@ -18,5 +19,13 @@
       <Button fx:id="details" layoutX="560.0" layoutY="607.0" mnemonicParsing="false" onAction="#afficherDetails" prefHeight="32.0" prefWidth="102.0" styleClass="modern-button" stylesheets="@modern-button.css" text="details" />
       <ComboBox fx:id="combobox" layoutX="611.0" layoutY="94.0" prefWidth="150.0" styleClass="modern-combobox" stylesheets="@ComboBox.css" />
       <Button layoutX="787.0" layoutY="93.0" maxWidth="83.0" mnemonicParsing="false" onAction="#tri" prefHeight="36.0" prefWidth="68.0" styleClass="modern-button" stylesheets="@modern-button.css" text="Trier" />
+
+      <StackPane fx:id="notificationPane" prefWidth="200" prefHeight="50" style="-fx-background-color: lightblue;">
+         <!-- Vos éléments de notification peuvent être ajoutés ici -->
+         <children>
+            <Label fx:id="notificationLabel" textFill="#000000" />
+         </children>
+      </StackPane>
+
    </children>
 </AnchorPane>

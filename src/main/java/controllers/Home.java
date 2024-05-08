@@ -12,6 +12,8 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import tn.esprit.models.Offres;
 import tn.esprit.services.OffresService;
@@ -45,33 +47,61 @@ public class Home implements Initializable {
             List<Offres> offres = os.getAll();
             ObservableList<Offres> observableOffres = FXCollections.observableList(offres);
             listview.setItems(observableOffres);
+            // Charger le fichier CSS pour le style des cellules
+            URL cssFileUrl = getClass().getResource("/styles.css");
+            if (cssFileUrl != null) {
+                String cssFile = cssFileUrl.toExternalForm();
+                listview.getStylesheets().add(cssFile);
+            } else {
+                System.err.println("Erreur : Le fichier CSS n'a pas été trouvé.");
+            }
 
             // Configurer la cellule personnalisée pour afficher l'image dans la ListView
             listview.setCellFactory(param -> new ListCell<Offres>() {
+                private final HBox content = new HBox();
                 private final ImageView imageView = new ImageView();
+                private final VBox infoPane = new VBox();
+                private final Label titleLabel = new Label();
+                private final Label lieuLabel = new Label();
+                private final Label prixLabel = new Label();
+                private final Label dateLabel = new Label();
 
-                @Override
+                {
+                    content.getChildren().addAll(imageView, infoPane);
+                    content.setSpacing(20);
+                    infoPane.setSpacing(5);
+                    titleLabel.getStyleClass().add("offer-title");
+                    lieuLabel.getStyleClass().add("offer-lieu");
+                    prixLabel.getStyleClass().add("offer-price");
+                    dateLabel.getStyleClass().add("offer-date");
+
+                    infoPane.getChildren().addAll(titleLabel, lieuLabel, prixLabel,dateLabel);
+
+
+                }
+
                 protected void updateItem(Offres offres, boolean empty) {
                     super.updateItem(offres, empty);
                     if (empty || offres == null) {
-                        setText(null);
                         setGraphic(null);
                     } else {
-                        // Charger l'image depuis l'URL et l'afficher dans l'ImageView
                         try {
                             Image image = new Image(offres.getImage());
                             imageView.setImage(image);
-                            imageView.setFitWidth(70); // Réglez la largeur de l'image
-                            imageView.setPreserveRatio(true); // Préservez les proportions de l'image
-                            setGraphic(imageView);
-                            setText(offres.getTitle() +
-                                    "\n" + String.valueOf(offres.getPrix()) +
-                                    "\n" + offres.getCreated_at().toString() +
-                                    "\n" + offres.getLieu());
+                            imageView.setFitWidth(150); // Ajustez la largeur de l'image selon vos besoins
+                            imageView.setFitHeight(200); // Ajustez la hauteur de l'image selon vos besoins
+                            imageView.setPreserveRatio(true);
+                            titleLabel.setText(offres.getTitle());
+                            lieuLabel.setText(offres.getLieu());
+                            prixLabel.setText(String.valueOf(offres.getPrix()));
+                            dateLabel.setText(offres.getCreated_at().toString());
 
+
+
+                            prixLabel.setText(String.valueOf(offres.getPrix()));
+                            setGraphic(content);
                         } catch (Exception e) {
                             e.printStackTrace();
-                            // Gérer les erreurs de chargement de l'image ici
                         }
                     }
                 }

@@ -59,16 +59,18 @@ public class AfficherOffre implements Initializable {
                 private final Label descriptionLabel = new Label();
                 private final Label lieuLabel = new Label();
                 private final Label prixLabel = new Label();
+                private final Label dateLabel = new Label();
 
                 {
                     content.getChildren().addAll(imageView, infoPane);
-                    content.setSpacing(10);
+                    content.setSpacing(20);
                     infoPane.setSpacing(5);
                     titleLabel.getStyleClass().add("offer-title");
                     descriptionLabel.getStyleClass().add("offer-description");
                     lieuLabel.getStyleClass().add("offer-lieu");
                     prixLabel.getStyleClass().add("offer-price");
-                    infoPane.getChildren().addAll(titleLabel, descriptionLabel, lieuLabel, prixLabel);
+                    dateLabel.getStyleClass().add("offer-date");
+                    infoPane.getChildren().addAll(titleLabel, descriptionLabel, lieuLabel, prixLabel,dateLabel);
                 }
 
                 @Override
@@ -80,12 +82,14 @@ public class AfficherOffre implements Initializable {
                         try {
                             Image image = new Image(offres.getImage());
                             imageView.setImage(image);
-                            imageView.setFitWidth(70);
-                            imageView.setPreserveRatio(true);
+                            imageView.setFitWidth(150); // Ajustez la largeur de l'image selon vos besoins
+                            imageView.setFitHeight(200); // Ajustez la hauteur de l'image selon vos besoins
                             titleLabel.setText(offres.getTitle());
                             descriptionLabel.setText(offres.getDescription());
                             lieuLabel.setText(offres.getLieu());
                             prixLabel.setText(String.valueOf(offres.getPrix()));
+                            dateLabel.setText(offres.getCreated_at().toString());
+
                             setGraphic(content);
                         } catch (Exception e) {
                             e.printStackTrace();

@@ -26,21 +26,20 @@
 }
 
 .offer-description {
-    -fx-font-family: "Segoe UI", sans-serif;
-    -fx-font-size: 16px;
-    -fx-text-fill: #666;
-    -fx-wrap-text: true;
+
+    -fx-font-size: 18px;
+
 }
 
 .offer-lieu {
-    -fx-font-family: "Segoe UI", sans-serif;
-    -fx-font-size: 16px;
-    -fx-text-fill: #666;
+
+    -fx-font-size: 18px;
+
 }
 
 .offer-price {
     -fx-font-family: "Segoe UI", sans-serif;
     -fx-font-weight: bold;
-    -fx-font-size: 20px;
+    -fx-font-size: 16px;
     -fx-text-fill: #337ab7;
 }

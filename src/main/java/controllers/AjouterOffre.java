@@ -84,7 +84,8 @@ public class AjouterOffre {
                     imageUrl,
                     date
             ));
-            sendNotificationToHome("Offre ajoutée avec succès");
+            showNotification("Offre ajoutée avec succès");
+            sendNotificationToHome("un nouveau offre ajoutée");
         } catch (SQLException | IOException | IllegalArgumentException e) {
             showAlert("Erreur", e.getMessage());
         }
@@ -94,7 +95,7 @@ public class AjouterOffre {
         if (descriptionTFO.getText().isEmpty()) {
             throw new SQLException("La description est vide.");
         }
-        if (descriptionTFO.getText().length() > 30) {
+        if (descriptionTFO.getText().length() > 80 ) {
             throw new SQLException("La description ne doit pas dépasser 30 caractères.");
         }
         if (titleTFO.getText().isEmpty()) {

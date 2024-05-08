@@ -37,8 +37,6 @@ public class DetailsPage {
     @FXML
     private Offres offres;
 
-
-
     @FXML
     private Button reserver;
 

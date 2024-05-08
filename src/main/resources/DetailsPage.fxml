@@ -11,7 +11,7 @@
 
 <AnchorPane prefHeight="680.0" prefWidth="900.0" style="-fx-background-image: url('background.jpg'); -fx-background-size: cover;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.DetailsPage">
    <children>
-      <ImageView fx:id="imageView" fitHeight="166.0" fitWidth="435.0" layoutX="232.0" layoutY="120.0" />
+      <ImageView fx:id="imageView" fitHeight="166.0" fitWidth="519.0" layoutX="148.0" layoutY="120.0" />
       <Button fx:id="reserver" layoutX="100.0" layoutY="590.0" mnemonicParsing="false" onAction="#Reserver" prefHeight="36.0" prefWidth="108.0" styleClass="modern-button" stylesheets="@modern-button.css" text="Reserver" />
       <Button fx:id="commenter" layoutX="552.0" layoutY="590.0" mnemonicParsing="false" onAction="#Commenter" prefHeight="36.0" prefWidth="131.0" styleClass="modern-button" stylesheets="@modern-button.css" text="Commentaire" />
       <GridPane fx:id="gridpane" layoutX="181.0" layoutY="290.0" prefHeight="216.0" prefWidth="426.0" AnchorPane.topAnchor="290.0">

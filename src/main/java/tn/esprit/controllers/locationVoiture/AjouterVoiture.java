@@ -11,7 +11,10 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
@@ -53,9 +56,16 @@ public class AjouterVoiture {
         ObservableList<String> energyType = FXCollections.observableArrayList(
             "Gasoline"
             , "Diesel"
-            , "Electricity"
+            , "Electric"
         );
         energyTF.setItems(energyType);
+    }
+
+    public void fillInputs(String marque, String model, String energy, String capacite){
+        modelTF.setText(model);
+        marqueTF.setText(marque);
+        energyTF.setValue(energy);
+        capaciteTF.setText(capacite);
     }
 
     @FXML
@@ -183,6 +193,29 @@ public class AjouterVoiture {
             return fileName.substring(lastIndex);
         }
         return "";
+    }
+
+
+
+    @FXML
+    void rechercheVoitureApi(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/rechercheVoiture.fxml"));
+            AnchorPane rechercheVoitureAnchorPane = loader.load();
+            rechercheVoiture controller = loader.getController();
+
+            // Appeler la méthode pour initialiser les détails de la réclamation
+            controller.initialize();
+
+            // Afficher l'interface dans une nouvelle fenêtre
+            Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
+
+            stage.setScene(new Scene(rechercheVoitureAnchorPane));
+            stage.show();
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     /*private void afficherMessage(String message) {

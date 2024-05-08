@@ -85,6 +85,13 @@ public class sidebarUser {
         nav.goToPage_WithEvent("/Fxml/reservationAdd.fxml",event);
 
     }
+
+    @FXML
+    void GoToOffres(ActionEvent event) {
+        Navigator nav = new Navigator();
+        nav.goToPage_WithEvent("/home.fxml",event);
+
+    }
     public void directToListeReclamationUser(ActionEvent event) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherReclamationUser.fxml"));

@@ -6,9 +6,10 @@
     <groupId>tn.esprit</groupId>
     <artifactId>Pijava</artifactId>
     <version>1.0-SNAPSHOT</version>
+
     <properties>
-        <maven.compiler.source>21</maven.compiler.source>
-        <maven.compiler.target>21</maven.compiler.target>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <arcgis.version>200.4.0</arcgis.version>
     </properties>
@@ -156,6 +157,15 @@
             <groupId>com.itextpdf</groupId>
             <artifactId>itextpdf</artifactId>
             <version>5.5.13.3</version>
+        </dependency>
+
+
+
+        <!-- JavaFX Dependencies -->
+        <dependency>
+            <groupId>com.cloudinary</groupId>
+            <artifactId>cloudinary-http44</artifactId>
+            <version>1.28.0</version>
         </dependency>
 
 

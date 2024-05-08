@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="449.0" prefWidth="420.0" style="-fx-background-image: url('background.jpg'); -fx-background-size: cover;" styleClass="background" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Statistique">
+    <children>
+        <PieChart fx:id="piechart" layoutX="7.0" prefHeight="449.0" prefWidth="590.0" />
+    </children>
+</AnchorPane>

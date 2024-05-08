@@ -80,6 +80,13 @@ public class sidebarAdmin {
         nav.goToPage_WithEvent("/Fxml/hotelList.fxml",event);
 
     }
+
+    @FXML
+    void GoToOffres(ActionEvent event) {
+        Navigator nav = new Navigator();
+        nav.goToPage_WithEvent("/AfficherOffre.fxml",event);
+
+    }
 }
 
 

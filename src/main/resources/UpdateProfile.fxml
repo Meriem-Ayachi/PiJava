@@ -18,7 +18,7 @@
     <AnchorPane layoutX="282.0" prefHeight="680.0" prefWidth="822.0">
     <children>
       
-            <VBox layoutX="-3.0" layoutY="-3.0" prefHeight="613.0" prefWidth="650.0" stylesheets="@user.css" BorderPane.alignment="CENTER">
+            <VBox layoutX="-3.0" layoutY="-3.0" prefHeight="613.0" prefWidth="702.0" stylesheets="@user.css" BorderPane.alignment="CENTER">
                 <children>
                     <Label text="Paramétrage du profil" textFill="WHITE">
                         <font>
@@ -28,7 +28,7 @@
                             <Insets bottom="30.0" left="50.0" right="50.0" top="30.0" />
                         </padding>
                     </Label>
-                    <VBox prefHeight="200.0" prefWidth="100.0" spacing="30.0">
+                    <VBox prefHeight="208.0" prefWidth="687.0" spacing="30.0">
                         <children>
                             <Label prefHeight="30.0" prefWidth="196.0" text="Détails du profil" textFill="WHITE">
                                 <font>
@@ -80,7 +80,7 @@
                                         </font>
                                     </Label>
                                     <Pane prefHeight="27.0" prefWidth="96.0" />
-                                    <Button mnemonicParsing="false" onAction="#uploadimage" prefHeight="38.0" prefWidth="134.0" style="-fx-background-color: #A3B7D5;" styleClass="modern-button" text="Upload Image" />
+                                    <Button mnemonicParsing="false" onAction="#uploadimage" prefHeight="38.0" prefWidth="134.0" style="-fx-background-color: #A3B7D5;" styleClass="modern-button2" text="Upload Image" />
                                     <Text fx:id="imagename" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="218.13671875">
                                         <HBox.margin>
                                             <Insets top="10.0" />
@@ -89,6 +89,12 @@
                                 </children>
                             </HBox>
                         </children>
+                  <opaqueInsets>
+                     <Insets />
+                  </opaqueInsets>
+                  <padding>
+                     <Insets left="70.0" />
+                  </padding>
                     </VBox>
                     <VBox layoutX="10.0" layoutY="106.0" prefHeight="201.0" prefWidth="378.0" spacing="30.0">
                         <children>
@@ -134,16 +140,19 @@
                             <HBox layoutX="10.0" layoutY="40.0" prefHeight="40.0" prefWidth="807.0" />
                         </children>
                         <padding>
-                            <Insets top="25.0" />
+                            <Insets left="70.0" top="25.0" />
                         </padding>
                     </VBox>
-                    <Button mnemonicParsing="false" onAction="#updateprofile" prefHeight="40.0" prefWidth="247.0" styleClass="modern-button" stylesheets="@modern-button.css" text="Sauvegarder les modifications" textFill="WHITE">
+                    <Button mnemonicParsing="false" onAction="#updateprofile" prefHeight="40.0" prefWidth="257.0" styleClass="modern-button" stylesheets="@modern-button.css" text="Sauvegarder les modifications" textFill="WHITE">
                         <font>
                             <Font name="System Bold" size="14.0" />
                         </font>
                         <VBox.margin>
-                            <Insets left="210.0" top="50.0" />
+                            <Insets left="290.0" top="50.0" />
                         </VBox.margin>
+                  <padding>
+                     <Insets left="70.0" />
+                  </padding>
                     </Button>
                 </children>
             </VBox>

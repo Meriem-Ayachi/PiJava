@@ -130,18 +130,52 @@ public class DetailsReclamationAdmin implements RefreshCallBack {
         buttonsHBox.setSpacing(10);
 
         Separator separator = new Separator();
-        separator.setOrientation(Orientation.HORIZONTAL); // Définir l'orientation de la séparatrice comme horizontale
+        separator.setOrientation(Orientation.HORIZONTAL);
 
         VBox commentVBox = new VBox(usernameText, commentContent);
         commentVBox.setSpacing(10);
 
-        HBox commentBox = new HBox(commentVBox, buttonsHBox);
-        commentBox.setSpacing(20);
+        Reclamation_Commentaire commentaire = rcs.getOne(commentId);
+        User user = us.getOne(commentaire.getUser_id());
 
-        VBox commentContainer = new VBox(commentBox, separator); // Ajouter la séparatrice sous le commentaire
-        commentContainer.setSpacing(20);
+        // Supposons que votre classe User a une méthode getProfileImageUrl() qui renvoie l'URL de l'image de profil de l'utilisateur
+        String profileImageUrl = user.getImagefilename();
 
-        commentsTextFlow.getChildren().addAll(commentContainer);
+        // Vérifiez si l'URL de l'image de profil est valide
+        if (profileImageUrl != null && !profileImageUrl.isEmpty()) {
+            // Chargez l'image de profil à partir de l'URL
+            Image profileImage = new Image("file:" + profileImageUrl);
+            ImageView profileImageView = new ImageView(profileImage);
+            profileImageView.setFitWidth(30); // Ajustez la largeur si nécessaire
+            profileImageView.setFitHeight(30); // Ajustez la hauteur si nécessaire
+
+            // Créez une mise en page pour afficher l'image de profil de l'utilisateur avec les autres éléments
+            HBox commentBox = new HBox(profileImageView, commentVBox, buttonsHBox);
+            commentBox.setSpacing(10);
+
+            // Ajoutez commentBox à votre interface utilisateur
+
+            VBox commentContainer = new VBox(commentBox, separator); // Ajouter la séparatrice sous le commentaire
+            commentContainer.setSpacing(10);
+
+            commentsTextFlow.getChildren().addAll(commentContainer);
+        } else {
+            // Si l'URL de l'image de profil est vide ou null, utilisez une image par défaut
+            String defaultImagePath = "/images/Admin.png";
+            Image defaultImage = new Image(getClass().getResourceAsStream(defaultImagePath));
+            ImageView defaultImageView = new ImageView(defaultImage);
+            defaultImageView.setFitWidth(30); // Ajustez la largeur si nécessaire
+            defaultImageView.setFitHeight(30); // Ajustez la hauteur si nécessaire
+
+            // Créez une mise en page pour afficher l'image par défaut avec les autres éléments
+            HBox commentBox = new HBox(defaultImageView, commentVBox, buttonsHBox);
+            commentBox.setSpacing(10);
+
+            VBox commentContainer = new VBox(commentBox, separator); // Ajouter la séparatrice sous le commentaire
+            commentContainer.setSpacing(10);
+
+            commentsTextFlow.getChildren().addAll(commentContainer);
+        }
 
     }
 
@@ -195,18 +229,52 @@ public class DetailsReclamationAdmin implements RefreshCallBack {
         buttonsHBox.setSpacing(10);
 
         Separator separator = new Separator();
-        separator.setOrientation(Orientation.HORIZONTAL); // Définir l'orientation de la séparatrice comme horizontale
+        separator.setOrientation(Orientation.HORIZONTAL);
 
         VBox commentVBox = new VBox(usernameText, commentContent);
         commentVBox.setSpacing(10);
 
-        HBox commentBox = new HBox(commentVBox, buttonsHBox);
-        commentBox.setSpacing(20);
+        Reclamation_Commentaire commentaire = rcs.getOne(commentId);
+        User user = us.getOne(commentaire.getUser_id());
 
-        VBox commentContainer = new VBox(commentBox, separator); // Ajouter la séparatrice sous le commentaire
-        commentContainer.setSpacing(20);
+        // Supposons que votre classe User a une méthode getProfileImageUrl() qui renvoie l'URL de l'image de profil de l'utilisateur
+        String profileImageUrl = user.getImagefilename();
 
-        commentsTextFlow.getChildren().addAll(commentContainer);
+        // Vérifiez si l'URL de l'image de profil est valide
+        if (profileImageUrl != null && !profileImageUrl.isEmpty()) {
+            // Chargez l'image de profil à partir de l'URL
+            Image profileImage = new Image("file:" + profileImageUrl);
+            ImageView profileImageView = new ImageView(profileImage);
+            profileImageView.setFitWidth(30); // Ajustez la largeur si nécessaire
+            profileImageView.setFitHeight(30); // Ajustez la hauteur si nécessaire
+
+            // Créez une mise en page pour afficher l'image de profil de l'utilisateur avec les autres éléments
+            HBox commentBox = new HBox(profileImageView, commentVBox, buttonsHBox);
+            commentBox.setSpacing(10);
+
+            // Ajoutez commentBox à votre interface utilisateur
+
+            VBox commentContainer = new VBox(commentBox, separator); // Ajouter la séparatrice sous le commentaire
+            commentContainer.setSpacing(10);
+
+            commentsTextFlow.getChildren().addAll(commentContainer);
+        } else {
+            // Si l'URL de l'image de profil est vide ou null, utilisez une image par défaut
+            String defaultImagePath = "/images/Admin.png";
+            Image defaultImage = new Image(getClass().getResourceAsStream(defaultImagePath));
+            ImageView defaultImageView = new ImageView(defaultImage);
+            defaultImageView.setFitWidth(30); // Ajustez la largeur si nécessaire
+            defaultImageView.setFitHeight(30); // Ajustez la hauteur si nécessaire
+
+            // Créez une mise en page pour afficher l'image par défaut avec les autres éléments
+            HBox commentBox = new HBox(defaultImageView, commentVBox, buttonsHBox);
+            commentBox.setSpacing(10);
+
+            VBox commentContainer = new VBox(commentBox, separator); // Ajouter la séparatrice sous le commentaire
+            commentContainer.setSpacing(10);
+
+            commentsTextFlow.getChildren().addAll(commentContainer);
+        }
     }
 
 
@@ -215,7 +283,7 @@ public class DetailsReclamationAdmin implements RefreshCallBack {
         Parent root = loader.load();
 
         // Obtenir le contrôleur associé à l'interface
-            ModifierCommentaireReclamationAdmin controller = loader.getController();
+        ModifierCommentaireReclamationAdmin controller = loader.getController();
 
         // Appeler la méthode pour initialiser les détails de la réclamation
         controller.initialize(commentID);

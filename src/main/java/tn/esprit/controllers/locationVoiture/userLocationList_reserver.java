@@ -1,5 +1,7 @@
 package tn.esprit.controllers.locationVoiture;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
 
 import javafx.event.ActionEvent;
@@ -22,6 +24,11 @@ import tn.esprit.models.session;
 import tn.esprit.services.LocationVoitureService;
 import tn.esprit.services.VoitureService;
 import tn.esprit.util.Navigator;
+
+import org.apache.pdfbox.pdmodel.PDDocument;
+import org.apache.pdfbox.pdmodel.PDPage;
+import org.apache.pdfbox.pdmodel.PDPageContentStream;
+import org.apache.pdfbox.pdmodel.font.PDType1Font;
 
 public class userLocationList_reserver {
     
@@ -121,10 +128,71 @@ public class userLocationList_reserver {
         });
     }
 
-
     @FXML
     void DownloadPdf(Location_Voiture location_Voiture) {
-        showError("downloading");
+        if (location_Voiture != null) {
+            try {
+                PDDocument document = new PDDocument();
+                PDPage page = new PDPage();
+                document.addPage(page);
+
+                PDPageContentStream contentStream = new PDPageContentStream(document, page);
+                contentStream.beginText();
+                contentStream.setFont(PDType1Font.HELVETICA, 12);
+                float textY = 700; // Position verticale initiale
+                float leading = -15; // Espacement vertical entre chaque ligne
+                contentStream.newLineAtOffset(100, textY);
+
+                Voiture voiture = voitureService.getOne(location_Voiture.getVoiture_id());
+
+                contentStream.showText("Informations de la réservation :");
+                textY += leading;
+                contentStream.newLineAtOffset(0, leading);
+                contentStream.showText("Marque : " + voiture.getMarque());
+                textY += leading;
+                contentStream.newLineAtOffset(0, leading);
+                contentStream.showText("Model : " + voiture.getModel());
+                textY += leading;
+                contentStream.newLineAtOffset(0, leading);
+                contentStream.showText("Prix (par jour) : " + location_Voiture.getPrix());
+                textY += leading;
+                contentStream.newLineAtOffset(0, leading);
+                contentStream.showText("Energy: " + voiture.getEnergy());
+                textY += leading;
+                contentStream.newLineAtOffset(0, leading);
+                contentStream.showText("Capacité: " + voiture.getCapacite());
+                contentStream.endText();
+                contentStream.close();
+
+                File file = new File("C:\\Users\\MALEK\\Desktop/Reservation.pdf");
+                document.save(file);
+                document.close();
+
+                afficherPDFGenereAvecSucces();
+            } catch (IOException e) {
+                e.printStackTrace();
+                afficherErreurPDF();
+            }
+        } else {
+            afficherAucuneReservationSelectionneeAlert();
+        }
+    }
+
+    private void afficherErreurPDF() {
+        Alert errorAlert = new Alert(Alert.AlertType.ERROR);
+        errorAlert.setTitle("Erreur PDF");
+        errorAlert.setHeaderText(null);
+        errorAlert.setContentText("Une erreur s'est produite lors de la génération du fichier PDF.");
+        errorAlert.showAndWait();
+    }
+
+
+ private void afficherPDFGenereAvecSucces() {
+        Alert successAlert = new Alert(Alert.AlertType.INFORMATION);
+        successAlert.setTitle("PDF généré");
+        successAlert.setHeaderText(null);
+        successAlert.setContentText("Le fichier PDF de la réservation a été généré avec succès.");
+        successAlert.showAndWait();
     }
 
     @FXML
@@ -138,6 +206,14 @@ public class userLocationList_reserver {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle("Error");
         alert.setContentText(message);
+        alert.showAndWait();
+    }
+
+    private void afficherAucuneReservationSelectionneeAlert() {
+        Alert alert = new Alert(Alert.AlertType.WARNING);
+        alert.setTitle("Aucune réservation sélectionnée");
+        alert.setHeaderText(null);
+        alert.setContentText("Veuillez sélectionner une réservation pour générer un fichier PDF.");
         alert.showAndWait();
     }
     

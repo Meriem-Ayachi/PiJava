@@ -29,7 +29,7 @@ public abstract class Reservationservices implements IService<Reservation> {
     Connection cnx = MaConnexion.getInstance().getCnx();
     @Override
     public void add(Reservation reservation) {
-        String req = "INSERT INTO reservation(datedepart, dateretour, classe, destinationdepart, destinationretour, nbrdepersonne) VALUES (?, ?, ?, ?, ?, ?)";
+        String req = "INSERT INTO reservation(datedepart, dateretour, classe, destinationdepart, destinationretour, nbrdepersonne, user_id) VALUES (?, ?, ?, ?, ?, ?, ?)";
         try (PreparedStatement st = cnx.prepareStatement(req)) {
             st.setString(1, reservation.getDatedepart());
             st.setString(2, reservation.getDateretour());
@@ -37,6 +37,7 @@ public abstract class Reservationservices implements IService<Reservation> {
             st.setString(4, reservation.getDestinationdepart());
             st.setString(5, reservation.getDestinationretour());
             st.setInt(6, reservation.getNbrdepersonne());
+            st.setInt(7, reservation.getUserId());
 
             int rowsInserted = st.executeUpdate();
             if (rowsInserted > 0) {
@@ -173,6 +174,32 @@ public abstract class Reservationservices implements IService<Reservation> {
     }
 
 
+    public List<Reservation> getAllByUserId(int userId) {
+        List<Reservation> reservations = new ArrayList<>();
+        try {
+            String req = "SELECT * FROM reservation WHERE user_id=?";
+
+            PreparedStatement ps = cnx.prepareStatement(req);
+            ps.setInt(1,userId);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Reservation p = new Reservation();
+                p.setDatedepart(rs.getString("datedepart"));
+                p.setDateretour(rs.getString("dateretour")); // Correction du nom de la colonne
+                p.setClasse(rs.getString("classe")); // Correction du nom de la colonne
+                p.setDestinationdepart(rs.getString("destinationdepart"));
+                p.setDestinationretour(rs.getString("destinationretour"));
+                reservations.add(p);
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace(); // Affiche l'erreur
+            // Retourne une liste vide en cas d'erreur
+            return reservations;
+        }
+        return reservations;
+    }
+
+
     @Override
 
     public Reservation getOne(int id) {
@@ -199,6 +226,32 @@ public abstract class Reservationservices implements IService<Reservation> {
         String query = "SELECT * FROM reservation WHERE datedepart = ?";
         try (PreparedStatement statement = cnx.prepareStatement(query)) {
             statement.setString(1, dateSelectionnee.toString());
+            try (ResultSet resultSet = statement.executeQuery()) {
+                while (resultSet.next()) {
+                    Reservation rdv = new Reservation();
+                    rdv.setId(resultSet.getInt("id"));
+                    rdv.setDatedepart(resultSet.getString("datedepart"));
+                    rdv.setDateretour(resultSet.getString("dateretour"));
+                    rdv.setClasse(resultSet.getString("classe"));
+                    rdv.setDestinationdepart(resultSet.getString("destinationdepart"));
+                    rdv.setDestinationretour(resultSet.getString("destinationretour"));
+                    rdv.setNbrdepersonne(resultSet.getInt("nbrdepersonne"));
+                    rdvs.add(rdv);
+                }
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException("Error retrieving reservations for date " + dateSelectionnee, e);
+        }
+        return rdvs;
+    }
+
+
+    public List<Reservation> getReservationByDateByUserId(LocalDate dateSelectionnee, int userId) {
+        List<Reservation> rdvs = new ArrayList<>();
+        String query = "SELECT * FROM reservation WHERE datedepart = ? AND user_id=?";
+        try (PreparedStatement statement = cnx.prepareStatement(query)) {
+            statement.setString(1, dateSelectionnee.toString());
+            statement.setInt(2, userId);
             try (ResultSet resultSet = statement.executeQuery()) {
                 while (resultSet.next()) {
                     Reservation rdv = new Reservation();

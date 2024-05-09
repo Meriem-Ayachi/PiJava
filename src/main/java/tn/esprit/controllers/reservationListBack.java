@@ -16,7 +16,6 @@ import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 import tn.esprit.models.Reservation;
 import tn.esprit.models.hotel;
-import tn.esprit.models.session;
 import tn.esprit.services.Reservationservices;
 import javafx.scene.paint.Color;
 
@@ -28,7 +27,7 @@ import java.time.YearMonth;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class reservationList {
+public class reservationListBack {
 
     @FXML
     private ListView<Reservation> reservationListView;
@@ -105,7 +104,7 @@ public class reservationList {
 
     private Reservation selectedReservation;
 
-    public reservationList() {
+    public reservationListBack() {
         reservationService = new Reservationservices() {
             @Override
             public void generatePDF(List<Reservation> reservations, String filePath) {
@@ -195,7 +194,7 @@ public class reservationList {
         reservationListView.getItems().clear();
 
         // Récupérer les rendez-vous pour la date sélectionnée
-        List<Reservation> rdvs = rdvService.getReservationByDateByUserId(dateSelectionnee, session.id_utilisateur);
+        List<Reservation> rdvs = rdvService.getReservationByDate(dateSelectionnee);
 
         // Afficher un message en fonction de la présence de rendez-vous
         if (rdvs.isEmpty()) {
@@ -253,7 +252,7 @@ public class reservationList {
 
     private boolean hasRendezVous(int year, int month, int day) {
         LocalDate date = LocalDate.of(year, month, day);
-        List<Reservation> rdvs = rdvService.getReservationByDateByUserId(date, session.id_utilisateur);
+        List<Reservation> rdvs = rdvService.getReservationByDate(date);
         return !rdvs.isEmpty();
     }
 
@@ -262,9 +261,9 @@ public class reservationList {
     @FXML
     public void initialize() {
         // Charger les réservations depuis le service
-        List<Reservation> reservations = reservationService.getAllByUserId(session.id_utilisateur);
-        System.out.println(reservations);
-        reservationData = reservationService.getAllByUserId(session.id_utilisateur);
+        List<Reservation> reservations = reservationService.getAll();
+        reservationData = reservationService.getAll();
+        reservationListView.setItems(FXCollections.observableArrayList(reservationData));
 
         afficherCalendrier(currentYear, currentMonth);
         // Ajouter les réservations à la liste de vue
@@ -317,7 +316,7 @@ public class reservationList {
     // Méthode pour afficher les détails de la réservation sélectionnée
     private void afficherDetailsReservation(Reservation reservation) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Fxml/reservationAfficher.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Fxml/reservationAfficherBack.fxml"));
             Parent root = loader.load();
 
             // Passer la réservation sélectionnée au contrôleur de la vue reservationAfficher.fxml
@@ -334,7 +333,7 @@ public class reservationList {
 
     // Méthode pour rechercher les réservations par destination d'aller
     private void rechercherParDestination(String destination) {
-        List<Reservation> reservations = reservationService.getAllByUserId(session.id_utilisateur);
+        List<Reservation> reservations = reservationService.getAll();
         List<Reservation> filteredReservations = reservations.stream()
                 .filter(r -> r.getDestinationdepart().toLowerCase().contains(destination.toLowerCase()))
                 .collect(Collectors.toList());
@@ -361,7 +360,7 @@ public class reservationList {
                 .getItems().clear();
 
         // Récupérer la nouvelle liste des rendez-vous
-        List<Reservation> reservations = reservationService.getAllByUserId(session.id_utilisateur);
+        List<Reservation> reservations = reservationService.getAll();
 
         // Ajouter les nouveaux éléments à la ListView
         reservationListView

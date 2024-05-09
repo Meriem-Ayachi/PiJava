@@ -11,6 +11,7 @@ public class Reservation {
     private String destinationdepart;
     private String destinationretour;
     private int nbrdepersonne;
+    private int userId;
 
     public Reservation(int id,String datedepart, String dateretour, String classe, String destinationdepart, String destinationretour, int nbrdepersonne) {
         this.id= id;
@@ -24,6 +25,13 @@ public class Reservation {
 
     public int getId() {
         return id;
+    }
+
+    public int getUserId(){
+        return userId;
+    }
+    public void setUserId(int userId){
+        this.userId = userId;
     }
 
     public void setId(int id) {

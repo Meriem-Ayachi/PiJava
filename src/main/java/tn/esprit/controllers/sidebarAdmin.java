@@ -95,7 +95,7 @@ public class sidebarAdmin {
     @FXML
     void goToReservation(ActionEvent event) {
         Navigator nav = new Navigator();
-        nav.goToPage_WithEvent("/Fxml/reservationList.fxml",event);
+        nav.goToPage_WithEvent("/Fxml/reservationListBack.fxml",event);
     }
     
     @FXML

@@ -18,6 +18,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 import tn.esprit.models.Reservation;
 import tn.esprit.models.hotel;
+import tn.esprit.models.session;
 import tn.esprit.services.Reservationservices;
 
 import java.io.IOException;
@@ -285,6 +286,7 @@ public class reservationAdd implements Initializable {
         reservation.setClasse(classeComboBox.getValue());
         reservation.setDestinationdepart(destinationDepartComboBox.getValue());
         reservation.setDestinationretour(destinationRetourComboBox.getValue());
+        reservation.setUserId(session.id_utilisateur);
 
         try {
             int nbrPersonnes = Integer.parseInt(nbrPersonnesTextField.getText());

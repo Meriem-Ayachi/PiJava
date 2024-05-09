@@ -6,6 +6,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.layout.AnchorPane;
+import tn.esprit.controllers.reservationAdd;
 import tn.esprit.models.Vols;
 import tn.esprit.services.VolService;
 import javafx.stage.Stage;
@@ -53,6 +55,12 @@ public class DetailedPageforuserController {
 
     private Vols currentFlight; // Add a field to store the current flight
 
+
+    private Stage primaryStage;
+    public void setPrimaryStage(Stage stage){
+        primaryStage = stage;
+    }
+
     public void initData(Vols vol) {
         currentFlight = vol;
 
@@ -89,7 +97,33 @@ public class DetailedPageforuserController {
     }
 
 
+    @FXML
+    void reserverVol(){
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Fxml/reservationAdd.fxml"));
+            AnchorPane detailsReclamationPane = loader.load();
+            reservationAdd controller = loader.getController();
 
+            // Appeler la méthode pour initialiser les détails de la réclamation
+            controller.fillReservationInputs(
+                currentFlight.getPointdepart(),
+                currentFlight.getDestination(),
+                currentFlight.getClasse(),
+                String.valueOf(currentFlight.getNbrplace()),
+                currentFlight.getDatedepart(),
+                currentFlight.getDatearrive()
+            );
+
+            Stage stage = (Stage) pointDepartLabel.getScene().getWindow();
+            // close current windows
+            stage.close();
+            // open reservation in the primary window
+            primaryStage.setScene(new Scene(detailsReclamationPane));
+            primaryStage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
 
 }

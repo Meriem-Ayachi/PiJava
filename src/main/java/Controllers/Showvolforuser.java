@@ -196,6 +196,9 @@ public class Showvolforuser implements Initializable {
             // Pass the selected flight to the detailed page controller
             DetailedPageforuserController controller = loader.getController();
             controller.initData(vol);
+            
+            Stage currentStage = (Stage) endDatePicker.getScene().getWindow();
+            controller.setPrimaryStage(currentStage);
 
             // Display the detailed page
             Stage stage = new Stage();

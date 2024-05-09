@@ -71,6 +71,18 @@ public class reservationAdd implements Initializable {
         initializeDestinationComboBoxes();
     }
 
+    public void fillReservationInputs(String depart, String retour, String classe, String nbrPsersonne, String dateDepart, String dateArrive){
+        nbrPersonnesTextField.setText(nbrPsersonne);
+        classeComboBox.setValue(classe);
+        destinationDepartComboBox.setValue(depart);
+        destinationRetourComboBox.setValue(retour);
+        
+        LocalDate dateDepartTime = LocalDate.parse(dateDepart);
+        LocalDate dateArriveTime = LocalDate.parse(dateArrive);
+        dateDepartPicker.setValue(dateDepartTime);
+        dateRetourPicker.setValue(dateArriveTime);
+    }
+
 
     private void initializeDestinationComboBoxes() {
         // Vous pouvez charger les destinations disponibles à partir de votre source de données
@@ -84,7 +96,7 @@ public class reservationAdd implements Initializable {
                 "Dominican Republic", "Ecuador", "Egypt", "El Salvador", "Equatorial Guinea", "Eritrea", "Estonia",
                 "Eswatini", "Ethiopia", "Fiji", "Finland", "France", "Gabon", "Gambia", "Georgia", "Germany",
                 "Ghana", "Greece", "Grenada", "Guatemala", "Guinea", "Guinea-Bissau", "Guyana", "Haiti", "Honduras",
-                "Hungary", "Iceland", "India", "Indonesia", "Iran", "Iraq", "Ireland", "Israel", "Italy", "Jamaica",
+                "Hungary", "Iceland", "India", "Indonesia", "Iran", "Iraq", "Ireland", "Italy", "Jamaica",
                 "Japan", "Jordan", "Kazakhstan", "Kenya", "Kiribati", "Kosovo", "Kuwait", "Kyrgyzstan", "Laos",
                 "Latvia", "Lebanon", "Lesotho", "Liberia", "Libya", "Liechtenstein", "Lithuania", "Luxembourg",
                 "Madagascar", "Malawi", "Malaysia", "Maldives", "Mali", "Malta", "Marshall Islands", "Mauritania",
@@ -177,59 +189,13 @@ public class reservationAdd implements Initializable {
                         "    <h1>Country Information</h1>\n" +
                         "    <h2>Names:</h2>\n" +
                         "    <p>Common Name: " + countryInfo.getJSONObject("name").getString("common") + "</p>\n" +
-                        "    <p>Official Name: " + countryInfo.getJSONObject("name").getString("official") + "</p>\n" +
 
-                        "    <h2>Top-Level Domain:</h2>\n" +
-                        "    <p>" + countryInfo.getJSONArray("tld").getString(0) + "</p>\n" +
-                        "    <h2>Country Codes:</h2>\n" +
-                        "    <p>Alpha-2 Code: " + countryInfo.getString("cca2") + "</p>\n" +
-                        "    <p>Numeric Code: " + countryInfo.getString("ccn3") + "</p>\n" +
-                        "    <p>Alpha-3 Code: " + countryInfo.getString("cca3") + "</p>\n" +
-                        "    <p>IOC Code: " + countryInfo.getString("cioc") + "</p>\n" +
-                        "    <h2>Independence and Status:</h2>\n" +
-                        "    <p>Independent: " + (countryInfo.getBoolean("independent") ? "Yes" : "No") + "</p>\n" +
-                        "    <p>Status: " + countryInfo.getString("status") + "</p>\n" +
-                        "    <p>UN Member: " + (countryInfo.getBoolean("unMember") ? "Yes" : "No") + "</p>\n" +
-                        "    <h2>Currency</h2>\n" +
-                        "    <p><strong>Currency:</strong> " + countryInfo.getJSONObject("currencies").keys().next() + "</p>\n" +
-                        "    <h2>International Dialing:</h2>\n" +
-                        "    <p>Root: " + countryInfo.getJSONObject("idd").getString("root") + "</p>\n" +
-                        "    <p>Suffixes: " + countryInfo.getJSONObject("idd").getJSONArray("suffixes").join(", ") + "</p>\n" +
-                        "    <h2>Capital:</h2>\n" +
-                        "    <p>" + countryInfo.getJSONArray("capital").getString(0) + "</p>\n" +
-                        "    <h2>Alternate Spellings:</h2>\n" +
-                        "    <p>" + countryInfo.getJSONArray("altSpellings").join(", ") + "</p>\n" +
-                        "    <h2>Languages:</h2>\n" +
-                        "    <ul>\n";
 
-// Add languages dynamically
-                JSONArray languages = countryInfo.getJSONObject("languages").names();
-                if (languages != null) {
-                    for (int i = 0; i < languages.length(); i++) {
-                        String languageCode = languages.getString(i);
-                        String languageName = countryInfo.getJSONObject("languages").getString(languageCode);
-                        htmlContent += "        <li>" + languageCode + ": " + languageName + "</li>\n";
-                    }
-                }
-
-                htmlContent += "    </ul>\n" +
-                        "    <h2>Geographical Information:</h2>\n" +
-                        "    <p>Region: " + countryInfo.getString("region") + "</p>\n" +
-                        "    <p>Subregion: " + countryInfo.getString("subregion") + "</p>\n" +
-                        "    <p>Latlng: " + countryInfo.getJSONArray("latlng").join(", ") + "</p>\n" +
-                        "    <p>Landlocked: " + (countryInfo.getBoolean("landlocked") ? "Yes" : "No") + "</p>\n" +
-                        "    <p>Borders: " + countryInfo.getJSONArray("borders").join(", ") + "</p>\n" +
-                        "    <p>Area: " + countryInfo.getDouble("area") + " square kilometers</p>\n" +
                         "    <h2>Flag and Maps:</h2>\n" +
                         "    <img src=\"" + countryInfo.getJSONArray("flags").getString(0) + "\" alt=\"Country Flag\">\n" +
                         "    <p>Google Maps: <a href=\"" + countryInfo.getJSONObject("maps").getString("googleMaps") + "\" target=\"_blank\">Link</a></p>\n" +
                         "    <p>OpenStreet Maps: <a href=\"" + countryInfo.getJSONObject("maps").getString("openStreetMaps") + "\" target=\"_blank\">Link</a></p>\n" +
-                        "    <h2>Population and Other Details:</h2>\n" +
-                        "    <p>Population: " + countryInfo.getLong("population") + "</p>\n" +
-                        "    <p>FIFA Code: " + countryInfo.getString("fifa") + "</p>\n" +
-                        "    <p>Timezones: " + countryInfo.getJSONArray("timezones").join(", ") + "</p>\n" +
-                        "    <p>Continents: " + countryInfo.getJSONArray("continents").join(", ") + "</p>\n" +
-
+                      
 
                         "</main>\n" +
                         "</body>\n" +

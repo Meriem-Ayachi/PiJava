@@ -55,7 +55,7 @@
       <font>
          <Font name="Inconsolata Regular" size="18.0" />
       </font></Label>
-   <Button mnemonicParsing="false" styleClass="modern-button" stylesheets="@modern-button.css" text="Reserver">
+   <Button mnemonicParsing="false" onAction="#reserverVol" styleClass="modern-button" stylesheets="@modern-button.css" text="Reserver">
       <font>
          <Font name="Inconsolata Regular" size="18.0" />
       </font></Button>

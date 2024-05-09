@@ -1,41 +1,23 @@
 package tn.esprit;
 
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-
-
 import javafx.stage.Stage;
-import java.io.*;
+import tn.esprit.util.Navigator;
+
 
 public class MainFX extends Application {
 
+    private static Stage primaryStage;
+
     @Override
-    public void start(Stage primaryStage) {
-        try {
-            // Charger le fichier FXML
-            Parent root = FXMLLoader.load(getClass().getResource("/AfficherReclamationAdmin.fxml"));
+    public void start(Stage stage) throws Exception {
+        primaryStage = stage;
 
-            // Créer la scène
-            Scene scene = new Scene(root);
-
-           
-            // Définir la hauteur souhaitée
-
-
-
-            primaryStage.setTitle("Tech-Voyage");
-            primaryStage.setScene(scene);
-            primaryStage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        Navigator nav = new Navigator(stage);
+        nav.goToPage("/AfficherReclamationAdmin.fxml");
     }
 
-
-
-    public static void main(String[] args) {
-        launch(args);
+    public static Stage getPrimaryStage() {
+        return primaryStage;
     }
 }

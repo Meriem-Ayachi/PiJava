@@ -80,10 +80,15 @@ public class sidebarUser {
     }
 
     @FXML
+    void GoToLocationVoiture(ActionEvent event) {
+        Navigator nav = new Navigator();
+        nav.goToPage_WithEvent("/userLocationList.fxml",event);
+    }
+
+    @FXML
     void GoToReservation(ActionEvent event) {
         Navigator nav = new Navigator();
         nav.goToPage_WithEvent("/Fxml/reservationAdd.fxml",event);
-
     }
 
     @FXML

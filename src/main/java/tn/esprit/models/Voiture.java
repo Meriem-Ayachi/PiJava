@@ -2,7 +2,7 @@ package tn.esprit.models;
 
 public class Voiture {
     private int id,capacite;
-    private String couleur,marque,model,energy;
+    private String couleur,marque,model,energy, image_file_name;
 
     //constuctor
 
@@ -10,21 +10,23 @@ public class Voiture {
     public Voiture() {
     }
 
-    public Voiture(int id, int capacite, String couleur, String marque, String model, String energy) {
+    public Voiture(int id, int capacite, String couleur, String marque, String model, String energy, String image_file_name) {
         this.id = id;
         this.capacite = capacite;
         this.couleur = couleur;
         this.marque = marque;
         this.model = model;
         this.energy = energy;
+        this.image_file_name = image_file_name;
     }
 
-    public Voiture(int capacite, String couleur, String marque, String model, String energy) {
+    public Voiture(int capacite, String couleur, String marque, String model, String energy, String image_file_name) {
         this.capacite = capacite;
         this.couleur = couleur;
         this.marque = marque;
         this.model = model;
         this.energy = energy;
+        this.image_file_name = image_file_name;
     }
 
     //getters and setters
@@ -77,17 +79,19 @@ public class Voiture {
         this.energy = energy;
     }
 
+    public String getImage_file_name() {
+        return image_file_name;
+    }
+
+    public void setImage_file_name(String image_file_name) {
+        this.image_file_name = image_file_name;
+    }
+
     //display
 
     @Override
     public String toString() {
-        return "Voiture{" +
-                "id=" + id +
-                ", capacite=" + capacite +
-                ", couleur='" + couleur + '\'' +
-                ", marque='" + marque + '\'' +
-                ", model='" + model + '\'' +
-                ", energy='" + energy + '\'' +
-                '}';
+        return  model + "(" + marque + ")"; 
     }
+
 }

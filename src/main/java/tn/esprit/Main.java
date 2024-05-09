@@ -1,45 +1,49 @@
 package tn.esprit;
 
-import tn.esprit.models.Reclamation;
-import tn.esprit.models.Reclamation_Commentaire;
-import tn.esprit.services.ReclamationService;
-import tn.esprit.services.Reclamation_CommentaireService;
-import tn.esprit.util.MaConnexion;
-import java.sql.Timestamp;
+// import java.sql.Date;
+// import java.sql.Timestamp;
+// import java.time.LocalDate;
+// import java.util.List;
 
+// import tn.esprit.models.Location_Voiture;
+// import tn.esprit.models.Voiture;
+// import tn.esprit.services.LocationVoitureService;
+// import tn.esprit.services.VoitureService;
+// import tn.esprit.util.MaConnexion;
 
 public class Main {
     public static void main(String[] args)
     {
-       // MaConnexion mac = MaConnexion.getInstance();
 
-        //Reclamation
+        // VoitureService voitureService = new VoitureService();
+        // List<Voiture> voitures = voitureService.getAll();
+        // Voiture voiture = voitureService.getOne(11);
+        // System.out.println("old voiture: " + voiture);
+        // voiture.setImage_file_name("updatedImage");
+        // voitureService.update(voiture);
+        // Voiture voitureUpdated = voitureService.getOne(11);
+        // System.out.println("new voiture: " + voitureUpdated);
+        
+        
+        // LocationVoitureService locationService = new LocationVoitureService();
+        // Show Location
+        // List<Location_Voiture> location_Voitures = locationService.getAll();
+        // Location_Voiture location_Voiture = locationService.getOne(5);
+        // System.out.println(location_Voiture);
 
-        //ReclamationService rs = new ReclamationService();
-        //Timestamp dateReclamation = Timestamp.valueOf("2024-03-05 10:55:07");
+        // Add Location
+        // long currentTimeMillis = System.currentTimeMillis();
+        // Date startDate = new Date(currentTimeMillis); // Example: current date and time
+        // Date endDate = new Date(startDate.getTime() + (1000 * 60 * 60 * 24 * 7)); // Example: 7 days later
+        // Location_Voiture location = new Location_Voiture(100.0, startDate, endDate, "Compact", "Available", 9);
+        // locationService.add(location);
 
-        //Reclamation reclamation = new Reclamation("test","test", dateReclamation, (byte) 0, 1);
-        //rs.add(reclamation);
-
-        //System.out.println(rs.getAll());
-        //rs.update(new Reclamation(17,"test2","test2",dateReclamation,(byte) 0, 2));
-        //rs.delete(17);
-
-        //----------------------------
-        //Commentaire
-
-        Reclamation_CommentaireService rcs = new Reclamation_CommentaireService();
-        Timestamp dateCreation = Timestamp.valueOf("2024-03-05 10:55:07");
-
-        //Reclamation_Commentaire commentaire = new Reclamation_Commentaire("test",dateCreation,4,1);
-        //rcs.add(commentaire);
-
-        System.out.println(rcs.getAll());
-
-
-        //rcs.update(new Reclamation_Commentaire(10,"test2",dateCreation,6, 3));
-        //rcs.delete(10);
-
-
+        // Update location
+        // Location_Voiture location_Voiture = locationService.getOne(21);
+        // System.out.println("old location: " + location_Voiture);
+        // location_Voiture.setPrix(8);
+        // locationService.update(location_Voiture);
+        // Location_Voiture location_Voiture_updated = locationService.getOne(21);
+        // System.out.println("new location: " + location_Voiture_updated);
     }
 }

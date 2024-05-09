@@ -57,6 +57,18 @@ public class sidebarAdmin {
         nav.goToPage_WithEvent("/GestionLogs.fxml",event);
     }
 
+    public void listVoiture(ActionEvent event) {
+
+        Navigator nav = new Navigator();
+        nav.goToPage_WithEvent("/ListVoitures.fxml",event);
+    }
+
+    public void listLocationVoiture(ActionEvent event) {
+
+        Navigator nav = new Navigator();
+        nav.goToPage_WithEvent("/ListLocation.fxml",event);
+    }
+
     public void directDashboard(ActionEvent event) {
 
         Navigator nav = new Navigator();

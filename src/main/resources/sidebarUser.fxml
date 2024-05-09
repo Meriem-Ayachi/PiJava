@@ -109,7 +109,7 @@
                                         <Image url="@images/icons8-car-50.png" />
                                     </image>
                                 </ImageView>
-                        <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="136.0" styleClass="transparent-button-white" stylesheets="@transparentbutton.css" text="Voiture" textFill="WHITE">
+                        <Button mnemonicParsing="false" onAction="#GoToLocationVoiture" prefHeight="25.0" prefWidth="136.0" styleClass="transparent-button-white" stylesheets="@transparentbutton.css" text="Voiture" textFill="WHITE">
                            <font>
                               <Font name="System Bold" size="13.0" />
                            </font>

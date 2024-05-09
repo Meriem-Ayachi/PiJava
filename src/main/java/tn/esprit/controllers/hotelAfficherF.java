@@ -1,11 +1,13 @@
 package tn.esprit.controllers;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.web.WebView;
 import javafx.stage.Stage;
 import tn.esprit.models.hotel;
@@ -59,6 +61,29 @@ public class hotelAfficherF {
         } catch (IOException e) {
             e.printStackTrace(); // Gérer les erreurs de chargement de la page hotelList.fxml
         }
+    }
+
+    
+    @FXML
+    void gotoReserverHotel(ActionEvent event) {
+
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Fxml/hotelReserver.fxml"));
+            AnchorPane hotelAnchorPane = loader.load();
+            hotelReserver controller = loader.getController();
+
+            // Appeler la méthode pour initialiser les détails de la réclamation
+            controller.initialize(selectedHotel);
+
+            // Afficher l'interface dans une nouvelle fenêtre
+            Stage stage = (Stage) avisLabel.getScene().getWindow();
+
+            stage.setScene(new Scene(hotelAnchorPane));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        
     }
 
 }

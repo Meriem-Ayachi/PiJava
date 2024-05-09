@@ -14,7 +14,7 @@ public class MainFX extends Application {
         primaryStage = stage;
 
         Navigator nav = new Navigator(stage);
-        nav.goToPage("/AfficherReclamationUser.fxml");
+        nav.goToPage("/Fxml/hotelListF.fxml");
     }
 
     public static Stage getPrimaryStage() {

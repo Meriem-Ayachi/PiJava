@@ -3,6 +3,7 @@ package tn.esprit.services;
 import tn.esprit.interfaces.IService;
 import tn.esprit.models.Reservation;
 import tn.esprit.models.hotel;
+import tn.esprit.models.hotelReserverModel;
 import tn.esprit.util.MaConnexion;
 
 import java.sql.*;
@@ -25,6 +26,45 @@ public  class Hotelservices implements IService<hotel> {
             preparedStatement.setString(2, hotel.getNbretoile());
             preparedStatement.setString(3, hotel.getEmplacement());
             preparedStatement.setString(4, hotel.getAvis());
+
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException("Erreur lors de l'ajout de l'hôtel", e);
+        }
+    }
+
+
+    public List<hotelReserverModel> getAllReserved(){
+        List<hotelReserverModel> hotelModel = new ArrayList<>();
+        try {
+            String req = "SELECT * FROM hotelreserver";
+            Statement st = cnx.createStatement();
+            ResultSet rs = st.executeQuery(req);
+            while (rs.next()) {
+                hotelReserverModel p = new hotelReserverModel();
+                p.setId(rs.getInt("id"));
+                p.setSejour(rs.getString("sejour"));
+                p.setDate_debut(rs.getString("date_retour"));
+                p.setDate_retour(rs.getString("date_retour"));
+                p.setUser_id(rs.getInt("userId"));
+                p.setHotelId(rs.getInt("hotelId"));
+                hotelModel.add(p);
+            }
+        } catch (SQLException ex) {
+            throw new RuntimeException("Erreur lors de la récupération des hôtels", ex);
+        }
+        return hotelModel;
+    }
+
+    public void reserveHotel(hotelReserverModel hotelReserver) {
+        String req = "INSERT INTO `hotelreserver`(`sejour`, `date_debut`, `date_retour`, `nbr_personne`, `userId`, `hotelId`) VALUES (?,?,?,?,?,?)";
+        try (PreparedStatement preparedStatement = cnx.prepareStatement(req)) {
+            preparedStatement.setString(1, hotelReserver.getSejour());
+            preparedStatement.setString(2, hotelReserver.getDate_debut());
+            preparedStatement.setString(3, hotelReserver.getDate_retour());
+            preparedStatement.setInt(4, hotelReserver.getNbr_personne());
+            preparedStatement.setInt(5, hotelReserver.getUser_id());
+            preparedStatement.setInt(6, hotelReserver.getHotelId());
 
             preparedStatement.executeUpdate();
         } catch (SQLException e) {

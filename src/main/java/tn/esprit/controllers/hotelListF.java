@@ -59,6 +59,7 @@ public class hotelListF {
     @FXML
     private TextField rechercheTextField;
 
+
     private Hotelservices hotelService = new Hotelservices();
     private ObservableList<hotel> hotels = FXCollections.observableArrayList();
 
@@ -68,6 +69,24 @@ public class hotelListF {
         chatBubble.setVisible(true);
         firstGifImageView.setVisible(false);
         secondGifImageView.setVisible(true);
+    }
+
+    @FXML
+    void gotoHotelReserver(){
+
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Fxml/hotelListReserver.fxml"));
+            Parent root = loader.load();
+
+            hotelListReserver controller = loader.getController();
+            controller.initialize();
+
+            Stage stage = (Stage) secondGifImageView.getScene().getWindow();
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML

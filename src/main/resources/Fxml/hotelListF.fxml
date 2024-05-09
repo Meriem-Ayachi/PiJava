@@ -67,6 +67,7 @@
             </ImageView>
             <Label fx:id="floatingMessage" layoutX="442.0" layoutY="348.0" style="-fx-background-color: #18593b; -fx-text-fill: white; -fx-padding: 15px; -fx-border-radius: 20px; -fx-background-radius: 20px; -fx-font-size: 16px;" text="Besoin d'aide ?" visible="false">
             </Label>
+         <Button layoutX="113.0" layoutY="66.0" onAction="#gotoHotelReserver" styleClass="modern-button" stylesheets="@../modern-button.css" text="Hotel Reserver" />
         </children>
     </AnchorPane>
 </AnchorPane>

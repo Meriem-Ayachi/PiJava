@@ -1,7 +1,10 @@
 package tn.esprit.services;
 
+import tn.esprit.controllers.LogController;
 import tn.esprit.interfaces.IService;
+import tn.esprit.models.LogType;
 import tn.esprit.models.Reservation;
+import tn.esprit.models.session;
 import tn.esprit.util.MaConnexion;
 
 import java.sql.*;
@@ -38,6 +41,7 @@ public abstract class Reservationservices implements IService<Reservation> {
             int rowsInserted = st.executeUpdate();
             if (rowsInserted > 0) {
                 System.out.println("Réservation ajoutée avec succès");
+                LogController.saveLog("Reservation Ajouter.", LogType.AJOUT_RESERVATION, session.id_utilisateur);
             } else {
                 System.out.println("Échec de l'ajout de la réservation");
             }
@@ -64,6 +68,7 @@ public abstract class Reservationservices implements IService<Reservation> {
             Statement st = cnx.createStatement();
             st.executeUpdate(req);
             System.out.println("Réservation mise à jour avec succès");
+            LogController.saveLog("Reservation Modifier.", LogType.MODIFIER_RESERVATION, session.id_utilisateur);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -122,6 +127,7 @@ public abstract class Reservationservices implements IService<Reservation> {
             int rowsDeleted = statement.executeUpdate();
             if (rowsDeleted > 0) {
                 System.out.println("Réservation supprimée avec succès");
+                LogController.saveLog("Reservation Supprimer.", LogType.SUPPRIMER_RESERVATION, session.id_utilisateur);
             } else {
                 System.out.println("Aucune réservation n'a été supprimée");
             }

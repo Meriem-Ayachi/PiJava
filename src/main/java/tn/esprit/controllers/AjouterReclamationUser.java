@@ -7,6 +7,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.*;
 import tn.esprit.interfaces.RefreshCallBack;
+import tn.esprit.models.LogType;
 import tn.esprit.models.Reclamation;
 import tn.esprit.models.session;
 import tn.esprit.services.ReclamationService;

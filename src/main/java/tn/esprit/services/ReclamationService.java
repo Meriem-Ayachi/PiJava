@@ -1,9 +1,12 @@
 package tn.esprit.services;
 
+import tn.esprit.controllers.LogController;
 import tn.esprit.interfaces.IService;
+import tn.esprit.models.LogType;
 import tn.esprit.models.Reclamation;
 import tn.esprit.models.Reservation;
 import tn.esprit.models.hotel;
+import tn.esprit.models.session;
 import tn.esprit.util.MaConnexion;
 
 
@@ -33,6 +36,7 @@ public class ReclamationService  implements IService<Reclamation> {
             ps.executeUpdate();
 
             System.out.println("Réclamation ajoutée avec succés!");
+            LogController.saveLog("Réclamation Ajouter.", LogType.AJOUT_RECLAMATION, session.id_utilisateur);
 
         } catch (SQLException ex) {
             throw new RuntimeException(ex);
@@ -56,6 +60,7 @@ public class ReclamationService  implements IService<Reclamation> {
 
             ps.executeUpdate();
             System.out.println("Réclamation modifiée avec succès");
+            LogController.saveLog("Réclamation Modifier.", LogType.MODIFIER_RECLAMATION, session.id_utilisateur);
 
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -71,6 +76,7 @@ public class ReclamationService  implements IService<Reclamation> {
             ps.setInt(1, id);
             ps.executeUpdate();
             System.out.println("Réclamation supprimée avec succès");
+            LogController.saveLog("Réclamation Supprimer.", LogType.SUPPRIMER_RECLAMATION, session.id_utilisateur);
 
         } catch (SQLException e) {
             throw new RuntimeException(e);

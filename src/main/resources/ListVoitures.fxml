@@ -1,31 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/scene/layout" xmlns:fx="http://javafx.com/fxml" fx:controller="tn.esprit.controllers.locationVoiture.ListVoitures">
+<AnchorPane prefHeight="400.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.locationVoiture.ListVoitures">
     <fx:include source="sidebarAdmin.fxml" />
-    <AnchorPane layoutX="211.0" layoutY="38.0" prefHeight="402.0" prefWidth="458.0" style="-fx-background-color: #ececec;">
+    <AnchorPane layoutX="204.0" layoutY="6.0" prefHeight="680.0" prefWidth="822.0" style="-fx-background-color: #ececec;">
         <children>
-            <Label layoutX="185.0" layoutY="28.0" text="List Voiture">
+            <Label layoutX="41.0" layoutY="16.0" text="Liste des voitures ">
                 <font>
-                    <Font size="30.0" />
+                    <Font name="Cambria" size="35.0" />
                 </font>
             </Label>
 
-            <ScrollPane layoutX="50.0" layoutY="80.0" prefHeight="300.0" prefWidth="600.0">
+            <ScrollPane layoutX="50.0" layoutY="80.0" prefHeight="530.0" prefWidth="626.0">
                 <content>
-                    <TableView fx:id="voitureTableView" layoutX="50.0" layoutY="80.0" prefHeight="300.0" prefWidth="600.0" onMouseClicked="#onTableRowClicked">
+                    <TableView fx:id="voitureTableView" layoutX="50.0" layoutY="80.0" onMouseClicked="#onTableRowClicked" prefHeight="523.0" prefWidth="629.0" stylesheets="@style-v.css">
                     </TableView>
                 </content>
             </ScrollPane>
 
-            <Button text="Ajouter" layoutX="50.0" layoutY="390.0" onAction="#goToAjouter" />
+            <Button layoutX="615.0" layoutY="20.0" onAction="#goToAjouter" prefHeight="36.0" prefWidth="138.0" style="-fx-background-color: #5D40FD;" styleClass="modern-button" stylesheets="@modern-button.css" text="Ajouter" />
 
         </children>
     </AnchorPane>

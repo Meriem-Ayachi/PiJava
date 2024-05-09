@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.net.URL?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
@@ -10,23 +11,30 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.locationVoiture.userLocationList">
     <fx:include source="sidebarUser.fxml" />
-    <AnchorPane layoutX="211.0" layoutY="8.0" prefHeight="444.0" prefWidth="688.0" style="-fx-background-color: #ececec;">
+    <AnchorPane layoutX="200.0" prefHeight="680.0" prefWidth="822.0" style="-fx-background-image: url('images/bkc.jpg'); -fx-background-size: cover;">
         <children>
-            <Label layoutX="187.0" layoutY="8.0" text="liste des voitures de location">
+            <Label layoutX="198.0" layoutY="13.0" text="liste des voitures de location" textFill="WHITE">
                 <font>
-                    <Font size="30.0" />
+                    <Font name="Cambria" size="35.0" />
                 </font>
             </Label>
 
-            <ListView fx:id="listview" layoutX="36.0" layoutY="107.0" prefHeight="258.0" prefWidth="639.0" />
+            <ListView fx:id="listview" layoutX="35.0" layoutY="124.0" prefHeight="476.0" prefWidth="763.0" />
 
-            <Button layoutX="50.0" layoutY="390.0" onAction="#goToLocationReserver" text="Mes Locations" />
-         <TextField layoutX="181.0" layoutY="59.0" onKeyTyped="#marqueChanged" prefHeight="24.0" prefWidth="88.0" promptText="Marque" />
-         <TextField layoutX="288.0" layoutY="59.0" onKeyTyped="#maxPrixChanged" prefHeight="24.0" prefWidth="88.0" promptText="Max Prix" />
-         <TextField layoutX="397.0" layoutY="59.0" onKeyTyped="#minPrixChanged" prefHeight="24.0" prefWidth="88.0" promptText="Min Prix" />
-         <TextField layoutX="73.0" layoutY="59.0" onKeyTyped="#modelChanged" prefHeight="24.0" prefWidth="88.0" promptText="Model" />
-         <ComboBox fx:id="typeComboBox" layoutX="508.0" layoutY="59.0" onAction="#typeChanged" prefHeight="24.0" prefWidth="111.0" promptText="Type" />
+            <Button layoutX="35.0" layoutY="615.0" onAction="#goToLocationReserver" prefHeight="30.0" prefWidth="121.0" styleClass="modern-button2" text="Mes Locations">
+            <font>
+               <Font name="System Bold Italic" size="12.0" />
+            </font></Button>
+         <TextField layoutX="250.0" layoutY="59.0" onKeyTyped="#marqueChanged" prefHeight="24.0" prefWidth="88.0" promptText="Marque" styleClass="modern-textfield" />
+         <TextField layoutX="356.0" layoutY="59.0" onKeyTyped="#maxPrixChanged" prefHeight="24.0" prefWidth="88.0" promptText="Max Prix" styleClass="modern-textfield" />
+         <TextField layoutX="464.0" layoutY="59.0" onKeyTyped="#minPrixChanged" prefHeight="24.0" prefWidth="88.0" promptText="Min Prix" styleClass="modern-textfield" />
+         <TextField layoutX="143.0" layoutY="59.0" onKeyTyped="#modelChanged" prefHeight="24.0" prefWidth="88.0" promptText="Model" styleClass="modern-textfield" />
+         <ComboBox fx:id="typeComboBox" layoutX="569.0" layoutY="57.0" onAction="#typeChanged" prefHeight="24.0" prefWidth="111.0" promptText="Type" styleClass="modern-combobox" stylesheets="@ComboBox.css" />
 
         </children>
+      <stylesheets>
+         <URL value="@modern-button.css" />
+         <URL value="@textfield.css" />
+      </stylesheets>
     </AnchorPane>
 </AnchorPane>

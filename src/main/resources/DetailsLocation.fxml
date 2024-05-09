@@ -7,31 +7,31 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="339.0" prefWidth="568.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.locationVoiture.DetailsLocation">
+<AnchorPane prefHeight="339.0" prefWidth="568.0" style="-fx-background-color: #C1D3F0;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.locationVoiture.DetailsLocation">
     <children>
-        <Label layoutX="179.0" layoutY="18.0" text="Details Location">
+        <Label layoutX="179.0" layoutY="18.0" prefHeight="30.0" prefWidth="248.0" text="Details Location">
             <font>
-            <Font name="System Bold" size="23.0" />
+            <Font name="Modern No. 20" size="28.0" />
             </font>
         </Label>
         <Label fx:id="PrixDetail" layoutX="155.0" layoutY="109.0" text="Prix:">
             <font>
-            <Font size="16.0" />
+            <Font size="19.0" />
             </font>
         </Label>
         <Label fx:id="TypeDetail" layoutX="155.0" layoutY="146.0" text="Type:">
             <font>
-            <Font size="16.0" />
+            <Font size="19.0" />
             </font>
         </Label>
         <Label fx:id="StatusDetail" layoutX="155.0" layoutY="184.0" text="Status:">
             <font>
-            <Font size="16.0" />
+            <Font size="19.0" />
             </font>
         </Label>
         <Label fx:id="DateDebutDetail" layoutX="151.0" layoutY="227.0" text="Date Debut:">
             <font>
-            <Font size="16.0" />
+            <Font size="19.0" />
             </font>
         </Label>
       <Button layoutX="44.0" layoutY="17.0" mnemonicParsing="false" onAction="#gotoModifier" prefHeight="24.0" prefWidth="26.0" style="-fx-background-color: transparent;">
@@ -54,7 +54,7 @@
       </Button>
       <Label fx:id="DateFinDetail" layoutX="155.0" layoutY="265.0" text="Date Fin:">
          <font>
-            <Font size="16.0" />
+            <Font size="19.0" />
          </font>
       </Label>
     </children>

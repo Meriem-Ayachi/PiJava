@@ -15,3 +15,15 @@
     -fx-background-color: #233b9a; /* Darker background color on hover */
     -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.4) , 6,0,0,2 ); /* Larger shadow on hover */
 }
+
+.modern-button2 {
+    -fx-background-color: #384fad; /* Background color */
+    -fx-background-radius: 15px; /* Rounded corners */
+    -fx-text-fill: white; /* Text color */
+    -fx-font-size: 14px; /* Font size */
+    -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.2) , 4,0,0,1 ); /* Shadow effect */
+}
+.modern-button2:hover {
+    -fx-background-color: #233b9a; /* Darker background color on hover */
+    -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.4) , 6,0,0,2 ); /* Larger shadow on hover */
+}

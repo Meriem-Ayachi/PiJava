@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.net.URL?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
@@ -8,21 +9,51 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="402.0" prefWidth="458.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.locationVoiture.ModifierVoiture">
+<AnchorPane prefHeight="418.0" prefWidth="481.0" style="-fx-background-color: #B9CFD9;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.locationVoiture.ModifierVoiture">
    <children>
-      <Label layoutX="185.0" layoutY="28.0" text="Modifier Voiture">
+      <Label layoutX="123.0" layoutY="14.0" text="Modifier Voiture">
          <font>
             <Font size="30.0" />
          </font>
       </Label>
-      <TextField fx:id="marqueTF" layoutX="66.0" layoutY="130.0" promptText="Marque" />
-      <TextField fx:id="modelTF" layoutX="66.0" layoutY="170.0" promptText="Model" />
-      <TextField fx:id="couleurTF" layoutX="66.0" layoutY="210.0" promptText="Couleur" />
-      <ComboBox fx:id="energyTF" layoutX="66.0" layoutY="292.0" promptText="Energy" />
-      <TextField fx:id="capaciteTF" layoutX="66.0" layoutY="248.0" promptText="Capacite" />
-      <Button layoutX="380.0" layoutY="399.0" mnemonicParsing="false" onAction="#modifierVoiture" text="Modifier" />
-      <Button layoutX="475.0" layoutY="399.0" mnemonicParsing="false" onAction="#AfficherVoitures" text="Cancel" />
-      <Button layoutX="66.0" layoutY="345.0" mnemonicParsing="false" onAction="#uploadFile" text="uploadFile" />
+      <TextField fx:id="marqueTF" layoutX="232.0" layoutY="111.0" promptText="Marque" styleClass="modern-textfield" />
+      <TextField fx:id="modelTF" layoutX="232.0" layoutY="153.0" promptText="Model" styleClass="modern-textfield" />
+      <TextField fx:id="couleurTF" layoutX="232.0" layoutY="197.0" promptText="Couleur" styleClass="modern-textfield" />
+      <ComboBox fx:id="energyTF" layoutX="264.0" layoutY="279.0" promptText="Energy" styleClass="modern-combobox" />
+      <TextField fx:id="capaciteTF" layoutX="232.0" layoutY="240.0" promptText="Capacite" styleClass="modern-textfield" />
+      <Button layoutX="122.0" layoutY="374.0" mnemonicParsing="false" onAction="#modifierVoiture" styleClass="modern-button2" text="Modifier" />
+      <Button layoutX="37.0" layoutY="374.0" mnemonicParsing="false" onAction="#AfficherVoitures" prefHeight="30.0" prefWidth="71.0" style="-fx-background-color: #A56C4E;" styleClass="modern-button2" text="Cancel" />
+      <Button layoutX="270.0" layoutY="324.0" mnemonicParsing="false" onAction="#uploadFile" prefHeight="30.0" prefWidth="96.0" style="-fx-background-color: #C8D1D5;" styleClass="modern-button2" text="uploadFile" />
       <Text fx:id="uploadedFileName" layoutX="152.0" layoutY="362.0" strokeType="OUTSIDE" strokeWidth="0.0" />
+      <Label layoutX="141.0" layoutY="116.0" text="Marque">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="141.0" layoutY="158.0" text="Model">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="141.0" layoutY="199.0" text="Couleur">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="139.0" layoutY="245.0" text="Capacite">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="144.0" layoutY="286.0" text="Energy">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
    </children>
+   <stylesheets>
+      <URL value="@textfield.css" />
+      <URL value="@modern-button.css" />
+      <URL value="@ComboBox.css" />
+   </stylesheets>
 </AnchorPane>

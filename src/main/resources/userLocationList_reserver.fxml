@@ -6,9 +6,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.locationVoiture.userLocationList_reserver">
+<AnchorPane prefHeight="680.0" prefWidth="822.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.locationVoiture.userLocationList_reserver">
     <fx:include source="sidebarUser.fxml" />
-    <AnchorPane layoutX="211.0" layoutY="38.0" prefHeight="680.0" prefWidth="822.0" style="-fx-background-image: url('images/bkc.jpg'); -fx-background-size: cover;">
+    <AnchorPane layoutX="270.0" layoutY="38.0" prefHeight="680.0" prefWidth="822.0" style="-fx-background-image: url('images/bkc.jpg'); -fx-background-size: cover;">
         <children>
             <Label layoutX="185.0" layoutY="19.0" text="Mes voitures réservées">
                 <font>
@@ -16,9 +16,9 @@
                 </font>
             </Label>
 
-            <ListView fx:id="listview" layoutX="36.0" layoutY="76.0" prefHeight="480.0" prefWidth="760.0" />
+            <ListView fx:id="listview" layoutX="31.0" layoutY="76.0" prefHeight="480.0" prefWidth="738.0" />
 
-            <Button layoutX="14.0" layoutY="16.0" onAction="#GoToLocationList" prefHeight="30.0" prefWidth="76.0" style="-fx-background-color: #A56C4E;" styleClass="modern-button2" stylesheets="@modern-button.css" text="Go Back" />
+            <Button layoutX="655.0" layoutY="14.0" onAction="#GoToLocationList" prefHeight="36.0" prefWidth="94.0" styleClass="modern-button" stylesheets="@modern-button.css" text="Go Back" />
 
         </children>
     </AnchorPane>

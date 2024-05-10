@@ -6,9 +6,9 @@
 <?import javafx.scene.text.Text?>
 <?import javafx.scene.chart.PieChart?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.DashboardAdmin">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-image: url('images/background.jpg');"   xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.DashboardAdmin">
     <fx:include source="sidebarAdmin.fxml" />
-    <AnchorPane fx:id="rootPane" layoutX="271.0" prefHeight="686.0" prefWidth="629.0" style="-fx-background-color: #ececec;">
+    <AnchorPane fx:id="rootPane" layoutX="271.0" prefHeight="686.0" prefWidth="629.0" style="-fx-background-color: #eee2e2">
         <children>
             <Label layoutX="23.0" layoutY="20.0" prefHeight="64.0" prefWidth="440.0" text="Tableau de Bord Administrateur" textFill="#73592f">
                 <font>

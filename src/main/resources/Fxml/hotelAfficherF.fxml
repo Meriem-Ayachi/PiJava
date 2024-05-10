@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 
 <AnchorPane prefHeight="282.0" prefWidth="424.0" style="-fx-background-image: url('/backgound.jpg'); -fx-background-size: cover;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.hotelAfficherF">
-    <AnchorPane prefHeight="356.0" prefWidth="695.0" style="-fx-background-color: #ececec;">
+    <AnchorPane prefHeight="356.0" prefWidth="695.0" >
         <children>
             <Label fx:id="nomLabel" layoutX="167.0" layoutY="104.0" />
             <Label fx:id="nbretoileLabel" layoutX="167.0" layoutY="151.0" />
@@ -20,7 +20,7 @@
             <ImageView fitHeight="200" fitWidth="215.0" layoutX="439.0" layoutY="81.0">
                 <Image url="@hotel2.gif" />
             </ImageView>
-         <Button layoutX="295.0" layoutY="297.0" mnemonicParsing="false" onAction="#gotoReserverHotel" text="Button" />
+            <Button layoutX="295.0" layoutY="297.0" mnemonicParsing="false" onAction="#gotoReserverHotel" text="Reserver" />
         </children>
     </AnchorPane>
 </AnchorPane>

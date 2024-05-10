@@ -1,48 +1,32 @@
-.list-cell {
-    -fx-background-color: #f9f9f9;
-    -fx-padding: 10px;
-    -fx-border-width: 0 0 2px 0;
-    -fx-border-color: #ccc;
-    -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.2) , 10,0,2,2 );
-    -fx-background-radius: 5px;
-    -fx-cursor: hand;
-    -fx-background-insets: 0 0 10px 0, 0 0 0 0, 0 0 0 0;
-    -fx-opacity: 1;
-    -fx-background: linear-gradient(to bottom, #ffffff 0%, #f1f1f1 100%);
+.btn:hover{
+    -fx-cursor:hand ;
 }
-.list-cell:selected{
-    -fx-background-color: #97c1f1 !important;
+.table-view {
+    -fx-background-color:#20318c;
+    -fx-background-radius:14 14 0 0;
+
 }
+.table-view .column-header-background{
+    -fx-background-color: #20318c;
+    -fx-background-radius:14;
+    -fx-background-insets: 0 0 10 0;
 
-.list-cell:hover {
-    -fx-background-color: #eaeaea;
-    -fx-border-color: #bfbfbf;
-    -fx-opacity: 0.8;
 }
-
-.offer-title {
-    -fx-font-family: "Segoe UI", sans-serif;
-    -fx-font-weight: bold;
-    -fx-font-size: 20px;
-    -fx-text-fill: #333;
-    -fx-spacing: 5px; /* Espacement entre les labels */
-}
-
-.offer-description {
-
-    -fx-font-size: 18px;
+.table-view .column-header, .table-view .filler{
+    -fx-size:35px;
+    -fx-border-width: 0 0 10 0;
+    -fx-background-color:transparent;
 
 }
 
-.offer-lieu {
-
-    -fx-font-size: 18px;
-
+.table-view .column-header .label {
+    -fx-text-fill: white ;
 }
 
-.offer-price {
-    -fx-font-family: "Segoe UI", sans-serif;
-    -fx-font-weight: bold;
-    -fx-font-size: 16px;
-    -fx-text-fill: #337ab7;
+.comment-flow {
+    -fx-alignment: center;
+}
+
+.comment-container {
+    -fx-alignment: center;
 }

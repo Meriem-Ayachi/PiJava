@@ -5,9 +5,9 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="680.0" prefWidth="900.0" style="-fx-background-image: url('background.jpg'); -fx-background-size: cover;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AjouterCommentairefront">
+<AnchorPane prefHeight="680.0" prefWidth="900.0" style="-fx-background-image: url('images/background.jpg');" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AjouterCommentairefront">
    <fx:include source="sidebarUser.fxml" />
-   <AnchorPane layoutX="279.0" prefHeight="680.0" prefWidth="722.0" style="-fx-background-image: url('images/background.jpg'); -fx-background-size: cover;" stylesheets="@ListeReclamation.css">
+   <AnchorPane layoutX="279.0" prefHeight="680.0" prefWidth="722.0"  stylesheets="@ListeReclamation.css">
       <children>
          <Button layoutX="539.0" layoutY="115.0" mnemonicParsing="false" onAction="#Ajoutercommentaire" prefHeight="25.0" prefWidth="110.0" styleClass="modern-button" stylesheets="@modern-button.css" text="Ajouter" />
          <TextField fx:id="AvisTFO" layoutX="46.0" layoutY="107.0" prefHeight="51.0" prefWidth="474.0" styleClass="modern-textfield" stylesheets="@textfield.css" />

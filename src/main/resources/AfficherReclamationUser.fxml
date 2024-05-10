@@ -6,9 +6,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="ListeReclamation.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.AfficherReclamationUser">
+<AnchorPane prefHeight="400.0" prefWidth="600.0"  style="-fx-background-image: url('images/background.jpg');"  stylesheets="ListeReclamation.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.AfficherReclamationUser">
     <fx:include source="sidebarUser.fxml" />
-    <AnchorPane layoutX="279.0" prefHeight="680.0" prefWidth="822.0" style="-fx-background-image: url('images/background.jpg'); -fx-background-size: cover;" stylesheets="@ListeReclamation.css">
+    <AnchorPane layoutX="279.0" prefHeight="680.0" prefWidth="822.0"  stylesheets="@ListeReclamation.css">
         <children>
             <Label layoutX="265.0" layoutY="14.0" stylesheets="@ListeReclamation.css" text="Les réclamations" textFill="WHITE">
                 <font>

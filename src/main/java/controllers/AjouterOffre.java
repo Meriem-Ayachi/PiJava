@@ -94,9 +94,9 @@ public class AjouterOffre {
         if (descriptionTFO.getText().isEmpty()) {
             throw new SQLException("La description est vide.");
         }
-        if (descriptionTFO.getText().length() > 80 ) {
-            throw new SQLException("La description ne doit pas dépasser 30 caractères.");
-        }
+       // if (descriptionTFO.getText().length() > 80 ) {
+      //      throw new SQLException("La description ne doit pas dépasser 30 caractères.");
+       // }
         if (titleTFO.getText().isEmpty()) {
             throw new SQLException("Le titre est vide.");
         }

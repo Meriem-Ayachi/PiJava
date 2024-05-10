@@ -75,7 +75,7 @@ public class  LoginController {
     }
 
     private void redirectToUserPage(ActionEvent event) {
-        nav.goToPage_WithEvent("/UpdateProfile.fxml", event);
+        nav.goToPage_WithEvent("/home.fxml", event);
     }
 
     private void redirectToAdminPage(ActionEvent event) {

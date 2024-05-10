@@ -7,7 +7,7 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.hotelListReserver">
     <!-- Liste des hôtels réservés -->
-    <ListView fx:id="hotelListView" layoutX="50.0" layoutY="50.0" prefHeight="300.0" prefWidth="500.0" />
+    <ListView fx:id="hotelListView" layoutX="50.0" layoutY="50.0" prefHeight="500.0" prefWidth="800.0" />
 
-    <!-- Bouton "Sauvegarder" -->
+
 </AnchorPane>

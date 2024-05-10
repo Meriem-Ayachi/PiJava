@@ -9,9 +9,9 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<AnchorPane prefHeight="680.0" prefWidth="900.0" style="-fx-background-image: url('background.jpg'); -fx-background-size: cover;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.DetailsPage">
+<AnchorPane prefHeight="680.0" prefWidth="900.0" style="-fx-background-image: url('images/background.jpg');" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.DetailsPage">
   <fx:include source="sidebarUser.fxml" />
-  <AnchorPane layoutX="269.0" prefHeight="680.0" prefWidth="822.0" style="-fx-background-color: #ececec;">
+  <AnchorPane layoutX="269.0" prefHeight="680.0" prefWidth="822.0" >
     <children>
         <ImageView fx:id="imageView" fitHeight="166.0" fitWidth="519.0" layoutX="148.0" layoutY="120.0" />
         <Button fx:id="reserver" layoutX="100.0" layoutY="590.0" mnemonicParsing="false" onAction="#Reserver" prefHeight="36.0" prefWidth="108.0" styleClass="modern-button" stylesheets="@modern-button.css" text="Reserver" />

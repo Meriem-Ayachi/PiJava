@@ -4,9 +4,9 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="680.0" prefWidth="900.0" style="-fx-background-image: url('background.jpg'); -fx-background-size: cover;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ModiffierOffre">
+<AnchorPane prefHeight="680.0" prefWidth="900.0" style="-fx-background-image: url('images/background.jpg');" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ModiffierOffre">
    <fx:include source="sidebarAdmin.fxml" />
-   <AnchorPane layoutX="269.0" prefHeight="680.0" prefWidth="822.0" style="-fx-background-color: #ececec;">
+   <AnchorPane layoutX="269.0" prefHeight="680.0" prefWidth="822.0" >
       <children>
          <TextField fx:id="titleTFO" layoutX="79.0" layoutY="48.0" prefHeight="52.0" prefWidth="192.0" styleClass="modern-textfield" stylesheets="@textfield.css" />
          <TextField fx:id="descriptionTFO" layoutX="79.0" layoutY="139.0" prefHeight="52.0" prefWidth="192.0" styleClass="modern-textfield" stylesheets="@textfield.css" />

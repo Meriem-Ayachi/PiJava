@@ -7,9 +7,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.StackPane?>
 
-<AnchorPane prefHeight="680.0" prefWidth="900.0" style="-fx-background-image: url('background.jpg'); -fx-background-size: cover;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AjouterOffre">
+<AnchorPane prefHeight="680.0" prefWidth="900.0" style="-fx-background-image: url('images/background.jpg');" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AjouterOffre">
    <fx:include source="sidebarAdmin.fxml" />
-   <AnchorPane layoutX="269.0" prefHeight="680.0" prefWidth="822.0" style="-fx-background-color: #ececec;">
+   <AnchorPane layoutX="269.0" prefHeight="680.0" prefWidth="822.0" >
       <children>
          <TextField fx:id="titleTFO" layoutX="82.0" layoutY="48.0" prefHeight="45.0" prefWidth="190.0" promptText="title" styleClass="modern-textfield" stylesheets="@textfield.css" />
          <TextField fx:id="descriptionTFO" layoutX="82.0" layoutY="114.0" prefHeight="45.0" prefWidth="190.0" promptText="description" styleClass="modern-textfield" stylesheets="@textfield.css" />

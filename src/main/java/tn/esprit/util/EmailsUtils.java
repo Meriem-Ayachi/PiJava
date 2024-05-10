@@ -14,10 +14,10 @@ import tn.esprit.models.User;
 
 public class EmailsUtils {
 
-    private static final String SMTP_HOST = "smtp-relay.brevo.com";
+    private static final String SMTP_HOST = "smtp.mailersend.net";
     private static final String SMTP_PORT = "587";
-    private static final String USERNAME = "748370001@smtp-brevo.com";
-    private static final String PASSWORD = "5mZLqbGz2HaJYgTx";
+    private static final String USERNAME = "MS_HD53ax@trial-zr6ke4njxv3gon12.mlsender.net";
+    private static final String PASSWORD = "MUOKPEqAGqjAcFhl";
 
     private static final String EMAIL_REGEX =
             "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";

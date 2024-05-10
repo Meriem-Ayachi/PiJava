@@ -8,7 +8,7 @@
 
 <AnchorPane prefHeight="680.0" prefWidth="822.0" style="-fx-background-image: url('images/background.jpg');" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.PromoVolsListController">
     <fx:include source="sidebarAdmin.fxml" />
-    <AnchorPane layoutX="269.0" prefHeight="680.0" prefWidth="822.0" style="-fx-background-color: #ececec;">
+    <AnchorPane layoutX="269.0" prefHeight="680.0" prefWidth="822.0" >
         <children>
             <ListView fx:id="promoListView" layoutX="37.0" layoutY="23.0" prefHeight="580.0" prefWidth="743.0" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="29.0" AnchorPane.topAnchor="50.0" />
             <Button layoutX="738.0" layoutY="12.0" mnemonicParsing="false" onAction="#goBack" styleClass="modern-button" stylesheets="@modern-button.css" text="Back" />

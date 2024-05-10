@@ -8,9 +8,9 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="680.0" prefWidth="900.0" style="-fx-background-image: url('background.jpg'); -fx-background-size: cover;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Home">
+<AnchorPane prefHeight="680.0" prefWidth="900.0" style="-fx-background-image: url('images/background.jpg');" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Home">
    <fx:include source="sidebarUser.fxml" />
-   <AnchorPane layoutX="269.0" prefHeight="680.0" prefWidth="822.0" style="-fx-background-color: #ececec;">
+   <AnchorPane layoutX="269.0" prefHeight="680.0" prefWidth="822.0" >
       <children>
          <ListView fx:id="listview" layoutX="46.0" layoutY="143.0" prefHeight="444.0" prefWidth="753.0" />
          <Label alignment="CENTER" layoutX="176.0" layoutY="36.0" prefHeight="40.0" prefWidth="400.0" text="liste des offres">

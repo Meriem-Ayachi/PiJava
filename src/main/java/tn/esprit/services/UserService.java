@@ -1,8 +1,9 @@
 package tn.esprit.services;
 
 import com.google.gson.Gson;
+import com.password4j.Hash;
+import com.password4j.Password;
 
-import org.mindrot.jbcrypt.BCrypt;
 import tn.esprit.interfaces.IService;
 import tn.esprit.models.Reservation;
 import tn.esprit.models.User;
@@ -14,7 +15,6 @@ import java.sql.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-
 public class UserService implements IService <User> {
 
     //attr
@@ -23,7 +23,7 @@ public class UserService implements IService <User> {
     public void add(User o) {
 
         String password = o.getPassword();
-        String encryptedPassword = BCrypt.hashpw(password, BCrypt.gensalt());
+        String encryptedPassword = generateBcryptHash(password);
 
 
         String req = "INSERT INTO user(email, roles, password, is_verified, nom, prenom, num_tel) VALUES (?,?,?,?,?,?,?);";
@@ -85,7 +85,7 @@ public class UserService implements IService <User> {
         String req = "update user set password=? where id=?";
         try {
             PreparedStatement ps = cnx.prepareStatement(req);
-            String encryptedPassword = BCrypt.hashpw(o.getPassword(), BCrypt.gensalt());
+            String encryptedPassword = generateBcryptHash(o.getPassword());
             ps.setString(1, encryptedPassword);
             ps.setInt(2, o.getId());
 
@@ -206,7 +206,7 @@ public class UserService implements IService <User> {
                     String hashedPasswordFromDB = resultSet.getString("password");
 
                     // Vérifier si le mot de passe fourni correspond au mot de passe haché
-                    return BCrypt.checkpw(password, hashedPasswordFromDB);
+                    return verifyBcryptHash(password, hashedPasswordFromDB);
                 }
             }
         } catch (SQLException e) {
@@ -327,6 +327,14 @@ public class UserService implements IService <User> {
 
     }
 
+    public String generateBcryptHash(String password){
+        Hash hash = Password.hash(password).withBcrypt();
+        return hash.getResult();
+    }
+    public Boolean verifyBcryptHash(String password, String hashedPwd){
+        return Password.check(password, hashedPwd).withBcrypt();
+    }
+    
     @Override
     public void delete(User t) {
         // TODO Auto-generated method stub

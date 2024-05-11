@@ -87,11 +87,14 @@
             <artifactId>gson</artifactId>
             <version>2.8.8</version> <!-- Remplacez par la dernière version de Gson -->
         </dependency>
+        <!-- https://mvnrepository.com/artifact/com.password4j/password4j -->
         <dependency>
-            <groupId>org.mindrot</groupId>
-            <artifactId>jbcrypt</artifactId>
-            <version>0.3m</version>
+            <groupId>com.password4j</groupId>
+            <artifactId>password4j</artifactId>
+            <version>1.8.2</version>
         </dependency>
+
+
         <dependency>
             <groupId>com.sun.mail</groupId>
             <artifactId>javax.mail</artifactId>

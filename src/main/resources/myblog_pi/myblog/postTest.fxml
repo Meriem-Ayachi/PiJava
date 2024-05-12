@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox prefHeight="366.0" prefWidth="360.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <HBox prefHeight="261.0" prefWidth="360.0">
+         <children>
+            <ImageView fx:id="postimage" fitHeight="400.0" fitWidth="500.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../../MyBlog/src/img/1709164325_f5ba7e60-ab5e-4ac7-b030-79292206a26d.jpg" />
+               </image>
+            </ImageView>
+         </children>
+      </HBox>
+      <Label fx:id="idP" disable="true" prefHeight="18.0" prefWidth="20.0" text="id" />
+      <HBox prefHeight="49.0" prefWidth="400.0">
+         <children>
+            <ImageView fitHeight="50.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/1709164325_f5ba7e60-ab5e-4ac7-b030-79292206a26d-fotor-2024040103317.png" />
+               </image>
+               <HBox.margin>
+                  <Insets left="5.0" top="3.0" />
+               </HBox.margin>
+            </ImageView>
+            <VBox prefHeight="70.0" prefWidth="159.0">
+               <children>
+                  <Label prefHeight="23.0" prefWidth="154.0" text="Ghada Bannour">
+                     <VBox.margin>
+                        <Insets left="5.0" top="2.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font name="System Bold" size="17.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="dateC" prefHeight="26.0" prefWidth="159.0" text="Days">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets left="6.0" />
+                     </VBox.margin>
+                  </Label>
+               </children>
+            </VBox>
+            <HBox prefHeight="54.0" prefWidth="110.0">
+               <children>
+                  <ImageView fx:id="likes" fitHeight="60.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/heart_13724156.png" />
+                     </image>
+                  </ImageView>
+                  <Label fx:id="jador" text="1k">
+                     <HBox.margin>
+                        <Insets top="12.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox prefHeight="61.0" prefWidth="86.0">
+               <children>
+                  <ImageView fitHeight="60.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/comment_2593482.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets left="10.0" top="3.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <Label fx:id="comment" text="2k">
+                     <HBox.margin>
+                        <Insets left="7.0" top="10.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+            </HBox>
+         </children>
+      </HBox>
+      <VBox prefHeight="78.0" prefWidth="362.0">
+         <children>
+            <Label fx:id="postTitle" contentDisplay="CENTER" prefHeight="36.0" prefWidth="401.0" text="Title">
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+               <font>
+                  <Font size="25.0" />
+               </font>
+            </Label>
+            <Label fx:id="description" prefHeight="18.0" prefWidth="402.0" text="Content">
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </Label>
+         </children>
+      </VBox>
+   </children>
+</VBox>

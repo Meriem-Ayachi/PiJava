@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="menupane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="537.0" prefWidth="361.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="myblog_pi.myblog.PostFXMLController">
+   <children>
+      <VBox layoutY="-3.0" prefHeight="537.0" prefWidth="361.0">
+         <children>
+            <HBox prefHeight="365.0" prefWidth="362.0">
+               <children>
+                  <ImageView fx:id="postimage" fitHeight="361.0" fitWidth="385.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/1709164325_f5ba7e60-ab5e-4ac7-b030-79292206a26d.jpg" />
+                     </image>
+                  </ImageView>
+               </children>
+               <styleClass>
+                  <String fx:value="rect-round" />
+                  <String fx:value="shadow-border" />
+                  <String fx:value="shadow" />
+               </styleClass>
+               <stylesheets>
+                  <URL value="@../css/style.css" />
+                  <URL value="@../css/style.css" />
+               </stylesheets>
+            </HBox>
+            <Label fx:id="idP" disable="true" text="id" />
+            <HBox prefHeight="72.0" prefWidth="360.0" styleClass="whit_background" stylesheets="@../css/style.css">
+               <children>
+                  <ImageView fitHeight="44.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/ghada-fotor-20240331154447.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets left="5.0" top="7.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <VBox prefHeight="70.0" prefWidth="159.0">
+                     <children>
+                        <Label prefHeight="23.0" prefWidth="154.0" text="Ghada Bannouri">
+                           <VBox.margin>
+                              <Insets left="5.0" top="2.0" />
+                           </VBox.margin>
+                           <font>
+                              <Font name="System Bold" size="17.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="dateC" prefHeight="26.0" prefWidth="159.0" text="Days">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets left="6.0" />
+                           </VBox.margin>
+                        </Label>
+                     </children>
+                  </VBox>
+                  <HBox prefHeight="61.0" prefWidth="70.0">
+                     <children>
+                        <ImageView fx:id="likes" fitHeight="54.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../img/icons8-like%20(1).gif" />
+                           </image>
+                        </ImageView>
+                        <Label fx:id="jador" text="1k">
+                           <HBox.margin>
+                              <Insets top="12.0" />
+                           </HBox.margin>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="61.0" prefWidth="86.0">
+                     <children>
+                        <ImageView fitHeight="28.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../img/icons8-comment.gif" />
+                           </image>
+                           <HBox.margin>
+                              <Insets left="10.0" top="3.0" />
+                           </HBox.margin>
+                        </ImageView>
+                        <Label fx:id="comment" text="2k">
+                           <HBox.margin>
+                              <Insets left="7.0" top="10.0" />
+                           </HBox.margin>
+                        </Label>
+                     </children>
+                  </HBox>
+               </children>
+            </HBox>
+            <VBox prefHeight="100.0" prefWidth="363.0">
+               <children>
+                  <Label fx:id="postTitle" contentDisplay="CENTER" prefHeight="45.0" prefWidth="361.0" styleClass="whit_background" stylesheets="@../css/style.css" text="Title">
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                     <font>
+                        <Font size="25.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="description" prefHeight="72.0" prefWidth="361.0" styleClass="whit_background" stylesheets="@../css/style.css" text="Content">
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </Label>
+                  <HBox prefHeight="100.0" prefWidth="200.0" styleClass="whit_background" stylesheets="@../css/style.css">
+                     <children>
+                        <ImageView fitHeight="37.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                           <HBox.margin>
+                              <Insets left="320.0" />
+                           </HBox.margin>
+                           <image>
+                              <Image url="@../img/icons8-share.gif" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </children>
+         <styleClass>
+            <String fx:value="primary-color" />
+            <String fx:value="rect-round" />
+            <String fx:value="whit_background" />
+         </styleClass>
+         <stylesheets>
+            <URL value="@../css/style.css" />
+            <URL value="@../css/style.css" />
+            <URL value="@../css/style.css" />
+         </stylesheets>
+      </VBox>
+   </children>
+   <styleClass>
+      <String fx:value="primary-color" />
+      <String fx:value="label-add-post" />
+      <String fx:value="whit_background" />
+      <String fx:value="transparent" />
+      <String fx:value="label-add-post" />
+      <String fx:value="rect-round" />
+      <String fx:value="selected" />
+      <String fx:value="shadow" />
+      <String fx:value="shadow-border" />
+   </styleClass>
+   <stylesheets>
+      <URL value="@../css/publication.css" />
+      <URL value="@../css/publication.css" />
+      <URL value="@../css/publication.css" />
+   </stylesheets>
+</AnchorPane>

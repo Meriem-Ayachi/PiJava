@@ -1,0 +1,61 @@
+.whit_background {
+    -fx-background-color: rgba(255, 255, 255, 0.9); /* Utilisez rgba pour spécifier une couleur avec une opacité */
+}
+
+.primary-color{
+-fx-background-color: #F4F5F9
+}
+
+.shadow {
+    -fx-effect: dropShadow(gaussian, rgba(0, 0, 0, 0.3), 10, 0.5, 0, 0);
+}
+
+.rect-round{
+-fx-background-radius: 20;
+}
+
+
+.transparent{
+-fx-background-color: rgba(0,0,0,0);
+}
+
+.selected{
+-fx-background-color: #F4F5F9;
+}
+
+/*.mouse-moved: hover{
+-fx-background-color: #EFEFEF;
+}*/
+
+
+.label-add-post:hover {
+    -fx-background-color: #6495ED; 
+    -fx-background-radius: 15; 
+}
+
+
+.label-add-post:pressed {
+    -fx-background-color: #8B0000; 
+    -fx-background-radius: 15; 
+}
+
+
+/* Style pour le bouton "Commenter" */
+#btn_commenter {
+    -fx-background-color: #2196F3; /* Couleur de fond bleue */
+    -fx-text-fill: white; /* Couleur du texte en blanc */
+    -fx-font-size: 14px; /* Taille de la police */
+    -fx-font-family: "Arial"; /* Famille de police */
+    -fx-padding: 8px 16px; /* Espacement interne */
+    -fx-border-radius: 5px; /* Rayon des coins de la bordure */
+}
+
+/* Style pour le bouton "Commenter" lorsqu'il est survolé */
+#btn_commenter:hover {
+    -fx-background-color: #0d47a1; /* Couleur de fond plus foncée au survol */
+}
+
+/* Style pour le bouton "Commenter" lorsqu'il est pressé */
+#btn_commenter:pressed {
+    -fx-background-color: #1565c0; /* Couleur de fond encore plus foncée lorsque pressé */
+}

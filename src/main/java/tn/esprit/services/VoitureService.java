@@ -29,7 +29,7 @@ public class VoitureService implements IService <Voiture> {
             ps.setString(3, v.getModel());
             ps.setString(4, v.getEnergy());
             ps.setInt(5, v.getCapacite());
-            ps.setString(6, v.getImage_file_name());
+            ps.setString(6, v.getImageName());
 
             ps.executeUpdate();
 
@@ -50,7 +50,7 @@ public class VoitureService implements IService <Voiture> {
             ps.setString(3, v.getModel());
             ps.setString(4, v.getEnergy());
             ps.setInt(5, v.getCapacite());
-            ps.setString(6, v.getImage_file_name());
+            ps.setString(6, v.getImageName());
             ps.setInt(7, v.getId());
 
             ps.executeUpdate();
@@ -105,8 +105,8 @@ public class VoitureService implements IService <Voiture> {
     public List<Voiture> getAvailable() {
         List<Voiture> voitures = new ArrayList<>();
 
-        String req = "SELECT v.* FROM piIntegration.voiture v " + 
-        "LEFT JOIN piIntegration.location_voiture l ON v.id = l.voiture_id " +
+        String req = "SELECT v.* FROM voiture v " + 
+        "LEFT JOIN location_voiture l ON v.id = l.voiture_id " +
         "WHERE l.voiture_id IS NULL;";
         try {
             Statement st = cnx.createStatement();

@@ -1,5 +1,7 @@
 package tn.esprit.models;
 
+import io.github.cdimascio.dotenv.Dotenv;
+
 public class User {
 
     //attribute
@@ -9,8 +11,15 @@ public class User {
 
     private int is_verified;
 
-    public String getImagefilename() {
+    private static final Dotenv dotenv = Dotenv.load();
+    private static final String UploadImageDirectoryPath = dotenv.get("UploadImageDirectoryPath");
+    
+    public String getImageName() {
         return imagefilename;
+    }
+
+    public String getImagefilename() {
+        return UploadImageDirectoryPath  + imagefilename;
     }
 
     public void setImagefilename(String imagefilename) {

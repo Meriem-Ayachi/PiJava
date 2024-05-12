@@ -63,6 +63,7 @@ public class ListVoitures implements RefreshCallBack{
     void onTableRowClicked() {
         try {
             selectedVoiture = voitureTableView.getSelectionModel().getSelectedItem();
+            selectedVoiture = voitureService.getOne(selectedVoiture.getId());
             
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/DetailsVoiture.fxml"));
             AnchorPane detailsVoitureAnchorPane = loader.load();

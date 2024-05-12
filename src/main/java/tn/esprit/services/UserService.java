@@ -68,7 +68,7 @@ public class UserService implements IService <User> {
             ps.setString(3, o.getNom());
             ps.setString(4, o.getPrenom());
             ps.setInt(5, o.getNum_tel());
-            ps.setString(6, o.getImagefilename());
+            ps.setString(6, o.getImageName());
             ps.setInt(7, o.getId());
 
 

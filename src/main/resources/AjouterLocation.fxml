@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="680.0" prefWidth="822.0"style="-fx-background-image: url('images/background.jpg');"   xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.locationVoiture.AjouterLocation">
+<AnchorPane prefHeight="680.0" prefWidth="822.0" style="-fx-background-image: url('images/background.jpg');"   xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.locationVoiture.AjouterLocation">
    <fx:include source="sidebarAdmin.fxml" />
    <AnchorPane layoutX="201.0" layoutY="-8.0" prefHeight="680.0" prefWidth="822.0" >
       <children>

@@ -22,7 +22,12 @@ import java.util.UUID;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import io.github.cdimascio.dotenv.Dotenv;
+
 public class UpdateProfile {
+
+    private static final Dotenv dotenv = Dotenv.load();
+    private static final String UploadImageDirectoryPath = dotenv.get("UploadImageDirectoryPath");
 
     @FXML
     private TextField emailTF;
@@ -74,7 +79,7 @@ public class UpdateProfile {
             }
             //upload the new image
             String randomFileName = UUID.randomUUID().toString() + getFileExtension(selectedFile.getName());
-            File destFile = new File(System.getProperty("user.home") + "/Downloads/" + randomFileName);
+            File destFile = new File(UploadImageDirectoryPath + randomFileName);
             try {
                 Files.copy(selectedFile.toPath(), destFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
             } catch (IOException e) {
@@ -82,7 +87,7 @@ public class UpdateProfile {
                 afficherErreur("Error uploading image: " + e.getMessage());
                 return;
             }
-            currentUser.setImagefilename(destFile.getAbsolutePath());
+            currentUser.setImagefilename(randomFileName);
         }
         System.out.println(currentUser.getImagefilename());
         currentUser.setNom(nomTF.getText());

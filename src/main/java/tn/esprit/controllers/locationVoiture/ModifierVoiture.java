@@ -6,6 +6,7 @@ import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
 import java.util.UUID;
 
+import io.github.cdimascio.dotenv.Dotenv;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -26,6 +27,10 @@ import tn.esprit.services.VoitureService;
 
 public class ModifierVoiture {
 
+    private static final Dotenv dotenv = Dotenv.load();
+    private static final String UploadImageDirectoryPath = dotenv.get("UploadImageDirectoryPath");
+
+    
     @FXML
     private TextField marqueTF;
 
@@ -164,7 +169,7 @@ public class ModifierVoiture {
                 }
                 //upload the new image
                 String randomFileName = UUID.randomUUID().toString() + getFileExtension(selectedFile.getName());
-                File destFile = new File(System.getProperty("user.home") + "/Downloads/" + randomFileName);
+                File destFile = new File(UploadImageDirectoryPath + randomFileName);
                 try {
                     Files.copy(selectedFile.toPath(), destFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
                 } catch (IOException e) {
@@ -172,9 +177,8 @@ public class ModifierVoiture {
                     afficherErreur("Error uploading image: " + e.getMessage());
                     return;
                 }
-                voiture.setImage_file_name(destFile.getAbsolutePath());
+                voiture.setImage_file_name(randomFileName);
             }
-            System.out.println(voiture.getImage_file_name());
 
             //set item
             voiture.setMarque(marqueTF.getText());

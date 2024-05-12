@@ -1,9 +1,14 @@
 package tn.esprit.models;
 
+import io.github.cdimascio.dotenv.Dotenv;
+
 public class Voiture {
     private int id,capacite;
     private String couleur,marque,model,energy, image_file_name;
 
+    private static final Dotenv dotenv = Dotenv.load();
+    private static final String UploadImageDirectoryPath = dotenv.get("UploadImageDirectoryPath");
+    
     //constuctor
 
 
@@ -78,9 +83,13 @@ public class Voiture {
     public void setEnergy(String energy) {
         this.energy = energy;
     }
+    
+    public String getImageName() {
+        return image_file_name;
+    }
 
     public String getImage_file_name() {
-        return image_file_name;
+        return UploadImageDirectoryPath + image_file_name;
     }
 
     public void setImage_file_name(String image_file_name) {

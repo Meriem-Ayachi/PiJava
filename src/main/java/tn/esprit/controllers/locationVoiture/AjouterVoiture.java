@@ -7,6 +7,7 @@ import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
 import java.util.UUID;
 
+import io.github.cdimascio.dotenv.Dotenv;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -24,6 +25,11 @@ import tn.esprit.services.VoitureService;
 import tn.esprit.util.Navigator;
 
 public class AjouterVoiture {
+
+    private static final Dotenv dotenv = Dotenv.load();
+    private static final String UploadImageDirectoryPath = dotenv.get("UploadImageDirectoryPath");
+
+
     @FXML
     private TextField marqueTF;
 
@@ -141,7 +147,7 @@ public class AjouterVoiture {
             }
             //  upload the selected image
             String randomFileName = UUID.randomUUID().toString() + getFileExtension(selectedFile.getName());
-            File destFile = new File(System.getProperty("user.home") + "/Downloads/" + randomFileName);
+            File destFile = new File(UploadImageDirectoryPath + randomFileName);
             try {
                 Files.copy(selectedFile.toPath(), destFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
             } catch (IOException e) {
@@ -150,7 +156,7 @@ public class AjouterVoiture {
                 return;
             }
             //set the item
-            voiture.setImage_file_name(destFile.getAbsolutePath());
+            voiture.setImage_file_name(randomFileName);
             voiture.setMarque(marqueTF.getText());
             voiture.setModel(modelTF.getText());
             voiture.setCouleur(couleurTF.getText());

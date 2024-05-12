@@ -261,13 +261,10 @@ public class reservationListBack {
     @FXML
     public void initialize() {
         // Charger les réservations depuis le service
-        List<Reservation> reservations = reservationService.getAll();
         reservationData = reservationService.getAll();
         reservationListView.setItems(FXCollections.observableArrayList(reservationData));
 
         afficherCalendrier(currentYear, currentMonth);
-        // Ajouter les réservations à la liste de vue
-        reservationListView.getItems().addAll(reservations);
 
         // Définir la cellule personnalisée pour afficher les réservations
         reservationListView.setCellFactory(param -> new ListCell<Reservation>() {

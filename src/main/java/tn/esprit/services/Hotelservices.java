@@ -34,12 +34,13 @@ public  class Hotelservices implements IService<hotel> {
     }
 
 
-    public List<hotelReserverModel> getAllReserved(){
+    public List<hotelReserverModel> getAllReserved(int userId){
         List<hotelReserverModel> hotelModel = new ArrayList<>();
         try {
-            String req = "SELECT * FROM hotelreserver";
-            Statement st = cnx.createStatement();
-            ResultSet rs = st.executeQuery(req);
+            String req = "SELECT * FROM hotelreserver WHERE userId = ?";
+            PreparedStatement ps = cnx.prepareStatement(req);
+            ps.setInt(1, userId);    
+            ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 hotelReserverModel p = new hotelReserverModel();
                 p.setId(rs.getInt("id"));

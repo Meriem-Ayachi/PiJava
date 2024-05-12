@@ -107,6 +107,7 @@ public class hotelAdd {
         etoile3.setSelected(false);
         etoile4.setSelected(false);
         etoile5.setSelected(false);
+        goToHotelList(actionEvent);
     }
 
     private void afficherSucces(String s) {

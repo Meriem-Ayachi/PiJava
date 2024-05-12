@@ -1,18 +1,20 @@
 package tn.esprit.controllers;
 
-import java.util.Arrays;
+import java.io.IOException;
 import java.util.List;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
+import javafx.scene.Parent;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import tn.esprit.models.hotelReserverModel;
+import tn.esprit.models.session;
 import tn.esprit.services.Hotelservices;
 
 public class hotelListReserver {
@@ -26,7 +28,7 @@ public class hotelListReserver {
 
 
         //prepare the listView
-        List<hotelReserverModel> reservedHotel = hs.getAllReserved();
+        List<hotelReserverModel> reservedHotel = hs.getAllReserved(session.id_utilisateur);
         hotelListView.getItems().addAll(reservedHotel);
 
         hotelListView.setCellFactory(param -> new ListCell<hotelReserverModel>() {
@@ -71,4 +73,13 @@ public class hotelListReserver {
 
     }
 
+    @FXML
+    public void goToListHotel(ActionEvent event) {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("/Fxml/hotelListF.fxml"));
+            hotelListView.getScene().setRoot(root);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

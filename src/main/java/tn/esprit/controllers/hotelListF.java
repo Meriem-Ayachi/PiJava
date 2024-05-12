@@ -78,9 +78,6 @@ public class hotelListF {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/Fxml/hotelListReserver.fxml"));
             Parent root = loader.load();
 
-            hotelListReserver controller = loader.getController();
-            controller.initialize();
-
             Stage stage = (Stage) secondGifImageView.getScene().getWindow();
             stage.setScene(new Scene(root));
             stage.show();

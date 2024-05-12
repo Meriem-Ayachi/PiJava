@@ -183,4 +183,20 @@ public class    hotelList {
         }
         // Ajouter votre logique d'affichage des détails de l'hôtel ici
     }
+
+
+    @FXML
+    void ajouterHotel(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Fxml/hotelAdd.fxml"));
+            Parent root = loader.load();
+
+            Stage stage = (Stage) hotelListView.getScene().getWindow();
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
 }

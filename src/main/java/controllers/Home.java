@@ -47,7 +47,7 @@ public class Home implements Initializable {
         ObservableList<Offres> observableOffres = FXCollections.observableList(offres);
         listview.setItems(observableOffres);
         // Charger le fichier CSS pour le style des cellules
-        URL cssFileUrl = getClass().getResource("/styles.css");
+        URL cssFileUrl = getClass().getResource("/styles-offre.css");
         if (cssFileUrl != null) {
             String cssFile = cssFileUrl.toExternalForm();
             listview.getStylesheets().add(cssFile);

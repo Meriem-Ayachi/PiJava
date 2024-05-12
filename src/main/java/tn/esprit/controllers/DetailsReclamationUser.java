@@ -142,7 +142,6 @@ public class DetailsReclamationUser implements RefreshCallBack {
 
         // Supposons que votre classe User a une méthode getProfileImageUrl() qui renvoie l'URL de l'image de profil de l'utilisateur
         String profileImageUrl = user.getImagefilename();
-        System.out.println(profileImageUrl);
 
         // Vérifiez si l'URL de l'image de profil est valide
         if (profileImageUrl != null && !profileImageUrl.isEmpty()) {
@@ -236,7 +235,6 @@ public class DetailsReclamationUser implements RefreshCallBack {
 
         // Supposons que votre classe User a une méthode getProfileImageUrl() qui renvoie l'URL de l'image de profil de l'utilisateur
         String profileImageUrl = user.getImagefilename();
-        System.out.println(profileImageUrl);
 
         // Vérifiez si l'URL de l'image de profil est valide
         if (profileImageUrl != null && !profileImageUrl.isEmpty()) {

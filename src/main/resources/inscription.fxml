@@ -106,12 +106,12 @@
             <Font name="System Bold" size="31.0" />
          </font>
       </Label>
-      <Text layoutX="14.0" layoutY="273.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Partez à la découverte du monde avec nous, car chaque voyage est une aventure">
+      <Text layoutX="14.0" layoutY="269.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Partez à la découverte du monde avec nous, car chaque voyage est une aventurequi sculpte vos souvenirs et peint votre vie avec des moments inoubliables. " wrappingWidth="353.94195556640625">
          <font>
             <Font name="Bell MT" size="11.0" />
          </font>
       </Text>
-      <Text layoutX="14.0" layoutY="284.0" strokeType="OUTSIDE" strokeWidth="0.0" text="qui sculpte vos souvenirs et peint votre vie avec des moments inoubliables. ">
+      <Text layoutX="14.0" layoutY="284.0" strokeType="OUTSIDE" strokeWidth="0.0">
          <font>
             <Font name="Bell MT" size="11.0" />
          </font>

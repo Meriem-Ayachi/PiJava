@@ -45,9 +45,16 @@ public class hotelAfficherF {
     private void afficherHotelSelectionne() {
         if (selectedHotel != null) {
             nomLabel.setText(selectedHotel.getNom());
+            nomLabel.setStyle("-fx-text-fill: #ffffff");
             nbretoileLabel.setText(selectedHotel.getNbretoile());
+            nbretoileLabel.setStyle("-fx-text-fill: #ffffff");
             emplacementLabel.setText(selectedHotel.getEmplacement());
+            emplacementLabel.setStyle("-fx-text-fill: #ffffff");
             avisLabel.setText(selectedHotel.getAvis());
+
+            avisLabel.setWrapText(true); // Enable word wrapping
+            avisLabel.setMaxWidth(200);
+            avisLabel.setStyle("-fx-text-fill: #ffffff");
         }
     }
 

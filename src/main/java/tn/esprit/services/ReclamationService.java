@@ -2,11 +2,7 @@ package tn.esprit.services;
 
 import tn.esprit.controllers.LogController;
 import tn.esprit.interfaces.IService;
-import tn.esprit.models.LogType;
-import tn.esprit.models.Reclamation;
-import tn.esprit.models.Reservation;
-import tn.esprit.models.hotel;
-import tn.esprit.models.session;
+import tn.esprit.models.*;
 import tn.esprit.util.MaConnexion;
 
 
@@ -24,8 +20,7 @@ public class ReclamationService  implements IService<Reclamation> {
 
     @Override
     public void add(Reclamation reclamation) {
-        String req = "INSERT INTO `reclamation`(`sujet`, `description`, `datesoumission`, `est_traite` , `user_id`) VALUES (?,?,?,?,?)";
-        try {
+        String req = "INSERT INTO `reclamation`(`sujet`, `description`, `datesoumission`, `est_traite` , `user_id`) VALUES (?,?,?,?,?)";        try {
             PreparedStatement ps = cnx.prepareStatement(req);
             ps.setString(1, reclamation.getSujet());
             ps.setString(2, reclamation.getDescription());
@@ -36,13 +31,18 @@ public class ReclamationService  implements IService<Reclamation> {
             ps.executeUpdate();
 
             System.out.println("Réclamation ajoutée avec succés!");
-            LogController.saveLog("Réclamation Ajouter.", LogType.AJOUT_RECLAMATION, session.id_utilisateur);
+            UserService userService=new UserService();
+            User user = userService.getOne(session.id_utilisateur);
+            ADDReclamationUtilisateur(user);
 
         } catch (SQLException ex) {
             throw new RuntimeException(ex);
         }
     }
 
+    public void ADDReclamationUtilisateur(User user) {
+        LogController.saveLog("Utilisateur " + user.getPrenom() + " " + user.getNom() + " Ajouté reclamation.", LogType.AJOUT_RECLAMATION, user.getId());
+    }
 
     @Override
     public void update(Reclamation reclamation) {
@@ -60,12 +60,17 @@ public class ReclamationService  implements IService<Reclamation> {
 
             ps.executeUpdate();
             System.out.println("Réclamation modifiée avec succès");
-            LogController.saveLog("Réclamation Modifier.", LogType.MODIFIER_RECLAMATION, session.id_utilisateur);
-
+            UserService userService=new UserService();
+            User user = userService.getOne(session.id_utilisateur);
+            UpdateReclamationUtilisateur(user);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
 
+    }
+
+    public void UpdateReclamationUtilisateur(User user) {
+        LogController.saveLog("Utilisateur " + user.getPrenom() + " " + user.getNom() + " Modifier reclamation.", LogType.MODIFIER_RECLAMATION, user.getId());
     }
 
     @Override
@@ -76,7 +81,9 @@ public class ReclamationService  implements IService<Reclamation> {
             ps.setInt(1, id);
             ps.executeUpdate();
             System.out.println("Réclamation supprimée avec succès");
-            LogController.saveLog("Réclamation Supprimer.", LogType.SUPPRIMER_RECLAMATION, session.id_utilisateur);
+            UserService userService=new UserService();
+            User user = userService.getOne(session.id_utilisateur);
+            SupprimerReclamationUtilisateur(user);
 
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -84,7 +91,9 @@ public class ReclamationService  implements IService<Reclamation> {
 
     }
 
-
+    public void SupprimerReclamationUtilisateur(User user) {
+        LogController.saveLog("Utilisateur " + user.getPrenom() + " " + user.getNom() + " Supprimer reclamation.", LogType.SUPPRIMER_RECLAMATION, user.getId());
+    }
     @Override
     public List<Reclamation> getAll() {
         List<Reclamation> reclamations = new ArrayList<>();
@@ -174,9 +183,9 @@ public class ReclamationService  implements IService<Reclamation> {
         // Add conditions based on parameters
         if (nom != null && !nom.isEmpty()) {
             if (firstValue)
-                {req += " WHERE nom LIKE ?";
-                    firstValue = false;
-                }
+            {req += " WHERE nom LIKE ?";
+                firstValue = false;
+            }
             else
                 req += " AND nom LIKE ?";
             nom = "%" + nom + "%";
@@ -268,5 +277,3 @@ public class ReclamationService  implements IService<Reclamation> {
 
 
 }
-
-

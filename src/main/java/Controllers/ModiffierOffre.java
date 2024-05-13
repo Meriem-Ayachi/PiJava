@@ -69,9 +69,9 @@ public class ModiffierOffre implements Initializable {
                 if (descriptionTFO.getText().isEmpty()) {
                     throw new SQLException("La description est vide.");
                 }
-                if (descriptionTFO.getText().length() > 20) {
-                    throw new SQLException("La description ne doit pas dépasser 20 caractères.");
-                }
+               // if (descriptionTFO.getText().length() > 20) {
+               //     throw new SQLException("La description ne doit pas dépasser 20 caractères.");
+               // }
                 if (titleTFO.getText().isEmpty()) {
                     throw new SQLException("le titre est vide.");
                 }

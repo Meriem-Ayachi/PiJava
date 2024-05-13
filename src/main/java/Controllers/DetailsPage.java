@@ -14,6 +14,8 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import tn.esprit.controllers.reservationAdd;
 import tn.esprit.models.Offres;
@@ -103,7 +105,7 @@ public class DetailsPage {
 
     @FXML
     public void initialize(Offres selectedOffre) {
-        this.offres=selectedOffre;
+        this.offres = selectedOffre;
         if (selectedOffre != null) {
             Offres loadedOffre = os.getOne(selectedOffre.getId());
             if (loadedOffre != null) {
@@ -111,26 +113,29 @@ public class DetailsPage {
                 gridpane.getChildren().clear();
 
                 // Add labels to the grid pane
-                // Add labels to the grid pane
                 Label lieuLabel = new Label(loadedOffre.getLieu());
-                lieuLabel.setStyle("-fx-font-size: 16px;"); // Set font size to 16px
+                lieuLabel.setStyle("-fx-font-size: 16px;-fx-text-fill: #ffffff"); // Set font size to 16px
                 gridpane.add(lieuLabel, 1, 0);
 
                 Label titleLabel = new Label(loadedOffre.getTitle());
-                titleLabel.setStyle("-fx-font-size: 16px;"); // Set font size to 16px
+                titleLabel.setStyle("-fx-font-size: 16px;-fx-text-fill: #ffffff;-fx-font-weight: bold"); // Set font size to 16px
                 gridpane.add(titleLabel, 0, 0);
 
-                Label descriptionLabel = new Label(loadedOffre.getDescription());
-                descriptionLabel.setStyle("-fx-font-size: 16px;"); // Set font size to 16px
-                gridpane.add(descriptionLabel, 0, 1);
+                // Use Text instead of Label for description
+                Text descriptionText = new Text(loadedOffre.getDescription());
+                descriptionText.setStyle("-fx-font-size: 16px;-fx-text-fill: #ffffff"); // Set font size to 16px
+                descriptionText.setWrappingWidth(500); // Set the width to wrap the text
+                descriptionText.setFill(Color.WHITE);
+                gridpane.add(descriptionText, 0, 1);
 
                 Label createdAtLabel = new Label(String.valueOf(loadedOffre.getCreated_at()));
-                createdAtLabel.setStyle("-fx-font-size: 16px;"); // Set font size to 16px
+                createdAtLabel.setStyle("-fx-font-size: 16px;-fx-text-fill: #ffffff"); // Set font size to 16px
                 gridpane.add(createdAtLabel, 1, 2);
 
                 Label prixLabel = new Label(String.valueOf(loadedOffre.getPrix()));
-                prixLabel.setStyle("-fx-font-size: 16px;"); // Set font size to 16px
+                prixLabel.setStyle("-fx-font-size: 16px;-fx-text-fill: #ffffff"); // Set font size to 16px
                 gridpane.add(prixLabel, 0, 2);
+
                 // Add more labels to display other offer details
                 // Load the image from the URL
                 String imageUrl = loadedOffre.getImage(); // Assume getImage() returns the image URL
@@ -154,6 +159,7 @@ public class DetailsPage {
         double averageRating = calculateAverageRating(selectedOffre.getId());
         averageRatingLabel.setText(String.format("%.2f", averageRating));
     }
+
     @FXML
     void rateOneStar(ActionEvent event) {
         rateOffer(offres.getId(), getUserId(), 1);

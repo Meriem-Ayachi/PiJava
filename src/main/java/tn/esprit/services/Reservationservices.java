@@ -4,6 +4,7 @@ import tn.esprit.controllers.LogController;
 import tn.esprit.interfaces.IService;
 import tn.esprit.models.LogType;
 import tn.esprit.models.Reservation;
+import tn.esprit.models.User;
 import tn.esprit.models.session;
 import tn.esprit.util.MaConnexion;
 
@@ -42,7 +43,9 @@ public abstract class Reservationservices implements IService<Reservation> {
             int rowsInserted = st.executeUpdate();
             if (rowsInserted > 0) {
                 System.out.println("Réservation ajoutée avec succès");
-                LogController.saveLog("Reservation Ajouter.", LogType.AJOUT_RESERVATION, session.id_utilisateur);
+                UserService userService=new UserService();
+                User user = userService.getOne(session.id_utilisateur);
+                AJOUT_RESERVATION(user);
             } else {
                 System.out.println("Échec de l'ajout de la réservation");
             }
@@ -51,6 +54,9 @@ public abstract class Reservationservices implements IService<Reservation> {
         }
     }
 
+    public void AJOUT_RESERVATION(User user) {
+        LogController.saveLog("Utilisateur " + user.getPrenom() + " " + user.getNom() + " Ajouté reservation.", LogType.AJOUT_RESERVATION, user.getId());
+    }
 
 
 
@@ -69,11 +75,17 @@ public abstract class Reservationservices implements IService<Reservation> {
             Statement st = cnx.createStatement();
             st.executeUpdate(req);
             System.out.println("Réservation mise à jour avec succès");
-            LogController.saveLog("Reservation Modifier.", LogType.MODIFIER_RESERVATION, session.id_utilisateur);
+            UserService userService=new UserService();
+            User user = userService.getOne(session.id_utilisateur);
+            MODIFIER_RESERVATION(user);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
 
+    }
+
+    public void MODIFIER_RESERVATION(User user) {
+        LogController.saveLog("Utilisateur " + user.getPrenom() + " " + user.getNom() + " Modifier reservation.", LogType.MODIFIER_RESERVATION, user.getId());
     }
 
     public void generatePDF(List<Reservation> reservations, String filePath) {
@@ -128,7 +140,9 @@ public abstract class Reservationservices implements IService<Reservation> {
             int rowsDeleted = statement.executeUpdate();
             if (rowsDeleted > 0) {
                 System.out.println("Réservation supprimée avec succès");
-                LogController.saveLog("Reservation Supprimer.", LogType.SUPPRIMER_RESERVATION, session.id_utilisateur);
+                UserService userService=new UserService();
+                User user = userService.getOne(session.id_utilisateur);
+                SUPPRIMER_RESERVATION(user);
             } else {
                 System.out.println("Aucune réservation n'a été supprimée");
             }
@@ -137,7 +151,9 @@ public abstract class Reservationservices implements IService<Reservation> {
         }
     }
 
-
+    public void SUPPRIMER_RESERVATION(User user) {
+        LogController.saveLog("Utilisateur " + user.getPrenom() + " " + user.getNom() + " Supprimer reservation.", LogType.SUPPRIMER_RESERVATION, user.getId());
+    }
 
 
 
@@ -183,7 +199,9 @@ public abstract class Reservationservices implements IService<Reservation> {
             ps.setInt(1,userId);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
+
                 Reservation p = new Reservation();
+                p.setId(rs.getInt("id"));
                 p.setDatedepart(rs.getString("datedepart"));
                 p.setDateretour(rs.getString("dateretour")); // Correction du nom de la colonne
                 p.setClasse(rs.getString("classe")); // Correction du nom de la colonne
@@ -298,8 +316,3 @@ public abstract class Reservationservices implements IService<Reservation> {
     }
 
 }
-
-
-
-
-

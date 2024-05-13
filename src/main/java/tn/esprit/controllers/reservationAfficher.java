@@ -60,10 +60,7 @@ public class reservationAfficher {
 
         }
 
-        @Override
-        public void delete(int id) {
 
-        }
     };
 
     public void initialize() {
@@ -117,7 +114,7 @@ public class reservationAfficher {
 
             Optional<ButtonType> result = confirmationDialog.showAndWait();
             if (result.isPresent() && result.get() == ButtonType.OK) {
-                reservationService.delete(selectedReservation);
+                reservationService.delete(selectedReservation.getId());
                 afficherReservationSupprimeeAvecSucces();
                 fermerFenetre();
             }

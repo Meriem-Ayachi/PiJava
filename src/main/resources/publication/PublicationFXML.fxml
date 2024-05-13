@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="636.0" prefWidth="911.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.myblog.PublicationFXMLController">
+   <left>
+      <VBox prefHeight="636.0" prefWidth="108.0" styleClass="whit_background" BorderPane.alignment="CENTER">
+         <children>
+            <HBox alignment="CENTER_LEFT" prefHeight="69.0" prefWidth="200.0">
+               <children>
+                  <ImageView fitHeight="70.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/Forum.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </ImageView>
+               </children>
+               <padding>
+                  <Insets left="5.0" />
+               </padding>
+            </HBox>
+            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="3.0" />
+            <VBox prefHeight="692.0" prefWidth="234.0" spacing="25.0">
+               <children>
+                  <HBox alignment="CENTER">
+                     <children>
+                        <ImageView fx:id="music1" fitHeight="40.0" fitWidth="40.0" onDragDetected="#handleMusicClick" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../img/icons8-music.gif" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER">
+                     <children>
+                        <ImageView fx:id="media1" fitHeight="40.0" fitWidth="40.0" onDragDetected="#handleMediaClick" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../img/icons8-clapperboard.gif" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER">
+                     <children>
+                        <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../img/icons8-quizizz.gif" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER">
+                     <children>
+                        <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../img/icons8-photos.gif" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER">
+                     <children>
+                        <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../img/icons8-chat.gif" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER">
+                     <children>
+                        <ImageView fitHeight="40.0" fitWidth="86.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../img/icons8-lol.gif" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+            <HBox prefHeight="160.0" prefWidth="234.0" />
+         </children>
+         <stylesheets>
+            <URL value="@../../../First_Forum_1/src/css/style.css" />
+            <URL value="@../css/style.css" />
+         </stylesheets>
+      </VBox>
+   </left>
+   <center>
+      <VBox prefHeight="200.0" prefWidth="100.0" styleClass="primary-color" stylesheets="@../../../First_Forum_1/src/css/style.css" BorderPane.alignment="CENTER">
+         <children>
+            <HBox alignment="CENTER" prefHeight="62.0" prefWidth="720.0">
+               <children>
+                  <HBox alignment="CENTER" maxHeight="-Infinity" prefHeight="38.0" prefWidth="158.0" spacing="10.0">
+                     <children>
+                        <ImageView fitHeight="36.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../img/new-post%20(1).png" />
+                           </image>
+                        </ImageView>
+                        <Hyperlink fx:id="addPostLink" onAction="#handleAddPostLink" prefHeight="24.0" prefWidth="155.0" text="Add Post" textFill="#1200d9">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Hyperlink>
+                        <Label lineSpacing="5.0" prefHeight="30.0" prefWidth="110.0" stylesheets="@../../../First_Forum_1/src/css/style.css">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                           <styleClass>
+                              <String fx:value="label-add-post" />
+                              <String fx:value="label-add-post" />
+                              <String fx:value="rect-round" />
+                           </styleClass>
+                        </Label>
+                     </children>
+                     <styleClass>
+                        <String fx:value="whit_background" />
+                        <String fx:value="shadow" />
+                        <String fx:value="rect-round" />
+                     </styleClass>
+                     <stylesheets>
+                        <URL value="@../../../First_Forum_1/src/css/style.css" />
+                        <URL value="@../css/style.css" />
+                     </stylesheets>
+                  </HBox>
+                  <Pane prefHeight="62.0" prefWidth="283.0" />
+                  <HBox alignment="CENTER" maxHeight="-Infinity" prefHeight="36.0" prefWidth="222.0" spacing="5.0">
+                     <children>
+                        <TextField prefHeight="26.0" prefWidth="141.0" promptText="Search" styleClass="transparent" stylesheets="@../../../First_Forum_1/src/css/style.css" />
+                        <ImageView fitHeight="32.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../img/glass.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                     <styleClass>
+                        <String fx:value="whit_background" />
+                        <String fx:value="shadow" />
+                        <String fx:value="rect-round" />
+                     </styleClass>
+                     <stylesheets>
+                        <URL value="@../../../First_Forum_1/src/css/style.css" />
+                        <URL value="@../css/style.css" />
+                     </stylesheets>
+                  </HBox>
+               </children>
+            </HBox>
+            <Label prefHeight="20.0" prefWidth="91.0" text="Feed">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="30.0" />
+               </VBox.margin>
+            </Label>
+            <ScrollPane prefHeight="200.0" prefWidth="200.0" styleClass="transparent" VBox.vgrow="ALWAYS">
+               <VBox.margin>
+                  <Insets left="20.0" right="20.0" />
+               </VBox.margin>
+               <content>
+                  <GridPane fx:id="postGrid">
+                     <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                  </GridPane>
+               </content>
+               <stylesheets>
+                  <URL value="@../../../First_Forum_1/src/css/style.css" />
+                  <URL value="@../css/style.css" />
+               </stylesheets>
+            </ScrollPane>
+         </children>
+      </VBox>
+   </center>
+</BorderPane>

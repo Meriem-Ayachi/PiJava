@@ -10,8 +10,8 @@
   <name>MyBlog</name>
 
   <properties>
-    <maven.compiler.source>17</maven.compiler.source>
-    <maven.compiler.target>17</maven.compiler.target>
+    <maven.compiler.source>21</maven.compiler.source>
+    <maven.compiler.target>21</maven.compiler.target>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <arcgis.version>200.4.0</arcgis.version>
     <junit.version>5.9.2</junit.version>
@@ -27,38 +27,40 @@
   <dependencies>
     <!-- JDBC MySQL Connector -->
     <dependency>
+    
       <groupId>mysql</groupId>
       <artifactId>mysql-connector-java</artifactId>
       <version>8.0.33</version>
     </dependency>
 
     <dependency>
-      <groupId>org.apache.pdfbox</groupId>
-      <artifactId>pdfbox</artifactId>
-      <version>2.0.24</version>
+        <groupId>org.apache.pdfbox</groupId>
+        <artifactId>pdfbox</artifactId>
+        <version>3.0.0</version>
     </dependency>
 
     <dependency>
-      <groupId>org.jsoup</groupId>
-      <artifactId>jsoup</artifactId>
-      <version>1.15.3</version>
+        <groupId>org.jsoup</groupId>
+        <artifactId>jsoup</artifactId>
+        <version>1.17.2</version>
     </dependency>
+
 
     <!-- JavaFX Dependencies -->
     <dependency>
       <groupId>org.openjfx</groupId>
       <artifactId>javafx-controls</artifactId>
-      <version>21-ea+24</version>
+      <version>21</version>
     </dependency>
     <dependency>
       <groupId>org.openjfx</groupId>
       <artifactId>javafx-fxml</artifactId>
-      <version>21-ea+24</version>
+      <version>21</version>
     </dependency>
     <dependency>
       <groupId>org.openjfx</groupId>
       <artifactId>javafx-web</artifactId>
-      <version>21-ea+24</version>
+      <version>21</version>
     </dependency>
 
     <!-- SLF4J Logging -->
@@ -68,55 +70,53 @@
       <version>2.0.12</version>
     </dependency>
 
-    <!-- Other Dependencies -->
+    <!-- https://mvnrepository.com/artifact/org.controlsfx/controlsfx -->
     <dependency>
-      <groupId>org.controlsfx</groupId>
-      <artifactId>controlsfx</artifactId>
-      <version>11.1.2</version>
+        <groupId>org.controlsfx</groupId>
+        <artifactId>controlsfx</artifactId>
+        <version>11.2.0</version>
     </dependency>
+
+    <!-- https://mvnrepository.com/artifact/com.dlsc.formsfx/formsfx-core -->
     <dependency>
-      <groupId>com.dlsc.formsfx</groupId>
-      <artifactId>formsfx-core</artifactId>
-      <version>11.6.0</version>
-      <exclusions>
-        <exclusion>
-          <groupId>org.openjfx</groupId>
-          <artifactId>*</artifactId>
-        </exclusion>
-      </exclusions>
+        <groupId>com.dlsc.formsfx</groupId>
+        <artifactId>formsfx-core</artifactId>
+        <version>11.6.0</version>
     </dependency>
+
+
     <dependency>
       <groupId>net.synedra</groupId>
       <artifactId>validatorfx</artifactId>
-      <version>0.4.0</version>
-      <exclusions>
-        <exclusion>
-          <groupId>org.openjfx</groupId>
-          <artifactId>*</artifactId>
-        </exclusion>
-      </exclusions>
+      <version>0.5.0</version>
     </dependency>
+
+    <!-- https://mvnrepository.com/artifact/org.kordamp.ikonli/ikonli-javafx -->
     <dependency>
-      <groupId>org.kordamp.ikonli</groupId>
-      <artifactId>ikonli-javafx</artifactId>
-      <version>12.3.1</version>
+        <groupId>org.kordamp.ikonli</groupId>
+        <artifactId>ikonli-javafx</artifactId>
+        <version>12.3.1</version>
     </dependency>
+
+    <dependency>
+        <groupId>org.openjfx</groupId>
+        <artifactId>javafx-swing</artifactId>
+        <version>21</version>
+    </dependency>
+
     <dependency>
       <groupId>org.kordamp.bootstrapfx</groupId>
       <artifactId>bootstrapfx-core</artifactId>
       <version>0.4.0</version>
     </dependency>
+
+    <!-- https://mvnrepository.com/artifact/eu.hansolo/tilesfx -->
     <dependency>
-      <groupId>eu.hansolo</groupId>
-      <artifactId>tilesfx</artifactId>
-      <version>17.1.17</version>
-      <exclusions>
-        <exclusion>
-          <groupId>org.openjfx</groupId>
-          <artifactId>*</artifactId>
-        </exclusion>
-      </exclusions>
+        <groupId>eu.hansolo</groupId>
+        <artifactId>tilesfx</artifactId>
+        <version>21.0.3</version>
     </dependency>
+
 
     <!-- JUnit 5 Dependencies -->
     <dependency>
@@ -131,39 +131,28 @@
       <version>${junit.version}</version>
       <scope>test</scope>
     </dependency>
+    <!-- https://mvnrepository.com/artifact/org.openjfx/javafx-media -->
+    <dependency>
+        <groupId>org.openjfx</groupId>
+        <artifactId>javafx-media</artifactId>
+        <version>21.0.3</version>
+    </dependency>
+
   </dependencies>
 
-  <build>
-    <plugins>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.11.0</version>
-        <configuration>
-          <source>17</source>
-          <target>17</target>
-        </configuration>
-      </plugin>
-      <plugin>
-        <groupId>org.openjfx</groupId>
-        <artifactId>javafx-maven-plugin</artifactId>
-        <version>0.0.7</version>
-        <executions>
-          <execution>
-            <!-- Default configuration for running with: mvn clean javafx:run -->
-            <id>default-cli</id>
-            <configuration>
-              <mainClass>myblog_pi.myblog.myblog_pi.myblog.HelloApplication</mainClass>
-              <launcher>app</launcher>
-              <jlinkZipName>app</jlinkZipName>
-              <jlinkImageName>app</jlinkImageName>
-              <noManPages>true</noManPages>
-              <stripDebug>true</stripDebug>
-              <noHeaderFiles>true</noHeaderFiles>
-            </configuration>
-          </execution>
-        </executions>
-      </plugin>
-    </plugins>
-  </build>
+  
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.openjfx</groupId>
+                <artifactId>javafx-maven-plugin</artifactId>
+                <version>0.0.8</version>
+                <configuration>
+                    <mainClass>tn.esprit.MainFX</mainClass>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+
 </project>

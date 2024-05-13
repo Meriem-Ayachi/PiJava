@@ -19,7 +19,7 @@ public class MainFX extends Application {
     
      @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("/publication/PostCRUD.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/publication/PublicationFXML.fxml"));
         stage.setTitle("Forum");
         stage.setScene(new Scene(root, 1250, 780)); 
         stage.show();

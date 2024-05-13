@@ -1,4 +1,4 @@
-package tn.esprit.myblog;
+package tn.esprit.controllers.blog;
 import tn.esprit.Model.ImageCell;
 import tn.esprit.Model.Publication;
 import tn.esprit.Service.PublicationService;
@@ -36,8 +36,13 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javax.imageio.ImageIO;
 
+import io.github.cdimascio.dotenv.Dotenv;
+
 public class PostCRUDController implements Initializable {
 
+    private static final Dotenv dotenv = Dotenv.load();
+    private static final String UploadImageDirectoryPath = dotenv.get("UploadImageDirectoryPath");
+    
     @FXML
     private ImageView imageView;
     @FXML
@@ -62,8 +67,6 @@ public class PostCRUDController implements Initializable {
     private TextField tf_search;
     @FXML
     private Button btn_search;
-    @FXML
-    private HBox pub;
     @FXML
     private Button btn_add;
     @FXML
@@ -183,11 +186,6 @@ public void initialize(URL url, ResourceBundle rb) {
     // Associate the handleSearchButton method with the btn_search button click event
     btn_search.setOnAction(this::handleSearchButton);
 
-    // Add an event handler for the HBox publication
-    pub.setOnMouseClicked(event -> handlePublicationClick()); // Ajouter l'événement de clic pour rediriger vers PublicationFXML.fxml
-    com.setOnMouseClicked(event -> handleComClick());
-music.setOnMouseClicked(event -> handleMusicClick());
-media.setOnMouseClicked(event -> handleMediaClick());
 }
 
 
@@ -277,15 +275,14 @@ media.setOnMouseClicked(event -> handleMediaClick());
 
    private String saveImageToFile(Image image) {
     String imagePath = ""; // Chemin de l'image enregistrée
+    String fileName = "";
     try {
        
-        String fileName = "image_" + System.currentTimeMillis() + ".png";
+        fileName = "image_" + System.currentTimeMillis() + ".png";
 
         
-        String currentDir = System.getProperty("user.dir");
-
        
-        imagePath = currentDir + File.separator + fileName;
+        imagePath = UploadImageDirectoryPath + File.separator + fileName;
 
         
         File outputFile = new File(imagePath);
@@ -296,7 +293,7 @@ media.setOnMouseClicked(event -> handleMediaClick());
     } catch (IOException e) {
         e.printStackTrace();
     }
-    return imagePath; 
+    return fileName; 
 }
 
     private void showAlert(Alert.AlertType type, String title, String content) {
@@ -338,7 +335,6 @@ media.setOnMouseClicked(event -> handleMediaClick());
                 return;
             }
             if (image != null) {
-                String imagePath = saveImageToFile(image);
                 selectedPublication.setImageObject(image); 
             }
             selectedPublication.setTitle(title);
@@ -490,24 +486,6 @@ private void handleMusicClick() {
     }
 }
 
-
-
-    @FXML
-    private void handleSettingClick(MouseEvent event) {
-         try {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("settingFXML.fxml"));
-        Parent root = loader.load();
-
-        Scene scene = new Scene(root);
-        Stage stage = new Stage();
-        stage.setScene(scene);
-        stage.setTitle("Setting");
-
-        stage.show();
-    } catch (IOException e) {
-        e.printStackTrace();
-    }
-    }
 
     @FXML
     private void handleProfilClick(MouseEvent event) {

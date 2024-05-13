@@ -1,6 +1,8 @@
 package tn.esprit.Model;
 
 import java.time.LocalDateTime;
+
+import io.github.cdimascio.dotenv.Dotenv;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleObjectProperty;
@@ -18,6 +20,9 @@ public class Publication {
     private String image;
     private Like likee;
     
+    private static final Dotenv dotenv = Dotenv.load();
+    private static final String UploadImageDirectoryPath = dotenv.get("UploadImageDirectoryPath");
+
     private ObjectProperty<Image> imageProperty;
 
     public Publication() {
@@ -79,6 +84,11 @@ public class Publication {
 
     public String getImage() {
         return image;
+    }
+
+
+    public String getImage_file_path() {
+        return UploadImageDirectoryPath + image;
     }
 
     public void setImage(String image) {

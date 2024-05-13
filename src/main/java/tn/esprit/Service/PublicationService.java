@@ -13,21 +13,31 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PublicationService {
-    private static final String JDBC_URL = "jdbc:mysql://localhost:3306/Integrationfinalghada";
+    private static final String JDBC_URL = "jdbc:mysql://localhost:3306/Integrationfinal";
     private static final String JDBC_USER = "root";
-    private static final String JDBC_PASSWORD = "";
+    private static final String JDBC_PASSWORD = "123456789";
 
     public List<Publication> getAllPublications() {
         List<Publication> publications = new ArrayList<>();
         try (Connection connection = DriverManager.getConnection(JDBC_URL, JDBC_USER, JDBC_PASSWORD)) {
-            String sql = "SELECT * FROM publication";
-            try (PreparedStatement statement = connection.prepareStatement(sql)) {
-                try (ResultSet resultSet = statement.executeQuery()) {
-                    while (resultSet.next()) {
-                        Publication publication = mapToPublication(resultSet);
-                        publications.add(publication);
-                    }
+            String req = "select * from publication";
+            try {
+                Statement st = connection.createStatement();
+                ResultSet res = st.executeQuery(req);
+                while (res.next()) {
+                    Publication publication = new Publication();
+                    publication.setId(res.getInt("id"));
+                    publication.setContent(res.getString("content"));
+                    publication.setImage(res.getString("image"));
+                    publication.setShortDescription(res.getString("short_description"));
+                    publication.setTitle(res.getString("title"));
+                    publication.setCreatedAt(res.getDate("created_at").toLocalDate().atStartOfDay());
+                    publication.setUpdatedAt(res.getDate("updated_at").toLocalDate().atStartOfDay());
+
+                    publications.add(publication);
                 }
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -109,13 +119,14 @@ public class PublicationService {
 
     public void updatePublication(Publication publication) {
         try (Connection connection = DriverManager.getConnection(JDBC_URL, JDBC_USER, JDBC_PASSWORD)) {
-            String sql = "UPDATE publication SET title = ?, content = ?, image = ?, updated_at = ? WHERE id = ?";
+            String sql = "UPDATE publication SET title = ?, content = ?, image = ?, updated_at = ?, short_description = ? WHERE id = ?";
             try (PreparedStatement statement = connection.prepareStatement(sql)) {
                 statement.setString(1, publication.getTitle());
                 statement.setString(2, publication.getContent());
                 statement.setString(3, publication.getImage());
                 statement.setTimestamp(4, java.sql.Timestamp.valueOf(LocalDateTime.now()));
-                statement.setInt(5, publication.getId());
+                statement.setString(5, publication.getShortDescription());
+                statement.setInt(6, publication.getId());
                 statement.executeUpdate();
             }
         } catch (SQLException e) {

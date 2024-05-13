@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package tn.esprit.myblog;
+package tn.esprit.controllers.blog;
 
 
 import tn.esprit.Model.Publication;
@@ -54,7 +54,7 @@ public class PostFXMLController  {
     // Charger l'image à partir du chemin d'accès stocké dans postdata.getImage()
     if (postdata.getImage() != null && !postdata.getImage().isEmpty()) {
         try {
-            FileInputStream inputStream = new FileInputStream(postdata.getImage());
+            FileInputStream inputStream = new FileInputStream(postdata.getImage_file_path());
             Image image = new Image(inputStream);
             postimage.setImage(image);
             postdata.setImageObject(image); // Mettre à jour la propriété imageProperty

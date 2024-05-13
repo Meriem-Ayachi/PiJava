@@ -1,4 +1,4 @@
-package tn.esprit.myblog;
+package tn.esprit.controllers.blog;
 
 import tn.esprit.Model.Publication;
 import java.io.IOException;
@@ -131,7 +131,7 @@ postGrid.addRow(rowCount, publicationBox);
     void addPublication(Publication newPublication) {
     // Ajouter la nouvelle publication à la grille dans PubFXMLController
     Label titleLabel = new Label(newPublication.getTitle());
-    ImageView imageView = new ImageView(newPublication.getImage());
+    ImageView imageView = new ImageView(newPublication.getImage_file_path());
     Label contentLabel = new Label(newPublication.getContent());
     Label dateLabel = new Label("Date de création : " + newPublication.getCreatedAt().toString());
 

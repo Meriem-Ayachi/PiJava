@@ -1,4 +1,4 @@
-package tn.esprit.myblog;
+package tn.esprit.controllers.blog;
 
 import tn.esprit.Model.Publication;
 import tn.esprit.Service.PublicationService;
@@ -64,7 +64,7 @@ private void afficherPublications() {
             try {
                  for (int q = 0; q < list.size(); q++) {
                 FXMLLoader load = new FXMLLoader();
-                load.setLocation(getClass().getResource("/first_forum/postFXML.fxml"));
+                load.setLocation(getClass().getResource("/publication/postFXML.fxml"));
                 AnchorPane pane = load.load();
                 PostFXMLController cardC = load.getController();
                 cardC.setData(list.get(q));

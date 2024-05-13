@@ -1,4 +1,4 @@
-package tn.esprit.myblog;
+package tn.esprit.controllers.blog;
 
 import tn.esprit.Model.Forum_Commentaire;
 import tn.esprit.Model.Like;

@@ -19,6 +19,9 @@ public class User {
     }
 
     public String getImagefilename() {
+        if (imagefilename == null){
+            return null;
+        }
         return UploadImageDirectoryPath  + imagefilename;
     }
 

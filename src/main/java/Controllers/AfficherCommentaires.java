@@ -1,4 +1,4 @@
-package controllers;
+package Controllers;
 
 import javafx.beans.property.ReadOnlyStringWrapper;
 import javafx.collections.FXCollections;

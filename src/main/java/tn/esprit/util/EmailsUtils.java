@@ -10,14 +10,17 @@ import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
 
+import io.github.cdimascio.dotenv.Dotenv;
 import tn.esprit.models.User;
 
 public class EmailsUtils {
 
-    private static final String SMTP_HOST = "sandbox.smtp.mailtrap.io";
-    private static final String SMTP_PORT = "2525";
-    private static final String USERNAME = "05d35441ed77da";
-    private static final String PASSWORD = "7953e9c5fef9d4";
+    private static final Dotenv dotenv = Dotenv.load();
+
+    private static final String SMTP_HOST = dotenv.get("SMTP_HOST");
+    private static final String SMTP_PORT = dotenv.get("SMTP_PORT");
+    private static final String USERNAME = dotenv.get("USERNAMES");
+    private static final String PASSWORD = dotenv.get("PASSWORD");
 
     private static final String EMAIL_REGEX =
             "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";

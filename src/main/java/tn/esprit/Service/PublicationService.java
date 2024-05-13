@@ -13,9 +13,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PublicationService {
-    private static final String JDBC_URL = "jdbc:mysql://localhost:3306/Integrationfinal";
+    private static final String JDBC_URL = "jdbc:mysql://localhost:3306/Integrationfinalghada";
     private static final String JDBC_USER = "root";
-    private static final String JDBC_PASSWORD = "123456789";
+    private static final String JDBC_PASSWORD = "";
 
     public List<Publication> getAllPublications() {
         List<Publication> publications = new ArrayList<>();
@@ -52,36 +52,59 @@ public class PublicationService {
         return null;
     }
 
-   public void addPublication(Publication publication) {
-    try (Connection connection = DriverManager.getConnection(JDBC_URL, JDBC_USER, JDBC_PASSWORD)) {
-        String sql = "INSERT INTO publication (title, content, image, created_at, updated_at) VALUES (?, ?, ?, ?, ?)";
-        try (PreparedStatement statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
-            statement.setString(1, publication.getTitle());
-            statement.setString(2, publication.getContent());
-            statement.setString(3, publication.getImage());
-            statement.setTimestamp(4, java.sql.Timestamp.valueOf(LocalDateTime.now()));
-            statement.setTimestamp(5, java.sql.Timestamp.valueOf(LocalDateTime.now()));
-            int rowsAffected = statement.executeUpdate();
+    public void addPublication(Publication publication) {
+        Connection connection = null;
+        try {
+            connection = DriverManager.getConnection(JDBC_URL, JDBC_USER, JDBC_PASSWORD);
+            connection.setAutoCommit(false); // Disable autocommit
 
-            if (rowsAffected > 0) {
-                try (ResultSet generatedKeys = statement.getGeneratedKeys()) {
-                    if (generatedKeys.next()) {
-                        int id = generatedKeys.getInt(1);
-                        publication.setId(id);
-                    } else {
-                        throw new SQLException("Failed to get ID for new publication.");
+            String sql = "INSERT INTO publication (title, content, image, created_at, updated_at,short_description) VALUES (?, ?, ?, ?, ?, ?)";
+            try (PreparedStatement statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
+                statement.setString(1, publication.getTitle());
+
+                statement.setString(2, publication.getContent());
+                statement.setString(3, publication.getImage());
+                statement.setTimestamp(4, java.sql.Timestamp.valueOf(LocalDateTime.now()));
+                statement.setTimestamp(5, java.sql.Timestamp.valueOf(LocalDateTime.now()));
+                statement.setString(6, publication.getShortDescription());
+                int rowsAffected = statement.executeUpdate();
+
+                if (rowsAffected > 0) {
+                    try (ResultSet generatedKeys = statement.getGeneratedKeys()) {
+                        if (generatedKeys.next()) {
+                            int id = generatedKeys.getInt(1);
+                            publication.setId(id);
+                        } else {
+                            throw new SQLException("Failed to get ID for new publication.");
+                        }
                     }
+                    connection.commit(); // Commit the transaction after successful insertion
+                } else {
+                    throw new SQLException("Insertion into publication table failed, no rows affected.");
                 }
-                connection.commit(); // Commit de la transaction après l'insertion réussie
-            } else {
-                throw new SQLException("Insertion into publication table failed, no rows affected.");
+            }
+        } catch (SQLException e) {
+            if (connection != null) {
+                try {
+                    connection.rollback(); // Rollback the transaction if an error occurs
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
+            }
+            e.printStackTrace();
+            // Add error handling logic here, e.g., display a message to the user
+        } finally {
+            if (connection != null) {
+                try {
+                    connection.setAutoCommit(true); // Re-enable autocommit
+                    connection.close(); // Close the connection
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
             }
         }
-    } catch (SQLException e) {
-        e.printStackTrace();
-        // Ajoutez ici la logique pour gérer l'erreur, par exemple afficher un message à l'utilisateur
     }
-}
+
 
 
     public void updatePublication(Publication publication) {

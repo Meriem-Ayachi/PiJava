@@ -8,9 +8,9 @@ import java.sql.SQLException;
 import java.time.LocalDateTime;
 
 public class CommentaireService {
-    private static final String JDBC_URL = "jdbc:mysql://localhost:3306/Integrationfinal";
+    private static final String JDBC_URL = "jdbc:mysql://localhost:3306/Integrationfinalghada";
     private static final String JDBC_USER = "root";
-    private static final String JDBC_PASSWORD = "123456789";
+    private static final String JDBC_PASSWORD = "";
 
    public void insertCommentaire(Forum_Commentaire commentaire) {
     try (Connection connection = DriverManager.getConnection(JDBC_URL, JDBC_USER, JDBC_PASSWORD)) {

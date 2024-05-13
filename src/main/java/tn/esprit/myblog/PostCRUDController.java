@@ -215,45 +215,53 @@ media.setOnMouseClicked(event -> handleMediaClick());
 
     @FXML
     private void handleAddButton(ActionEvent event) {
-    try {
-        String title = tf_title.getText();
-        String shortDescription = tf_shortDescription.getText();
-        String content = ta_content.getText();
-        Image image = imageView.getImage();
+        try {
+            String title = tf_title.getText();
+            String shortDescription = tf_shortDescription.getText();
+            System.out.println(shortDescription);
+            String content = ta_content.getText();
+            Image image = imageView.getImage();
 
-        if (title.isEmpty() || shortDescription.isEmpty() || content.isEmpty() || image == null) {
-            showAlert(Alert.AlertType.ERROR, "Error", "Please fill in all fields and select an image.");
-            return;
+            if (title.isEmpty() || shortDescription.isEmpty() || content.isEmpty() || image == null) {
+                showAlert(Alert.AlertType.ERROR, "Error", "Please fill in all fields and select an image.");
+                return;
+            }
+
+            // Save the image to a file and get the image path
+            String imagePath = saveImageToFile(image);
+
+            Publication newPublication = new Publication();
+            newPublication.setTitle(title);
+            newPublication.setShortDescription(shortDescription);
+            newPublication.setContent(content);
+
+            // Check if the image path is not null or empty before setting it
+            if (imagePath != null && !imagePath.isEmpty()) {
+                newPublication.setImage(imagePath); // Set the image path
+            } else {
+                // Handle the case where the image path is not valid
+                showAlert(Alert.AlertType.ERROR, "Error", "Failed to save the image. Please try again.");
+                return;
+            }
+
+            newPublication.setCreatedAt(LocalDateTime.now());
+            newPublication.setUpdatedAt(LocalDateTime.now());
+
+            PublicationService publicationService = new PublicationService();
+            publicationService.addPublication(newPublication);
+
+            // Add the new publication to the observable list
+            publicationList.add(newPublication);
+
+            showAlert(Alert.AlertType.INFORMATION, "Success", "Publication added successfully.");
+
+            clearFields();
+        } catch (Exception e) {
+            e.printStackTrace();
+            showAlert(Alert.AlertType.ERROR, "Error", "An error occurred while adding the publication.");
         }
-
-        String imagePath = saveImageToFile(image);
-
-        Publication newPublication = new Publication();
-        newPublication.setTitle(title);
-        newPublication.setShortDescription(shortDescription);
-        newPublication.setContent(content);
-        newPublication.setImageObject(image); // Utilisez setImageObject au lieu de setImage
-        newPublication.setCreatedAt(LocalDateTime.now());
-        newPublication.setUpdatedAt(LocalDateTime.now());
-
-        PublicationService publicationService = new PublicationService();
-        publicationService.addPublication(newPublication);
-
-        // Ajoutez cette ligne pour récupérer l'ID auto-incrémenté après l'ajout dans la base de données
-        int newId = newPublication.getId();
-
-        newPublication.setId(newId); // Mettez à jour l'ID dans l'objet Publication avec l'ID auto-incrémenté
-
-        publicationList.add(newPublication);
-
-        showAlert(Alert.AlertType.INFORMATION, "Success", "Publication added successfully.");
-
-        clearFields();
-    } catch (Exception e) {
-        e.printStackTrace();
-        showAlert(Alert.AlertType.ERROR, "Error", "An error occurred while adding the publication.");
     }
-}
+
 
 
 

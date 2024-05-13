@@ -6,7 +6,7 @@ public class MaConnexion {
 
     //DB
 
-    final String URL = "jdbc:mysql://localhost:3306/piIntegrationTest";
+    final String URL = "jdbc:mysql://localhost:3306/Integrationfinal";
     final String USR = "root";
     final String PWD = "123456789";
 

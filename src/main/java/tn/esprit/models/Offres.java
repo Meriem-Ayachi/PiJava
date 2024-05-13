@@ -6,7 +6,7 @@ public class Offres {
 
     //attr
 
-    private int id;
+    private int id, vol_id;
     private double prix;
     private String title,description,lieu,image;
 
@@ -42,13 +42,21 @@ public class Offres {
 
     //getters and setters
 
-
+    
     public int getId() {
         return id;
     }
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public int getVolId() {
+        return vol_id;
+    }
+
+    public void setVolId(int vol_id) {
+        this.vol_id = vol_id;
     }
 
     public double getPrix() {

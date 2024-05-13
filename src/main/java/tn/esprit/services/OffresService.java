@@ -22,7 +22,7 @@ public class OffresService implements IService <Offres> {
     @Override
     public void add(Offres offre) {
         System.out.println(offre);
-        String req = "INSERT INTO offres (`title`, `description`, `published`, `prix`, `lieu`, `image`, `created_at`) VALUES (?, ?, ?,?,?,?,?)";
+        String req = "INSERT INTO offres (`title`, `description`, `published`, `prix`, `lieu`, `image`, `created_at`, `vol_id`) VALUES (?, ?, ?, ?,?,?,?,?)";
         try (PreparedStatement pre = cnx.prepareStatement(req)) {
             pre.setString(1, offre.getTitle());
             pre.setString(2, offre.getDescription());
@@ -31,6 +31,7 @@ public class OffresService implements IService <Offres> {
             pre.setString(5, offre.getLieu());
             pre.setString(6, offre.getImage());
             pre.setDate(7, offre.getCreated_at());
+            pre.setInt(8, offre.getVolId());
             pre.executeUpdate();
             System.out.println("ajout avec succes");
         } catch (SQLException e) {
@@ -87,7 +88,7 @@ public class OffresService implements IService <Offres> {
             ResultSet res = ste.executeQuery(req);
             while (res.next()) {
                 Offres p = new Offres(res.getInt(1), res.getString("title"), res.getString("description"), res.getBoolean("published"), res.getDouble(5), res.getString("lieu"), res.getString("image"), res.getDate("created_at"));
-    
+                p.setVolId(res.getInt("vol_id"));
                 off.add(p);
             }
             return off;
@@ -107,14 +108,15 @@ public class OffresService implements IService <Offres> {
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
                 Offres off = new Offres();
-                off.setId(rs.getInt(1));
-                off.setTitle(rs.getString(2));
-                off.setDescription(rs.getString(3));
-                off.setPublished(rs.getBoolean(4));
-                off.setPrix(rs.getDouble(5));
-                off.setLieu(rs.getString(6));
-                off.setImage(rs.getString(7));
-                off.setCreated_at(rs.getDate(8));
+                off.setId(rs.getInt("id"));
+                off.setTitle(rs.getString("title"));
+                off.setDescription(rs.getString("description"));
+                off.setPublished(rs.getBoolean("published"));
+                off.setPrix(rs.getDouble("prix"));
+                off.setLieu(rs.getString("lieu"));
+                off.setImage(rs.getString("image"));
+                off.setCreated_at(rs.getDate("created_at"));
+                off.setVolId(rs.getInt("vol_id"));
                 return off;
             } else {
                 System.out.println("erreur");

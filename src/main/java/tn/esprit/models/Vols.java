@@ -120,7 +120,7 @@ public class Vols {
 
     @Override
     public String toString() {
-        return String.format("ID: %d | Nbrescale: %d | Nbrplace: %d | Duree: %s | Depart: %s | Arrive: %s | Classe: %s | Destination: %s | Point Depart: %s | Prix: %.2f",
-                id, nbrescale, nbrplace, duree, datedepart, datearrive, classe, destination, pointdepart, prix);
+        return String.format("Classe: %s | Destination: %s | Point Depart: %s",
+                classe, destination, pointdepart);
     }
 }

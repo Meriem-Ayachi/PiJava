@@ -5,6 +5,8 @@ import com.cloudinary.Cloudinary;
 import com.cloudinary.utils.ObjectUtils;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -13,6 +15,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
@@ -22,7 +25,9 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import tn.esprit.models.Offres;
+import tn.esprit.models.Vols;
 import tn.esprit.services.OffresService;
+import tn.esprit.services.VolService;
 import javafx.embed.swing.SwingFXUtils;
 
 import javax.imageio.ImageIO;
@@ -32,6 +37,7 @@ import java.net.URL;
 import java.sql.Date;
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Map;
 public class AjouterOffre {
 
@@ -56,6 +62,9 @@ public class AjouterOffre {
     private ImageView imageIV; // Updated to ImageView
     @FXML
     private Button liste;
+    
+    @FXML
+    private ComboBox<Vols>  volsTF;
 
 
     private final OffresService os = new OffresService();
@@ -67,7 +76,16 @@ public class AjouterOffre {
             "api_key", "841544276497521",
             "api_secret", "Xcv3hd_-wqTsBvpk3yNvBc5fPfw"));
 
+    private final VolService volService = new VolService() {
+        
+    }; 
 
+    @FXML
+    void initialize() {
+        List<Vols> volList = volService.getUnusedVolByOffre();
+        ObservableList<Vols> voitureObservableList = FXCollections.observableArrayList(volList);
+        volsTF.setItems(voitureObservableList);
+    }
     @FXML
     void AjouterO(ActionEvent event) {
         try {
@@ -75,15 +93,20 @@ public class AjouterOffre {
             String imageUrl = uploadImageToCloudinary(imageIV.getImage());
             LocalDate today = LocalDate.now();
             Date date = Date.valueOf(today);
-            os.add(new Offres(
-                    titleTFO.getText(),
-                    descriptionTFO.getText(),
-                    Boolean.parseBoolean(publishedTFO.getText()),
-                    Double.parseDouble(prixTFO.getText()),
-                    lieuTFO.getText(),
-                    imageUrl,
-                    date
-            ));
+            Offres offres = new Offres(
+                titleTFO.getText(),
+                descriptionTFO.getText(),
+                Boolean.parseBoolean(publishedTFO.getText()),
+                Double.parseDouble(prixTFO.getText()),
+                lieuTFO.getText(),
+                imageUrl,
+                date
+            );
+
+            Vols currentVol = volsTF.getValue();
+            offres.setVolId(currentVol.getId());
+            os.add(offres);
+
             showNotification("Offre ajoutée avec succès");
         } catch (SQLException | IOException | IllegalArgumentException e) {
             showAlert("Erreur", e.getMessage());
@@ -114,6 +137,9 @@ public class AjouterOffre {
         }
         if (imageIV.getImage() == null) {
             throw new IllegalArgumentException("L'image est nulle.");
+        }
+        if (volsTF.getValue() == null) {
+            throw new IllegalArgumentException("Vol est nulle.");
         }
     }
 

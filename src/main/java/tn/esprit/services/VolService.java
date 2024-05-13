@@ -110,6 +110,39 @@ public abstract class VolService implements IService<Vols> {
 
     }
 
+    public List<Vols> getUnusedVolByOffre() {
+        List<Vols> vols = new ArrayList<>();
+        try {
+            String req = "SELECT v.* ";
+            req += "FROM vols v ";
+            req += "LEFT JOIN offres o ON v.id = o.vol_id ";
+            req += "WHERE o.vol_id IS NULL; ";
+
+            Statement st = cnx.createStatement();
+            ResultSet rs = st.executeQuery(req);
+            while (rs.next()) {
+                Vols v = new Vols();
+                v.setId(rs.getInt("id"));
+                v.setNbrescale(rs.getInt("nbrescale"));
+                v.setNbrplace(rs.getInt("nbrplace")); // Correction du nom de la colonne
+                v.setDuree(rs.getString("duree")); // Correction du nom de la colonne
+                v.setDatedepart(rs.getString("datedepart"));
+                v.setDatearrive(rs.getString("datearrive"));
+                v.setClasse(rs.getString("classe"));
+                v.setDestination(rs.getString("destination"));
+                v.setPointdepart(rs.getString("pointdepart"));
+                v.setPrix(rs.getDouble("prix"));
+                vols.add(v);
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace(); // Affiche l'erreur
+            // Retourne une liste vide en cas d'erreur
+            return vols;
+        }
+        return vols;
+
+    }
+    
 
     @Override
 

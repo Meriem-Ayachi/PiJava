@@ -15,9 +15,12 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
+import tn.esprit.controllers.reservationAdd;
 import tn.esprit.models.Offres;
+import tn.esprit.models.Vols;
 import tn.esprit.models.session;
 import tn.esprit.services.OffresService;
+import tn.esprit.services.VolService;
 import tn.esprit.util.MaConnexion;
 
 import java.io.IOException;
@@ -43,6 +46,9 @@ public class DetailsPage {
 
 
     private final OffresService os = new OffresService();
+    private final VolService vs = new VolService() {
+        
+    };
 
     public void Commenter(ActionEvent event) throws IOException {
         try {
@@ -63,7 +69,28 @@ public class DetailsPage {
 
     @FXML
     void Reserver(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Fxml/reservationAdd.fxml"));
+            AnchorPane reservationPane = loader.load();
+            reservationAdd controller = loader.getController();
 
+            Vols currentFlight = vs.getOne(offres.getVolId());
+            // Appeler la méthode pour initialiser les détails de la réclamation
+            controller.fillReservationInputs(
+                currentFlight.getPointdepart(),
+                currentFlight.getDestination(),
+                currentFlight.getClasse(),
+                String.valueOf(currentFlight.getNbrplace()),
+                currentFlight.getDatedepart(),
+                currentFlight.getDatearrive()
+            );
+
+            Stage stage = (Stage) reserver.getScene().getWindow();
+            stage.setScene(new Scene(reservationPane));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
@@ -76,8 +103,6 @@ public class DetailsPage {
 
     @FXML
     public void initialize(Offres selectedOffre) {
-
-
         this.offres=selectedOffre;
         if (selectedOffre != null) {
             Offres loadedOffre = os.getOne(selectedOffre.getId());

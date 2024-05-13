@@ -148,8 +148,8 @@ public class DetailsReclamationUser implements RefreshCallBack {
             // Chargez l'image de profil à partir de l'URL
             Image profileImage = new Image("file:" + profileImageUrl);
             ImageView profileImageView = new ImageView(profileImage);
-            profileImageView.setFitWidth(30); // Ajustez la largeur si nécessaire
-            profileImageView.setFitHeight(30); // Ajustez la hauteur si nécessaire
+            profileImageView.setFitWidth(60); // Ajustez la largeur si nécessaire
+            profileImageView.setFitHeight(70); // Ajustez la hauteur si nécessaire
 
             // Créez une mise en page pour afficher l'image de profil de l'utilisateur avec les autres éléments
             HBox commentBox = new HBox(profileImageView, commentVBox);
@@ -166,8 +166,8 @@ public class DetailsReclamationUser implements RefreshCallBack {
             String defaultImagePath = "/images/Admin.png";
             Image defaultImage = new Image(getClass().getResourceAsStream(defaultImagePath));
             ImageView defaultImageView = new ImageView(defaultImage);
-            defaultImageView.setFitWidth(30); // Ajustez la largeur si nécessaire
-            defaultImageView.setFitHeight(30); // Ajustez la hauteur si nécessaire
+            defaultImageView.setFitWidth(60); // Ajustez la largeur si nécessaire
+            defaultImageView.setFitHeight(70); // Ajustez la hauteur si nécessaire
 
             // Créez une mise en page pour afficher l'image par défaut avec les autres éléments
             HBox commentBox = new HBox(defaultImageView, commentVBox);
@@ -259,8 +259,8 @@ public class DetailsReclamationUser implements RefreshCallBack {
             String defaultImagePath = "/images/Admin.png";
             Image defaultImage = new Image(getClass().getResourceAsStream(defaultImagePath));
             ImageView defaultImageView = new ImageView(defaultImage);
-            defaultImageView.setFitWidth(30); // Ajustez la largeur si nécessaire
-            defaultImageView.setFitHeight(30); // Ajustez la hauteur si nécessaire
+            defaultImageView.setFitWidth(60); // Ajustez la largeur si nécessaire
+            defaultImageView.setFitHeight(70); // Ajustez la hauteur si nécessaire
 
             // Créez une mise en page pour afficher l'image par défaut avec les autres éléments
             HBox commentBox = new HBox(defaultImageView, commentVBox, buttonsHBox);

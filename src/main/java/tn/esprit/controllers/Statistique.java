@@ -42,7 +42,7 @@ public class Statistique{
         Statement st= MaConnexion.getInstance().getCnx().createStatement();
         ResultSet rs=st.executeQuery(query);
         while (rs.next()){
-            data.add(new PieChart.Data("title:"+rs.getString("title"),rs.getInt("number_of_offres")));
+           data.add(new PieChart.Data("title:"+rs.getString("title"),rs.getInt("number_of_offres")));
         }
         piechart.setData(data);
     }

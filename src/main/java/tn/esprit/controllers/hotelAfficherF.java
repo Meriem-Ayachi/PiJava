@@ -70,7 +70,7 @@ public class hotelAfficherF {
         }
     }
 
-    
+
     @FXML
     void gotoReserverHotel(ActionEvent event) {
 
@@ -90,7 +90,7 @@ public class hotelAfficherF {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        
+
     }
 
 }

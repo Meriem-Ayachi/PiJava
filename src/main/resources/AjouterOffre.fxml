@@ -17,8 +17,8 @@
          <TextField fx:id="prixTFO" layoutX="82.0" layoutY="254.0" prefHeight="45.0" prefWidth="190.0" promptText="prix" styleClass="modern-textfield" stylesheets="@textfield.css" />
          <TextField fx:id="lieuTFO" layoutX="79.0" layoutY="324.0" prefHeight="45.0" prefWidth="190.0" promptText="lieu" styleClass="modern-textfield" stylesheets="@textfield.css" />
          <Button layoutX="312.0" layoutY="455.0" mnemonicParsing="false" onAction="#choisirImage" prefHeight="45.0" prefWidth="138.0" styleClass="modern-button" stylesheets="@modern-button.css" text="Choisir Image" />
-         <ImageView fx:id="imageIV" fitHeight="150.0" fitWidth="190.0" layoutX="79.0" layoutY="402.0" />
-         <Button layoutX="119.0" layoutY="601.0" mnemonicParsing="false" onAction="#AjouterO" prefHeight="45.0" prefWidth="99.0" styleClass="modern-button" stylesheets="@modern-button.css" text="Ajouter" />
+         <ImageView fx:id="imageIV" fitHeight="150.0" fitWidth="190.0" layoutX="79.0" layoutY="447.0" />
+         <Button layoutX="119.0" layoutY="608.0" mnemonicParsing="false" onAction="#AjouterO" prefHeight="45.0" prefWidth="99.0" styleClass="modern-button" stylesheets="@modern-button.css" text="Ajouter" />
          <TextField fx:id="publishedTFO" layoutX="82.0" layoutY="182.0" prefHeight="45.0" prefWidth="190.0" promptText="published" styleClass="modern-textfield" stylesheets="@textfield.css" />
          <Button fx:id="liste" layoutX="619.0" layoutY="197.0" mnemonicParsing="false" onAction="#naviguer" prefHeight="45.0" prefWidth="157.0" styleClass="modern-button" stylesheets="@modern-button.css" text="liste des offres" />
          <StackPane fx:id="notificationPane" layoutX="598.0" layoutY="54.0" prefHeight="33.0" prefWidth="200" style="-fx-background-color: lightblue;">

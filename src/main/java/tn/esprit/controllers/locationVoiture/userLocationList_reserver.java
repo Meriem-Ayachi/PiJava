@@ -73,6 +73,7 @@ public class userLocationList_reserver {
 
                     // Create "Show More" button
                     Button DownloadButton = new Button("Download Pdf");
+                    DownloadButton.setStyle("-fx-background-color: transparent;-fx-text-fill: #233b9a;-fx-font-size: 14px;-fx-padding: 0 5px;");
 
                     // Add action handler for the show more button
                     DownloadButton.setOnAction(event -> {

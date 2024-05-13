@@ -65,7 +65,11 @@ public class Home implements Initializable {
             private final Label prixLabel = new Label();
             private final Label dateLabel = new Label();
 
+
             {
+
+                titleLabel.setStyle("-fx-font-weight: bold; -fx-font-size: 14pt;");
+
                 content.getChildren().addAll(imageView, infoPane);
                 content.setSpacing(20);
                 infoPane.setSpacing(5);

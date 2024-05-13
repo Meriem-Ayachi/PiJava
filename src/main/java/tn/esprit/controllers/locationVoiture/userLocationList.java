@@ -76,6 +76,7 @@ public class userLocationList {
 
                     // Create "Show More" button
                     Button DetailsButton = new Button("Details");
+                    DetailsButton.setStyle("-fx-background-color: transparent;-fx-text-fill: #233b9a;-fx-font-size: 14px;-fx-padding: 0 5px;");
 
                     // Add action handler for the show more button
                     DetailsButton.setOnAction(event -> {

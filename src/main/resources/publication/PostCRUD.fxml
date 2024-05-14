@@ -15,19 +15,19 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="680.0" prefWidth="1454.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.blog.PostCRUDController">
+<AnchorPane id="AnchorPane" prefHeight="680.0" prefWidth="822.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.blog.PostCRUDController">
    <fx:include source="../sidebarAdmin.fxml" />
-   <AnchorPane layoutX="269.0" prefHeight="694.0" prefWidth="1166.0">
+   <AnchorPane layoutX="269.0" prefHeight="680.0" prefWidth="822.0">
       <children>
-         <BorderPane layoutX="10.0" layoutY="4.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="690.0" prefWidth="1175.0">
+         <BorderPane layoutX="10.0" layoutY="4.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="680.0" prefWidth="822.0">
             <center>
-               <VBox prefHeight="690.0" prefWidth="1044.0" styleClass="primary-color" stylesheets="@../css/style.css" BorderPane.alignment="CENTER">
+               <VBox prefHeight="680.0" prefWidth="822.0" styleClass="primary-color" stylesheets="@../css/style.css" BorderPane.alignment="CENTER">
                   <children>
-                     <AnchorPane prefHeight="688.0" prefWidth="936.0">
+                     <AnchorPane prefHeight="680.0" prefWidth="822.0">
                         <children>
-                           <AnchorPane layoutX="169.0" layoutY="113.0" prefHeight="682.0" prefWidth="956.0" AnchorPane.bottomAnchor="6.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="219.0" AnchorPane.topAnchor="0.0">
+                           <AnchorPane layoutX="169.0" layoutY="113.0" prefHeight="680.0" prefWidth="822.0" AnchorPane.bottomAnchor="6.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="219.0" AnchorPane.topAnchor="0.0">
                               <children>
-                                 <AnchorPane layoutX="6.0" layoutY="6.0" prefHeight="676.0" prefWidth="226.0" stylesheets="@../css/dashboardDesign.css">
+                                 <AnchorPane layoutX="6.0" layoutY="6.0" prefHeight="680.0" prefWidth="822.0" stylesheets="@../css/dashboardDesign.css">
                                     <styleClass>
                                        <String fx:value="white-bg" />
                                        <String fx:value="shadow" />

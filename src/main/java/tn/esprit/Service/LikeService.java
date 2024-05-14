@@ -11,7 +11,7 @@ import java.sql.Statement;
 public class LikeService {
     private static final String JDBC_URL = "jdbc:mysql://localhost:3306/Integrationfinal";
     private static final String JDBC_USER = "root";
-    private static final String JDBC_PASSWORD = "123456789";
+    private static final String JDBC_PASSWORD = "";
 
     public void insertLike(Like like) {
         try (Connection connection = DriverManager.getConnection(JDBC_URL, JDBC_USER, JDBC_PASSWORD)) {

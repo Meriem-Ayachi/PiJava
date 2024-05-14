@@ -15,7 +15,7 @@ import java.util.List;
 public class PublicationService {
     private static final String JDBC_URL = "jdbc:mysql://localhost:3306/Integrationfinal";
     private static final String JDBC_USER = "root";
-    private static final String JDBC_PASSWORD = "123456789";
+    private static final String JDBC_PASSWORD = "";
 
     public List<Publication> getAllPublications() {
         List<Publication> publications = new ArrayList<>();

@@ -8,7 +8,7 @@ public class MaConnexion {
 
     final String URL = "jdbc:mysql://localhost:3306/Integrationfinal";
     final String USR = "root";
-    final String PWD = "123456789";
+    final String PWD = "";
 
     //att
     private static Connection cnx;

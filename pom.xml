@@ -8,8 +8,8 @@
     <version>1.0-SNAPSHOT</version>
 
     <properties>
-        <maven.compiler.source>17</maven.compiler.source>
-        <maven.compiler.target>17</maven.compiler.target>
+        <maven.compiler.source>21</maven.compiler.source>
+        <maven.compiler.target>21</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <arcgis.version>200.4.0</arcgis.version>
         <arcgis.version>200.4.0</arcgis.version>
@@ -173,9 +173,60 @@
         </dependency>
 
 
+        
 
 
-    </dependencies>
+
+    <!-- https://mvnrepository.com/artifact/org.controlsfx/controlsfx -->
+    <dependency>
+        <groupId>org.controlsfx</groupId>
+        <artifactId>controlsfx</artifactId>
+        <version>11.2.0</version>
+    </dependency>
+
+    <!-- https://mvnrepository.com/artifact/com.dlsc.formsfx/formsfx-core -->
+    <dependency>
+        <groupId>com.dlsc.formsfx</groupId>
+        <artifactId>formsfx-core</artifactId>
+        <version>11.6.0</version>
+    </dependency>
+
+
+    <dependency>
+      <groupId>net.synedra</groupId>
+      <artifactId>validatorfx</artifactId>
+      <version>0.5.0</version>
+    </dependency>
+
+    <!-- https://mvnrepository.com/artifact/org.kordamp.ikonli/ikonli-javafx -->
+    <dependency>
+        <groupId>org.kordamp.ikonli</groupId>
+        <artifactId>ikonli-javafx</artifactId>
+        <version>12.3.1</version>
+    </dependency>
+
+
+    <dependency>
+      <groupId>org.kordamp.bootstrapfx</groupId>
+      <artifactId>bootstrapfx-core</artifactId>
+      <version>0.4.0</version>
+    </dependency>
+
+    <!-- https://mvnrepository.com/artifact/eu.hansolo/tilesfx -->
+    <dependency>
+        <groupId>eu.hansolo</groupId>
+        <artifactId>tilesfx</artifactId>
+        <version>21.0.3</version>
+    </dependency>
+
+    <!-- https://mvnrepository.com/artifact/org.openjfx/javafx-media -->
+    <dependency>
+        <groupId>org.openjfx</groupId>
+        <artifactId>javafx-media</artifactId>
+        <version>21.0.3</version>
+    </dependency>
+
+  </dependencies>
 
     <build>
         <plugins>

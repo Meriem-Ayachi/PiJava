@@ -104,6 +104,14 @@ public class sidebarAdmin {
         nav.goToPage_WithEvent("/AfficherOffre.fxml",event);
 
     }
+
+    @FXML
+    void directToForum(ActionEvent event) {
+        Navigator nav = new Navigator();
+        nav.goToPage_WithEvent("/publication/PostCRUD.fxml",event);
+    }
+
+    
 }
 
 

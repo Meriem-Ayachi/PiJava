@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.TextFlow?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="656.0" prefWidth="369.0" stylesheets="@../../../First_Forum_1/src/css/style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.blog.AddPostFXMLController">
+   <children>
+      <VBox prefHeight="366.0" prefWidth="414.0">
+         <children>
+            <ImageView fx:id="postImage" fitHeight="365.0" fitWidth="379.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/1709164443_Yasmine%20Sabri%20-%20ياسمين%20صبري.jpg" />
+               </image>
+               <VBox.margin>
+                  <Insets left="1.0" />
+               </VBox.margin>
+            </ImageView>
+         </children>
+      </VBox>
+      <HBox prefHeight="59.0" prefWidth="291.0" spacing="5.0">
+         <children>
+            <ImageView fitHeight="43.0" fitWidth="72.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/1709164325_f5ba7e60-ab5e-4ac7-b030-79292206a26d-fotor-2024040103317.png" />
+               </image>
+               <HBox.margin>
+                  <Insets left="2.0" right="5.0" top="10.0" />
+               </HBox.margin>
+            </ImageView>
+            <VBox prefHeight="54.0" prefWidth="107.0">
+               <children>
+                  <Label prefHeight="24.0" prefWidth="139.0" text="yessmine Sabri  ">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label prefHeight="19.0" prefWidth="112.0" text="4 days Ago " />
+               </children>
+            </VBox>
+            <HBox prefHeight="59.0" prefWidth="196.0" spacing="5.0">
+               <children>
+                  <HBox prefHeight="59.0" prefWidth="63.0">
+                     <children>
+                        <ImageView fx:id="likes" fitHeight="54.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../img/heart_13724156.png" />
+                           </image>
+                           <HBox.margin>
+                              <Insets top="10.0" />
+                           </HBox.margin>
+                        </ImageView>
+                        <Label fx:id="nb_likes" prefHeight="58.0" prefWidth="29.0">
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                        </Label>
+                        <Label>
+                           <HBox.margin>
+                              <Insets top="20.0" />
+                           </HBox.margin>
+                        </Label>
+                     </children>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                  </HBox>
+                  <HBox prefHeight="59.0" prefWidth="56.0" spacing="3.0">
+                     <children>
+                        <ImageView fitHeight="28.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../img/comment_2593482.png" />
+                           </image>
+                           <HBox.margin>
+                              <Insets top="15.0" />
+                           </HBox.margin>
+                        </ImageView>
+                        <Label fx:id="nb_comment" prefHeight="62.0" prefWidth="24.0" />
+                     </children>
+                  </HBox>
+                  <VBox prefHeight="59.0" prefWidth="46.0">
+                     <children>
+                        <ImageView fx:id="upload_image" fitHeight="42.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../img/camera.png" />
+                           </image>
+                           <VBox.margin>
+                              <Insets top="5.0" />
+                           </VBox.margin>
+                        </ImageView>
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+         </children>
+      </HBox>
+      <HBox prefHeight="52.0" prefWidth="366.0">
+         <children>
+            <TextField fx:id="ta_comment" prefHeight="50.0" prefWidth="367.0" />
+         </children>
+      </HBox>
+      <Button fx:id="btn_commenter" mnemonicParsing="false" prefHeight="32.0" prefWidth="109.0" text="Commenter" textFill="#0d14e1">
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+         <font>
+            <Font name="System Bold Italic" size="13.0" />
+         </font>
+         <stylesheets>
+            <URL value="@../../../First_Forum_1/src/css/style.css" />
+            <URL value="@../css/style.css" />
+         </stylesheets>
+      </Button>
+      <HBox prefHeight="43.0" prefWidth="187.0" spacing="10.0">
+         <children>
+            <HBox alignment="CENTER" prefHeight="43.0" prefWidth="366.0">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <children>
+                  <HBox prefHeight="52.0" prefWidth="366.0">
+                     <children>
+                        <HBox prefHeight="139.0" prefWidth="366.0" />
+                        <HBox alignment="CENTER" prefHeight="43.0" prefWidth="732.0" spacing="10.0">
+                           <children>
+                              <ImageView fitHeight="68.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../img/communication_13685417.png" />
+                                 </image>
+                              </ImageView>
+                              <Hyperlink fx:id="shareLink" text="Share" textFill="#d41346">
+                                 <font>
+                                    <Font name="System Bold" size="18.0" />
+                                 </font>
+                              </Hyperlink>
+                           </children>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                        </HBox>
+                     </children>
+                  </HBox>
+               </children>
+            </HBox>
+         </children>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </HBox>
+      <HBox prefHeight="97.0" prefWidth="364.0">
+         <children>
+            <TextFlow fx:id="textFlow_comment" prefHeight="98.0" prefWidth="442.0" />
+         </children></HBox>
+   </children>
+   <styleClass>
+      <String fx:value="whit_background" />
+      <String fx:value="shadow" />
+      <String fx:value="rect-round" />
+   </styleClass>
+</VBox>

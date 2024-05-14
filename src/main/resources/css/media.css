@@ -1,0 +1,40 @@
+/* Style général pour les boutons */
+.button {
+    -fx-font-family: "Arial", sans-serif;
+    -fx-font-size: 14px;
+    -fx-text-fill: white;
+    -fx-padding: 8px 16px;
+    -fx-background-radius: 5px;
+    -fx-border-radius: 5px;
+    -fx-cursor: hand;
+}
+
+/* Style pour le bouton Play */
+.button#btnPlay {
+    -fx-background-color: linear-gradient(to bottom, #1e90ff, #007bff);
+}
+
+/* Style pour le bouton Stop */
+.button#btnStop {
+    -fx-background-color: linear-gradient(to bottom, #ff6347, #dc3545);
+}
+
+/* Style pour le texte du Slider */
+.slider .thumb {
+    -fx-background-color: #3498db;
+    -fx-background-insets: 0;
+    -fx-background-radius: 0;
+    -fx-padding: 8px;
+}
+
+/* Style pour la piste du Slider */
+.slider .track {
+    -fx-background-color: #bdc3c7;
+}
+
+/* Style pour le label de la durée */
+.label#lblDuration {
+    -fx-font-size: 12px;
+    -fx-text-fill: #34495e;
+    -fx-padding: 5px;
+}

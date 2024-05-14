@@ -1,0 +1,17 @@
+.button-reset {
+    -fx-background-color: #ff6347; /* Couleur de fond */
+    -fx-text-fill: #ffffff; /* Couleur du texte */
+    -fx-font-size: 16px; /* Taille de la police */
+    -fx-font-family: "Arial"; /* Police de caractères */
+    -fx-padding: 8px 16px; /* Espacement interne du bouton */
+    -fx-border-radius: 5px; /* Rayon des coins du bouton */
+    -fx-cursor: hand; /* Curseur au survol */
+}
+
+.button-reset:hover {
+    -fx-background-color: #e74c3c; /* Couleur de fond au survol */
+}
+
+.button-reset:pressed {
+    -fx-background-color: #c0392b; /* Couleur de fond lorsque le bouton est enfoncé */
+}

@@ -110,5 +110,12 @@ public class sidebarUser {
         }
 
     }
+
+
+    @FXML
+    void directToForum(ActionEvent event) {
+        Navigator nav = new Navigator();
+        nav.goToPage_WithEvent("/publication/PublicationFXML.fxml",event);
+    }
 }
 

@@ -1,0 +1,71 @@
+/* Style du bouton Facebook */
+.button-facebook {
+    -fx-background-color: #3b5998; /* Bleu Facebook */
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 5px;
+    -fx-padding: 8px 12px;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.5) , 5, 0.0 , 0 , 1 );
+}
+
+/* Style du bouton YouTube */
+.button-youtube {
+    -fx-background-color: #ff0000; /* Rouge YouTube */
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 5px;
+    -fx-padding: 8px 12px;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.5) , 5, 0.0 , 0 , 1 );
+}
+
+/* Style du bouton Instagram */
+.button-instagram {
+    -fx-background-color: #8a3ab9; /* Mauve Instagram */
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 5px;
+    -fx-padding: 8px 12px;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.5) , 5, 0.0 , 0 , 1 );
+}
+
+/* Style Hover pour tous les boutons */
+.button:hover {
+    -fx-background-color: #d1d1d1; /* Couleur claire au survol */
+}
+
+/* Style du fond blanc */
+.background-white {
+    -fx-background-color: #ffffff; /* Blanc */
+}
+
+/* Style de la MenuBar */
+.menu-bar {
+    -fx-background-color: #ffffff; /* Fond blanc */
+    -fx-font-size: 14px; /* Taille de police */
+}
+
+/* Style des items de la MenuBar */
+.menu-bar .menu-item {
+    -fx-text-fill: #000000; /* Couleur du texte */
+}
+
+/* Style des items de la MenuBar au survol */
+.menu-bar .menu-item:hover {
+    -fx-background-color: #f0f0f0; /* Fond gris clair au survol */
+}
+
+/* Style de la MenuBar avec une couleur magnifique */
+.menu-bar {
+    -fx-background-color: #FFFFFF; /* Blanc */
+    -fx-font-size: 14px; /* Taille de police */
+}
+
+/* Style du texte des items de MenuBar */
+.menu-bar .menu-item {
+    -fx-text-fill: #FFFFFF; /* Texte blanc */
+}
+
+/* Style des items de MenuBar au survol */
+.menu-bar .menu-item:hover {
+    -fx-background-color: #9575CD; /* Violet clair au survol */
+}

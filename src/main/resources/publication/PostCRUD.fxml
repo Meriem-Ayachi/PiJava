@@ -17,15 +17,15 @@
 
 <AnchorPane id="AnchorPane" prefHeight="680.0" prefWidth="822.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.blog.PostCRUDController">
    <fx:include source="../sidebarAdmin.fxml" />
-   <AnchorPane layoutX="269.0" prefHeight="680.0" prefWidth="822.0">
+   <AnchorPane layoutX="323.0" prefHeight="684.0" prefWidth="894.0">
       <children>
          <BorderPane layoutX="10.0" layoutY="4.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="680.0" prefWidth="822.0">
             <center>
-               <VBox prefHeight="680.0" prefWidth="822.0" styleClass="primary-color" stylesheets="@../css/style.css" BorderPane.alignment="CENTER">
+               <VBox prefHeight="692.0" prefWidth="1122.0" styleClass="primary-color" stylesheets="@../css/style.css" BorderPane.alignment="CENTER">
                   <children>
-                     <AnchorPane prefHeight="680.0" prefWidth="822.0">
+                     <AnchorPane prefHeight="692.0" prefWidth="907.0">
                         <children>
-                           <AnchorPane layoutX="169.0" layoutY="113.0" prefHeight="680.0" prefWidth="822.0" AnchorPane.bottomAnchor="6.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="219.0" AnchorPane.topAnchor="0.0">
+                           <AnchorPane layoutX="169.0" layoutY="113.0" prefHeight="680.0" prefWidth="822.0" AnchorPane.bottomAnchor="6.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                               <children>
                                  <AnchorPane layoutX="6.0" layoutY="6.0" prefHeight="680.0" prefWidth="822.0" stylesheets="@../css/dashboardDesign.css">
                                     <styleClass>
@@ -92,7 +92,7 @@
                                              <URL value="@../css/dashboardDesign.css" />
                                           </stylesheets>
                                        </HBox>
-                                       <TableView fx:id="tableView" layoutX="7.0" layoutY="61.0" onContextMenuRequested="#handleMouseAction" onMouseClicked="#handleMouseAction" prefHeight="616.0" prefWidth="691.0" />
+                                       <TableView fx:id="tableView" layoutX="7.0" layoutY="61.0" onContextMenuRequested="#handleMouseAction" onMouseClicked="#handleMouseAction" prefHeight="616.0" prefWidth="678.0" />
                                        <Button fx:id="btn_search" layoutX="198.0" layoutY="14.0" mnemonicParsing="false" styleClass="btn_search" stylesheets="@../css/dashboardDesign.css" text="Apply" />
                                     </children>
                                  </AnchorPane>

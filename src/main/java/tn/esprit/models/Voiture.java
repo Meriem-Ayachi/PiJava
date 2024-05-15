@@ -1,30 +1,37 @@
 package tn.esprit.models;
 
+import io.github.cdimascio.dotenv.Dotenv;
+
 public class Voiture {
     private int id,capacite;
-    private String couleur,marque,model,energy;
+    private String couleur,marque,model,energy, image_file_name;
 
+    private static final Dotenv dotenv = Dotenv.load();
+    private static final String UploadImageDirectoryPath = dotenv.get("UploadImageDirectoryPath");
+    
     //constuctor
 
 
     public Voiture() {
     }
 
-    public Voiture(int id, int capacite, String couleur, String marque, String model, String energy) {
+    public Voiture(int id, int capacite, String couleur, String marque, String model, String energy, String image_file_name) {
         this.id = id;
         this.capacite = capacite;
         this.couleur = couleur;
         this.marque = marque;
         this.model = model;
         this.energy = energy;
+        this.image_file_name = image_file_name;
     }
 
-    public Voiture(int capacite, String couleur, String marque, String model, String energy) {
+    public Voiture(int capacite, String couleur, String marque, String model, String energy, String image_file_name) {
         this.capacite = capacite;
         this.couleur = couleur;
         this.marque = marque;
         this.model = model;
         this.energy = energy;
+        this.image_file_name = image_file_name;
     }
 
     //getters and setters
@@ -76,18 +83,24 @@ public class Voiture {
     public void setEnergy(String energy) {
         this.energy = energy;
     }
+    
+    public String getImageName() {
+        return image_file_name;
+    }
+
+    public String getImage_file_name() {
+        return UploadImageDirectoryPath + image_file_name;
+    }
+
+    public void setImage_file_name(String image_file_name) {
+        this.image_file_name = image_file_name;
+    }
 
     //display
 
     @Override
     public String toString() {
-        return "Voiture{" +
-                "id=" + id +
-                ", capacite=" + capacite +
-                ", couleur='" + couleur + '\'' +
-                ", marque='" + marque + '\'' +
-                ", model='" + model + '\'' +
-                ", energy='" + energy + '\'' +
-                '}';
+        return  model + "(" + marque + ")"; 
     }
+
 }

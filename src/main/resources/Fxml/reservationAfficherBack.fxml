@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="424.0" prefWidth="525.0" style="-fx-background-image: url('backgound.jpg'); -fx-background-size: cover;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.reservationAfficher">
+    <AnchorPane prefHeight="471.0" prefWidth="612.0" style="-fx-background-color: #ececec;">
+        <children>
+            <Label fx:id="dateDepartLabel" layoutX="71.0" layoutY="73.0" />
+            <Label fx:id="dateRetourLabel" layoutX="71.0" layoutY="112.0" />
+            <Label fx:id="classeLabel" layoutX="71.0" layoutY="153.0" />
+            <Label fx:id="destinationDepartLabel" layoutX="71.0" layoutY="190.0" />
+            <Label fx:id="destinationRetourLabel" layoutX="71.0" layoutY="229.0" />
+            <Label fx:id="nbrPersonnesLabel" layoutX="71.0" layoutY="269.0" />
+        </children>
+    </AnchorPane>
+</AnchorPane>

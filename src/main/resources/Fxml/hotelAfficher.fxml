@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="373.0" prefWidth="0.0" style="-fx-background-image: url('/backgound.jpg'); -fx-background-size: cover;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.hotelAfficher">
+    <AnchorPane layoutX="7.0" layoutY="7.0" prefHeight="360.0" prefWidth="535.0" >
+        <children>
+            <Label fx:id="nomLabel" layoutX="167.0" layoutY="104.0" />
+            <Label fx:id="nbretoileLabel" layoutX="167.0" layoutY="151.0" />
+            <Label fx:id="emplacementLabel" layoutX="167.0" layoutY="199.0" />
+            <Label fx:id="avisLabel" layoutX="167.0" layoutY="249.0" />
+            <Label layoutX="60.0" layoutY="104.0" text="Nom:" />
+            <Label layoutX="60.0" layoutY="151.0" text="Nombre d'étoiles:" />
+            <Label layoutX="60.0" layoutY="199.0" text="Emplacement:" />
+            <Label layoutX="60.0" layoutY="249.0" text="Avis:" />
+
+            <Button layoutX="167.0" layoutY="300.0" mnemonicParsing="false" onAction="#supprimerHotel" styleClass="modern-button" stylesheets="@../modern-button.css" text="Supprimer" />
+            <Button layoutX="300.0" layoutY="300.0" mnemonicParsing="false" onAction="#updateHotel" styleClass="modern-button" stylesheets="@../modern-button.css" text="Modifier" />
+        </children>
+    </AnchorPane>
+</AnchorPane>

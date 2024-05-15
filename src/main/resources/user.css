@@ -1,0 +1,31 @@
+.button{
+    -fx-background-color: #242551;
+    -fx-background-radius: 30;
+}
+
+.text-input {
+    -fx-background-color: rgba(255, 255, 255, 0.8); /* لون شفاف قريب من لون الخلفية */
+    -fx-border-width: 0 0 2px 0;
+    -fx-border-color: #CFD6EE; /* لون الخط السفلي */
+    -fx-prompt-text-fill: #888; /* لون النص التلميحي */
+    -fx-font-size: 14px; /* حجم الخط */
+    -fx-font-family: Arial, sans-serif;
+}
+
+.text-input:hover {
+    -fx-background-color: rgba(255, 255, 255, 0.9);
+}
+
+.text-input:focused {
+    -fx-background-color: rgba(255, 255, 255, 1);
+}
+
+.profile-picture {
+    object-fit: cover;
+}
+.hoverinput{
+    -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.4) , 6,0,0,2 );
+}
+.root{
+    -fx-background-color: #ffff;
+}

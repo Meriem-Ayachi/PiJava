@@ -5,8 +5,8 @@ import java.sql.Timestamp;
 
 public class Vols {
     private int id,nbrescale,nbrplace;
-    private Time duree;
-    private Timestamp datedepart,datearrive;
+    private String duree;
+    private String datedepart,datearrive;
 
     private String classe,destination,pointdepart;
 
@@ -18,20 +18,9 @@ public class Vols {
     public Vols() {
     }
 
-    public Vols(int id, int nbrescale, int nbrplace, Time duree, Timestamp datedepart, Timestamp datearrive, String classe, String destination, String pointdepart, Double prix) {
-        this.id = id;
-        this.nbrescale = nbrescale;
-        this.nbrplace = nbrplace;
-        this.duree = duree;
-        this.datedepart = datedepart;
-        this.datearrive = datearrive;
-        this.classe = classe;
-        this.destination = destination;
-        this.pointdepart = pointdepart;
-        this.prix = prix;
-    }
 
-    public Vols(int nbrescale, int nbrplace, Time duree, Timestamp datedepart, Timestamp datearrive, String classe, String destination, String pointdepart, Double prix) {
+
+    public Vols(int nbrescale, int nbrplace, String duree, String datedepart, String datearrive, String classe, String destination, String pointdepart, Double prix) {
         this.nbrescale = nbrescale;
         this.nbrplace = nbrplace;
         this.duree = duree;
@@ -69,27 +58,27 @@ public class Vols {
         this.nbrplace = nbrplace;
     }
 
-    public Time getDuree() {
+    public String getDuree() {
         return duree;
     }
 
-    public void setDuree(Time duree) {
+    public void setDuree(String duree) {
         this.duree = duree;
     }
 
-    public Timestamp getDatedepart() {
+    public String getDatedepart() {
         return datedepart;
     }
 
-    public void setDatedepart(Timestamp datedepart) {
+    public void setDatedepart(String datedepart) {
         this.datedepart = datedepart;
     }
 
-    public Timestamp getDatearrive() {
+    public String getDatearrive() {
         return datearrive;
     }
 
-    public void setDatearrive(Timestamp datearrive) {
+    public void setDatearrive(String datearrive) {
         this.datearrive = datearrive;
     }
 
@@ -125,22 +114,13 @@ public class Vols {
         this.prix = prix;
     }
 
+
     //display
 
 
     @Override
     public String toString() {
-        return "Vols{" +
-                "id=" + id +
-                ", nbrescale=" + nbrescale +
-                ", nbrplace=" + nbrplace +
-                ", duree=" + duree +
-                ", datedepart=" + datedepart +
-                ", datearrive=" + datearrive +
-                ", classe='" + classe + '\'' +
-                ", destination='" + destination + '\'' +
-                ", pointdepart='" + pointdepart + '\'' +
-                ", prix=" + prix +
-                '}';
+        return String.format("Classe: %s | Destination: %s | Point Depart: %s",
+                classe, destination, pointdepart);
     }
 }

@@ -1,0 +1,20 @@
+/* styles.css */
+
+/* Define styles for the circular search button */
+.search-button {
+    -fx-background-color: #384fad; /* Background color */
+    -fx-text-fill: white; /* Text color */
+    -fx-font-size: 14px; /* Font size */
+    -fx-padding: 8px; /* Padding */
+    -fx-background-radius: 50%; /* Circular shape */
+    -fx-min-width: 36px; /* Minimum width */
+    -fx-min-height: 36px; /* Minimum height */
+    -fx-max-width: 36px; /* Maximum width */
+    -fx-max-height: 36px; /* Maximum height */
+    -fx-cursor: hand; /* Cursor style */
+}
+
+/* Hover effect for the circular search button */
+.search-button:hover {
+    -fx-background-color: #233b9a; /* Darker background color on hover */
+}

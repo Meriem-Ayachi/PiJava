@@ -1,0 +1,91 @@
+question d
+DECLARE
+    v_top_color1 VARCHAR2(20);
+    v_top_color2 VARCHAR2(20);
+BEGIN
+    SELECT couleur
+    INTO v_top_color1
+    FROM (
+        SELECT couleur, COUNT(*) AS vente_count
+        FROM vente2 v
+        JOIN voiture vo ON v.code_voiture = vo.code_voiture
+        WHERE EXTRACT(YEAR FROM v.datevente) = 2022
+        GROUP BY couleur
+        ORDER BY COUNT(*) DESC
+    )
+    WHERE ROWNUM = 1;
+
+    SELECT couleur
+    INTO v_top_color2
+    FROM (
+        SELECT couleur, COUNT(*) AS vente_count
+        FROM vente2 v
+        JOIN voiture vo ON v.code_voiture = vo.code_voiture
+        WHERE EXTRACT(YEAR FROM v.datevente) = 2022
+        AND couleur != v_top_color1
+        GROUP BY couleur
+        ORDER BY COUNT(*) DESC
+    )
+    WHERE ROWNUM = 1;
+    DBMS_OUTPUT.PUT_LINE('Les deux meilleures couleurs de voitures vendues en 2022 sont :');
+    DBMS_OUTPUT.PUT_LINE('1. ' || v_top_color1);
+    DBMS_OUTPUT.PUT_LINE('2. ' || v_top_color2);
+EXCEPTION
+    WHEN NO_DATA_FOUND THEN
+        DBMS_OUTPUT.PUT_LINE('Aucune donnée trouvée pour 2022.');
+    WHEN OTHERS THEN
+        DBMS_OUTPUT.PUT_LINE('Une erreur est survenue : ' || SQLERRM);
+END;
+
+
+
+
+
+
+
+
+question b
+
+DECLARE
+    
+    FUNCTION get_random_client_code RETURN client2.code_client%TYPE IS
+        v_client_code client2.code_client%TYPE;
+    BEGIN
+        SELECT code_client INTO v_client_code FROM (SELECT code_client FROM client2 ORDER BY DBMS_RANDOM.VALUE) WHERE ROWNUM = 1;
+        RETURN v_client_code;
+    EXCEPTION
+        WHEN NO_DATA_FOUND THEN
+            RAISE_APPLICATION_ERROR(-20001, 'No clients found in the database.');
+    END get_random_client_code;
+    
+    FUNCTION get_random_car_code RETURN voiture.code_voiture%TYPE IS
+        v_car_code voiture.code_voiture%TYPE;
+    BEGIN
+        SELECT code_voiture INTO v_car_code FROM (SELECT code_voiture FROM voiture ORDER BY DBMS_RANDOM.VALUE) WHERE ROWNUM = 1;
+        RETURN v_car_code;
+    EXCEPTION
+        WHEN NO_DATA_FOUND THEN
+            RAISE_APPLICATION_ERROR(-20002, 'No cars found in the database.');
+    END get_random_car_code;
+    
+BEGIN
+    FOR i IN 1..500 LOOP
+        DECLARE
+            v_code_client client2.code_client%TYPE;
+            v_code_voiture voiture.code_voiture%TYPE;
+        BEGIN
+            v_code_client := get_random_client_code;
+            v_code_voiture := get_random_car_code;
+            INSERT INTO vente2 (numero_vente, code_client, code_voiture, datevente) 
+            VALUES ('Vente_'||i, v_code_client, v_code_voiture, SYSDATE - TRUNC(DBMS_RANDOM.VALUE(1, 365)));
+            COMMIT;
+        EXCEPTION
+            WHEN OTHERS THEN
+                DBMS_OUTPUT.PUT_LINE('Error occurred: ' || SQLERRM);
+        END;
+    END LOOP;
+EXCEPTION
+    WHEN OTHERS THEN
+        DBMS_OUTPUT.PUT_LINE('Outer block error: ' || SQLERRM);
+END;
+

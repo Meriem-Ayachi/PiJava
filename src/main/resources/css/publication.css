@@ -1,0 +1,52 @@
+/* style.css */
+
+/* Couleur de fond blanche avec une légère opacité */
+.whit_background {
+    -fx-background-color: rgba(255, 255, 255, 0.9);
+}
+
+/* Couleur principale */
+.primary-color {
+    -fx-background-color: #F4F5F9;
+}
+
+/* Coins arrondis */
+.rect-round {
+    -fx-background-radius: 20;
+}
+
+/* Ombre sur toute la bordure de la publication */
+.shadow-border {
+    -fx-effect: dropShadow(gaussian, rgba(0, 0, 0, 0.3), 10, 0.5, 0, 0);
+}
+
+/* Style pour le bouton "Commenter" */
+#btn_commenter {
+    -fx-background-color: #2196F3;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-font-family: "Arial";
+    -fx-padding: 8px 16px;
+    -fx-border-radius: 5px;
+}
+
+/* Style pour le bouton "Commenter" au survol */
+#btn_commenter:hover {
+    -fx-background-color: #0d47a1;
+}
+
+/* Style pour le bouton "Commenter" lorsque pressé */
+#btn_commenter:pressed {
+    -fx-background-color: #1565c0;
+}
+
+/* Style pour l'ajout de post (exemple) */
+.label-add-post:hover {
+    -fx-background-color: #6495ED;
+    -fx-background-radius: 15;
+}
+
+.label-add-post:pressed {
+    -fx-background-color: #8B0000;
+    -fx-background-radius: 15;
+}

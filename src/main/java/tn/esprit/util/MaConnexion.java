@@ -1,19 +1,18 @@
 package tn.esprit.util;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
+import java.sql.*;
 
 public class MaConnexion {
 
     //DB
 
-    final String URL = "jdbc:mysql://localhost:3306/pi";
+    final String URL = "jdbc:mysql://localhost:3306/Integrationfinal";
     final String USR = "root";
     final String PWD = "";
 
     //att
-    private Connection cnx;
+    private static Connection cnx;
+    private static Statement ste;
     private static MaConnexion instance;
 
     //constructor
@@ -21,10 +20,11 @@ public class MaConnexion {
     private MaConnexion(){
         try {
             cnx = DriverManager.getConnection(URL,USR,PWD);
-            System.out.println("Connexion etablie avec succes");
+            System.out.println("Connexion établie avec succés");
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+
     }
 
     public static MaConnexion getInstance() {
@@ -32,5 +32,10 @@ public class MaConnexion {
             instance = new MaConnexion();
 
         return instance;
+    }
+
+    public Connection getCnx()
+    {
+        return cnx;
     }
 }

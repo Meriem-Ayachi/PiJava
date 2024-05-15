@@ -1,0 +1,58 @@
+/* Style pour le label "Music Player" */
+#chooseMusic {
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #FFFFFF; /* Couleur du texte en blanc */
+    -fx-background-color: #2C3E50; /* Couleur de fond bleu foncé */
+    -fx-padding: 15px 30px;
+    -fx-border-radius: 10px;
+    -fx-cursor: hand;
+    -fx-effect: dropShadow(gaussian, rgba(0, 0, 0, 0.3), 10, 0.5, 0, 0); /* Ombre portée */
+}
+
+/* Style pour les boutons Play, Pause et Stop */
+.play-button, .pause-button, .stop-button {
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #FFFFFF; /* Couleur du texte en blanc */
+    -fx-padding: 10px 20px;
+    -fx-border-radius: 5px;
+    -fx-cursor: hand;
+    -fx-effect: dropShadow(gaussian, rgba(0, 0, 0, 0.3), 5, 0.5, 0, 0); /* Ombre portée */
+}
+
+.play-button {
+    -fx-background-color: #3498DB; /* Couleur de fond bleu clair pour Play */
+}
+
+.play-button:hover {
+    -fx-background-color: #2980B9; /* Couleur de fond bleu plus foncé au survol */
+}
+
+.play-button:pressed {
+    -fx-background-color: #1F618D; /* Couleur de fond bleu plus foncé lorsqu'appuyé */
+}
+
+.pause-button {
+    -fx-background-color: #E74C3C; /* Couleur de fond rouge pour Pause */
+}
+
+.pause-button:hover {
+    -fx-background-color: #C0392B; /* Couleur de fond rouge plus foncée au survol */
+}
+
+.pause-button:pressed {
+    -fx-background-color: #922B21; /* Couleur de fond rouge plus foncée lorsqu'appuyé */
+}
+
+.stop-button {
+    -fx-background-color: #F39C12; /* Couleur de fond orange pour Stop */
+}
+
+.stop-button:hover {
+    -fx-background-color: #D35400; /* Couleur de fond orange plus foncée au survol */
+}
+
+.stop-button:pressed {
+    -fx-background-color: #B9770E; /* Couleur de fond orange plus foncée lorsqu'appuyé */
+}

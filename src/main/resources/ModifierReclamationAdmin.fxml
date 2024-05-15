@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="297.0" prefWidth="501.0" stylesheets="Styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.ModifierReclamationAdmin" style="-fx-background-color:#C9DBDA;">
+    <AnchorPane layoutY="1.0" prefHeight="290.0" prefWidth="500.0">
+        <children>
+            <Label layoutX="92.0" layoutY="60.0" prefHeight="46.0" prefWidth="377.0" text="Mettre à jour la réclamation" textFill="WHITE" style="-fx-text-fill: #387296;">
+                <font>
+                    <Font name="Arial Rounded MT Bold" size="24.0" />
+                </font>
+            </Label>
+            <Button layoutX="237.0" layoutY="202.0" mnemonicParsing="false" onAction="#modifierReclamation" prefHeight="39.0" prefWidth="86.0" style="-fx-background-color: #387296;" styleClass="modern-button" stylesheets="@modern-button.css" text="Modifier" textFill="WHITE">
+            <font>
+               <Font name="System Bold" size="16.0" />
+            </font></Button>
+            <CheckBox fx:id="estTraiteCB" layoutX="78.0" layoutY="133.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="100.0" text="estTraite" style="-fx-font-size: 14px; -fx-text-fill: #5abfcc; -fx-font-weight: bold;">
+            <font>
+               <Font name="Arial Rounded MT Bold" size="15.0" />
+            </font></CheckBox>
+         
+        </children>
+    </AnchorPane>
+
+</AnchorPane>

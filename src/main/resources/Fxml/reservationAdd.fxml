@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="680.0" prefWidth="822.0" style="-fx-background-image: url('backgound.jpg'); -fx-background-size: cover;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.reservationAdd">
+    <fx:include source="../sidebarUser.fxml" />
+    <AnchorPane layoutX="282.0" prefHeight="680.0" prefWidth="822.0" >
+        <AnchorPane layoutY="39.0" prefHeight="403.0" prefWidth="803.0">
+            <!-- Cadre bleu avec opacité faible -->
+            <AnchorPane layoutY="29.0" prefHeight="374.0" prefWidth="822.0">
+                <!-- Labels et champs du formulaire -->
+                <Label layoutX="19.0" layoutY="7.0" text="Date de départ" />
+                <Label layoutX="19.0" layoutY="41.0" text="Date de retour" />
+                <Label layoutX="19.0" layoutY="80.0" text="Classe" />
+                <Label layoutX="19.0" layoutY="119.0" text="Destination de départ" />
+                <Label layoutX="14.0" layoutY="158.0" text="Destination de retour" />
+                <Label layoutX="14.0" layoutY="197.0" text="Nombre de personnes" />
+                <DatePicker fx:id="dateDepartPicker" layoutX="150.0" layoutY="4.0" styleClass="date-picker-popup" stylesheets="@../datepicker.css" />
+                <DatePicker fx:id="dateRetourPicker" layoutX="150.0" layoutY="37.0" styleClass="date-picker-popup" stylesheets="@../datepicker.css" />
+                <ComboBox fx:id="classeComboBox" layoutX="150.0" layoutY="76.0" styleClass="modern-combobox" stylesheets="@../ComboBox.css">
+                    <items>
+                        <FXCollections fx:factory="observableArrayList">
+                            <String fx:value="Économique" />
+                            <String fx:value="Affaires" />
+                            <String fx:value="Première classe" />
+                        </FXCollections>
+                    </items>
+                </ComboBox>
+                <ComboBox fx:id="destinationDepartComboBox" layoutX="150.0" layoutY="115.0" styleClass="modern-combobox" stylesheets="@../ComboBox.css" />
+                <ComboBox fx:id="destinationRetourComboBox" layoutX="150.0" layoutY="154.0" styleClass="modern-combobox" stylesheets="@../ComboBox.css" />
+                <TextField fx:id="nbrPersonnesTextField" layoutX="150.0" layoutY="193.0" styleClass="modern-textfield" stylesheets="@../textfield.css" />
+                <Button layoutX="92.0" layoutY="308.0" mnemonicParsing="false" onAction="#add" styleClass="modern-button" stylesheets="@../modern-button.css" text="Ajouter" />
+                <Button layoutX="428.0" layoutY="153.0" mnemonicParsing="false" onAction="#showCountryInfo" styleClass="modern-button" stylesheets="@../modern-button.css" text="Afficher localisation" />
+
+                <Button layoutX="222.0" layoutY="308.0" mnemonicParsing="false" onAction="#openReservationList" styleClass="modern-button" stylesheets="@../modern-button.css" text="Consulter la liste des réservations" />
+                <ImageView fitHeight="120.0" fitWidth="128.0" layoutX="668.0" layoutY="3.0">
+                    <Image url="@avion2.gif" />
+                </ImageView>
+
+            </AnchorPane>
+        </AnchorPane>
+
+        <Label layoutX="366.0" layoutY="14.0" text="Ajouter une réservation">
+            <font>
+                <Font name="Sitka Text Italic" size="18.0" />
+            </font>
+        </Label>
+    </AnchorPane>
+</AnchorPane>

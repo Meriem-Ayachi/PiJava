@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox alignment="CENTER" prefHeight="300" prefWidth="400" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.PromoDetailsController">
+
+    <Label style="-fx-font-size: 30px; -fx-font-weight: bold; -fx-text-fill: #0000FF;" text="Promo Details">
+      <font>
+         <Font name="Inconsolata Condensed Bold" size="28.0" />
+      </font></Label>
+
+    <Label fx:id="promoInfoLabel" style="-fx-font-weight: bold;" wrapText="true" />
+    <Label fx:id="volsInfoLabel" alignment="CENTER" style="-fx-font-weight: bold;" wrapText="true" />
+
+
+
+</VBox>
